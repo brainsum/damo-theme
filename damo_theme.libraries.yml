@@ -202,10 +202,10 @@ header:
   css:
     theme:
       css/header.css: {}
-      ../../libraries/jquery-nice-select/css/nice-select.css : {}
+      node_modules/jquery-nice-select/css/nice-select.css : {}
   js:
     js/damo_theme.js: {}
-    ../../libraries/jquery-nice-select/js/jquery.nice-select.min.js: {}
+    node_modules/jquery-nice-select/js/jquery.nice-select.js: {}
 #  dependencies:
  #   - damo_theme/bootstrap   THERE is no bootstrap library, but why and where is it??
 

@@ -214,7 +214,7 @@ header.navbar .header-background::after
     {
         text-align: center;
     }
-    #block-damnavigation ul
+    #block-damo-theme-assets-navigation ul
     {
         max-width: 960px;
     }
@@ -240,17 +240,17 @@ header.navbar .header-background::after
     {
         max-width: 720px;
     }
-    #block-damnavigation ul
+    #block-damo-theme-assets-navigation ul
     {
         max-width: 720px;
 
         text-align: center;
     }
-    #block-damnavigation ul li
+    #block-damo-theme-assets-navigation ul li
     {
         padding: 12px 0;
     }
-    #block-damnavigation ul li a
+    #block-damo-theme-assets-navigation ul li a
     {
         padding: 5px 20px;
     }
@@ -361,7 +361,7 @@ header.navbar .header-background::after
     color: black;
 }
 
-#block-damnavigation
+#block-damo-theme-assets-navigation
 {
     position: relative;
     z-index: 1;
@@ -370,19 +370,19 @@ header.navbar .header-background::after
     padding-top: 30px;
 }
 
-#block-damnavigation ul
+#block-damo-theme-assets-navigation ul
 {
     max-width: 1140px;
     margin: 0 auto;
     padding-left: 35px;
 }
 
-#block-damnavigation ul li
+#block-damo-theme-assets-navigation ul li
 {
     display: inline-block;
 }
 
-#block-damnavigation ul li a
+#block-damo-theme-assets-navigation ul li a
 {
     font-family: 'Montserrat', sans-serif;
     font-size: 13px;
@@ -397,7 +397,7 @@ header.navbar .header-background::after
     color: white;
 }
 
-#block-damnavigation ul li a.active
+#block-damo-theme-assets-navigation ul li a.active
 {
     border-radius: 30px;
     background: rgba(90, 202, 197, .1);

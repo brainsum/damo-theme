@@ -274,9 +274,9 @@ body.path-frontpage .useage-overlay-wrapper .overlay-content span.close
     color: black;
 }
 
-body.media--view #block-exposedformasset-searchasset-search,
-body.path-admin #block-exposedformasset-searchasset-search,
-body.path-frontpage #block-exposedformasset-searchasset-search
+body.media--view #block-damo-theme-exposed-asset-search-form,
+body.path-admin #block-damo-theme-exposed-asset-search-form,
+body.path-frontpage #block-damo-theme-exposed-asset-search-form
 {
     z-index: 999;
 
