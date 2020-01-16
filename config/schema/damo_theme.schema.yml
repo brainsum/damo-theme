@@ -2,4 +2,4 @@
 
 damo_theme.settings:
   type: theme_settings
-  label: 'damo MP Theme settings'
+  label: 'DAMo theme settings'
