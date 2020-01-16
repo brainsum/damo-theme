@@ -1,9 +1,19 @@
 {
     "name": "brainsum/damo-theme",
-    "description": "Theme for brainsum DAMO project.",
-    "type": "theme",
+    "description": "Theme for brainsum DAMo project.",
+    "type": "drupal-theme",
     "license": "GPL-2.0-or-later",
     "minimum-stability": "dev",
+    "prefer-stable": true,
+    "config": {
+        "sort-packages": true
+    },
+    "repositories": {
+        "drupal-8": {
+            "type": "composer",
+            "url": "https://packages.drupal.org/8"
+        }
+    },
     "require": {
         "drupal/bootstrap": "^3.16"
     }
