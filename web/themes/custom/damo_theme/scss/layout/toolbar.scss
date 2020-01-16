@@ -1,0 +1,84 @@
+/**
+ * Toolbar module styling.
+ */
+@import "../index";
+
+$toolbar-width: 240px;
+
+body.toolbar-fixed {
+
+  // Fix z-index.
+  .toolbar-oriented .toolbar-bar {
+    z-index: ($zindex-navbar + 1);
+  }
+
+  .navbar-fixed-top {
+    top: 39px;
+  }
+
+  // Horizontal.
+  &.toolbar-horizontal.toolbar-tray-open .navbar-fixed-top {
+    top: 79px;
+  }
+
+  // Vertical Open.
+  &.toolbar-vertical.toolbar-tray-open {
+
+    .navbar-fixed-top {
+      left: $toolbar-width;
+    }
+
+    &.toolbar-fixed {
+      margin-left: $toolbar-width;
+
+      .toolbar-tray {
+        padding-bottom: 40px;
+        &, > .toolbar-lining:before {
+          width: $toolbar-width;
+        }
+      }
+
+    }
+
+  }
+
+}
+
+body {
+  // Fix horizontal scrolling on iOS devices.
+  // http://drupal.org/node/1870076
+  // position: relative;
+
+  &.navbar-is-static-top {
+    margin-top: 0;
+  }
+  // &.navbar-is-fixed-top {
+  //   margin-top: ($navbar-height + ($spacer / 2));
+  // }
+  // &.navbar-is-fixed-bottom {
+  //   padding-bottom: ($navbar-height + ($spacer / 2));
+  // }
+
+  @include media-breakpoint-down(sm) {
+    margin-top: ($spacer / 2);
+  }
+  @include media-breakpoint-up(sm) {
+    &.toolbar-vertical {
+      &.navbar-is-fixed-top,
+      &.navbar-is-fixed-bottom {
+        .toolbar-bar {
+          position: fixed;
+        }
+        header {
+          z-index: 500;
+        }
+      }
+      // Default toolbar fixed height value.
+      // @see core/modules/toolbar/css/toolbar.icons.theme.css@261
+      &.navbar-is-fixed-top header {
+        top: 39px;
+      }
+    }
+  }
+}
+

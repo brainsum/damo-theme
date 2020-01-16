@@ -1,0 +1,385 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,600,700');
+.col-sm-12
+{
+    padding-bottom: 20px;
+
+    background: #fff !important;
+}
+
+.region-content
+{
+    background: #fff;
+}
+
+.page-title-wrapper
+{
+    display: block;
+
+    max-width: 1124px;
+    margin: 0 auto;
+}
+
+.page-title-wrapper span
+{
+    font-size: 2.5rem;
+}
+
+.left-wrapper
+{
+    float: left;
+
+    width: 70%;
+}
+
+.left-wrapper.images-wrapper
+{
+    position: relative;
+
+    background: #e2e2e2;
+}
+
+.left-wrapper.images-wrapper .image
+{
+    display: none;
+}
+
+.left-wrapper.images-wrapper .image img
+{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    width: auto;
+    max-width: 100%;
+    height: auto;
+    max-height: 100%;
+    margin: 0 auto;
+
+    transform: translate(-50%, -50%);
+}
+
+.left-wrapper.images-wrapper .image.active
+{
+    display: block;
+}
+
+.right-wrapper
+{
+    float: left;
+
+    width: 30%;
+}
+
+.right-wrapper .top-controls
+{
+    padding: 15px 25px 15px;
+
+    border-bottom: 1px solid #eee;
+    background: #fff;
+}
+
+.right-wrapper .top-controls .media-title
+{
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-style: normal;
+
+    /*text-transform: capitalize;*/ /* Not generated fix, it's just a hotfix, need to fix with gulp SASS!!! */
+}
+
+.right-wrapper .top-controls .controller
+{
+    padding: 0;
+}
+
+.right-wrapper .top-controls .controller .link
+{
+    display: none;
+}
+
+.right-wrapper .top-controls .controller .link a
+{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    font-style: normal;
+    line-height: 12px;
+
+    padding: 15px;
+
+    color: #fdfefc;
+    border: none;
+    border-radius: 4px;
+    background: #57b3af;
+}
+
+.right-wrapper .top-controls .controller .link a:hover
+{
+    background: #5acac5;
+}
+
+.right-wrapper .top-controls .controller .link.active
+{
+    display: block;
+}
+
+.right-wrapper .image-controls
+{
+    padding: 25px;
+
+    background-color: #fafafa;
+}
+
+.right-wrapper .image-controls .controller
+{
+    clear: both;
+}
+
+.right-wrapper .image-controls .controller.no-badge.inactive
+{
+    pointer-events: none;
+
+    opacity: .4;
+}
+
+.right-wrapper .image-controls .controller:first-child
+{
+    padding-top: 0;
+}
+
+.right-wrapper .image-controls .controller .link
+{
+    display: block;
+    display: list-item;
+
+    width: 100%;
+    width: -webkit-fit-content;
+    width:    -moz-fit-content;
+    width:         fit-content;
+    margin-left: 15px;
+    padding: 2px 20px;
+    padding-left: 30px;
+
+    list-style-position: inside;
+
+    cursor: pointer;
+    text-indent: -18px;
+
+    border-radius: 2px;
+}
+
+.right-wrapper .image-controls .controller .link.active
+{
+    background: #eaeaea;
+}
+
+.right-wrapper .image-controls .controller.single
+{
+    padding-bottom: 10px;
+}
+
+.right-wrapper .image-controls .controller.single h4
+{
+    display: none;
+}
+
+.right-wrapper .image-controls .controller.single .link
+{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    font-style: normal;
+
+    display: block;
+    float: left;
+
+    margin-top: -12px;
+    margin-left: 18px;
+    padding: 2px 8px;
+
+    text-indent: 0;
+}
+
+.field--name-field-expiration-date,
+.field--type-entity-reference
+{
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-style: normal;
+
+    clear: both;
+    overflow: hidden;
+
+    max-width: 520px;
+    padding-top: 20px;
+    padding-left: 165px;
+
+    color: #363636;
+}
+
+.field--name-field-expiration-date .field__items .field--item,
+.field--type-entity-reference .field__items .field--item
+{
+    font-weight: normal;
+
+    float: left;
+
+    padding-right: 5px;
+
+    text-transform: none;
+}
+
+.field--name-field-expiration-date .field__items .field--item a,
+.field--type-entity-reference .field__items .field--item a
+{
+    color: #363636;
+}
+
+.field--name-field-expiration-date .field__items .field--item:after,
+.field--type-entity-reference .field__items .field--item:after
+{
+    content: ', ';
+}
+
+.field--name-field-expiration-date .field__items .field--item:last-child:after,
+.field--type-entity-reference .field__items .field--item:last-child:after
+{
+    content: '';
+}
+
+.field--name-field-expiration-date .field--label,
+.field--type-entity-reference .field--label
+{
+    float: left;
+
+    width: 110px;
+}
+
+.field--name-field-expiration-date .field__items,
+.field--type-entity-reference .field__items
+{
+    float: left;
+
+    max-width: 240px;
+}
+
+.field--name-field-focus-area .field--label,
+.field--name-field-industry .field--label
+{
+    padding-right: 5px;
+}
+
+.field--name-field-focus-area .field--label:after,
+.field--name-field-industry .field--label:after
+{
+    content: ':';
+}
+
+.title-wrapper
+{
+    position: relative;
+}
+
+.title-wrapper h4
+{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    font-style: normal;
+}
+
+.title-wrapper .icon
+{
+    position: absolute;
+    top: 50%;
+    left: 0;
+
+    display: block;
+    float: left;
+
+    width: 15px;
+    height: 15px;
+
+    transform: translateY(-50%);
+}
+
+.title-wrapper .icon i
+{
+    font-size: 18px;
+
+    display: block;
+
+    margin-top: -3px;
+
+    color: #868686;
+}
+
+.title-wrapper .icon svg
+{
+    width: auto;
+    height: 15px;
+}
+
+.title-wrapper .icon svg path
+{
+    fill: #8b8b8b;
+}
+
+.title-wrapper h4
+{
+    padding-left: 25px;
+
+    text-transform: capitalize;
+}
+
+.right-wrapper .controller
+{
+    padding: 25px 0;
+}
+
+.usage-wrapper
+{
+    float: left;
+
+    margin-top: -81px;
+    margin-left: 600px;
+}
+
+.usage-wrapper.no-margin
+{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 165px;
+}
+
+.usage-wrapper.no-margin .control-wrapper
+{
+    margin-top: 0;
+    padding-bottom: 0;
+}
+
+.usage-wrapper .control-wrapper
+{
+    margin-top: 0;
+    padding-bottom: 0;
+}
+
+#filter-platform
+{
+    display: none;
+}
+
+header.navbar #block-damnavigation
+{
+    margin-bottom: 0;
+}
+
+header.navbar .header-background
+{
+    height: 210px;
+}
+
+main .region-highlighted
+{
+    margin: 0;
+}

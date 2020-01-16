@@ -1,0 +1,191 @@
+// Mixins
+//
+// This must be imported after `_variables.scss`, as the mixins
+// make heavy use of them.
+
+// Overridden from Bootstrap 4.
+@mixin button-variant($color, $background, $border) {
+  $active-background: darken($background, 10%);
+  $active-border: darken($border, 12%);
+
+  color: $color;
+  background-color: $background;
+  border-color: $border;
+  @include box-shadow($btn-box-shadow);
+
+  @include hover {
+    color: $color;
+    background-color: $active-background;
+        border-color: $active-border;
+  }
+
+  &:focus {
+    color: $color;
+    background-color: $active-background;
+        border-color: $active-border;
+  }
+
+  &:active {
+    color: $color;
+    background-color: $active-background;
+        border-color: $active-border;
+    // Remove the gradient for the pressed/active state
+    background-image: none;
+    @include box-shadow($btn-active-box-shadow);
+
+    &:hover,
+    &:focus {
+      color: $color;
+      background-color: darken($background, 17%);
+          border-color: darken($border, 25%);
+    }
+  }
+
+  &.disabled,
+  &:disabled {
+    &:focus,
+    &.focus {
+      background-color: $btn-disabled-bg;
+          border-color: $btn-disabled-border;
+          color: $btn-disabled-color;
+    }
+    @if $enable-shadows {
+      &:active {
+        box-shadow: none;
+      }
+    }
+    @include hover {
+      background-color: $btn-disabled-bg;
+          border-color: $btn-disabled-border;
+          color: $btn-disabled-color;
+    }
+  }
+}
+
+@mixin button-plain-variant($color, $border) {
+  color: $color;
+  background-image: none;
+  background-color: transparent;
+  border-color: $border;
+
+  @include hover {
+    color: $color;
+    border-color: $color;
+    background-color: transparent;
+  }
+
+  &:focus {
+    color: $color;
+    border-color: $color;
+    background-color: transparent;
+  }
+
+  &:active {
+    &, &:focus {
+      color: #fff;
+      background-color: $color;
+      border-color: $color;
+    }
+  }
+
+  &.disabled,
+  &:disabled {
+    color: $btn-disabled-plain-color;
+    background-color: $btn-disabled-plain-bg;
+    border-color: $btn-disabled-plain-border;
+  }
+}
+
+@mixin caret-base($position: after) {
+  &::#{$position} {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    vertical-align: middle;
+    content: " ";
+  }
+}
+
+// Create carets.
+@mixin caret($dir: down, $position: after, $color: $caret-color, $width: $caret-width) {
+  &::#{$position} {
+
+    @if $dir == down or $dir == up {
+      border-right: $width solid transparent;
+      border-left: $width solid transparent;
+      @if $dir == 'down' {
+        border-top: $width solid $color;
+      }
+      @if $dir == 'up' {
+        border-bottom: $width solid $color;
+      }
+    }
+
+    @if $dir == right or $dir == left {
+      border-bottom: $width solid transparent;
+      border-top: $width solid transparent;
+      @if $dir == 'right' {
+        border-left: $width solid $color;
+      }
+      @if $dir == 'left' {
+        border-right: $width solid $color;
+      }
+    }
+
+    @if $position == after {
+      margin-left: $width / 2;
+    } @else {
+      margin-right: $width;
+    }
+  }
+}
+
+// BEM
+
+@mixin element($name) {
+  @at-root #{&}__#{$name} {
+    @content
+  }
+}
+
+@mixin e($name) {
+  @include element($name);
+}
+
+@mixin modifier($name) {
+  @at-root #{&}--#{$name} {
+    @content
+  }
+}
+
+@mixin m($name) {
+  @include modifier($name);
+}
+
+// Touchscreen detection supported by Modernizr. (Drupal core has it by default)
+
+@mixin touchscreen {
+  @at-root {
+    html.touchevents #{&} {
+      @content
+    }
+  }
+}
+
+@mixin no-touchscreen {
+  @at-root {
+    html.no-touchevents #{&} {
+      @content
+    }
+  }
+}
+
+// Also, check for any class added by Modernizr.
+
+@mixin modernizr($class) {
+  @at-root {
+    html.#{$class} #{&} {
+      @content
+    }
+  }
+}

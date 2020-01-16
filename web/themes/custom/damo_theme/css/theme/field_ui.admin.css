@@ -1,0 +1,8 @@
+.field-ui-overview .field-plugin-settings-edit:not([disabled])
+{
+    padding: 1rem;
+
+    background-image: url(/core/misc/icons/787878/cog.svg);
+    background-repeat: no-repeat;
+    background-position: center center;
+}

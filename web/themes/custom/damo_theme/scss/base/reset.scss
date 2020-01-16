@@ -1,0 +1,37 @@
+// Import latest Normalize.css and Bootstrap's Reboot.
+@import "../utils/variables";
+@import "../../node_modules/bootstrap/scss/variables";
+@import "../../node_modules/bootstrap/scss/mixins/hover";
+@import "../../node_modules/bootstrap/scss/mixins/tab-focus";
+
+@import "../../node_modules/bootstrap/scss/normalize";
+@import "../../node_modules/bootstrap/scss/reboot";
+
+// Other resets should go here...
+//
+//
+
+// Bootstrap 4 adds a .5rem bottom margin to all labels, and does some
+// magic in `_forms.scss` so we override margins globally.
+label {
+  margin-bottom: .25rem;
+}
+
+// We don't need Bootstrap's default 1.5rem for `<legend>` elements.
+legend {
+  font-size: $font-size-base;
+}
+
+// Make objects responsive by default.
+video, img {
+  max-width: 100%;
+  height: auto;
+}
+
+// This is needed for unknown reasons. Somehow these elements do not
+// inherit border-box from `<html>`, as defined in Bootstrap's Reboot.
+//
+// @todo Find out why?
+input, select, textarea {
+  box-sizing: border-box;
+}

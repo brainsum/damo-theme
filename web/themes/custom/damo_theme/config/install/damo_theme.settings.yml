@@ -1,0 +1,117 @@
+#
+# ---------------------------------- WARNING ----------------------------------
+# IF YOU CHANGE THESE, RUN `gulp theme:reinstall` TO APPLY CHANGES!
+# ---------------------------------- WARNING ----------------------------------
+#
+# Default settings should not be located here. This file is only used to
+# override existing settings. If your theme is the one that introduces a new
+# theme setting, it should use the Drupal Bootstrap base theme's
+# @BootstrapSetting annotation discovery process. This ensures that sub-theme
+# settings are inherited from base themes themes properly and to determine when
+# a setting should be saved to config as "overridden".
+#
+# @see \Drupal\bootstrap\Plugin\SettingBase
+# @see \Drupal\bootstrap\Plugin\SettingInterface
+# @see \Drupal\bootstrap\Plugin\SettingManager
+# @see \Drupal\bootstrap\Plugin\Form\SystemThemeSettings
+# @see \Drupal\bootstrap\ThemeSettings
+
+# Disable the CDN provider so compiled source files can be used.
+
+# Advanced
+# @see http://drupal-bootstrap.org/api/bootstrap/docs%21Theme-Settings.md/group/theme_settings/8#advanced
+include_deprecated: 0
+suppress_deprecated_warnings: 0
+
+# CDN (Content Delivery Network)
+# @see http://drupal-bootstrap.org/api/bootstrap/docs%21Theme-Settings.md/group/theme_settings/8#advanced-c-d-n-content-delivery-
+cdn_provider: ''
+
+# Breadcrumbs
+# @see http://drupal-bootstrap.org/api/bootstrap/docs%21Theme-Settings.md/group/theme_settings/8#components-breadcrumbs
+breadcrumb: 1
+breadcrumb_home: 0
+breadcrumb_title: 1
+
+# Navbar
+# @see http://drupal-bootstrap.org/api/bootstrap/docs%21Theme-Settings.md/group/theme_settings/8#components-navbar
+navbar_inverse: 1
+navbar_position: 'static-top'
+
+# Region Wells
+# @see http://drupal-bootstrap.org/api/bootstrap/docs%21Theme-Settings.md/group/theme_settings/8#components-region-wells
+region_wells:
+  navigation: ''
+  navigation_collapsible: ''
+  header: ''
+  highlighted: ''
+  help: ''
+  content: ''
+  sidebar_first: ''
+  sidebar_second: ''
+  footer: ''
+
+# Buttons
+# @see http://drupal-bootstrap.org/api/bootstrap/docs%21Theme-Settings.md/group/theme_settings/8#general-buttons
+button_colorize: 1
+button_iconize: 0
+button_size: ''
+
+# Container
+# @see http://drupal-bootstrap.org/api/bootstrap/docs%21Theme-Settings.md/group/theme_settings/8#general-container
+fluid_container: 0
+
+# Forms
+# @see http://drupal-bootstrap.org/api/bootstrap/docs%21Theme-Settings.md/group/theme_settings/8#general-forms
+forms_has_error_value_toggle: 1
+forms_required_has_error: 0
+forms_smart_descriptions: 0
+forms_smart_descriptions_allowed_tags: 'b, code, em, i, kbd, span, strong'
+forms_smart_descriptions_limit: '250'
+
+# Images
+# @see http://drupal-bootstrap.org/api/bootstrap/docs%21Theme-Settings.md/group/theme_settings/8#general-images
+image_responsive: 1
+image_shape: ''
+
+# Tables
+# @see http://drupal-bootstrap.org/api/bootstrap/docs%21Theme-Settings.md/group/theme_settings/8#general-tables
+table_bordered: 0
+table_condensed: 0
+table_hover: 0
+table_responsive: 1
+table_striped: 1
+
+# Modals
+# @see http://drupal-bootstrap.org/api/bootstrap/docs%21Theme-Settings.md/group/theme_settings/8#java-script-modals
+modal_enabled: 0
+modal_animation: 0
+modal_backdrop: 'true'
+modal_keyboard: 1
+modal_show: 0
+modal_size: ''
+
+# Popovers
+# @see http://drupal-bootstrap.org/api/bootstrap/docs%21Theme-Settings.md/group/theme_settings/8#java-script-popovers
+popover_enabled: 0
+popover_animation: 0
+popover_container: body
+popover_content: ''
+popover_delay: '0'
+popover_html: 0
+popover_placement: 'auto right'
+popover_selector: '[data-toggle="popover"]'
+popover_title: 'Help'
+popover_trigger: click
+popover_trigger_autoclose: 1
+
+# Tooltips
+# @see http://drupal-bootstrap.org/api/bootstrap/docs%21Theme-Settings.md/group/theme_settings/8#java-script-tooltips
+tooltip_enabled: 1
+tooltip_animation: 1
+tooltip_container: body
+tooltip_delay: '0'
+tooltip_html: 0
+tooltip_placement: 'auto top'
+tooltip_selector: '[data-toggle="tooltip"]'
+tooltip_trigger: hover

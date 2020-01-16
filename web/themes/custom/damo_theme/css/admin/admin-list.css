@@ -1,0 +1,27 @@
+/**
+ * Admin lists.
+ */
+.admin-list > li
+{
+    padding: 1em 1em 1em 2em;
+
+    border-top: 1px solid #bfbfbf;
+    background: url(/core/misc/icons/bebebe/chevron-disc-right.svg) no-repeat .5em 1.25em;
+    /* LTR */
+    background-size: 1em;
+}
+
+.admin-list > li > a
+{
+    font-weight: bold;
+
+    display: block;
+}
+
+[dir='rtl'] .admin-list > li
+{
+    padding-right: 2rem;
+    padding-left: 1rem;
+
+    background: url(/core/misc/icons/bebebe/chevron-disc-left.svg) no-repeat right 1.25em;
+}

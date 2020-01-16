@@ -1,0 +1,34 @@
+// Details
+//
+//
+@import "../index";
+
+details {
+  margin: $spacer 0;
+  border: 1px solid color(grey-lighter);
+  box-shadow: $thumbnail-box-shadow;
+
+  summary {
+    @include text-truncate;
+    text-transform: uppercase;
+    padding: .5rem 1rem;
+
+    @include hover-focus {
+      color: $body-color;
+    }
+  }
+
+  > .details-wrapper {
+    padding: .5rem 1rem;
+
+    > .description {
+      margin-bottom: .5rem;
+    }
+  }
+}
+
+// Replace default browser icons.
+// @fixme with background SVG for cross-browsers!
+// summary::-webkit-details-marker {
+//   color: color(blue);
+// }

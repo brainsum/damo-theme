@@ -1,0 +1,5 @@
+# Schema for the configuration files of the damo_theme theme.
+
+damo_theme.settings:
+  type: theme_settings
+  label: 'damo MP Theme settings'

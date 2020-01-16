@@ -1,0 +1,65 @@
+// Regions
+//
+//
+@import "../index";
+
+.footer {
+  $footer-height: 100px;
+  margin-top: 2 * $spacer;
+
+  @include element('content') {
+    border-top: 1px solid $brand-primary;
+    font-size: $font-size-sm;
+    color: color(grey);
+  }
+
+  @include element('item') {
+    // @todo THIS IS SUCH A CRAP!! Try adding more stuff to the footer...
+    line-height: $footer-height;
+
+    @include modifier('logo') {
+      display: inline-block;
+      height: $footer-height;
+
+      @include media-breakpoint-up(sm) {
+        float: right;
+      }
+    }
+  }
+
+  .block {
+    padding: $spacer 0;
+  }
+
+  .dropdown-menu {
+    font-size: $font-size-sm;
+  }
+
+  a {
+    color: color(grey);
+    @include hover {
+      text-decoration: underline;
+    }
+  }
+
+  @include media-breakpoint-up(sm) {
+    text-align: left;
+  }
+}
+
+.page-header {
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+}
+
+// Help region.
+.region-help {
+  > .glyphicon {
+    font-size: $font-size-lg;
+    float: left;
+    margin: -0.05em 0.5em 0 0;
+  }
+  .block {
+    overflow: hidden;
+  }
+}

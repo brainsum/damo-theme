@@ -1,0 +1,39 @@
+@import "../index";
+
+/*
+  Links
+
+  Markup: <a class="{{modifier_class}}" href="#">Link</a>
+
+  :visited - Different color when state is visited
+  :hover - Different color on hover state
+  :active - Different color on active state
+  .disabled - Differen color on disabled state (it also works with the disabled attribute)
+
+  Style guide: 4.4
+*/
+
+// @fixme Fix :not selectors and :visited styles.
+a:not(.btn):not(.button) {
+
+  &:active {
+    color: $link-active-color;
+  }
+
+  &.disabled,
+  &[disabled] {
+    color: $link-disabled-color;
+    pointer-events: none;
+    cursor: not-allowed;
+  }
+
+  .article & {
+    &:visited {
+      color: $link-visited-color;
+
+      &:hover {
+        color: $link-hover-color;
+      }
+    }
+  }
+}

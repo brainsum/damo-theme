@@ -1,0 +1,39 @@
+@import "../index";
+@import "../../node_modules/bootstrap/scss/nav";
+@import "../../node_modules/bootstrap/scss/navbar";
+
+.navbar {
+  margin-bottom: $spacer * 2;
+  background-color: $brand-primary;
+}
+
+.navbar-collapse {
+
+  @include media-breakpoint-down(sm) {
+    clear: both;
+  }
+
+  .navbar-nav {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+}
+
+.navbar-nav {
+  float: right;
+  .nav-link {
+    padding-top: $spacer;
+    padding-bottom: $spacer;
+  }
+}
+
+.navbar-toggler {
+  margin-top: .75rem;
+  float: right;
+}
+
+.navbar-text {
+  font-size: 1.75rem;
+  font-weight: 700;
+  vertical-align: bottom;
+}

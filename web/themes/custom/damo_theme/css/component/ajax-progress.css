@@ -1,0 +1,57 @@
+/**
+ * AJAX (throbber) styling.
+ */
+@keyframes glyphicon-spin
+{
+    0%
+    {
+        transform: rotate(0deg);
+    }
+    100%
+    {
+        transform: rotate(359deg);
+    }
+}
+
+.glyphicon-spin
+{
+    display: inline-block;
+
+    animation: glyphicon-spin 1s infinite linear;
+}
+
+a .glyphicon-spin
+{
+    display: inline-block;
+
+    text-decoration: none;
+}
+
+html.js .btn .ajax-throbber
+{
+    margin-right: -.25em;
+    margin-left: .5em;
+}
+
+html.js .form-item .input-group-addon .glyphicon
+{
+    transition: 150ms color, 150ms opacity;
+
+    opacity: .5;
+}
+
+html.js .form-item .input-group-addon .glyphicon.glyphicon-spin
+{
+    opacity: 1;
+    color: #62b3e5;
+}
+
+html.js .form-item .input-group-addon .input-group-addon
+{
+    background-color: white;
+}
+
+html.js .ajax-new-content:empty
+{
+    display: none !important;
+}

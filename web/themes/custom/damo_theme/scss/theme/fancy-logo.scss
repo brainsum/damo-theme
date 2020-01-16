@@ -1,0 +1,95 @@
+// Corporate logo with animation.
+//
+// @todo Use normal SVG instead of this sk(r)ewed mess!
+@import "../index";
+
+$logo-transform: rotate(16.5deg) skew(-29deg);
+
+.navbar {
+  background: 0;
+}
+
+.fancy-logo {
+  position: fixed;
+  width: 100%;
+  z-index: 500;
+  top: 0;
+  left: 0;
+
+  .navbar-brand {
+    margin: 20px;
+    display: inline-block;
+    padding: 0;
+  }
+
+  &::after {
+    transform: $logo-transform;
+    will-change: transform, width;
+
+    background: color(blue);
+    content: " ";
+    position: absolute;
+    display: block;
+    z-index: -1;
+
+    top: -84px;
+    left: -60px;
+
+    width: 200px;
+    height: 200px;
+  }
+
+  &:not(.fixed)::after {
+    transition: width .2s, transform .2s ease .2s;
+    transform: $logo-transform;
+  }
+
+  &.fixed::after {
+    transition: transform .2s, width .2s ease .2s;
+    transform: rotate(0) skew(0) translate3d(60px, -40px, 0);
+    width: 100%;
+  }
+}
+
+.navbar-toggler {
+  margin: 18px 1rem;
+  background-image: $navbar-dark-toggler-bg;
+  border-color: $navbar-dark-toggler-border;
+}
+
+@include media-breakpoint-down(md) {
+  .navbar-nav {
+    .nav-link {
+      margin: 0;
+    }
+  }
+}
+
+.region-navigation-collapsible {
+  position: fixed;
+  z-index: 500;
+  right: 0;
+  top: 0;
+  z-index: 501;
+
+  .navbar-collapse {
+    clear: both;
+    margin: .5rem;
+
+    @include media-breakpoint-down(md) {
+      margin: 1rem;
+      background: $brand-primary;
+    }
+  }
+}
+
+// Fix for admin menu
+.fancy-logo, .region-navigation-collapsible {
+  .toolbar-fixed & {
+    top: $admin-toolbar-height;
+  }
+
+  .toolbar-horizontal.toolbar-tray-open & {
+    top: 2 * $admin-toolbar-height;
+  }
+}

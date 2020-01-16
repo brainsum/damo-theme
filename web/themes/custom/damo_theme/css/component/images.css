@@ -1,0 +1,39 @@
+.img-fluid,
+.img-responsive
+{
+    max-width: 100%;
+    height: auto;
+}
+
+.img-thumbnail
+{
+    max-width: 100%;
+    height: auto;
+    padding: .25rem;
+
+    transition: all .2s ease-in-out;
+
+    border: 1px solid #ddd;
+    border-radius: .25rem;
+    background-color: #fff;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, .075);
+}
+
+.figure
+{
+    display: inline-block;
+}
+
+.figure-img
+{
+    line-height: 1;
+
+    margin-bottom: .5rem;
+}
+
+.figure-caption
+{
+    font-size: 90%;
+
+    color: #818a91;
+}

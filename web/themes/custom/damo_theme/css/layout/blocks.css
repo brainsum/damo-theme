@@ -1,0 +1,46 @@
+.block-local-actions-block
+{
+    margin: 1rem 0;
+}
+
+.block-local-actions-block a.btn + a.btn,
+.block-local-actions-block a.button,
+.block-local-actions-block a.button
+{
+    margin-left: .25rem;
+}
+
+.block-local-tasks-block
+{
+    margin-bottom: 1rem;
+}
+
+.block > h2
+{
+    font-size: 1rem;
+    font-weight: bold;
+
+    text-transform: uppercase;
+
+    color: #7b7b7b;
+}
+
+.region-sidebar .block
+{
+    margin-bottom: 1rem;
+}
+
+.menu-account
+{
+    float: right;
+}
+
+@media (min-width: 576px)
+{
+    .block-system-menu-blockfooter
+    {
+        display: inline-block;
+
+        margin-left: 1em;
+    }
+}

@@ -1,0 +1,67 @@
+@import "../index";
+
+.ui-dialog {
+  box-shadow: 0 0 2px color(grey-lighter);
+
+  &.ui-widget {
+    font-family: $font-family-sans-serif;
+    font-size: $font-size-base;
+  }
+
+  &.ui-widget-content,
+  .ui-widget-content {
+    border: 0;
+  }
+
+  &.ui-corner-all,
+  .ui-dialog-titlebar {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+
+  .ui-dialog-titlebar {
+    position: relative;
+    padding: 1rem;
+    background: color(grey-lightest);
+    border: 0;
+    font-size: 1em;
+  }
+
+  .ui-dialog-titlebar-close {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    width: 16px;
+    height: 16px;
+    transform: translateY(-50%);
+    background-color: transparent !important;
+    background-image: url(../../images/close.svg) !important;
+    border: 0 !important;
+
+    .ui-icon {
+      width: auto;
+    }
+
+    .ui-button-text {
+      padding: 0;
+    }
+  }
+
+  .ui-widget-header {
+    color: color(grey-darkest);
+  }
+
+  .ui-dialog-content {
+    padding: 1rem;
+    overflow: auto;
+  }
+
+  .ui-dialog-buttonset {
+    margin-top: 0;
+    margin-bottom: 0;
+    padding: 1rem;
+    text-align: right;
+  }
+}

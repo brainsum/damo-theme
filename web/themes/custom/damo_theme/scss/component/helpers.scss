@@ -1,0 +1,129 @@
+// Helpers
+//
+// Stuff like .float-left, .text-bold, etc.
+@import "../index";
+
+// All Bootstrap utilities
+// @import "bootstrap/scss/utilities";
+
+// Specific Bootstrap utilities
+@import "../../node_modules/bootstrap/scss/utilities/align";
+@import "../../node_modules/bootstrap/scss/utilities/background";
+@import "../../node_modules/bootstrap/scss/utilities/borders";
+@import "../../node_modules/bootstrap/scss/utilities/clearfix";
+@import "../../node_modules/bootstrap/scss/utilities/display";
+@import "../../node_modules/bootstrap/scss/utilities/flex";
+@import "../../node_modules/bootstrap/scss/utilities/float";
+@import "../../node_modules/bootstrap/scss/utilities/screenreaders";
+@import "../../node_modules/bootstrap/scss/utilities/spacing";
+@import "../../node_modules/bootstrap/scss/utilities/text";
+@import "../../node_modules/bootstrap/scss/utilities/visibility";
+
+// Helpers from Bootstrap 3.
+.pull-right {
+  float: right;
+}
+.pull-left {
+  float: left;
+}
+
+// Reset default form element look.
+.reset-appearance {
+  appearance: none;
+  border: 0 none;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+  line-height: inherit;
+}
+
+// Resizable textareas
+// @todo move this to form elements.
+.resize-none {
+  resize: none;
+}
+.resize-vertical {
+  resize: vertical;
+  min-height: 2em;
+}
+.resize-horizontal {
+  resize: horizontal;
+  max-width: 100%;
+}
+.resize-both {
+  resize: both;
+  max-width: 100%;
+  min-height: 2em;
+}
+
+// Nowrap
+.nowrap {
+  white-space: nowrap;
+}
+
+/**
+ * @file
+ * Alignment classes for text and block level elements.
+ *
+ * @todo Check if conflicts with Bootstarp + REFACTOR
+ */
+.text-align-left {
+  text-align: left;
+}
+.text-align-right {
+  text-align: right;
+}
+.text-align-center {
+  text-align: center;
+}
+.text-align-justify {
+  text-align: justify;
+}
+
+/**
+ * Alignment classes for block level elements (images, videos, blockquotes, etc.)
+ */
+.align-left {
+  float: left;
+}
+.align-right {
+  float: right;
+}
+.align-center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+// Carets
+.caret-left,
+.caret-right,
+.caret-down,
+.caret-up {
+  @include caret-base();
+}
+
+.caret-left {
+  @include caret(left);
+}
+
+.caret-right {
+  @include caret(right);
+}
+
+.caret-down {
+  @include caret(down);
+}
+
+.caret-up {
+  @include caret(up);
+}
+
+/*
+ * @file
+ * Contain positioned elements.
+ */
+
+.position-container {
+  position: relative;
+}

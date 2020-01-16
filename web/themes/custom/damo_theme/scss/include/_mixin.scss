@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,600,700');
+
+@mixin buttonFontStyle() {
+  line-height: 12px;
+  // text-transform: uppercase;
+  font-size: 11px;
+}
+$fw--100: 100; // thin/hairline
+$fw--200: 200; // extra-light/ultra-light
+$fw--300: 300; // light*
+$fw--400: 400; // normal/regular/book/roman*
+$fw--500: 500; // medium
+$fw--600: 600; // semi-bold/demi-bold
+$fw--700: 700; // bold*
+$fw--800: 800; // extra-bold/ultra-bold
+$fw--900: 900; // black/heavy
+
+$fs--normal: normal;
+$fs--italic: italic;
+$ff--montserrat: 'Montserrat', sans-serif;
+
+$color1: #68809a;
+$color1hover: #7ea8d6;
+$color2: #57b3af;
+$color2hover: #5acac5;
+$text_color: #fff;
+
+@mixin fontArialNormal() {  // Arial Normal
+  font-family: $ff--montserrat;
+  font-weight: $fw--400;
+  font-style: $fs--normal;
+}
+
+
+@mixin fontArialBold() {  // Arial Bold
+  font-family: $ff--montserrat;
+  font-weight: $fw--700;
+  font-style: $fs--normal;
+}
+
+@mixin headerBackground() {  // Arial Bold
+  background: #cecece;
+}
+
+@mixin buttonColor2() {  // Arial Bold
+  background: #57b3af;
+}
+@mixin buttonColor2Hover() {  // Arial Bold
+  background: #5acac5;
+}
+@mixin buttonColor1() {  // Arial Bold
+  background: #68809a;
+}
+
+@mixin buttonColor1Hover() {  // Arial Bold
+  background: #7ea8d6;
+}
+
+@mixin selectBg() {
+  background: #f1f1f1;
+}
+
+@mixin fontColor1() {
+  color: #a2a2a2;
+}

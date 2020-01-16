@@ -1,0 +1,383 @@
+@import "../index";
+@import "../../node_modules/bootstrap/scss/forms";
+@import "../../node_modules/bootstrap/scss/input-group";
+
+// All form controls, inputs, buttons, etc.
+.form-control {
+  font-family: inherit;
+  max-width: 100%;
+
+  &.error {
+    border-color: $brand-danger;
+  }
+}
+
+// Form labels.
+// `<summary>` elements should have `display: list-item`.
+// @see reset.scss
+.form-control-label {
+  font-weight: $label-font-weight;
+  color: $label-color;
+  cursor: pointer;
+
+  &:not(summary) {
+    display: inline-block;
+  }
+}
+
+.form-required::after {
+  content: "*";
+  color: color(red);
+  padding-left: .2rem;
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+.form-item > {
+  .select-wrapper,
+  .input-group {
+    margin-top: .25rem;
+  }
+}
+
+// @todo Clean up?
+.views-exposed-form {
+  .form-control-label:not(summary) {
+    text-transform: uppercase;
+    font-weight: $font-weight-normal;
+  }
+
+  > .form-actions {
+    text-align: center;
+    clear: both;
+  }
+
+  > .form-item {
+    @include media-breakpoint-up(md) {
+      float: left;
+      width: 50%;
+      padding-right: $spacer;
+
+      &:nth-child(odd) {
+        clear: left;
+      }
+
+      > .form-control-label {
+        width: 40%;
+        float: left;
+        padding-right: 1rem;
+        margin-top: .25rem;
+      }
+
+      > .form-control,
+      > .select-wrapper,
+      > .input-group {
+        width: 60%;
+        margin: 0;
+      }
+    }
+
+    @include media-breakpoint-up(lg) {
+      > .form-control-label {
+        width: 30%;
+      }
+
+      > .form-control,
+      > .select-wrapper,
+      > .input-group {
+        width: 70%;
+      }
+    }
+  }
+}
+
+select.form-control:not([size]):not([multiple]) {
+  height: calc(2rem + 2px); // @fixme
+}
+
+.description,
+.help-block,
+.control-group .help-inline {
+  color: $gray-light;
+  padding: 0;
+  margin-top: .25rem;
+
+  &:first-child {
+    margin-top: 0;
+  }
+}
+
+.description,
+.help-block {
+  display: block;
+}
+
+.form-check-input:only-child {
+  margin-right: .25rem;
+}
+
+// .fieldgroup {
+//   margin-bottom: $spacer;
+// }
+
+// @fixme wtf
+.form-wrapper:not(.field--widget-options-buttons):not(.fieldgroup) {
+  margin-bottom: $spacer;
+}
+
+.form-check {
+  &.no-description {
+    margin-bottom: .25rem;
+  }
+}
+
+.form-autocomplete {
+  margin-top: 0;
+}
+
+.form-type-checkbox {
+  .input-group-addon {
+    display: none; // @fixme
+  }
+}
+
+// .form-text,
+// .form-date {
+//   display: block;
+//   margin-top: ($spacer * .25);
+// }
+
+// Bootstrap uses `has-danger`, but `has-error` is much better.
+.has-error {
+  @include form-control-validation($brand-danger);
+
+  .form-control-label {
+    color: $brand-danger;
+  }
+}
+
+/**
+ * $file
+ * Visual styles for fields.
+ *
+ * @todo REFACTOR FROM HERE...
+ */
+
+.field--label {
+  font-weight: bold;
+}
+.field--label-inline .field--label,
+.field--label-inline .field--items {
+  float: left; /*LTR*/
+}
+.field--label-inline .field--label,
+.field--label-inline > .field--item,
+.field--label-inline .field--items {
+  padding-right: 0.5em;
+}
+[dir="rtl"] .field--label-inline .field--label,
+[dir="rtl"] .field--label-inline .field--items {
+  padding-left: 0.5em;
+  padding-right: 0;
+}
+.field--label-inline .field--label::after {
+  content: ':';
+}
+
+/**
+ * File (and Image Widget) styles.
+ */
+.file {
+  display: table;
+  font-size: 75%;
+  font-weight: 700;
+  margin: 5px 0;
+  width: 100%;
+  > span {
+    background: #fff;
+    color: $brand-primary;
+    border-bottom: 1px solid $input-border-color;
+    border-top: 1px solid $input-border-color;
+    &:first-child {
+      border-left: 1px solid $input-border-color;
+    }
+    &:last-child {
+      border-right: 1px solid $input-border-color;
+    }
+  }
+  > .tabledrag-changed {
+    &, &:last-child {
+      border: 1px solid darken($alert-warning-border, 5%);
+    }
+    background: $alert-warning-bg;
+    border-radius: 0;
+    color: $alert-warning-text;
+    display: table-cell;
+    padding: 0 1em;
+    top: 0;
+    vertical-align: middle;
+    border-left: 1px solid inherit;
+  }
+}
+.file-icon {
+  display: table-cell;
+  font-size: 150%;
+  padding: .25em .5em;
+  text-align: center;
+  vertical-align: middle;
+}
+.file-link {
+  display: table-cell;
+  vertical-align: middle;
+  width: 100%;
+  a, a:hover, a:focus, a:active {
+    color: inherit;
+  }
+}
+.file-size {
+  display: table-cell;
+  padding: 0 1em;
+  text-align: right;
+  white-space: pre;
+  vertical-align: middle;
+}
+
+.image-widget.row {
+  overflow: hidden;
+}
+
+/**
+ * Form styles.
+ */
+
+// Checkboxes / radio buttons.
+.checkbox, .radio {
+  // Remove top/bottom margins when in table context, because this is most
+  // likely a tableselect checkbox element.
+  table &.form-no-label {
+    margin-bottom: 0;
+    margin-top: 0;
+  }
+}
+
+// Browsers do not recognize pseudo :after selectors, we must create a wrapper
+// around the select element to style it properly.
+// $see http://stackoverflow.com/q/21103542
+.select-wrapper {
+  display: inline-block;
+  position: relative;
+  width: 100%;
+  .form-inline & {
+    width: auto;
+  }
+  .input-group & {
+    display: table-cell;
+    // Reset rounded corners
+    &:first-child .form-control:first-child {
+      border-left-radius: $border-radius;
+    }
+    &:last-child .form-control:first-child {
+      border-right-radius: $border-radius;
+    }
+  }
+  select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    line-height: 1;
+    padding-right: 2em;
+    &::-ms-expand {
+      opacity: 0;
+    }
+  }
+  &::after {
+    font-style: normal;
+    font-weight: 400;
+    margin-top: -.1em;
+    margin-right: .5em;
+    pointer-events: none;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    // z-index: 10;
+
+    display: inline-block;
+    width: 0;
+    height: 0;
+    content: " ";
+    border-top: 0.3em solid;
+    border-right: 0.3em solid transparent;
+    border-left: 0.3em solid transparent;
+
+    // Use a more stylish icon if the theme uses glyphicons.
+    // .has-glyphicons & {
+    //   -webkit-font-smoothing: antialiased;
+    //   -moz-osx-font-smoothing: grayscale;
+    //   content: '\e114'; // .glyphicon-chevron-down
+    //   display: inline-block;
+    //   font-family: 'Glyphicons Halflings';
+    // }
+    .has-error & {
+      color: $state-danger-text;
+    }
+    .has-success & {
+      color: $state-success-text;
+    }
+    .has-warning & {
+      color: $state-warning-text;
+    }
+  }
+}
+
+// Use CSS/SVG image for required mark.
+// @see https://www.drupal.org/node/2152217
+// @see https://www.drupal.org/node/2274631
+// .form-required::after {
+//   background-image: url(../../images/required.svg);
+//   background-size: 10px 7px;
+//   content:"";
+//   display: inline-block;
+//   line-height:1;
+//   height: 7px;
+//   width: 10px;
+// }
+
+// Form action buttons.
+.form-actions {
+  margin: $spacer 0;
+  .btn, .btn-group {
+    margin-right: 10px;
+  }
+  .btn-group {
+    .btn {
+      margin-right: 0;
+    }
+  }
+}
+
+/**
+ * Filter styles.
+ */
+
+// Mimic .panel-default styling.
+.filter-wrapper {
+  background-color: $card-bg;
+  border: 1px solid $card-border-color;
+  border-top: 0;
+  border-radius: 0 0 $card-border-radius $card-border-radius;
+  box-shadow: 0 1px 1px rgba(0,0,0,.05);
+  margin-bottom: $spacer;
+  padding: 10px;
+  height: 51px;
+  @include clearfix;
+}
+.filter-help {
+  float: right;
+  line-height: 1;
+  margin: .5em 0 0;
+}
+
+// Full list page.
+.nav.nav-tabs.filter-formats {
+  margin-bottom: 15px;
+}

@@ -1,0 +1,89 @@
+.breadcrumb
+{
+    margin-bottom: 1rem;
+    padding: 0 0;
+
+    list-style: none;
+
+    border-radius: .25rem;
+    background-color: none;
+}
+
+.breadcrumb::after
+{
+    display: table;
+    clear: both;
+
+    content: '';
+}
+
+.breadcrumb-item
+{
+    float: left;
+}
+
+.breadcrumb-item + .breadcrumb-item::before
+{
+    display: inline-block;
+
+    padding-right: .5rem;
+    padding-left: .5rem;
+
+    content: '/';
+
+    color: #818a91;
+}
+
+.breadcrumb-item + .breadcrumb-item:hover::before
+{
+    text-decoration: underline;
+}
+
+.breadcrumb-item + .breadcrumb-item:hover::before
+{
+    text-decoration: none;
+}
+
+.breadcrumb-item.active
+{
+    color: #818a91;
+}
+
+/*
+  Breadcrumbs
+
+  Breadcrumbs are a useful to show the path the user is taken or to indicate the hierarchy. It shouldn't be the main navigational element but it can be used in different ways.
+
+  Style guide 4.6
+ */
+/*
+  Path
+
+  When showing the path the user has taken, allow the user to take a step back and highlight the steps as links, except the last on that inditaces the current page.
+
+  Style guide 4.6.1
+ */
+/*
+  List markup
+
+  Markup:
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="#">Home</a></li>
+      <li class="breadcrumb-item"><a href="#">Products</a></li>
+      <li class="breadcrumb-item active">Plan & estimate & resource</li>
+    </ol>
+
+  Style guide 4.6.1.1
+*/
+/*
+  Navigation markup
+
+  Markup:
+    <nav class="breadcrumb">
+      <a class="breadcrumb-item" href="#">Home</a>
+      <a class="breadcrumb-item" href="#">Products</a>
+      <span class="breadcrumb-item active">Plan & estimate & resource</span>
+    </nav>
+
+  Style guide 4.6.1.2
+*/

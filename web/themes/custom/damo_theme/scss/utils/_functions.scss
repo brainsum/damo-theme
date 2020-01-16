@@ -1,0 +1,41 @@
+// Functions
+//
+// These helper functions must NOT use any variables defined
+// in `_variables.scss`, since this should only list stuff that
+// helps in the SASS functionality.
+
+// PX to REM conversion
+@function rem($values) {
+  $px : ();
+  $rem: ();
+
+  @each $value in $values {
+
+    @if $value == 0 or $value == auto {
+      $px : append($px , $value);
+      $rem: append($rem, $value);
+    }
+
+    @else {
+      $unit: unit($value);
+      $val: parseInt($value);
+
+      @if $unit == "px" {
+        $px : append($px,  $value);
+        $rem: append($rem, ($val / 10 + rem));
+      }
+
+      @if $unit == "rem" {
+        $px : append($px,  ($val * 10 + px));
+        $rem: append($rem, $value);
+      }
+    }
+  }
+
+  @if $px == $rem {
+    @return $px;
+  } @else {
+    @return $px;
+    @return $rem;
+  }
+}

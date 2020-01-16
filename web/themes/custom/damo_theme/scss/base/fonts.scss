@@ -1,0 +1,62 @@
+@import "../index";
+
+// Fonts
+//
+//
+// @todo load them faster?
+// @todo simplify syntax.
+@font-face {
+  font-family: 'HelveticaNeue';
+  src: url('#{$font-path}/HelveticaNeueLTCom-Th.eot');
+  src: url('#{$font-path}/HelveticaNeueLTCom-Th.eot?#iefix') format('embedded-opentype'),
+     url('#{$font-path}/HelveticaNeueLTCom-Th.woff2') format('woff2'),
+     url('#{$font-path}/HelveticaNeueLTCom-Th.woff') format('woff'),
+     url('#{$font-path}/HelveticaNeueLTCom-Th.ttf')  format('truetype'),
+     url('#{$font-path}/HelveticaNeueLTCom-Th.svg#HelveticaNeueLTCom-Th') format('svg');
+  font-weight: 100;
+  font-style: normal;
+  font-stretch: normal;
+  unicode-range: U+0-10FFFF;
+}
+
+@font-face {
+  font-family: 'HelveticaNeue';
+  src: url('#{$font-path}/HelveticaNeueLTCom-Lt.eot');
+  src: url('#{$font-path}/HelveticaNeueLTCom-Lt.eot?#iefix') format('embedded-opentype'),
+     url('#{$font-path}/HelveticaNeueLTCom-Lt.woff2') format('woff2'),
+     url('#{$font-path}/HelveticaNeueLTCom-Lt.woff') format('woff'),
+     url('#{$font-path}/HelveticaNeueLTCom-Lt.ttf')  format('truetype'),
+     url('#{$font-path}/HelveticaNeueLTCom-Lt.svg#HelveticaNeueLTCom-Lt') format('svg');
+  font-weight: 300;
+  font-style: normal;
+  font-stretch: normal;
+  unicode-range: U+0-10FFFF;
+}
+
+@font-face {
+  font-family: 'HelveticaNeue';
+  src: url('#{$font-path}/HelveticaNeueLTCom-Roman.eot');
+  src: url('#{$font-path}/HelveticaNeueLTCom-Roman.eot?#iefix') format('embedded-opentype'),
+     url('#{$font-path}/HelveticaNeueLTCom-Roman.woff2') format('woff2'),
+     url('#{$font-path}/HelveticaNeueLTCom-Roman.woff') format('woff'),
+     url('#{$font-path}/HelveticaNeueLTCom-Roman.ttf')  format('truetype'),
+     url('#{$font-path}/HelveticaNeueLTCom-Roman.svg#HelveticaNeueLTCom-Roman') format('svg');
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+  unicode-range: U+0-10FFFF;
+}
+
+@font-face {
+  font-family: 'HelveticaNeue';
+  src: url('#{$font-path}/HelveticaNeueLTCom-Hv.eot');
+  src: url('#{$font-path}/HelveticaNeueLTCom-Hv.eot?#iefix') format('embedded-opentype'),
+     url('#{$font-path}/HelveticaNeueLTCom-Hv.woff2') format('woff2'),
+     url('#{$font-path}/HelveticaNeueLTCom-Hv.woff') format('woff'),
+     url('#{$font-path}/HelveticaNeueLTCom-Hv.ttf')  format('truetype'),
+     url('#{$font-path}/HelveticaNeueLTCom-Hv.svg#HelveticaNeueLTCom-Hv') format('svg');
+  font-weight: 800;
+  font-style: normal;
+  font-stretch: normal;
+  unicode-range: U+0-10FFFF;
+}

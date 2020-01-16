@@ -1,0 +1,55 @@
+{#
+/**
+ * @file
+ * Default theme implementation to present a media entity.
+ *
+ * Available variables:
+ * - name: Name of the media.
+ * - content: Media content.
+ *
+ * @see template_preprocess_media()
+ *
+ * @ingroup themeable
+ */
+#}
+{% if content %}
+{%
+  set classes = [
+    'card',
+    'card-inverse',
+    'card--media',
+  ]
+%}
+<div{{ attributes.addClass(classes) }}>
+  {{ content.thumbnail }}
+  {% block actions %}
+    <div class="card-actions">
+    </div>
+  {% endblock %}
+</div>
+{% block card_content %}
+    <div class="card-content">
+    <a href="{{ view_url }}" class="card-img-overlay"></a>
+      {{ delete_link }}
+      {{ edit_link }}
+      <div class="card--inner-text">
+        <h4 class="card-title">{{ content.name }}</h4>
+        <small class="media-category card-text">
+          {{ content.field_category }}
+          {{ content.field_template_category }}
+          {{ content.field_field_category }}
+        </small>
+        <small class="media-industry card-text">
+          {{ content.field_keywords }}
+          {{ content.field_template_keywords }}
+          {{ content.field_field_keywords }}
+        </small>
+        <small class="media-industry card-text">
+          {{ content.field_industry }}
+          {{ content.field_template_industry }}
+          {{ content.field_field_industry }}
+        </small>
+      </div>
+    </div>
+{% endblock %}
+{% endif %}

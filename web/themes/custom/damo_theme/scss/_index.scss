@@ -1,0 +1,33 @@
+// SASS utilities.
+//
+// If you use variables, mixins or Bootstrap stuff in a .scss file,
+// you should @import this first, like so:
+//
+// `@import "index";`
+//
+// No need for relative path, the scss root is passed to
+// node-sass in `includePaths`.
+// @see config.js
+//
+// NOTES:
+// 1. Yes, this gets loaded in every .scss file. SASS 4.0 will finally
+//    support @import-once.
+//
+// 2. These imports SHOULD NOT contain any rules which can be compiled
+//    into CSS (e.g. `.my-class { ... }`), because it will be redundant!
+//
+//    Only SASS language features are acceptable, such as:
+//    - Variables
+//    - Mixins
+//    - Placeholders
+//    - Functions
+//    - etc.
+
+@import "utils/functions";
+@import "utils/variables";
+
+@import "../node_modules/bootstrap/scss/variables";
+@import "../node_modules/bootstrap/scss/mixins";
+
+// This is last so we can override Bootstrap mixins.
+@import "utils/mixins";

@@ -1,0 +1,15 @@
+@import "../index";
+@import "../../node_modules/bootstrap/scss/dropdown";
+
+.dropdown-item {
+  > a {
+    display: block;
+  }
+
+  &.active {
+    @include plain-hover-focus {
+      background-color: color(blue-lightest);
+      color: $link-color;
+    }
+  }
+}

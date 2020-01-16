@@ -1,0 +1,48 @@
+@import "../index";
+@import "../../node_modules/bootstrap/scss/tables";
+
+.table {
+  margin: $spacer 0;
+
+  thead th {
+    text-transform: uppercase;
+    font-size: $font-size-sm;
+    font-weight: normal;
+    color: $table-header-color;
+
+    a {
+      color: inherit;
+    }
+
+    &.is-active a {
+      color: $link-color;
+    }
+
+    a,
+    &.is-active a {
+      @include hover {
+        color: $link-hover-color;
+      }
+    }
+  }
+}
+
+.table-responsive {
+  overflow-x: visible;
+}
+
+/**
+ * @file
+ * Table header behavior.
+ *
+ * @see tableheader.js
+ *
+ * @todo REFACTOR for Bootstrap
+ */
+
+table.sticky-header {
+  background-color: #fff;
+  margin-top: 0;
+  z-index: 500;
+  top: 0;
+}

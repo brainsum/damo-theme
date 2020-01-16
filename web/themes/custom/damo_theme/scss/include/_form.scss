@@ -1,0 +1,25 @@
+.form-control {
+  background-color: #FFFFFF;
+  border: 1px solid #E3E3E3;
+  border-radius: 4px;
+  font-size: 14px;
+  &.form-file {
+    border:none;
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+.form-control-label {
+  color: #333333;
+}
+.input-group-addon {
+  border: 1px solid #E3E3E3;
+  color: #565656;
+  font-size: 14px;
+}
+
+.media-form {
+  select {
+    max-width: 300px;
+  }
+}

@@ -1,0 +1,242 @@
+global:
+  version: VERSION
+  css:
+    base:
+      css/base/reset.css: { weight: -10 }
+      css/base/code.css: {}
+      css/base/fonts.css: {}
+      css/base/links.css: {}
+      css/base/palette.css: {}
+      css/base/typography.css: {}
+    layout:
+      css/layout/grid.css: {}
+      css/layout/blocks.css: {}
+      css/layout/node.css: {}
+      css/layout/regions.css: {}
+      css/layout/toolbar.css: {}
+    component:
+      css/component/breadcrumbs.css: {}
+      css/component/buttons.css: {}
+      css/component/cards.css: {}
+      css/component/forms.css: {}
+      css/component/helpers.css: {}
+      css/component/icon.css: {}
+      css/component/images.css: {}
+      css/component/messages.css: {}
+      css/component/navigation.css: {}
+      css/component/pager.css: {}
+      css/component/tables.css: {}
+      css/component/tabs.css: {}
+    state:
+      css/state/animation.css: {}
+    theme:
+      css/theme/print.css: { media: print }
+      css/global.css: {} #originally from mp theme
+  dependencies:
+    - damo_theme/bootstrap-scripts
+
+# Copied and rewritten from Seven
+admin:
+  version: VERSION
+  css:
+    layout:
+      css/admin/system.admin.css: {}
+    component:
+      css/admin/admin-list.css: {}
+
+tabs-toggle:
+  version: VERSION
+  js:
+    js/tabs-toggle.js: {}
+  dependencies:
+    - core/matchmedia
+    - core/jquery
+    - core/drupal
+    - core/jquery.once
+    - core/drupal.debounce
+
+drupal.collapse:
+  js:
+    /core/misc/details-aria.js: {}
+    # collapse.js will be replaced by Bootstrap's version.
+    # @see \Drupal\damo_base\Plugin\Alter\LibraryInfo::alter
+    # @see https://www.drupal.org/node/2840414
+    /core/misc/collapse.js: {}
+  dependencies:
+    - core/jquery
+    - core/modernizr
+    - core/drupal
+    - core/drupal.form
+    - core/jquery.once
+
+# @todo use custom build.
+bootstrap-scripts:
+  version: 4.0.0-alpha6
+  js:
+    js/tether.min.js: {}
+    js/bootstrap.min.js: {}
+  dependencies:
+    - core/jquery
+
+# @todo Check these:
+# css/component/action-links.css: {}
+# css/component/collapse-processed.css: {}
+# css/component/exposed-filters.css: {}
+# css/component/field.css: {}
+# css/component/icons.css: {}
+# css/component/inline-form.css: {}
+# css/component/link.css: {}
+# css/component/links.css: {}
+# css/component/menu.css: {}
+# css/component/more-link.css: {}
+# css/component/tableselect.css: {}
+# css/component/tabs.css: {}
+# css/component/textarea.css: {}
+# css/component/ui-dialog.css: {}
+
+# ------------------------------------------------------------------------------
+# Extras
+# ------------------------------------------------------------------------------
+
+fancy-logo:
+  version: 1.0
+  css:
+    theme:
+      css/theme/fancy-logo.css: {}
+  js:
+    js/fancy-logo.js: {}
+  dependencies:
+    - core/drupal
+    - core/jquery
+    - core/jquery.once
+    - damo_theme/requestAnimationFrame
+
+media_library:
+  version: VERSION
+  css:
+    theme:
+      css/theme/media_library.view.css: {}
+      css/theme/media_library.cards.css: {}
+  dependencies:
+    - core/modernizr
+
+adminimal-admin-toolbar:
+  version: VERSION
+  css:
+    theme:
+      css/theme/adminimal-admin-toolbar.css: {}
+
+dropdown:
+  version: VERSION
+  css:
+    component:
+      css/component/dropdown.css: {}
+
+popover:
+  version: VERSION
+  css:
+    component:
+      css/component/popover.css: {}
+
+jquery.ui.autocomplete:
+  version: VERSION
+  css:
+    theme:
+      css/theme/ui.autocomplete.css: {}
+
+drupal.tabledrag:
+  version: VERSION
+  css:
+    component:
+      css/component/tabledrag.css: {}
+
+drupal.field_ui:
+  version: VERSION
+  css:
+    theme:
+      css/theme/field_ui.admin.css: {}
+
+modal:
+  version: VERSION
+  css:
+    component:
+      css/component/modal.css: {}
+
+drupal.ajax:
+  version: VERSION
+  css:
+    component:
+      css/component/ajax-progress.css: {}
+
+drupal.entity_embed.dialog:
+  js:
+    js/entity_embed.dialog.js: {}
+
+drupal.dialog.ajax:
+  js:
+    js/dialog.ajax.js: {}
+
+# ------------------------------------------------------------------------------
+# Polyfills & Shims
+# ------------------------------------------------------------------------------
+
+# @see http://paulirish.com/2011/requestanimationframe-for-smart-animating/
+# @see http://caniuse.com/#feat=requestanimationframe
+requestAnimationFrame:
+  remote: https://gist.github.com/paulirish/1579671
+  license:
+    name: MIT
+    gpl-compatible: true
+  js:
+    js/polyfill/requestAnimationFrame.js: { browsers: { IE: 'lte IE 9' } }
+
+dialog:
+  version: VERSION
+  css:
+    theme:
+      css/components/dialog.css: {}
+
+#original mp theme libraries start
+header:
+  version: VERSION
+  css:
+    theme:
+      css/header.css: {}
+      ../../libraries/jquery-nice-select/css/nice-select.css : {}
+  js:
+    js/damo_theme.js: {}
+    ../../libraries/jquery-nice-select/js/jquery.nice-select.min.js: {}
+#  dependencies:
+ #   - damo_theme/bootstrap   THERE is no bootstrap library, but why and where is it??
+
+media_assets:
+  version: VERSION
+  css:
+    theme:
+      css/media-assets.css: {}
+#  dependencies:
+ #   - damo_theme/bootstrap   THERE is no bootstrap library, but why and where is it??
+
+main_page_boxes:
+  version: VERSION
+  css:
+    theme:
+      css/main_page_boxes.css: {}
+
+site_intro:
+  version: VERSION
+  css:
+    theme:
+      css/site_intro.css: {}
+media_page:
+  version: VERSION
+  css:
+    theme:
+      css/media_page.css: {}
+  js:
+    js/media_page.js: {}
+front_page:
+  version: VERSION
+  css:
+    theme:
+      css/front_page.css: {}

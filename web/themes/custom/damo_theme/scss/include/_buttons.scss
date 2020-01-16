@@ -1,0 +1,142 @@
+@mixin btn {
+  display: inline-block;
+  font-weight: normal;
+  line-height: $btn-line-height;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  user-select: none;
+  background-color: #EEE;
+  border: $input-btn-border-width solid transparent;
+  @include button-size(9px, 9px, 11px, 2px);
+  @include transition(all .2s ease-in-out);
+
+  margin: 5px;
+  // text-transform: uppercase;
+  min-width: 150px;
+
+  &,
+  &:active,
+  &.active {
+    &:focus,
+    &.focus {
+      @include tab-focus();
+    }
+  }
+
+  @include hover-focus {
+    text-decoration: none;
+  }
+
+  &.focus {
+    text-decoration: none;
+  }
+
+  &:active,
+  &.active {
+    background-image: none;
+    outline: 0;
+    @include box-shadow(none);
+  }
+
+  &.disabled,
+  &:disabled {
+    cursor: $cursor-disabled;
+    opacity: .65;
+    @include box-shadow(none);
+  }
+}
+
+.btn, .button {
+  @include btn();
+}
+
+.btn-default {
+  @include box-shadow(none);
+  border: 1px solid #d8d8d8;
+}
+.btn-primary {
+  @include button-variant($text_color, $color1hover, $color1);
+  @include box-shadow(none);
+}
+.btn-secondary {
+  @include button-variant($btn-secondary-color, $btn-secondary-bg, $btn-secondary-border);
+  @include box-shadow(none);
+}
+
+
+@mixin btn-info {
+  @include button-variant($btn-info-color, #3198cc, #3198cc);
+  @include box-shadow(none);
+}
+.btn-info {
+  @include btn-info();
+}
+
+.btn-success, .button--green {
+  @include button-variant($btn-success-color, $color2, $color2hover);
+  @include box-shadow(none);
+}
+.btn-warning, .button--danger {
+  @include button-variant($btn-warning-color, $btn-warning-bg, $btn-warning-border);
+  @include box-shadow(none);
+}
+
+@mixin btn-danger {
+  @include button-variant($btn-info-color, #DD3A76, #DD3A76);
+  @include box-shadow(none);
+}
+.btn-danger, .button--danger {
+  @include btn-danger();
+}
+
+.btn-lg {
+  // line-height: ensure even-numbered height of button next to large input
+  @include button-size($btn-padding-y-lg, $btn-padding-x-lg, $font-size-lg, $btn-border-radius-lg);
+}
+.btn-sm {
+  // line-height: ensure proper height of button next to small input
+  min-width: 150px;
+  @include box-shadow(none);
+}
+
+.btn-group {
+  .hidden {
+    display: none;
+  }
+  .btn, .button {
+    margin: initial;
+  }
+  .dropdown-toggle {
+    min-width: 0;
+    border-left: 1px solid rgba(255,255,255,0.2);
+  }
+  .dropdown-menu {
+    width: 100%;
+    padding: 0;
+    font-size: 11px;
+    // text-transform: uppercase;
+    > a, button {
+      width: 100%;
+    }
+    > a {
+      padding: 9px;
+      display: block;
+      &.hidden {
+        display: none;
+      }
+    }
+  }
+}
+
+
+// Admin
+body {
+  &.path-admin {
+    .btn {
+      min-width: 0;
+      margin: 0;
+    }
+  }
+}

@@ -1,0 +1,90 @@
+@import "../index";
+
+.view-media-library {
+  @include clearfix;
+
+  .view-filters {
+    margin-bottom: 2 * $spacer;
+  }
+
+  // @todo Move to and finalize pagers in "_pager.scss".
+  .pager-nav {
+    clear: both;
+    text-align: center;
+    padding: $spacer 0;
+  }
+
+  .views-row {
+    margin-bottom: $spacer;
+    @include media-breakpoint-up(sm) {
+      margin-bottom: 0;
+      @include make-col(6);
+    }
+    @include media-breakpoint-up(md) {
+      @include make-col(4);
+    }
+    @include media-breakpoint-up(lg) {
+      @include make-col(3);
+    }
+  }
+
+  .views-field-entity-browser-select {
+    display: none;
+  }
+}
+
+// Entity Browser view mode.
+.view-mode-entity-browser {
+  cursor: pointer;
+  border-color: transparent;
+  user-select: none;
+  transform: translateZ(0);
+  transition: transform .15s, border-color .1s;
+
+  &.card--media {
+    margin: 1px;
+  }
+
+  // Some performance magic.
+  @at-root .entity-select-dialog:hover {
+    & {
+      will-change: transform, border-color;
+    }
+    &.checked::before {
+      will-change: opacity;
+    }
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+
+  &::before {
+    content: " ";
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: $brand-success $custom-checkbox-checked-icon no-repeat center center;
+    background-size: 66%;
+    width: 10%;
+    height: 10%;
+    z-index: 1;
+    margin: $spacer;
+    border-radius: 50%;
+    box-shadow: 0 0 10px -2px rgba(0, 0, 0, .3);
+    opacity: 0;
+    transition: opacity .1s;
+  }
+
+  &.checked {
+    border: 7px solid $brand-success;
+
+    .card-img-overlay, .card-img {
+      opacity: .5;
+    }
+
+    &::before {
+      opacity: 1;
+    }
+  }
+}

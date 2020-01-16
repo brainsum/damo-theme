@@ -1,0 +1,31 @@
+/*
+	Item list
+
+	Inline item list separated by commas.
+
+	Markup:
+	<ul class="item-list__comma-list">
+		<li>Apple</li>
+		<li>orange</li>
+		<li>pear</li>
+	</ul>
+
+	Style guide 4.2.1
+ */
+
+// @todo - is this needed?
+
+.item-list__comma-list,
+.item-list__comma-list li {
+  display: inline;
+}
+.item-list__comma-list {
+  margin: 0;
+  padding: 0;
+}
+.item-list__comma-list li:after {
+  content: ", ";
+}
+.item-list__comma-list li:last-child:after {
+  content: "";
+}

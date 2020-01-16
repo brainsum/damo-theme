@@ -1,0 +1,9 @@
+.table.social-media-assets
+{
+    table-layout: fixed;
+}
+
+.table.social-media-assets td.media-thumbnail
+{
+    width: 75%;
+}

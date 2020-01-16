@@ -1,0 +1,50 @@
+@import "../index";
+@import "../../node_modules/bootstrap/scss/alert";
+
+/*
+  Messages
+
+  Show a message after a user action about the result.
+
+  Markup:
+    <div class="alert alert-success">Saved </div>
+    <div class="alert alert-danger">Error</div>
+    <div class="alert alert-warning">Warning</div>
+    <div class="alert alert-info">Information</div>
+
+  Style guide 4.9
+ */
+
+// @todo: Add icons and closeable messages
+
+/**
+ * Alert styling.
+ */
+.alert-sm {
+  padding: 5px 10px;
+}
+
+// Treat all links inside alert as .alert-link
+.alert a {
+  font-weight: $alert-link-font-weight;
+}
+.alert-success {
+  a, a:hover, a:focus {
+    color: darken($alert-success-text, 10%);
+  }
+}
+.alert-info {
+  a, a:hover, a:focus {
+    color: darken($alert-info-text, 10%);
+  }
+}
+.alert-warning {
+  a, a:hover, a:focus {
+    color: darken($alert-warning-text, 10%);
+  }
+}
+.alert-danger {
+  a, a:hover, a:focus {
+    color: darken($alert-danger-text, 10%);
+  }
+}

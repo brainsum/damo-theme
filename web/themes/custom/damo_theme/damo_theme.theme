@@ -1,0 +1,122 @@
+<?php
+
+/**
+ * @file
+ * Code for damo_theme.
+ *
+ * NOTE: If possible, put everything into the "src" folder.
+ * @see http://drupal-bootstrap.org/api/bootstrap/docs%21plugins%21README.md/group/plugins/8
+ */
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function damo_theme_preprocess_html(&$variables) {
+  // Add latest IE render engine metatag.
+  $http_equiv = array(
+    '#type' => 'html_tag',
+    '#tag' => 'meta',
+    '#attributes' => array(
+      'http-equiv' => 'x-ua-compatible',
+      'content' => 'ie=edge',
+    ),
+  );
+  $variables['page']['#attached']['html_head'][] = [$http_equiv, 'http-equiv'];
+
+// need to fix this!!!!!!!
+/*  $currentType = _tieto_media_asset_request_to_type(\Drupal::request());
+  if ($currentType !== 'image') {
+    $variables['attributes']['class'][] = 'no-filter';
+  }*/
+}
+
+
+ /**
+ * Implements hook_preprocess_HOOK().
+ */
+function damo_theme_preprocess_page(&$variables) {
+  $routeMatch = \Drupal::routeMatch();
+  if ($routeMatch->getRouteName() === "entity.media.canonical") {
+    $variables['#attached']['library'][] = 'damo_theme/media_page';
+    $variables['general_usage'] = 'visible';
+  }
+  if ($routeMatch->getRouteName() === 'entity.media.delete_form' || $routeMatch->getRouteName() === 'entity.media.edit_form') {
+    $variables['general_usage'] = 'hidden';
+  }
+  if ($routeMatch->getRouteName() === 'entity.media.collection') {
+    $variables['#attached']['library'][] = 'damo_theme/front_page';
+  }
+}
+
+/**
+ * Implements hook_preprocess_page_title().
+ */
+function damo_theme_preprocess_page_title(&$variables) {
+  $routeMatch = \Drupal::routeMatch();
+  if ($routeMatch->getRouteName() === "entity.media.canonical") {
+    $variables['title'] = '';
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function damo_theme_preprocess_menu(&$variables) {
+  // If a menu link is expanded and has children, attach the dropdown library
+  // and exit the loop.
+  //
+  // @todo Move this somewhere, keep this file clean!
+  foreach ($variables['items'] as $key => $item) {
+    if ($item['is_expanded'] && !empty($item['below'])) {
+      $variables['#attached']['library'][] = 'bootstrap/dropdown';
+      break;
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function damo_theme_preprocess_region__footer(&$variables) {
+  // @todo Move to BootstrapSetting or something.
+  // @see http://drupal-bootstrap.org/api/bootstrap/src%21Annotation%21BootstrapSetting.php/class/BootstrapSetting/8
+  $variables['site_name'] = Drupal::config('system.site')->get('name');
+}
+
+/**
+ * Implements hook_preprocess().
+ */
+function damo_theme_preprocess(&$variables, $hook) {
+  // Attach path variables to the base theme for all templates.
+  // Useful for including partials, because `directory` only refers to the
+  // path of the current theme, so in sub-themes it will not work as expected.
+  //
+  // @todo Move this to @BootstrapPreprocess class or other!
+  // @todo Add more variables.
+  $base_theme_path = base_path() . drupal_get_path('theme', 'damo_theme');
+
+  $variables['damo_base'] = [
+    'root' => $base_theme_path,
+    'logo' => $base_theme_path . '/logo.png', // @todo Don't hardcode .svg
+    'templates' => $base_theme_path . '/templates',
+    'partials' => $base_theme_path . '/templates/_partials',
+    'images' => $base_theme_path . '/images',
+  ];
+}
+
+
+/**
+ * Implements hook_preprocess().
+ */
+// function damo_theme_preprocess(&$variables, $hook) {
+//   // Attach path variables to the base theme for all templates.
+//   // Useful for including partials, because `directory` only refers to the
+//   // path of the current theme, so in sub-themes it will not work as expected.
+//   //
+//   // @todo Move this to @BootstrapPreprocess class or other!
+//   // @todo Add more variables.
+//   $base_theme_path = base_path() . drupal_get_path('theme', 'damo_theme');
+//   $variables['damo_base'] = [
+//     'logo' => $base_theme_path . '/logo.png', // @todo Don't hardcode .png
+//   ];
+// }

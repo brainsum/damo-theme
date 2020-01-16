@@ -1,0 +1,37 @@
+@import "../index";
+
+.block-local-actions-block {
+  margin: $spacer 0;
+  a.btn + a.btn,
+  a.button, a.button {
+    margin-left: .25rem;
+  }
+}
+
+.block-local-tasks-block {
+  margin-bottom: $spacer;
+}
+
+.block {
+  > h2 {
+    font-size: $font-size-base;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: color(grey-darker);
+  }
+
+  .region-sidebar & {
+    margin-bottom: $spacer;
+  }
+}
+
+.menu-account {
+  float: right;
+}
+
+.block-system-menu-blockfooter {
+  @include media-breakpoint-up(sm) {
+    display: inline-block;
+    margin-left: 1em;
+  }
+}

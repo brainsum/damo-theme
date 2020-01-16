@@ -1,0 +1,25 @@
+{#
+/**
+ * @file
+ * Default theme implementation for a branding block.
+ *
+ * Each branding element variable (logo, name, slogan) is only available if
+ * enabled in the block configuration.
+ *
+ * Available variables:
+ * - site_logo: Logo for site as defined in Appearance or theme settings.
+ * - site_name: Name for site as defined in Site information settings.
+ * - site_slogan: Slogan for site as defined in Site information settings.
+ *
+ * @ingroup templates
+ */
+#}
+{% extends 'block-bare.html.twig' %}
+
+{% block content %}
+  <div class="dam-logo">
+    <a href="{{ path('<front>') }}" title="{{ 'Home'|t }}" rel="home" class="navbar-brand">
+      <img class="dam-logo__img" src="{{ damo_base.logo }}" alt="{{ site_name }}">
+    </a>
+  </div>
+{% endblock %}

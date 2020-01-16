@@ -1,0 +1,10 @@
+{
+    "name": "brainsum/damo-theme",
+    "description": "Theme for brainsum DAMO project.",
+    "type": "theme",
+    "license": "GPL-2.0-or-later",
+    "minimum-stability": "dev",
+    "require": {
+        "drupal/bootstrap": "^3.16"
+    }
+}

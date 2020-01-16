@@ -1,0 +1,27 @@
+.maintenance-page {
+  color: #5e5e5e;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100%;
+  .wrapper {
+    max-width: 400px;
+    text-align: center;
+  }
+  .logo {
+    max-width: 150px;
+    margin: 0 auto 20px;
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+  .content {
+    h1 {
+      font-size: 1.8rem;
+    }
+    h2 {
+      font-weight: 600;
+    }
+  }
+}

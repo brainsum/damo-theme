@@ -1,0 +1,17 @@
+@import "../index";
+@import "../../node_modules/bootstrap/scss/card";
+
+/**
+ * Panel styling.
+ */
+.panel-title {
+  display: block;
+  margin: -10px -15px;
+  padding: 10px 15px;
+  &, &:hover, &:focus, &:hover:focus {
+    color: inherit;
+  }
+  &:focus, &:hover {
+    text-decoration: none;
+  }
+}

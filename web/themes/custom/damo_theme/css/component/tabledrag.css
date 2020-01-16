@@ -1,0 +1,94 @@
+/**
+ * Table drag styles.
+ */
+body.drag
+{
+    cursor: move;
+}
+
+tr.region-title
+{
+    font-weight: bold;
+}
+
+tr.region-message
+{
+    color: #999;
+}
+
+tr.region-populated
+{
+    display: none;
+}
+
+tr.add-new .tabledrag-changed
+{
+    display: none;
+}
+
+.tabledrag-toggle-weight-wrapper
+{
+    text-align: right;
+}
+
+[dir='rtl'] .tabledrag-toggle-weight-wrapper
+{
+    text-align: left;
+}
+
+.tabledrag-toggle-weight
+{
+    float: right;
+
+    margin-bottom: 1rem;
+}
+
+.tabledrag-changed-warning
+{
+    clear: both;
+    overflow: hidden;
+
+    margin: 0;
+}
+
+.tabledrag-handle
+{
+    font-size: 125%;
+    line-height: 1;
+
+    float: left;
+
+    margin: -10px 0 0 -10px;
+    padding: 10px;
+
+    cursor: move;
+
+    color: #818a91;
+}
+
+.tabledrag-handle:hover,
+.tabledrag-handle:focus
+{
+    color: #62b3e5;
+}
+
+.indentation
+{
+    float: left;
+    /* LTR */
+
+    width: 20px;
+    /* LTR */
+    height: 1.7em;
+    margin: -.4em .2em -.4em -.4em;
+    /* LTR */
+    padding: .42em 0 .42em .6em;
+}
+
+[dir='rtl'] .indentation
+{
+    float: right;
+
+    margin: -.4em -.4em -.4em .2em;
+    padding: .42em .6em .42em 0;
+}

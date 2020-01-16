@@ -1,0 +1,205 @@
+@import "../include/mixin";
+
+.block-views-exposed-filter-blockasset-search-asset-search {
+  form {
+    .js-form-item {
+      &.form-type-textfield {
+        margin-top: 3px;
+      }
+    }
+    .form-item {
+      float: left;
+
+      #edit-text {
+        @include selectBg;
+        color: #4F545C;
+        border-radius: 30px;
+        &:focus {
+          box-shadow: 0px 0px 0px 1px #56ACE7;
+          border: 1px solid #56ACE7;
+        }
+      }
+    }
+    i {
+      display: none;
+    }
+    .search-wrapper{
+      position: relative;
+      input {
+        padding-bottom: 9px;
+        padding-top: 10px;
+      }
+      i {
+        display: block;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        right: -1px;
+        font-size: 20px;
+        padding: 9px 12px;
+        font-weight: bold;
+        border: 1px solid white;
+        margin-right: 2px;
+        border-radius: 4px;
+        color: #999999;
+        -webkit-transition: background-color ease-in-out 0.15s, color ease-in-out 0.15s;
+        transition: background-color ease-in-out 0.15s, color ease-in-out 0.15s;
+        border-radius: 0 22px 22px 0;
+      }
+      &.focused {
+        i {
+          background-color: #56ACE7;
+          color: white;
+        }
+      }
+    }
+  }
+}
+#views-exposed-form-asset-search-asset-search {
+  .select-wrapper {
+    padding-left: 10px;
+    margin-top: 7px;
+    &::after {
+      display: none;
+    }
+    select {
+      display: none;
+    }
+    .nice-select {
+      @include selectBg;
+      height: 42px;
+      width: 200px;
+      border-radius: 30px;
+      ul{
+        max-height: 400px;
+        overflow-y: auto;
+      }
+      &:after {
+        margin-top: -3px;
+      }
+      .current {
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .option {
+        @include fontArialNormal;
+        font-size: 13.6px;
+        line-height: 40px;
+        color: rgb(107, 107, 107);
+        text-overflow: ellipsis;
+        overflow: hidden;
+
+        &:hover,
+        &.focus,
+        &.selected.focus {
+          background-color: #f6f6f6;
+        }
+        &.selected.focus {
+          @include fontArialBold;
+        }
+      }
+
+      span {
+        @include fontArialBold;
+        @include buttonFontStyle;
+        display: block;
+        color: #333;
+        margin-top: -8px;
+        // text-transform: uppercase;
+        padding: 19px 0;
+      }
+      ul {
+        &.list {
+          width: 200px;
+        }
+      }
+    }
+  }
+  .exposed_form_reset {
+    @include fontArialBold;
+    @include buttonFontStyle;
+    background: white;
+    border: 1px solid #D2D2D2;
+    cursor: pointer;
+    border-radius: 23px;
+    color: #363636;
+    padding: 8px 5px 8px 5px;
+    position: absolute;
+    width: 200px;
+    right: 0;
+    margin-top: 87px;
+
+    i {
+      display: block;
+      float: left;
+      padding-left: 10px;
+    }
+  }
+}
+
+.views-exposed-form {
+  position: relative;
+  z-index: 10;
+  max-width: 1140px;
+  margin: 20px auto;
+  background: white;
+  padding: 1px 25px;
+  margin-bottom: 30px;
+  -webkit-box-shadow: 0px 0px 60px 0px rgba(0, 0, 0, 0.06);
+  box-shadow: 0px 0px 60px 0px rgba(0, 0, 0, 0.06);
+}
+.dam-local-task-back-button,
+.dam-local-task-extension-wrapper {
+  @include fontArialBold;
+  line-height: 12px;
+  // text-transform: uppercase;
+  font-size: 11px;
+  width: 1140px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: right;
+  top: 35px;
+  position: absolute;
+  z-index: 999;
+  a {
+    @include buttonColor1;
+    padding: 15px 35px;
+    border-radius: 4px;
+    margin-right: 40px;
+    color: #fff;
+    transition: background-color 150ms linear;
+
+    &:hover {
+      @include buttonColor1Hover;
+      color: #fff;
+    }
+  }
+}
+
+body {
+  .dam-local-task-back-button {
+    display: none;
+  }
+  &.path-frontpage {
+    .dam-local-task-extension-wrapper {
+      display: block;
+    }
+
+    .header-background {
+      height: 230px;
+    }
+  }
+  &.media--view {
+    .dam-local-task-back-button {
+      width: auto;
+      left: initial;
+      right: 0;
+      margin-right: 240px;
+      top: 37px;
+      display: block;
+    }
+    .dam-local-task-extension-wrapper {
+      display: none;
+    }
+  }
+}

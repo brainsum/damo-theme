@@ -1,0 +1,125 @@
+@import "../index";
+
+/*
+  Palette
+
+  Style guide: 2.2
+*/
+
+/*
+
+  <table class="styleguide__colors styleguide__brand-colors">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Main</th>
+        <th class="bg-grey-lightest" colspan="3">Complimentary</th>
+      </tr>
+      <tr>
+        <th></th>
+        <th>blue</th>
+        <th>red</th>
+        <th>green</th>
+        <th>orange</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th>lightest</th>
+        <td class="bg-blue-lightest">#cce5f4</td>
+        <td class="bg-red-lightest">#eed9e1</td>
+        <td class="bg-green-lightest">#d7e8c4</td>
+        <td class="bg-orange-lightest">#ffe1c6</td>
+      </tr>
+      <tr>
+        <th>light</th>
+        <td class="bg-blue-light">#9acaeb</td>
+        <td class="bg-red-light">#f0b3ca</td>
+        <td class="bg-green-light">#bde093</td>
+        <td class="bg-orange-light">#ffbe85</td>
+      </tr>
+      <tr>
+        <th></th>
+        <td class="bg-blue">#62b3e5</td>
+        <td class="bg-red">#e56385</td>
+        <td class="bg-green">#6cc04a</td>
+        <td class="bg-orange">#f78d2d</td>
+      </tr>
+      <tr>
+        <th>darker</th>
+        <td class="bg-blue-darker">#2c89c3</td>
+        <td class="bg-red-darker">#dd3a76</td>
+        <td class="bg-green-darker">#28a834</td>
+        <td class="bg-orange-darker">#e57a18</td>
+      </tr>
+      <tr>
+        <th>dark</th>
+        <td class="bg-blue-dark">#0065a0</td>
+        <td class="bg-red-dark">#d51067</td>
+        <td class="bg-green-dark">#00833e</td>
+        <td class="bg-orange-dark">#d75f00</td>
+      </tr>
+    </tbody>
+  </table>
+
+  Style guide: 2.2.1
+*/
+
+/*
+  Grey colors
+
+  There are multiple grayscale colors all for from light backgrounds to body text color.
+
+  <table class="styleguide__colors styleguide__grey-colors">
+    <thead>
+      <tr>
+        <th>Lightest</th>
+        <th>Light</th>
+        <th>Lighter</th>
+        <th></th>
+        <th>Darker</th>
+        <th>Dark</th>
+        <th>Darkest</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="bg-grey-lightest">#eeeeee</td>
+        <td class="bg-grey-light">#d2d2d2</td>
+        <td class="bg-grey-lighter">#c1c1c1</td>
+        <td class="bg-grey">#999999</td>
+        <td class="bg-grey-darker">#7b7b7b</td>
+        <td class="bg-grey-dark">#5e5e5e</td>
+        <td class="bg-grey-darkest">#333333</td>
+      </tr>
+    </tbody>
+  </table>
+
+  Style guide: 2.2.2
+*/
+
+/**
+  Helper classes
+
+  <p>Every color has two helper classes, one for text and one for background color.</p>
+  <ul>
+    <li>for text colors: .text-$color(-$variation)</li>
+    <li>for background colors: .bg-$color(-$variation)</li>
+  </ul>
+  <p>Classes for pure white and black colors are available too.</p>
+
+  Markup:
+  <p class="text-red">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sodales ipsum non dui suscipit viverra. Sed egestas fermentum dictum. Proin et volutpat eros, a rhoncus enim.</p>
+  <p class="bg-orange text-white">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sodales ipsum non dui suscipit viverra. Sed egestas fermentum dictum. Proin et volutpat eros, a rhoncus enim.</p>
+
+  Style guide: 2.2.3
+*/
+@each $name, $color in $colors {
+  .bg-#{$name} {
+    background: $color;
+  }
+
+  .text-#{$name} {
+    color: $color;
+  }
+}

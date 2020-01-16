@@ -1,0 +1,325 @@
+/*
+  Buttons
+
+  Style guide 4.8
+ */
+
+// Copied and customized from Bootstrap 4.
+//
+// @todo Finalize according to style guide
+// @see http://codepen.io/vfrvqarkbt/pen/BNmGPJ
+@import "../index";
+@import "../../node_modules/bootstrap/scss/close";
+@import "../../node_modules/bootstrap/scss/button-group";
+
+.btn, .button {
+  display: inline-block;
+  font-weight: $btn-font-weight;
+  font-family: inherit;
+  line-height: $btn-line-height;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  color: $body-color;
+  user-select: none;
+  border: $input-btn-border-width solid transparent;
+  @include button-size($btn-padding-y, $btn-padding-x, $font-size-base, $btn-border-radius);
+  @include transition(all .2s ease-in-out);
+
+  &,
+  &:active,
+  &.active {
+    &:focus,
+    &.focus {
+      @include tab-focus();
+    }
+  }
+
+  @include hover-focus {
+    text-decoration: none;
+  }
+  &.focus {
+    text-decoration: none;
+  }
+
+  &:active,
+  &.active {
+    background-image: none;
+    outline: 0;
+    @include box-shadow($btn-active-box-shadow);
+  }
+
+  &.disabled,
+  &:disabled {
+    background: $btn-disabled-bg;
+    border-color: $btn-disabled-border;
+    color: $btn-disabled-color;
+    cursor: $cursor-disabled;
+    @include box-shadow(none);
+  }
+}
+
+/*
+  Color variants
+
+  Markup: <button class="button {{modifier_class}}">Push me</button>
+
+  .button--primary - Primary buttons are blue, because the primary brand color is blue. This is a generic button and can be used for everything.
+  .button--success - In interfaces, however, green buttons are mostly used to symbolize positive actions, like saving, creating, publishing and similar.
+  .button--danger - Buttons in red are mainly used for negative actions, like deleting, unpublishing, rejecting and similar.
+  .button--warning - Buttons in orange are not widely used, but can be a nice contrasting alternative.
+
+  Style guide: 4.8.1
+*/
+
+.button--info,
+.btn-info, // @fixme Remove -info styles and classes.
+.button--default,
+.btn-default {
+  @include button-variant($btn-color, $btn-bg, $btn-border);
+}
+
+.button--primary,
+.btn-primary {
+  @include button-variant($btn-primary-color, $btn-primary-bg, $btn-primary-border);
+}
+.button--secondary,
+.btn-secondary {
+  @include button-variant($btn-secondary-color, $btn-secondary-bg, $btn-secondary-border);
+}
+.button--success,
+.btn-success {
+  @include button-variant($btn-success-color, $btn-success-bg, $btn-success-border);
+}
+.button--warning,
+.btn-warning {
+  @include button-variant($btn-warning-color, $btn-warning-bg, $btn-warning-border);
+}
+.button--danger,
+.btn-danger {
+  @include button-variant($btn-danger-color, $btn-danger-bg, $btn-danger-border);
+}
+
+/*
+  Outline variants
+
+  Each button variant has an outline version.
+
+  Markup: <button class="button {{modifier_class}}">Push me</button>
+
+  .button--outline-primary - Primary buttons are blue, because the primary brand color is blue. This is a generic button and can be used for everything.
+  .button--outline-success - In interfaces, however, green buttons are mostly used to symbolize positive actions, like saving, creating, publishing and similar.
+  .button--outline-danger - Buttons in red are mainly used for negative actions, like deleting, unpublishing, rejecting and similar.
+  .button--outline-warning - Buttons in orange are not widely used, but can be a nice contrasting alternative.
+
+  Style guide: 4.8.2
+ */
+.button--outline-primary,
+.btn-outline-primary {
+  @include button-outline-variant($btn-primary-bg);
+}
+.button--outline-secondary,
+.btn-outline-secondary {
+  @include button-outline-variant($btn-secondary-border);
+}
+.button--outline-info,
+.btn-outline-info {
+  @include button-outline-variant($btn-info-bg);
+}
+.button--outline-success,
+.btn-outline-success {
+  @include button-outline-variant($btn-success-bg);
+}
+.button--outline-warning,
+.btn-outline-warning {
+  @include button-outline-variant($btn-warning-bg);
+}
+.button--outline-danger,
+.btn-outline-danger {
+  @include button-outline-variant($btn-danger-bg);
+}
+
+// .button--plain--primary,
+// .button--plain--blue {
+//   @include button-plain-variant($btn-primary-plain-color, $btn-primary-plain-border);
+// }
+
+// .button--plain--green {
+//   @include button-plain-variant($btn-success-plain-color, $btn-success-plain-border);
+// }
+
+// .button--plain--orange {
+//   @include button-plain-variant($btn-warning-plain-color, $btn-warning-plain-border);
+// }
+
+// .button--plain--red {
+//   @include button-plain-variant($btn-danger-plain-color, $btn-danger-plain-border);
+// }
+
+/*
+  Link variants
+
+  Buttons can be look and behave like a link, by adding one of these classes: .link, .button--link
+
+  Markup: <button class="button {{modifier_class}}">Push me</button>
+
+  .button--link.btn--primary - Primary link button
+
+  Style guide 4.8.3
+ */
+button.link,
+input.link,
+.button--link,
+.btn-link {
+  font-weight: normal;
+  color: $link-color;
+  border-radius: 0;
+
+  &,
+  &:active,
+  &.active,
+  &:disabled {
+    background-color: transparent;
+    @include box-shadow(none);
+  }
+  &,
+  &:focus,
+  &:active {
+    border-color: transparent;
+  }
+  @include hover {
+    border-color: transparent;
+  }
+  @include hover-focus {
+    color: $link-hover-color;
+    text-decoration: $link-hover-decoration;
+    background-color: transparent;
+  }
+  &:disabled {
+    @include hover-focus {
+      color: $btn-link-disabled-color;
+      text-decoration: none;
+    }
+  }
+}
+
+// button.link,
+// input.link,
+// .button--link {
+//   color: $link-color;
+//   border-radius: 0;
+//   cursor: pointer;
+
+//   &,
+//   &:active,
+//   &:disabled {
+//     background-color: transparent;
+//     @include box-shadow(none);
+//   }
+//   &,
+//   &:focus,
+//   &:active {
+//     border-color: transparent;
+//   }
+//   @include hover {
+//     border-color: transparent;
+//   }
+//   @include hover-focus {
+//     color: $link-hover-color;
+//     text-decoration: $link-hover-decoration;
+//     background-color: transparent;
+//   }
+//   &:disabled {
+//     @include hover-focus {
+//       color: $btn-link-disabled-color;
+//       text-decoration: none;
+//     }
+//   }
+// }
+
+// @todo
+// .button--link--primary,
+// .button--link--blue {
+// }
+
+// .button--link--green {
+// }
+
+// .button--link--orange {
+// }
+
+// .button--link--red {
+// }
+
+/*
+  Sizes
+
+  Markup: <button class="button {{modifier_class}}">Push me</button>
+
+  .button--large - Button with larger size
+  .button--small - Button with smaller size
+
+  Style guide 4.8.4
+ */
+.button--large,
+.btn-lg {
+  // line-height: ensure even-numbered height of button next to large input
+  @include button-size($btn-padding-y-lg, $btn-padding-x-lg, $font-size-lg, $btn-border-radius-lg);
+}
+.button--small,
+.btn-xs, // @fixme Completely remove -xs classes from render.
+.btn-sm {
+  // line-height: ensure proper height of button next to small input
+  @include button-size($btn-padding-y-sm, $btn-padding-x-sm, $font-size-sm, $btn-border-radius-sm);
+}
+
+/*
+  Disabled state
+
+  Use disabled buttons to show important actions not available to user temporarily or permanently depending on the use case. Add disabled attribute or .disabled class.
+
+  Markup: <button class="button" disabled>Can't push me</button>
+
+  Style guide 4.8.5
+ */
+
+// Future-proof disabling of clicks on `<a>` elements
+a.disabled, fieldset[disabled] a {
+  &.btn, &.button {
+    pointer-events: none;
+  }
+}
+
+/*
+  Block buttons
+
+  To create block level buttons add .button--block. The will span the full width of the parent.
+
+  Markup: <button class="button button--block button--blue">Push me</button>
+
+  Style guide 4.8.6
+ */
+.btn-block {
+  display: block;
+  width: 100%;
+}
+
+// Vertically space out multiple block buttons
+.btn-block + .btn-block {
+  margin-top: $btn-block-spacing-y;
+}
+
+// Specificity overrides
+input[type="submit"],
+input[type="reset"],
+input[type="button"] {
+  &.btn-block {
+    width: 100%;
+  }
+}
+
+// Fix button group wrapping in tables.
+.table .btn-group {
+  display: flex;
+}

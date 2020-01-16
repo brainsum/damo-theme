@@ -1,0 +1,84 @@
+.ui-dialog
+{
+    box-shadow: 0 0 2px #c1c1c1;
+}
+
+.ui-dialog.ui-widget
+{
+    font-family: 'HelveticaNeue', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', Arial, sans-serif;
+    font-size: 1rem;
+}
+
+.ui-dialog.ui-widget-content,
+.ui-dialog .ui-widget-content
+{
+    border: 0;
+}
+
+.ui-dialog.ui-corner-all,
+.ui-dialog .ui-dialog-titlebar
+{
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.ui-dialog .ui-dialog-titlebar
+{
+    font-size: 1em;
+
+    position: relative;
+
+    padding: 1rem;
+
+    border: 0;
+    background: #eee;
+}
+
+.ui-dialog .ui-dialog-titlebar-close
+{
+    position: absolute;
+    top: 50%;
+    right: 1rem;
+
+    width: 16px;
+    height: 16px;
+
+    transform: translateY(-50%);
+
+    border: 0 !important;
+    background-color: transparent !important;
+    background-image: url(../../images/close.svg) !important;
+}
+
+.ui-dialog .ui-dialog-titlebar-close .ui-icon
+{
+    width: auto;
+}
+
+.ui-dialog .ui-dialog-titlebar-close .ui-button-text
+{
+    padding: 0;
+}
+
+.ui-dialog .ui-widget-header
+{
+    color: #333;
+}
+
+.ui-dialog .ui-dialog-content
+{
+    overflow: auto;
+
+    padding: 1rem;
+}
+
+.ui-dialog .ui-dialog-buttonset
+{
+    margin-top: 0;
+    margin-bottom: 0;
+    padding: 1rem;
+
+    text-align: right;
+}

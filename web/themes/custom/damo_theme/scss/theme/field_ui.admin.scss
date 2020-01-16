@@ -1,0 +1,11 @@
+@import "../index";
+
+.field-ui-overview {
+
+  .field-plugin-settings-edit:not([disabled]) {
+    background-image: url(/core/misc/icons/787878/cog.svg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    padding: $btn-padding-x;
+  }
+}

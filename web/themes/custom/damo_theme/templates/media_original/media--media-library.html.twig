@@ -1,0 +1,21 @@
+{#
+/**
+ * @file
+ * Default theme implementation to present a media entity.
+ *
+ * Available variables:
+ * - name: Name of the media.
+ * - content: Media content.
+ *
+ * @see template_preprocess_media()
+ *
+ * @ingroup themeable
+ */
+#}
+{% extends 'media-card.html.twig' %}
+
+{% block card_content %}
+  <a href="{{ view_url }}" title="{{ 'View this media'|t }}" class="card-img-overlay">
+    {{ parent() }}
+  </a>
+{% endblock %}

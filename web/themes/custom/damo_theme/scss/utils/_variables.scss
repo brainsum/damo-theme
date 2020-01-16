@@ -1,0 +1,313 @@
+// Variables
+//
+//
+
+$admin-toolbar-height: 39px;
+
+// Colors can be altered by using SASS's map-set, map-merge functions
+$colors: (
+  white: #fff,
+  black: #000,
+  blue-very-light: #e9f0f5,
+  blue-lightest: #cce5f4,
+  blue-light: #9acaeb,
+  blue: #62b3e5,
+  blue-darker: #2c89c3,
+  blue-dark: #0065a0,
+  red-lightest: #eed9e1,
+  red-light: #f0b3ca,
+  red: #e56385,
+  red-darker: #dd3a76,
+  red-dark: #d51067,
+  green-lightest: #d7e8c4,
+  green-light: #bde093,
+  green: #6cc04a,
+  green-darker: #28a834,
+  green-dark: #00833e,
+  orange-lightest: #ffe1c6,
+  orange-light: #ffbe85,
+  orange: #f78d2d,
+  orange-darker: #e57a18,
+  orange-dark: #d75f00,
+  grey-lightest: #eeeeee,
+  grey-light: #d2d2d2,
+  grey-lighter: #c1c1c1,
+  grey: #999999,
+  grey-darker: #7b7b7b,
+  grey-dark: #5e5e5e,
+  grey-darkest: #333333
+);
+
+@function color($name) {
+  @return map-get($colors, $name);
+}
+
+// Options
+//
+//
+
+$enable-flex:               false;
+// $enable-rounded:            true !default;
+$enable-shadows:            true;
+// $enable-gradients:          false !default;
+$enable-transitions:        true;
+// $enable-hover-media-query:  false !default;
+// $enable-grid-classes:       true !default;
+// $enable-print-styles:       true !default;
+
+$brand-primary: color(blue);
+$brand-success: color(green);
+$brand-info: color(blue-light);
+$brand-warning: color(orange);
+$brand-danger: color(red);
+
+$link-color: color(blue-dark);
+$link-hover-color: color(red-dark);
+$link-hover-decoration: none;
+$link-active-color: color(red);
+$link-visited-color: color(blue);
+$link-disabled-color: color(grey-darker);
+
+// States
+//
+//
+
+$state-success-text:             color(green-dark);
+$state-success-bg:               color(green-lightest);
+
+$state-info-text:                color(blue-dark);
+$state-info-bg:                  color(blue-lightest);
+
+$state-warning-text:             color(orange-dark);
+$state-warning-bg:               color(orange-lightest);
+
+$state-danger-text:              color(red-dark);
+$state-danger-bg:                color(red-lightest);
+
+// Typography
+//
+//
+
+$font-path: '../../fonts'; // Custom webfont's path
+$font-family-sans-serif:
+  'HelveticaNeue', // Custom webfont
+  -apple-system, // Safari for OS X and iOS (San Francisco)
+  BlinkMacSystemFont, // Chrome for OS X (San Francisco)
+  "Segoe UI", // Windows
+  "Roboto", // Android
+  "Oxygen", // Linux KDE
+  "Ubuntu", // Linux GNOME
+  "Cantarell", // Linux GNOME
+  "Fira Sans", // Firefox OS [R.I.P.]
+  "Droid Sans", // Older Android
+  "Helvetica Neue", Arial, sans-serif; // Basic web fallback
+
+$font-size-root: 16px;
+$font-size-base: 1rem;
+
+$font-size-lg:   1.25rem;
+$font-size-sm:   .875rem;
+$font-size-xs:   .75rem;
+
+// @todo Fix the Helvetica Neue font to include a "less bolder" variant
+// for `font-weight: bold`.
+$font-weight-thin: 200; // lighter
+$font-weight-normal: 400; // normal
+$font-weight-bold: 700; // bold
+$font-weight-black: 800; // bolder
+
+$line-height-sm: 1.5;
+$line-height-base: 1.5;
+$line-height-lg: (4 / 3);
+
+// Body
+//
+//
+
+$body-color: color(grey-darkest);
+
+// Components
+//
+//
+
+$component-padding-x:                  1rem;
+$component-padding-y:                  .25rem;
+
+$component-padding-x-sm:               .5rem;
+$component-padding-y-sm:               .125rem;
+
+$component-padding-x-lg:               1.5rem;
+$component-padding-y-lg:               .5rem;
+
+// Navbar
+//
+//
+
+$navbar-border-radius: 0;
+
+$navbar-brand-padding-y: 1rem;
+
+$navbar-padding-x: 0;
+$navbar-padding-y: 0;
+
+$navbar-dark-color:                 rgba(255,255,255,.75);
+$navbar-dark-hover-color:           rgba(255,255,255,1);
+
+// Navs
+//
+//
+
+$nav-tabs-border-width: 0;
+$nav-tabs-active-link-hover-color: #fff;
+$nav-tabs-active-link-hover-bg: $brand-primary;
+
+$nav-pills-border-radius: 0;
+// $nav-pills-active-link-color: #fff;
+// $nav-pills-active-link-bg: $brand-primary;
+
+// Pagination
+
+$pagination-padding-x:                .75rem;
+$pagination-padding-y:                .25rem;
+
+$breadcrumb-padding-y: 0;
+$breadcrumb-padding-x: 0;
+$breadcrumb-bg: none;
+$breadcrumb-divider: "/"; // @fixme
+
+// Alerts
+//
+//
+
+$alert-padding-x:             $component-padding-x-lg;
+$alert-padding-y:             $component-padding-y-lg;
+$alert-border-radius:         0;
+$alert-link-font-weight:      inherit;
+$alert-border-width:          0;
+
+// Buttons
+//
+//
+
+$btn-padding-x: $component-padding-x;
+$btn-padding-y: $component-padding-y;
+
+$btn-padding-x-sm: $component-padding-x-sm;
+$btn-padding-y-sm: $component-padding-y-sm;
+
+$btn-padding-x-lg: $component-padding-x-lg;
+$btn-padding-y-lg: $component-padding-y-lg;
+
+$btn-font-weight:                bold;
+$btn-box-shadow:                 0px 1px 3px 0px rgba(0,0,0,.2);
+$btn-active-box-shadow:          inset 0px 0px 2px 0px rgba(0,0,0,.2);
+
+$btn-color:              color(grey-dark);
+$btn-bg:                 color(grey-lightest);
+$btn-border:             color(grey);
+
+$btn-disabled-color:              color(grey-lighter);
+$btn-disabled-bg:                 color(grey-lightest);
+$btn-disabled-border:             color(grey-lightest);
+
+$btn-primary-color:              #fff;
+$btn-primary-bg:                 color(blue);
+$btn-primary-border:             color(blue-darker);
+
+$btn-primary-plain-color: color(blue-dark);
+$btn-primary-plain-border: color(blue);
+
+$btn-success-plain-color: color(green-dark);
+$btn-success-plain-border: color(green);
+
+$btn-warning-plain-color: color(orange-dark);
+$btn-warning-plain-border: color(orange);
+
+$btn-danger-plain-color: color(red-dark);
+$btn-danger-plain-border: color(red);
+
+$btn-disabled-plain-color: color(grey-lighter);
+$btn-disabled-plain-border: color(grey-light);
+$btn-disabled-plain-bg: transparent;
+
+$btn-border-radius:              2px;
+$btn-border-radius-lg:           3px;
+
+$btn-link-disabled-color: $btn-disabled-color;
+
+// Tables
+//
+//
+
+$table-sm-cell-padding:         .5rem;
+$table-header-color: color(grey-darker);
+
+// Forms
+//
+//
+$label-color: color(grey-darker);
+$label-font-weight: $font-weight-bold;
+$label-font-size: $font-size-sm;
+
+$input-line-height: $line-height-base;
+
+$input-color:                    $body-color;
+$input-border-color:             color(grey-lighter);
+$input-btn-border-width:         1px;
+$input-box-shadow:               none;
+
+$input-border-radius: 0;
+$input-border-radius-lg: 0;
+$input-border-radius-sm: 0;
+
+// $input-bg-focus:                 $input-bg !default;
+// $input-border-focus:             #66afe9 !default;
+$input-box-shadow-focus: 0 0 3px rgba(98, 179, 229, 0.5);
+// $input-color-focus:              $input-color !default;
+
+$input-color-placeholder: color(grey-dark);
+
+$input-padding-x: $component-padding-x;
+$input-padding-y: $component-padding-y;
+
+$input-padding-x-sm: $component-padding-x-sm;
+$input-padding-y-sm: $component-padding-y-sm;
+
+$input-padding-x-lg: $component-padding-x-lg;
+$input-padding-y-lg: $component-padding-y-lg;
+
+$input-height:                   (($font-size-base * $line-height-base) + ($component-padding-y * 2));
+$input-height-lg:                (($font-size-lg * $line-height-lg) + ($component-padding-y-lg * 2));
+$input-height-sm:                (($font-size-sm * $line-height-sm) + ($component-padding-y-sm * 2));
+
+// Helpers
+//
+//
+
+$caret-color: $body-color;
+
+// Dropdowns
+//
+// Dropdown menu container and contents.
+
+// $dropdown-min-width:             10rem !default;
+// $dropdown-padding-y: 0;
+// $dropdown-margin-top: .5rem;
+// $dropdown-bg: color(blue);
+// $dropdown-border-color: transparent;
+// $dropdown-border-width: 0;
+// $dropdown-divider-bg:            #e5e5e5 !default;
+// $dropdown-box-shadow:            0 .5rem 1rem rgba(0,0,0,.175) !default;
+
+// $dropdown-link-color: #fff;
+// $dropdown-link-hover-color: color(blue);
+// $dropdown-link-hover-bg: #fff;
+
+// $dropdown-link-active-color: color(blue);
+// $dropdown-link-active-bg: #fff;
+
+// $dropdown-link-disabled-color:   $gray-light !default;
+
+// $dropdown-item-padding-x:        1.5rem !default;
+
+// $dropdown-header-color:          $gray-light !default;

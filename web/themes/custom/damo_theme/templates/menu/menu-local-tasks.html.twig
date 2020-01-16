@@ -1,0 +1,36 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display primary and secondary local tasks.
+ *
+ * Available variables:
+ * - primary: HTML list items representing primary tasks.
+ * - secondary: HTML list items representing primary tasks.
+ *
+ * Each item in these variables (primary and secondary) can be individually
+ * themed in menu-local-task.html.twig.
+ *
+ * @ingroup templates
+ *
+ * @see template_preprocess_menu_local_tasks()
+ */
+#}
+{{ attach_library('damo_theme/tabs-toggle') }}
+{% if primary %}
+  <h2 id="primary-tabs-title" class="sr-only">{{ 'Primary tabs'|t }}</h2>
+  <nav class="tabs-wrapper clearfix" aria-labelledby="primary-tabs-title">
+    {#
+      @todo Make this work
+      <button class="reset-appearance hidden-sm-up tabs-trigger" type="button" aria-expanded="false" aria-controls="primary-tabs" aria-label="{{ 'Primary tabs display toggle'|t }}">
+        &bull;&bull;&bull;
+      </button>
+    #}
+    <ul id="primary-tabs" class="tabs--primary nav nav-tabs">{{ primary }}</ul>
+  </nav>
+{% endif %}
+{% if secondary %}
+  <h2 id="secondary-tabs-title" class="sr-only">{{ 'Secondary tabs'|t }}</h2>
+  <nav aria-labelledby="secondary-tabs-title">
+    <ul class="tabs--secondary nav nav-pills">{{ secondary }}</ul>
+  </nav>
+{% endif %}

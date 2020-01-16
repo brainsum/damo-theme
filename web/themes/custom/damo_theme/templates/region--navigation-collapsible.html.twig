@@ -1,0 +1,25 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a region.
+ *
+ * Available variables:
+ * - content: The content for this region, typically blocks.
+ * - attributes: HTML attributes for the region div.
+ * - region: The name of the region variable as defined in the theme's
+ *   .info.yml file.
+ *
+ * @ingroup templates
+ *
+ * @see template_preprocess_region()
+ */
+#}
+{% extends damo_base.templates ~ '/system/region.html.twig' %}
+
+{% block content %}
+  {# @todo Make the responsive menu configurable #}
+  <button type="button" class="navbar-toggler hidden-lg-up" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="{{ 'Toggle navigation'|t }}"></button>
+  <div id="navbarCollapse" class="navbar-collapse navbar-toggleable-md collapse">
+    {{ content }}
+  </div>
+{% endblock %}

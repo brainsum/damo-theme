@@ -1,0 +1,335 @@
+// Tabs
+//
+//
+@import "../index";
+
+/*
+  Tabs
+
+  Use tabs to create groups of content and show only one group at a time.
+
+  Markup:
+  <div class="bg-blue pt-1">
+    <ul class="tabs tabs--header nav nav-tabs">
+      <li class="nav-item">
+        <a href="#" class="nav-link">First</a>
+      </li>
+      <li class="nav-item">
+        <a href="#" class="nav-link is-active">Second</a>
+      </li>
+      <li class="nav-item">
+        <a href="#" class="nav-link">Third</a>
+      </li>
+    </ul>
+  </div>
+
+  Style guide 4.3
+*/
+
+.nav-tabs {
+
+  .nav-item + .nav-item {
+    margin-left: 1px;
+  }
+
+  .nav-link {
+    padding: .4em 1em;
+    line-height: normal;
+    color: $link-color;
+  }
+}
+
+/*
+  Color variants
+
+  Markup:
+  <ul class="tabs tabs--header nav nav-tabs {{modifier_class}}">
+    <li class="nav-item">
+      <a href="#" class="nav-link">First</a>
+    </li>
+    <li class="nav-item">
+      <a href="#" class="nav-link is-active">Second</a>
+    </li>
+    <li class="nav-item">
+      <a href="#" class="nav-link">Third</a>
+    </li>
+  </ul>
+
+  .tabs--primary - Primary color
+  .tabs--secondary - Secondary color
+
+  Style guide 4.3.1
+*/
+.tabs--header {
+  clear: both;
+
+
+  .nav-item .nav-link {
+    background-color: color(blue-lightest);
+    color: $link-color;
+    padding: .5em 2em;
+
+    @include hover-focus {
+      background-color: #fff;
+      color: $link-color;
+    }
+
+    &.is-active {
+      background-color: #fff;
+      color: $link-color;
+    }
+  }
+
+
+  .dropdown.open .dropdown-toggle {
+    @include plain-hover-focus {
+      background-color: #fff;
+      color: $link-active-color;
+    }
+  }
+
+}
+
+.tabs--primary {
+  border-bottom: 3px solid $brand-primary;
+
+  .nav-link {
+    background-color: color(blue-lightest);
+  }
+
+  .nav-item.active .nav-link, .nav-item .nav-link.is-active {
+    @include plain-hover-focus {
+      background-color: $brand-primary;
+      color: #fff;
+    }
+  }
+}
+
+.tabs--secondary {
+  margin-top: $spacer;
+
+  .nav-link {
+    padding: .25em .75em;
+
+    &.is-active {
+      @include plain-hover-focus {
+        color: $nav-tabs-active-link-hover-color;
+        background-color: $nav-tabs-active-link-hover-bg;
+      }
+    }
+  }
+}
+
+.tabs--primary,
+.tabs--secondary {
+
+  @include media-breakpoint-down(sm) {
+    .nav-item {
+      display: block;
+      float: none;
+
+      + .nav-item {
+        // margin-top: $nav-item-margin;
+        margin-left: 0;
+      }
+    }
+  }
+}
+/*
+  Size variants
+
+  Markup:
+  <div class="bg-blue pt-1">
+    <ul class="tabs tabs--header nav nav-tabs {{modifier_class}}">
+      <li class="nav-item">
+        <a href="#" class="nav-link">First</a>
+      </li>
+      <li class="nav-item">
+        <a href="#" class="nav-link is-active">Second</a>
+      </li>
+      <li class="nav-item">
+        <a href="#" class="nav-link">Third</a>
+      </li>
+    </ul>
+  </div>
+
+  .tabs--lg - Larger tabs
+  .tabs--sm - Smaller tabs
+
+  Style guide 4.3.2
+*/
+.tabs--sm {
+  border-bottom-width: 2px;
+  font-size: $font-size-sm;
+}
+
+.tabs--lg {
+  border-bottom-width: 4px;
+  font-size: $font-size-lg;
+}
+
+// Responsive tabs
+// @todo write styleguide
+// @todo Finish this.
+
+// .tabs-wrapper {
+//   position: relative;
+//   &::before {
+//     content: "asdfasd";
+//     padding: .4em 1em;
+//     display: block;
+//   }
+// }
+
+// .tabs-trigger {
+//   position: absolute;
+//   top: 0;
+//   right: 0;
+//   padding: .4em 1em;
+//   letter-spacing: 3px;
+
+//   + .nav-tabs {
+
+//   }
+// }
+
+
+// /**
+//  * Tabs and local action styles.
+//  */
+// .local-actions {
+//   margin: 10px 0 10px -5px;
+// }
+// .tabs--secondary {
+//   margin: 10px 0 5px;
+// }
+
+// /**
+//  * Missing Bootstrap 2 tab styling.
+//  * $see http://stackoverflow.com/questions/18432577/stacked-tabs-in-bootstrap-3
+//  * $see http://bootply.com/74926
+//  */
+// .tabbable {
+//   margin-bottom: 20px;
+// }
+// .tabs-below, .tabs-left, .tabs-right {
+//   > .nav-tabs {
+//     border-bottom: 0;
+//     .summary {
+//       color: $nav-disabled-link-color;
+//       font-size: $font-size-sm;
+//     }
+//   }
+// }
+// .tab-pane > .panel-heading {
+//   display: none;
+// }
+// .tab-content > .active {
+//   display: block;
+// }
+
+// // Below.
+// .tabs-below {
+//   > .nav-tabs {
+//     border-top: 1px solid $nav-tabs-border-color;
+//     > li {
+//       margin-top: -1px;
+//       margin-bottom: 0;
+//       > a {
+//         border-radius: 0 0 $border-radius $border-radius;
+//         &:hover,
+//         &:focus {
+//           border-top-color: $nav-tabs-border-color;
+//           border-bottom-color: transparent;
+//         }
+//       }
+//     }
+//     > .active {
+//       > a,
+//       > a:hover,
+//       > a:focus {
+//         border-color: transparent $nav-tabs-border-color $nav-tabs-border-color $nav-tabs-border-color;
+//       }
+//     }
+//   }
+// }
+
+// // Left and right tabs.
+// .tabs-left,
+// .tabs-right {
+//   > .nav-tabs {
+//     padding-bottom: 20px;
+//     width: 220px;
+//     > li {
+//       float: none;
+//       &:focus {
+//         outline: 0;
+//       }
+//       > a {
+//         margin-right: 0;
+//         margin-bottom: 3px;
+//         &:focus {
+//           outline: 0;
+//         }
+//       }
+//     }
+//   }
+//   > .tab-content {
+//     border-radius: 0 $border-radius $border-radius $border-radius;
+//     border: 1px solid $nav-tabs-border-color;
+//     box-shadow: 0 1px 1px rgba(0,0,0,.05);
+//     overflow: hidden;
+//     padding: 10px 15px;
+//   }
+// }
+
+// // Left tabs.
+// .tabs-left {
+//   > .nav-tabs {
+//     float: left;
+//     margin-right: -1px;
+//     > li > a {
+//       border-radius: $border-radius 0 0 $border-radius;
+//       &:hover,
+//       &:focus {
+//         border-color: $nav-tabs-link-hover-border-color $nav-tabs-border-color $nav-tabs-link-hover-border-color $nav-tabs-link-hover-border-color;
+//       }
+//     }
+//     > .active > a,
+//     > .active > a:hover,
+//     > .active > a:focus {
+//       border-color: $nav-tabs-border-color transparent $nav-tabs-border-color $nav-tabs-border-color;
+//       box-shadow: -1px 1px 1px rgba(0,0,0,.05);
+//     }
+//   }
+// }
+
+// // Right tabs.
+// .tabs-right {
+//   > .nav-tabs {
+//     float: right;
+//     margin-left: -1px;
+//     > li > a {
+//       border-radius: 0 $border-radius $border-radius 0;
+//       &:hover,
+//       &:focus {
+//         border-color: $nav-tabs-link-hover-border-color $nav-tabs-link-hover-border-color $nav-tabs-link-hover-border-color $nav-tabs-border-color;
+//         box-shadow: 1px 1px 1px rgba(0,0,0,.05);
+//       }
+//     }
+//     > .active > a,
+//     > .active > a:hover,
+//     > .active > a:focus {
+//       border-color: $nav-tabs-border-color $nav-tabs-border-color $nav-tabs-border-color transparent;
+//     }
+//   }
+// }
+
+// Had no idea how to load entity embed dialog specific CSS to place this there.
+.eb-tabs {
+  margin-bottom: 2rem;
+
+  > ul {
+    border-bottom: 0;
+  }
+}

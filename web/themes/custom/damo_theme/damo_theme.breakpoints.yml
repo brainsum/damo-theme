@@ -1,0 +1,40 @@
+# For exact breakpoint values, see `_variables.scss` in one of these files:
+#
+# @see ./node_modules/bootstrap/scss/_variables.scss
+# @see ./scss/utils/_variables.scss
+#
+# This file should be kept in sync with those values.
+damo_theme.xs:
+  label: Extra small
+  mediaQuery: 'all and (max-width: 575px)'
+  weight: 1
+  multipliers:
+    - 1x
+
+damo_theme.sm:
+  label: Small
+  mediaQuery: 'all and (min-width: 576px)'
+  weight: 2
+  multipliers:
+    - 1x
+
+damo_theme.md:
+  label: Medium
+  mediaQuery: 'all and (min-width: 768px)'
+  weight: 3
+  multipliers:
+    - 1x
+
+damo_theme.lg:
+  label: Large
+  mediaQuery: 'all and (min-width: 992px)'
+  weight: 4
+  multipliers:
+    - 1x
+
+damo_theme.xlg:
+  label: Extra large
+  mediaQuery: 'all and (min-width: 1200px)'
+  weight: 5
+  multipliers:
+    - 1x

@@ -1,0 +1,23 @@
+{#
+/**
+ * @file
+ * Default theme implementation for a branding block.
+ *
+ * Each branding element variable (logo, name, slogan) is only available if
+ * enabled in the block configuration.
+ *
+ * Available variables:
+ * - site_logo: Logo for site as defined in Appearance or theme settings.
+ * - site_name: Name for site as defined in Site information settings.
+ * - site_slogan: Slogan for site as defined in Site information settings.
+ *
+ * @ingroup templates
+ */
+#}
+{% set label = plugin_id ~ '_title' %}
+<section aria-labelledby="{{ label }}"{{ attributes }}>
+  <h2 id="{{ label }}" class="sr-only">{{ 'Breadcrumbs'|t }}</h2>
+  {% block content %}
+    {{ content }}
+  {% endblock %}
+</section>

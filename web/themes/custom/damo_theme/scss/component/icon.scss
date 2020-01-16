@@ -1,0 +1,35 @@
+/**
+ * Icon styles.
+ */
+a {
+  &.icon-before .glyphicon {
+    margin-right: .25em;
+  }
+  &.icon-after .glyphicon {
+    margin-left: .25em;
+  }
+}
+
+.btn {
+  &.icon-before .glyphicon {
+    margin-left: -.25em;
+    margin-right: .25em;
+  }
+  &.icon-after .glyphicon {
+    margin-left: .25em;
+    margin-right: -.25em;
+  }
+}
+
+// Glyphicons, copied from Bootstrap 3
+// @see node_modules/bootstrap-sass
+//
+// @deprecated
+// @todo Replace this with SVG icons!
+
+$bootstrap-sass-asset-helper: false;
+$icon-font-path: "../../fonts/";
+$icon-font-name: "glyphicons-halflings-regular";
+$icon-font-svg-id: "glyphicons_halflingsregular";
+
+@import "../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/glyphicons";

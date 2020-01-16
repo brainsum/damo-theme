@@ -1,0 +1,81 @@
+.footer
+{
+    margin-top: 2rem;
+}
+
+.footer__content
+{
+    font-size: .875rem;
+
+    color: #999;
+    border-top: 1px solid #62b3e5;
+}
+
+.footer__item
+{
+    line-height: 100px;
+}
+
+.footer__item--logo
+{
+    display: inline-block;
+
+    height: 100px;
+}
+
+@media (min-width: 576px)
+{
+    .footer__item--logo
+    {
+        float: right;
+    }
+}
+
+.footer .block
+{
+    padding: 1rem 0;
+}
+
+.footer .dropdown-menu
+{
+    font-size: .875rem;
+}
+
+.footer a
+{
+    color: #999;
+}
+
+.footer a:hover
+{
+    text-decoration: underline;
+}
+
+@media (min-width: 576px)
+{
+    .footer
+    {
+        text-align: left;
+    }
+}
+
+.page-header
+{
+    font-weight: bold;
+
+    margin-bottom: 1.5rem;
+}
+
+.region-help > .glyphicon
+{
+    font-size: 1.25rem;
+
+    float: left;
+
+    margin: -.05em .5em 0 0;
+}
+
+.region-help .block
+{
+    overflow: hidden;
+}
