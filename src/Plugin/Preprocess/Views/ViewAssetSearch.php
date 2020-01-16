@@ -2,8 +2,6 @@
 
 namespace Drupal\damo_theme\Plugin\Preprocess\Views;
 
-use Drupal\damo_theme\Plugin\Preprocess\Views\ViewMediaLibrary;
-
 /**
  * Pre-processes variables for the "views_view__media_search" theme hook.
  *

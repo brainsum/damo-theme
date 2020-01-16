@@ -2,8 +2,8 @@
 
 namespace Drupal\damo_theme\Plugin\Preprocess;
 
+use Drupal;
 use Drupal\damo_theme\DamoBase;
-use Drupal\damo_theme\Plugin\Preprocess\PreprocessBase;
 use Drupal\bootstrap\Plugin\Preprocess\PreprocessInterface;
 use Drupal\bootstrap\Annotation\BootstrapPreprocess;
 use Drupal\bootstrap\Utility\Variables;
@@ -25,7 +25,7 @@ class PageTitle extends PreprocessBase implements PreprocessInterface {
 
     // Set site name as title or title_prefix based on frontpage.
     $target = DamoBase::isFront() ? 'title' : 'title_prefix';
-    $variables->$target = \Drupal::config('system.site')->get('name');
+    $variables->$target = Drupal::config('system.site')->get('name');
   }
 
 }

@@ -5,9 +5,7 @@ namespace Drupal\damo_theme\Plugin\Prerender;
 use Drupal\bootstrap\Plugin\Prerender\Link as BootstrapLink;
 use Drupal\bootstrap\Annotation\BootstrapConstant;
 use Drupal\bootstrap\Annotation\BootstrapPrerender;
-use Drupal\bootstrap\Bootstrap;
 use Drupal\bootstrap\Utility\Element;
-use Drupal\Component\Render\FormattableMarkup;
 
 /**
  * Pre-render callback for the "link" element type.

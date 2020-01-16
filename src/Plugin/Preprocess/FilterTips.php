@@ -5,7 +5,6 @@ namespace Drupal\damo_theme\Plugin\Preprocess;
 use Drupal\bootstrap\Plugin\Preprocess\FilterTips as BootstrapFilterTips;
 use Drupal\bootstrap\Annotation\BootstrapPreprocess;
 use Drupal\bootstrap\Utility\Variables;
-use Drupal\Core\Url;
 
 /**
  * Pre-processes variables for the "filter_tips" theme hook.

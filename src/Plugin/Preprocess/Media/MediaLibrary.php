@@ -2,7 +2,7 @@
 
 namespace Drupal\damo_theme\Plugin\Preprocess\Media;
 
-use Drupal\damo_theme\DamoBase;
+use Drupal;
 use Drupal\bootstrap\Annotation\BootstrapPreprocess;
 use Drupal\bootstrap\Utility\Variables;
 use Drupal\bootstrap\Utility\Element;
@@ -49,7 +49,7 @@ class MediaLibrary extends MediaBase {
     );
 
     // Build the Edit and Delete links.
-    $destination = \Drupal::destination()->get();
+    $destination = Drupal::destination()->get();
     $route_parameters = ['media' => $media->id(), 'destination' => $destination];
     $edit_url = Url::fromRoute('entity.media.edit_form', $route_parameters, $edit_link_options);
     $delete_url = Url::fromRoute('entity.media.delete_form', $route_parameters, $delete_link_options);

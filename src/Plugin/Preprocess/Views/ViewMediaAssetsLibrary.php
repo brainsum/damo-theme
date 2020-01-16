@@ -2,7 +2,6 @@
 
 namespace Drupal\damo_theme\Plugin\Preprocess\Views;
 
-use Drupal\damo_theme\Plugin\Preprocess\Views\ViewMediaLibrary;
 use Drupal\bootstrap\Annotation\BootstrapPreprocess;
 
 /**

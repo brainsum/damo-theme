@@ -2,7 +2,6 @@
 
 namespace Drupal\damo_theme\Plugin\Preprocess;
 
-use Drupal\damo_theme\Plugin\Preprocess\PreprocessBase;
 use Drupal\bootstrap\Plugin\Preprocess\PreprocessInterface;
 use Drupal\bootstrap\Annotation\BootstrapPreprocess;
 use Drupal\bootstrap\Bootstrap;

@@ -3,18 +3,15 @@
 namespace Drupal\damo_theme\Plugin\Preprocess;
 
 use Drupal\bootstrap\Plugin\Preprocess\PreprocessBase as BootstrapPreprocessBase;
-use Drupal\bootstrap\Plugin\Preprocess\PreprocessInterface;
-use Drupal\bootstrap\Plugin\PluginBase;
 use Drupal\bootstrap\Utility\Element;
-use Drupal\bootstrap\Utility\Variables;
-use Drupal\Core\Template\Attribute;
+use RuntimeException;
 
 /**
  * Additions to Bootstrap theme's PreprocessBase class.
  *
  * @ingroup plugins_preprocess
  */
-class PreprocessBase extends BootstrapPreprocessBase implements PreprocessInterface {
+class PreprocessBase extends BootstrapPreprocessBase {
 
   /**
    * Set a #context property key to the hook it is actually invoked from.
@@ -30,7 +27,7 @@ class PreprocessBase extends BootstrapPreprocessBase implements PreprocessInterf
       $target->setProperty('context', ['hook' => $this->hook]);
     }
     else {
-      throw new Exception('Wrong target element for the hook context.');
+      throw new RuntimeException('Wrong target element for the hook context.');
     }
   }
 

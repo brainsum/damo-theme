@@ -4,10 +4,6 @@ namespace Drupal\damo_theme\Plugin\Alter;
 
 use Drupal\bootstrap\Plugin\Alter\ElementInfo as BootstrapElementInfo;
 use Drupal\bootstrap\Annotation\BootstrapAlter;
-use Drupal\bootstrap\Bootstrap;
-use Drupal\bootstrap\Plugin\PluginBase;
-use Drupal\bootstrap\Plugin\PrerenderManager;
-use Drupal\bootstrap\Plugin\ProcessManager;
 
 /**
  * Implements hook_element_info_alter().

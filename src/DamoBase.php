@@ -2,8 +2,8 @@
 
 namespace Drupal\damo_theme;
 
+use Drupal;
 use Drupal\bootstrap\Bootstrap;
-use Drupal\Core\Url;
 use Drupal\Component\Utility\UrlHelper;
 
 /**
@@ -24,7 +24,7 @@ class DamoBase extends Bootstrap {
    * @return \Symfony\Component\Routing\Route
    */
   public static function getRouteObject() {
-    return \Drupal::routeMatch()->getRouteObject();
+    return Drupal::routeMatch()->getRouteObject();
   }
 
   /**
@@ -35,7 +35,7 @@ class DamoBase extends Bootstrap {
   public static function isAdminRoute() {
     /** @var \Symfony\Component\Routing\Route $route */
     $route = self::getRouteObject();
-    return (bool) \Drupal::service('router.admin_context')->isAdminRoute($route);
+    return (bool) Drupal::service('router.admin_context')->isAdminRoute($route);
   }
 
   /**
@@ -53,7 +53,7 @@ class DamoBase extends Bootstrap {
     if (parent::hasIsFrontCacheContext()) {
       return parent::isFront();
     }
-    return \Drupal::service('path.matcher')->isFrontPage();
+    return Drupal::service('path.matcher')->isFrontPage();
   }
 
   /**
@@ -75,11 +75,11 @@ class DamoBase extends Bootstrap {
    */
   public static function getDestination($include_query = TRUE) {
     if (!$include_query) {
-      return \Drupal::destination()->get();
+      return Drupal::destination()->get();
     }
 
-    $uri = \Drupal::destination()->get();
-    $query = \Drupal::request()->query;
+    $uri = Drupal::destination()->get();
+    $query = Drupal::request()->query;
 
     if ($query->count()) {
       $query_string = UrlHelper::buildQuery(UrlHelper::filterQueryParameters($query->all()));
