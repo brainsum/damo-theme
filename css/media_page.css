@@ -55,7 +55,8 @@
     max-height: 100%;
     margin: 0 auto;
 
-    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
 }
 
 .left-wrapper.images-wrapper .image.active
@@ -87,6 +88,10 @@
 
 .right-wrapper .top-controls .controller
 {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+
     padding: 0;
 }
 
@@ -114,6 +119,13 @@
 .right-wrapper .top-controls .controller .link a:hover
 {
     background: #5acac5;
+}
+
+.right-wrapper .top-controls .controller .link span
+{
+    padding: 13px;
+
+    border-radius: 30px;
 }
 
 .right-wrapper .top-controls .controller .link.active
@@ -198,8 +210,8 @@
     text-indent: 0;
 }
 
-.field--name-field-expiration-date,
-.field--type-entity-reference
+.field--label-inline,
+.field--label-above
 {
     font-family: 'Montserrat', sans-serif;
     font-weight: 700;
@@ -215,8 +227,8 @@
     color: #363636;
 }
 
-.field--name-field-expiration-date .field__items .field--item,
-.field--type-entity-reference .field__items .field--item
+.field--label-inline .field__items .field--item,
+.field--label-above .field__items .field--item
 {
     font-weight: normal;
 
@@ -227,34 +239,34 @@
     text-transform: none;
 }
 
-.field--name-field-expiration-date .field__items .field--item a,
-.field--type-entity-reference .field__items .field--item a
+.field--label-inline .field__items .field--item a,
+.field--label-above .field__items .field--item a
 {
     color: #363636;
 }
 
-.field--name-field-expiration-date .field__items .field--item:after,
-.field--type-entity-reference .field__items .field--item:after
+.field--label-inline .field__items .field--item:after,
+.field--label-above .field__items .field--item:after
 {
     content: ', ';
 }
 
-.field--name-field-expiration-date .field__items .field--item:last-child:after,
-.field--type-entity-reference .field__items .field--item:last-child:after
+.field--label-inline .field__items .field--item:last-child:after,
+.field--label-above .field__items .field--item:last-child:after
 {
     content: '';
 }
 
-.field--name-field-expiration-date .field--label,
-.field--type-entity-reference .field--label
+.field--label-inline .field--label,
+.field--label-above .field--label
 {
     float: left;
 
     width: 110px;
 }
 
-.field--name-field-expiration-date .field__items,
-.field--type-entity-reference .field__items
+.field--label-inline .field__items,
+.field--label-above .field__items
 {
     float: left;
 
@@ -298,7 +310,8 @@
     width: 15px;
     height: 15px;
 
-    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
 }
 
 .title-wrapper .icon i
@@ -380,4 +393,34 @@ header.navbar .header-background
 main .region-highlighted
 {
     margin: 0;
+}
+
+.button-wrapper .button--green
+{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    font-style: normal;
+    line-height: 12px;
+
+    padding: 15px;
+
+    color: #fdfefc;
+    border: none;
+    border-radius: 4px;
+    background: #68809a;
+}
+
+.button-wrapper .button--gray.disabled img
+{
+    display: none;
+
+    color: #c1c1c1;
+}
+
+.button.disabled
+{
+    color: #c1c1c1;
+    border-color: #eee;
+    background: #eee;
 }

@@ -1,256 +1,290 @@
 @import "include/mixin";
 
-// body.media--view {
-  .col-sm-12 {
-    background: #ffffff !important;
-    padding-bottom: 20px;
+.col-sm-12 {
+  background: #ffffff !important;
+  padding-bottom: 20px;
+}
+.region-content {
+  background: #ffffff;
+}
+.page-title-wrapper {
+  max-width: 1124px;
+  margin: 0 auto;
+  display: block;
+  span {
+    font-size: 2.5rem;
   }
-  .region-content {
-    background: #ffffff;
-  }
-  .page-title-wrapper {
-    max-width: 1124px;
-    margin: 0 auto;
-    display: block;
-    span {
-      font-size: 2.5rem;
+}
+.left-wrapper {
+  float: left;
+  width: 70%;
+  &.images-wrapper {
+    background: #e2e2e2;
+    position: relative;
+    .image {
+      display: none;
+
+      img {
+        height: auto;
+        width: auto;
+        max-width: 100%;
+        max-height: 100%;
+        position: absolute;
+        margin: 0 auto;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      &.active {
+        display: block;
+      }
     }
   }
-  .left-wrapper {
-    float: left;
-    width: 70%;
-    &.images-wrapper {
-      background: #e2e2e2;
-      position: relative;
-      .image {
+}
+
+.right-wrapper {
+  float: left;
+  width: 30%;
+
+  .top-controls {
+    padding: 15px 25px 15px;
+    background: #ffffff;
+    border-bottom: 1px solid #EEEEEE;
+    .media-title {
+      @include fontArialBold;
+    }
+    .controller {
+      padding: 0px;
+      display: flex;
+      .link {
         display: none;
+        a {
+          @include fontArialBold;
+          @include buttonFontStyle;
+          @include buttonColor2;
+          border-radius: 4px;
+          padding: 15px;
+          color: #FDFEFC;
+          border: none;
 
-        img {
-          height: auto;
-          width: auto;
-          max-width: 100%;
-          max-height: 100%;
-          position: absolute;
-          margin: 0 auto;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
+          &:hover {
+            @include buttonColor2Hover;
+          }
         }
-
+        span {
+          border-radius: 30px;
+          padding: 13px;
+        }
         &.active {
           display: block;
         }
       }
     }
   }
-
-  .right-wrapper {
-    float: left;
-    width: 30%;
-
-    .top-controls {
-      padding: 15px 25px 15px;
-      background: #ffffff;
-      border-bottom: 1px solid #EEEEEE;
-      .media-title {
-        @include fontArialBold;
-      }
-      .controller {
-        padding: 0px;
-        .link {
-          display: none;
-          a {
-            @include fontArialBold;
-            @include buttonFontStyle;
-            @include buttonColor2;
-            border-radius: 4px;
-            padding: 15px;
-            color: #FDFEFC;
-            border: none;
-
-            &:hover {
-              @include buttonColor2Hover;
-            }
-          }
-
-          &.active {
-            display: block;
-          }
-        }
-      }
-    }
-    .image-controls {
-      padding: 25px;
-      background-color: #FAFAFA;
-      .controller {
-        clear: both;
-        &.no-badge {
-          &.inactive {
-            opacity: 0.4;
-            pointer-events: none;
-          }
-        }
-        &:first-child {
-          padding-top: 0px;
-        }
-        .link {
-          display: block;
-          width: 100%;
-          cursor: pointer;
-          display: list-item;
-          width: fit-content;
-          padding: 2px 20px;
-          list-style-position: inside;
-          margin-left: 15px;
-          border-radius: 2px;
-          text-indent: -18px;
-          padding-left: 30px;
-
-
-          &.active {
-            background: #EAEAEA;
-          }
-        }
-        &.single {
-          padding-bottom: 10px;
-          h4 {
-            display: none;
-          }
-          .link {
-            @include fontArialBold;
-            font-size: 14px;
-            display: block;
-            float: left;
-            text-indent: 0;
-            margin-left: 18px;
-            padding: 2px 8px;
-            margin-top: -12px;
-          }
-        }
-      }
-    }
-  }
-  .field--name-field-expiration-date,
-  .field--type-entity-reference {
-    @include fontArialBold;
-    overflow: hidden;
-    padding-left: 165px;
-    padding-top: 20px;
-    color: #363636;
-    max-width: 520px;
-    .field__items {
-      .field--item {
-        font-weight: normal;
-        float: left;
-        padding-right: 5px;
-        text-transform: none;
-        a {
-          color: #363636;
-        }
-        &:after {
-          content: ", ";
-        }
-        &:last-child {
-          &:after {
-            content: "";
-          }
-        }
-      }
-    }
-    .field--label {
-      float: left;
-      width: 110px;
-    }
-    .field__items {
-      float: left;
-      max-width: 240px;
-    }
-    clear: both;
-  }
-  .field--name-field-focus-area,
-  .field--name-field-industry {
-    .field--label {
-      padding-right: 5px;
-      &:after {
-        content: ":";
-      }
-    }
-  }
-
-  .title-wrapper {
-    position: relative;
-    h4 {
-      @include fontArialBold;
-      font-size: 14px;
-    }
-    .icon {
-      float: left;
-      display: block;
-      width: 15px;
-      height: 15px;
-      position: absolute;
-      left: 0px;
-      top: 50%;
-      transform: translateY(-50%);
-      i {
-        color: #868686;
-        font-size: 18px;
-        margin-top: -3px;
-        display: block;
-      }
-      svg {
-        height: 15px;
-        width: auto;
-        path {
-          fill: #8B8B8B;
-        }
-      }
-    }
-
-    h4 {
-      padding-left: 25px;
-      text-transform: capitalize;
-    }
-  }
-  .right-wrapper {
+  .image-controls {
+    padding: 25px;
+    background-color: #FAFAFA;
     .controller {
-      padding: 25px 0;
+      clear: both;
+      &.no-badge {
+        &.inactive {
+          opacity: 0.4;
+          pointer-events: none;
+        }
+      }
+      &:first-child {
+        padding-top: 0px;
+      }
+      .link {
+        display: block;
+        width: 100%;
+        cursor: pointer;
+        display: list-item;
+        width: fit-content;
+        padding: 2px 20px;
+        list-style-position: inside;
+        margin-left: 15px;
+        border-radius: 2px;
+        text-indent: -18px;
+        padding-left: 30px;
+
+
+        &.active {
+          background: #EAEAEA;
+        }
+      }
+      &.single {
+        padding-bottom: 10px;
+        h4 {
+          display: none;
+        }
+        .link {
+          @include fontArialBold;
+          font-size: 14px;
+          display: block;
+          float: left;
+          text-indent: 0;
+          margin-left: 18px;
+          padding: 2px 8px;
+          margin-top: -12px;
+        }
+      }
+    }
+  }
+}
+.field--label-inline,
+.field--label-above {
+  @include fontArialBold;
+  overflow: hidden;
+  padding-left: 165px;
+  padding-top: 20px;
+  color: #363636;
+  max-width: 520px;
+  .field__items {
+    .field--item {
+      font-weight: normal;
+      float: left;
+      padding-right: 5px;
+      text-transform: none;
+      a {
+        color: #363636;
+      }
+      &:after {
+        content: ", ";
+      }
+      &:last-child {
+        &:after {
+          content: "";
+        }
+      }
+    }
+  }
+  .field--label {
+    float: left;
+    width: 110px;
+  }
+  .field__items {
+    float: left;
+    max-width: 240px;
+  }
+  clear: both;
+}
+.field--name-field-focus-area,
+.field--name-field-industry {
+  .field--label {
+    padding-right: 5px;
+    &:after {
+      content: ":";
+    }
+  }
+}
+
+.title-wrapper {
+  position: relative;
+  h4 {
+    @include fontArialBold;
+    font-size: 14px;
+  }
+  .icon {
+    float: left;
+    display: block;
+    width: 15px;
+    height: 15px;
+    position: absolute;
+    left: 0px;
+    top: 50%;
+    transform: translateY(-50%);
+    i {
+      color: #868686;
+      font-size: 18px;
+      margin-top: -3px;
+      display: block;
+    }
+    svg {
+      height: 15px;
+      width: auto;
+      path {
+        fill: #8B8B8B;
+      }
     }
   }
 
-  .usage-wrapper {
-    float: left;
-    margin-top: -81px;
-    margin-left: 600px;
-    &.no-margin {
-      margin-top: 20px;
-      margin-bottom: 20px;
-      margin-left: 165px;
-      .control-wrapper {
-        padding-bottom: 0px;
-        margin-top: 0px;
-      }
-    }
+  h4 {
+    padding-left: 25px;
+    text-transform: capitalize;
+  }
+}
+.right-wrapper {
+  .controller {
+    padding: 25px 0;
+  }
+}
+
+.usage-wrapper {
+  float: left;
+  margin-top: -81px;
+  margin-left: 600px;
+  &.no-margin {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 165px;
     .control-wrapper {
       padding-bottom: 0px;
       margin-top: 0px;
     }
   }
-  #filter-platform {
-    display: none;
+  .control-wrapper {
+    padding-bottom: 0px;
+    margin-top: 0px;
   }
-  header.navbar {
-    #block-damo-theme-assets-navigation {
-      margin-bottom: 0px;
-    }
-    .header-background {
-      height: 210px;
-    }
+}
+#filter-platform {
+  display: none;
+}
+header.navbar {
+  #block-damo-theme-assets-navigation {
+    margin-bottom: 0px;
+  }
+  .header-background {
+    height: 210px;
+  }
 
+}
+main {
+  .region-highlighted {
+    margin: 0px;
   }
-  main {
-    .region-highlighted {
-      margin: 0px;
+}
+
+.button-wrapper {
+  .button--green {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    font-style: normal;
+    line-height: 12px;
+    padding: 15px;
+    color: #fdfefc;
+    border: none;
+    border-radius: 4px;
+    background: #68809a;
+  }
+  
+  .button--gray {
+    &.disabled {
+      img { 
+        display: none;
+        color: #c1c1c1;
+      }
     }
   }
-// }
+}
+
+.button {
+  &.disabled { 
+    background: #eeeeee;
+    border-color: #eeeeee;
+    color: #c1c1c1;
+  }
+}
