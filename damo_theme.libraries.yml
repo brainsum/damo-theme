@@ -201,10 +201,10 @@ header:
   css:
     theme:
       css/header.css: {}
-      node_modules/jquery-nice-select/css/nice-select.css : {}
+      css/utils/nice-select.css : {}
   js:
     js/damo_theme.js: {}
-    node_modules/jquery-nice-select/js/jquery.nice-select.js: {}
+    js/jquery.nice-select.js: {}
 
 media_assets:
   version: VERSION
