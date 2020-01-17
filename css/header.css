@@ -167,11 +167,6 @@ header.navbar
     height: auto;
 }
 
-header.navbar #block-brainsum-mp-theme-page-title
-{
-    padding-top: 25px;
-}
-
 header.navbar .header-background
 {
     position: absolute;

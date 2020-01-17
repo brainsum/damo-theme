@@ -103,20 +103,3 @@ function damo_theme_preprocess(&$variables, $hook) {
     'images' => $base_theme_path . '/images',
   ];
 }
-
-
-/**
- * Implements hook_preprocess().
- */
-// function damo_theme_preprocess(&$variables, $hook) {
-//   // Attach path variables to the base theme for all templates.
-//   // Useful for including partials, because `directory` only refers to the
-//   // path of the current theme, so in sub-themes it will not work as expected.
-//   //
-//   // @todo Move this to @BootstrapPreprocess class or other!
-//   // @todo Add more variables.
-//   $base_theme_path = base_path() . drupal_get_path('theme', 'damo_theme');
-//   $variables['damo_base'] = [
-//     'logo' => $base_theme_path . '/logo.png', // @todo Don't hardcode .png
-//   ];
-// }

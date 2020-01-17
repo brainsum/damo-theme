@@ -31,7 +31,7 @@ global:
       css/state/animation.css: {}
     theme:
       css/theme/print.css: { media: print }
-      css/global.css: {} #originally from mp theme
+      css/global.css: {}
   dependencies:
     - damo_theme/bootstrap-scripts
 
@@ -196,7 +196,6 @@ dialog:
     theme:
       css/components/dialog.css: {}
 
-#original mp theme libraries start
 header:
   version: VERSION
   css:
@@ -206,16 +205,12 @@ header:
   js:
     js/damo_theme.js: {}
     node_modules/jquery-nice-select/js/jquery.nice-select.js: {}
-#  dependencies:
- #   - damo_theme/bootstrap   THERE is no bootstrap library, but why and where is it??
 
 media_assets:
   version: VERSION
   css:
     theme:
       css/media-assets.css: {}
-#  dependencies:
- #   - damo_theme/bootstrap   THERE is no bootstrap library, but why and where is it??
 
 main_page_boxes:
   version: VERSION

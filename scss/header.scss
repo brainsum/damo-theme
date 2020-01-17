@@ -126,9 +126,6 @@ header {
   &.navbar {
     position: relative;
     height: auto;
-    #block-brainsum-mp-theme-page-title {
-      padding-top: 25px;
-    }
 
     .header-background {
       @include headerBackground;

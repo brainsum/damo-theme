@@ -7796,28 +7796,28 @@ main .region-highlighted .dam-local-task-extension-wrapper a:disabled:hover
     background-color: #eee;
 }
 
-main .region-highlighted #block-brainsum-mp-theme-local-tasks
+main .region-highlighted #block-damo-theme-local-tasks
 {
     border-bottom: 1px solid #c8e5f7;
     background-color: #fff;
 }
 
-main .region-highlighted #block-brainsum-mp-theme-local-tasks #primary-tabs
+main .region-highlighted #block-damo-theme-local-tasks #primary-tabs
 {
     border: none;
 }
 
-main .region-highlighted #block-brainsum-mp-theme-local-tasks #primary-tabs .nav-item a
+main .region-highlighted #block-damo-theme-local-tasks #primary-tabs .nav-item a
 {
     transition: color .3s ease-in-out;
 }
 
-main .region-highlighted #block-brainsum-mp-theme-local-tasks #primary-tabs .nav-item:hover
+main .region-highlighted #block-damo-theme-local-tasks #primary-tabs .nav-item:hover
 {
     background-color: #62b3e5;
 }
 
-main .region-highlighted #block-brainsum-mp-theme-local-tasks #primary-tabs .nav-item:hover a
+main .region-highlighted #block-damo-theme-local-tasks #primary-tabs .nav-item:hover a
 {
     color: #fff;
 }
