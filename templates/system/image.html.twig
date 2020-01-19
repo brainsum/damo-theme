@@ -16,4 +16,8 @@
   theme.settings.image_shape ? theme.settings.image_shape,
   theme.settings.image_responsive ? 'img-fluid',
 ] %}
-<img{{ attributes.addClass(classes) }} />
+<div class="spotlight-group" data-player="false" data-theme="false" data-page="false">
+  <a href="{{ uri }}" class="spotlight">
+    <img{{ attributes.addClass(classes) }} />
+  </a>
+</div>
