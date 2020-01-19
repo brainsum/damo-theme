@@ -126,6 +126,7 @@ header {
   &.navbar {
     position: relative;
     height: auto;
+    min-height: 70px;
 
     .header-background {
       @include headerBackground;

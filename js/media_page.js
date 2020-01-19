@@ -99,6 +99,9 @@
             return identifier;
           }
         }
+        else {
+          return identifier;
+        }
       }
     },
 

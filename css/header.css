@@ -33,7 +33,8 @@
     height: auto;
     min-height: 200px;
 
-    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
 
     background: url('../images/header.jpg') no-repeat center center;
     background-size: cover;
@@ -165,6 +166,7 @@ header.navbar
     position: relative;
 
     height: auto;
+    min-height: 70px;
 }
 
 header.navbar .header-background
@@ -338,7 +340,8 @@ header.navbar .header-background::after
     margin: 0 auto;
     padding: 50px;
 
-    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
 
     background: white;
     box-shadow: 4px 5px 11px -4px black;
