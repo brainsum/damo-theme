@@ -230,7 +230,7 @@ media_page:
       css/media_page.css: {}
   js:
     js/media_page.js: {}
-    node_modules/spotlight.js/dist/spotlight.bundle.js: {}
+    js/spotlight.bundle.js: {}
 front_page:
   version: VERSION
   css:

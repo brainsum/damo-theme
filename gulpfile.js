@@ -59,4 +59,9 @@ gulp.task('fa-scss', function() {
     .pipe(gulp.dest('./scss/font_awsome'));
 });
 
+gulp.task('spotlight', function() {
+  return gulp.src('./node_modules/spotlight.js/dist/spotlight.bundle.js')
+    .pipe(gulp.dest('./js'));
+});
+
 gulp.task('fa', ['fa-fonts', 'fa-scss']);
