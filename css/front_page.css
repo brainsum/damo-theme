@@ -49,6 +49,22 @@ body.path-frontpage .view-media-library .views-row .card.card-inverse.card--medi
     background-color: #e2e2e2;
 }
 
+body.media--view .view-media-library .views-row .card.card-inverse.card--media .spotlight-group,
+body.path-admin .view-media-library .views-row .card.card-inverse.card--media .spotlight-group,
+body.path-frontpage .view-media-library .views-row .card.card-inverse.card--media .spotlight-group
+{
+    height: 100%;
+}
+
+body.media--view .view-media-library .views-row .card.card-inverse.card--media .spotlight-group a,
+body.path-admin .view-media-library .views-row .card.card-inverse.card--media .spotlight-group a,
+body.path-frontpage .view-media-library .views-row .card.card-inverse.card--media .spotlight-group a
+{
+    display: block;
+
+    height: 100%;
+}
+
 body.media--view .view-media-library .views-row .card.card-inverse.card--media img,
 body.path-admin .view-media-library .views-row .card.card-inverse.card--media img,
 body.path-frontpage .view-media-library .views-row .card.card-inverse.card--media img
