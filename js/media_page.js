@@ -16,8 +16,13 @@
       var height = 0;
       checkbox = $('#watermark');
 
+      identifier = $('.images-wrapper .image.active').attr('identifier');
+      that.disableCheckbox(identifier);
+
       $('.image-controls .link').on('click', function(){
-        that.switchActive($(this).attr('identifier'));
+        identifier = $(this).attr('identifier');
+        that.switchActive(identifier);
+        that.disableCheckbox(identifier);
       });
       checkbox.on('change', function(){
         identifier = $('.images-wrapper .image.active').attr('identifier');
@@ -116,7 +121,26 @@
         image_controller.addClass('active');
       }
     },
-
+    disableCheckbox: function(identifier) {
+      if (identifier.indexOf("-no-badge") > 0) {
+        identifier = identifier.replace('-no-badge', '');
+        if ($('body').find('div[identifier="' + identifier).length > 0) {
+          checkbox.attr('disabled', false);
+          checkbox.removeClass('disabled');
+          $('label[for="watermark"]').removeClass('disabled');
+        }
+        else {
+          checkbox.attr('disabled', true);
+          checkbox.addClass('disabled');
+          $('label[for="watermark"]').addClass('disabled');
+        }
+      }
+      else {
+        checkbox.attr('disabled', false);
+          checkbox.removeClass('disabled');
+          $('label[for="watermark"]').removeClass('disabled');
+      }
+    },
     getUrlParameter: function(sParam) {
       var sPageURL = window.location.search.substring(1),
         sURLVariables = sPageURL.split('&'),

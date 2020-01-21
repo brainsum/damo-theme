@@ -51,6 +51,11 @@
     padding: 15px 25px 15px;
     background: #ffffff;
     border-bottom: 1px solid #EEEEEE;
+    
+    .disabled {
+      opacity: 0.4;
+    }
+
     .media-title {
       @include fontArialBold;
     }
