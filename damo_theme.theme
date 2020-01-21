@@ -22,12 +22,6 @@ function damo_theme_preprocess_html(&$variables) {
     ),
   );
   $variables['page']['#attached']['html_head'][] = [$http_equiv, 'http-equiv'];
-
-// need to fix this!!!!!!!
-/*  $currentType = _tieto_media_asset_request_to_type(\Drupal::request());
-  if ($currentType !== 'image') {
-    $variables['attributes']['class'][] = 'no-filter';
-  }*/
 }
 
 
@@ -36,14 +30,17 @@ function damo_theme_preprocess_html(&$variables) {
  */
 function damo_theme_preprocess_page(&$variables) {
   $routeMatch = Drupal::routeMatch();
-  if ($routeMatch->getRouteName() === "entity.media.canonical") {
+  $routeName = $routeMatch->getRouteName();
+
+  // @todo: General usage is broken and is shown on other pages, too.
+  if ($routeName === 'entity.media.canonical') {
     $variables['#attached']['library'][] = 'damo_theme/media_page';
     $variables['general_usage'] = 'visible';
   }
-  if ($routeMatch->getRouteName() === 'entity.media.delete_form' || $routeMatch->getRouteName() === 'entity.media.edit_form') {
+  if ($routeName === 'entity.media.delete_form' || $routeName === 'entity.media.edit_form') {
     $variables['general_usage'] = 'hidden';
   }
-  if ($routeMatch->getRouteName() === 'entity.media.collection' || $routeMatch->getRouteName() === 'view.unpublished_assets.unpublished_assets') {
+  if ($routeName === 'entity.media.collection' || $routeName === 'view.unpublished_assets.unpublished_assets') {
     $variables['#attached']['library'][] = 'damo_theme/front_page';
   }
 }
@@ -53,7 +50,7 @@ function damo_theme_preprocess_page(&$variables) {
  */
 function damo_theme_preprocess_page_title(&$variables) {
   $routeMatch = Drupal::routeMatch();
-  if ($routeMatch->getRouteName() === "entity.media.canonical") {
+  if ($routeMatch->getRouteName() === 'entity.media.canonical') {
     $variables['title'] = '';
   }
 }
