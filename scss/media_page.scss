@@ -1,3 +1,4 @@
+@import "index";
 @import "include/mixin";
 
 .col-sm-12 {
@@ -39,6 +40,26 @@
       &.active {
         display: block;
       }
+    }
+    @include media-breakpoint-up(md) {
+      position: absolute;
+      left: 50%;	            
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+}
+
+.media-page-wrapper {
+  @include flex;
+  @include flex-direction(column);
+  @include media-breakpoint-up(md) {
+    @include flex-direction(row);
+    .left-wrapper {
+      width: 70%;
+    }
+    .right-wrapper {
+      width: 30%;
     }
   }
 }
@@ -227,9 +248,13 @@
 }
 
 .usage-wrapper {
-  float: left;
-  margin-top: -81px;
-  margin-left: 600px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  @include media-breakpoint-up(md) {
+    float: left;
+    margin-top: -81px;
+    margin-left: 600px;
+  }
   &.no-margin {
     margin-top: 20px;
     margin-bottom: 20px;

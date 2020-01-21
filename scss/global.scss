@@ -31,6 +31,26 @@ html {
 
 body {
   background-color: #f7f7f7;
+
+  &::before {
+    content: "xs";
+    position: absolute;
+    width: 0;
+    height: 0;
+    display: none;
+    @include media-breakpoint-up(sm) {
+      content: "sm"
+    }
+    @include media-breakpoint-up(md) {
+      content: "md"
+    }
+    @include media-breakpoint-up(lg) {
+      content: "lg"
+    }
+    @include media-breakpoint-up(xl) {
+      content: "xl"
+    }
+  }
 }
 
 header {

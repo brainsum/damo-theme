@@ -5,6 +5,14 @@ $header-height: 360px;
 $slope-height: 15%;
 $slope-min-height: 50px;
 
+@media (max-width: 975px) {
+  .adminimal-admin-toolbar {
+    #toolbar-administration {
+      height: 39px;
+    }
+  }
+}
+
 .navbar {
   position: relative;
   height: $header-height;
@@ -55,6 +63,7 @@ $slope-min-height: 50px;
       font-weight: bold;
       @include media-breakpoint-up(md) {
         font-size: 2.5rem;
+        letter-spacing: -1px;
       }
     }
   }

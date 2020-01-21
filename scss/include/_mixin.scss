@@ -63,3 +63,514 @@ $text_color: #fff;
 @mixin fontColor1() {
   color: #a2a2a2;
 }
+
+//   _  _ _ _  _ _ _  _ ____
+//   |\/| |  \/  | |\ | [__
+//   |  | | _/\_ | | \| ___]
+
+@mixin buttonFontStyle() {
+  line-height: 12px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  font-size: 11px;
+}
+
+@mixin font {
+  font-size: 13px;
+  line-height: 1.23rem;
+}
+
+/**
+ * @file
+ *** FOUNDATION FOR SITES AND CUSTOM MIXINS
+ */
+
+/**
+ * @group Foundation for Sites mixins
+ * Mixins placeholder file
+ * @todo These are mostly from Foundation and should be removed and used straight from Foundation.
+ */
+
+@mixin border_radius($value){
+  -webkit-border-radius: $value;
+  -moz-border-radius: $value;
+  border-radius: $value;
+}
+
+@mixin border-top-radius($radius) {
+  border-top-right-radius: $radius;
+  border-top-left-radius: $radius;
+}
+
+@mixin border-right-radius($radius) {
+  border-bottom-right-radius: $radius;
+  border-top-right-radius: $radius;
+}
+
+@mixin border-bottom-radius($radius) {
+  border-bottom-right-radius: $radius;
+  border-bottom-left-radius: $radius;
+}
+
+@mixin border-left-radius($radius) {
+  border-bottom-left-radius: $radius;
+  border-top-left-radius: $radius;
+}
+
+@mixin user_select($value){
+  -webkit-touch-callout: $value;
+  -webkit-user-select: $value;
+  -khtml-user-select: $value;
+  -moz-user-select: $value;
+  -ms-user-select: $value;
+  user-select: $value;
+}
+
+@mixin clearfix() {
+  &:before,
+  &:after {
+    content: " "; // 1
+    display: table; // 2
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+.clearfix {
+  @include clearfix;
+}
+
+@mixin box-shadow($shadow...) {
+  -webkit-box-shadow: $shadow; // iOS <4.3 & Android <4.1
+  box-shadow: $shadow;
+}
+
+@mixin opacity($opacity) {
+  opacity: $opacity;
+  // IE8 filter
+  $opacity-ie: ($opacity * 100);
+  filter: alpha(opacity=$opacity-ie);
+}
+
+@mixin size($width, $height) {
+  width: $width;
+  height: $height;
+}
+
+// @include filterBlur(value);
+@mixin filterBlur($val) {
+  -webkit-filter: blur($val);
+  -moz-filter: blur($val);
+  -o-filter: blur($val);
+  -ms-filter: blur($val);
+  filter: blur($val);
+}
+
+// Box sizing
+@mixin box-sizing($boxmodel) {
+  -webkit-box-sizing: $boxmodel;
+  -moz-box-sizing: $boxmodel;
+  box-sizing: $boxmodel;
+}
+
+// @include transition(values);
+@mixin transition($transition...) {
+  -moz-transition: $transition;
+  -ms-transition: $transition;
+  -o-transition: $transition;
+  -webkit-transition: $transition;
+  transition: $transition;
+}
+
+@mixin scaleX($ratio) {
+  -webkit-transform: scaleX($ratio);
+  -ms-transform: scaleX($ratio); // IE9 only
+  -o-transform: scaleX($ratio);
+  transform: scaleX($ratio);
+}
+
+// Browser Prefixes
+@mixin transform($transforms) {
+  -webkit-transform: $transforms;
+  -moz-transform: $transforms;
+  -ms-transform: $transforms;
+  transform: $transforms;
+}
+
+// Rotate
+@mixin rotate ($deg) {
+  @include transform(rotate(#{$deg}deg));
+}
+
+// Scale
+@mixin scale($scale) {
+  @include transform(scale($scale));
+}
+
+// Translate
+@mixin translate ($x, $y) {
+  @include transform(translate($x, $y));
+}
+
+// Skew
+@mixin skew ($x, $y) {
+  @include transform(skew(#{$x}deg, #{$y}deg));
+}
+
+// Transform Origin
+@mixin transform-origin ($origin) {
+  -webkit-transform-origin: $origin;
+  -moz-transform-origin: $origin;
+  -ms-transform-origin: $origin;
+  transform-origin: $origin;
+}
+
+$image-path: '../images/' !default;
+$fallback-extension: 'png' !default;
+$retina-suffix: '@2x';
+
+@mixin background-image($name, $folder:'icons', $size:false) {
+  background-image: url('#{$image-path}/#{$folder}/#{$name}.svg');
+
+  @if($size){
+    background-size: $size+'px';
+  }
+
+  .no-svg & {
+    background-image: url('#{$image-path}/#{$folder}/#{$name}.#{$fallback-extension}');
+
+    /*    @media  only screen and (-moz-min-device-pixel-ratio: 1.5),
+                only screen and (-o-min-device-pixel-ratio: 3/2),
+                only screen and (-webkit-min-device-pixel-ratio: 1.5),
+                only screen and (min-device-pixel-ratio: 1.5) {
+          background-image: url('#{$image-path}/#{$folder}/#{$name}#{$retina-suffix}.#{$fallback-extension}');
+        }*/
+  }
+}
+
+// @include animeImage();
+@mixin animeImage() {
+  @include transition(all .15s ease-in-out);
+}
+
+
+$-zf-flex-justify: (
+  'left': flex-start,
+  'right': flex-end,
+  'center': center,
+  'justify': space-between,
+  'spaced': space-around,
+);
+
+$-zf-flex-align: (
+  'top': flex-start,
+  'bottom': flex-end,
+  'middle': center,
+  'stretch': stretch,
+);
+
+$-zf-flex-direction: (
+  'row': row,
+  'row-reverse': row-reverse,
+  'column': column,
+  'column-reverse': column-reverse,
+);
+
+/// Enables flexbox by adding `display: flex` to the element.
+@mixin flex {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  //display: -ms-flex;
+  display: flex;
+}
+
+// @include inline-flex;
+@mixin inline-flex {
+  display: -webkit-inline-box;
+  display: -moz-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+
+/**
+ * Horizontally or vertically aligns the items within a flex container.
+ *
+ * @param {Keyword} $x [null] - Horizontal alignment to use. Can be `left`,
+ * `right`, `center`, `justify`, or `spaced`. Or, set it to `null`
+ * (the default) to not set horizontal alignment.
+ * @param {Keyword} $y [null] - Vertical alignment to use. Can be `top`,
+ * `bottom`, `middle`, or `stretch`. Or, set it to `null` (the default) to not
+ * set vertical alignment.
+ */
+
+@mixin flex-align($x: null, $y: null) {
+  @if $x {
+    @if map-has-key($-zf-flex-justify, $x) {
+      $x: map-get($-zf-flex-justify, $x);
+    }
+
+    @else {
+      @warn 'flex-grid-row-align(): #{$x} is not a valid value for horizontal alignment. Use left, right, center, justify, or spaced.';
+    }
+  }
+
+  @if $y {
+    @if map-has-key($-zf-flex-align, $y) {
+      $y: map-get($-zf-flex-align, $y);
+    }
+
+    @else {
+      @warn 'flex-grid-row-align(): #{$y} is not a valid value for vertical alignment. Use top, bottom, middle, or stretch.';
+    }
+  }
+
+  justify-content: $x;
+  align-items: $y;
+}
+
+/**
+ * Vertically align a single column within a flex row. Apply this mixin to a
+ * flex column.
+ *
+ * @param {Keyword} $y [null] - Vertical alignment to use. Can be `top`,
+ * `bottom`, `middle`, or `stretch`. Or, set it to `null` (the default) to not
+ * set vertical alignment.
+ */
+
+@mixin flex-align-self($y: null) {
+  @if $y {
+    @if map-has-key($-zf-flex-align, $y) {
+      $y: map-get($-zf-flex-align, $y);
+    }
+
+    @else {
+      @warn 'flex-grid-column-align(): #{$y} is not a valid value for alignment. Use top, bottom, middle, or stretch.';
+    }
+  }
+
+  align-self: $y;
+}
+
+/**
+ * Changes the source order of a flex child. Children with lower numbers appear
+ * first in the layout.
+ *
+ * @param {Number} $order [0] - Order number to apply.
+ */
+
+@mixin flex-order($order: 0) {
+  order: $order;
+}
+
+/**
+ * Change flex-direction
+ *
+ * @param {Keyword} $direction [row] - Flex direction to use. Can be
+ * - row (default): same as text direction
+ * - row-reverse: opposite to text direction
+ * - column: same as row but top to bottom
+ * - column-reverse: same as row-reverse top to bottom
+ */
+
+@mixin flex-direction($direction: row) {
+  flex-direction: $direction;
+}
+
+/**
+ * @include flex-wrap(nowrap | wrap | wrap-reverse);
+ * Default: nowrap
+ */
+
+@mixin flex-wrap($value: nowrap) {
+  // No Webkit/FF Box fallback.
+  -webkit-flex-wrap: $value;
+
+  @if $value == nowrap {
+    -ms-flex-wrap: none;
+  }
+
+  @else {
+    -ms-flex-wrap: $value;
+  }
+
+  flex-wrap: $value;
+}
+
+/**
+ * @include flex-flow(values);
+ * Default: row nowrap
+ */
+
+@mixin flex-flow($values: (row nowrap)) {
+  // No Webkit/FF Box fallback.
+  -webkit-flex-flow: $values;
+  -ms-flex-flow: $values;
+  flex-flow: $values;
+}
+
+/**
+ * @include order(int);
+ * Default: 0
+ */
+
+@mixin order($int: 0) {
+  -webkit-box-ordinal-group: $int + 1;
+  -moz-box-ordinal-group: $int + 1;
+  -webkit-order: $int;
+  -ms-flex-order: $int;
+  order: $int;
+}
+
+/**
+ * @include flex-grow(int);
+ * Default: 1
+ */
+
+@mixin flex-grow($int: 1) {
+  -webkit-box-flex: $int;
+  -webkit-flex-grow: $int;
+  -moz-flex-grow: $int;
+  -ms-flex-grow: $int;
+  flex-grow: $int;
+}
+
+/**
+ * @include flex-shrink(int);
+ * Default: 0
+ */
+
+@mixin flex-shrink($int: 0) {
+  -webkit-flex-shrink: 1 $int;
+  -moz-flex-shrink: 1 $int;
+  -ms-flex-shrink: 1 $int;
+  flex-shrink: 1 $int;
+}
+
+/**
+ * @include flex-basis(int);
+ * Default: auto
+ */
+
+@mixin flex-basis($value: auto) {
+  -webkit-flex-basis: $value;
+  -ms-flex-basis: $value;
+  flex-basis: $value;
+}
+
+/**
+ * @include justify-content(flex-start | flex-end | center | space-between
+ * | space-around);
+ * Default: flex-start
+ */
+
+@mixin justify-content($value: flex-start) {
+  @if $value == flex-start {
+    -webkit-box-pack: start;
+    -moz-box-pack: start;
+    -ms-flex-pack: start;
+  }
+
+  @else if $value == flex-end {
+    -webkit-box-pack: end;
+    -moz-box-pack: end;
+    -ms-flex-pack: end;
+  }
+
+  @else if $value == space-between {
+    -webkit-box-pack: justify;
+    -font-box-pack: justify;
+    -ms-flex-pack: justify;
+  }
+
+  @else if $value == space-around {
+    -ms-flex-pack: distribute;
+  }
+
+  @else {
+    -webkit-box-pack: $value;
+    -moz-box-pack: $value;
+    -ms-flex-pack: $value;
+  }
+
+  -webkit-justify-content: $value;
+  justify-content: $value;
+}
+
+/**
+ * @include align-items(flex-start | flex-end | center | baseline | stretch);
+ * Default: stretch
+ */
+
+@mixin align-items($value: stretch) {
+  @if $value == flex-start {
+    -webkit-box-align: start;
+    -moz-box-align: start;
+    -ms-flex-align: start;
+  }
+
+  @else if $value == flex-end {
+    -webkit-box-align: end;
+    -moz-box-align: end;
+    -ms-flex-align: end;
+  }
+
+  @else {
+    -webkit-box-align: $value;
+    -mox-box-align: $value;
+    -ms-flex-align: $value;
+  }
+
+  -webkit-align-items: $value;
+  align-items: $value;
+}
+
+/**
+ * @include align-self(auto | flex-start | flex-end | center | baseline | stretch);
+ * Default: auto
+ */
+
+@mixin align-self($value: auto) {
+  // No Webkit Box Fallback.
+  -webkit-align-self: $value;
+  @if $value == flex-start {
+    -ms-flex-item-align: start;
+  }
+
+  @else if $value == flex-end {
+    -ms-flex-item-align: end;
+  }
+
+  @else {
+    -ms-flex-item-align: $value;
+  }
+
+  align-self: $value;
+}
+
+/**
+ * @include align-content(flex-start | flex-end | center | space-between | space-around | stretch);
+ * Default: stretch
+ */
+
+@mixin align-content($value: stretch) {
+  // No Webkit Box Fallback.
+  -webkit-align-content: $value;
+  @if $value == flex-start {
+    -ms-flex-line-pack: start;
+  }
+
+  @else if $value == flex-end {
+    -ms-flex-line-pack: end;
+  }
+
+  @else {
+    -ms-flex-line-pack: $value;
+  }
+
+  align-content: $value;
+}
+
