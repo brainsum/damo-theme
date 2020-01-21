@@ -16,8 +16,12 @@
   theme.settings.image_shape ? theme.settings.image_shape,
   theme.settings.image_responsive ? 'img-fluid',
 ] %}
-<div class="spotlight-group" data-player="false" data-theme="false" data-page="false">
-  <a href="{{ uri }}" class="spotlight">
-    <img{{ attributes.addClass(classes) }} />
-  </a>
-</div>
+{% if spotlight %}
+  <div class="spotlight-group" data-player="false" data-theme="false" data-page="false" footer="false">
+    <a href="{{ uri }}" class="spotlight">
+      <img{{ attributes.addClass(classes) }} />
+    </a>
+  </div>
+{% else %}
+  <img{{ attributes.addClass(classes) }} />
+{% endif %}

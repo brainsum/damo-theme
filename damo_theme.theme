@@ -31,7 +31,7 @@ function damo_theme_preprocess_html(&$variables) {
 }
 
 
- /**
+/**
  * Implements hook_preprocess_HOOK().
  */
 function damo_theme_preprocess_page(&$variables) {
@@ -43,7 +43,7 @@ function damo_theme_preprocess_page(&$variables) {
   if ($routeMatch->getRouteName() === 'entity.media.delete_form' || $routeMatch->getRouteName() === 'entity.media.edit_form') {
     $variables['general_usage'] = 'hidden';
   }
-  if ($routeMatch->getRouteName() === 'entity.media.collection') {
+  if ($routeMatch->getRouteName() === 'entity.media.collection' || $routeMatch->getRouteName() === 'view.unpublished_assets.unpublished_assets') {
     $variables['#attached']['library'][] = 'damo_theme/front_page';
   }
 }
@@ -102,4 +102,15 @@ function damo_theme_preprocess(&$variables, $hook) {
     'partials' => $base_theme_path . '/templates/_partials',
     'images' => $base_theme_path . '/images',
   ];
+}
+
+/**
+ * Implements hook_preprocess_image().
+ */
+function damo_theme_preprocess_image(&$variables) {
+  $current_route = \Drupal::routeMatch();
+  $route = $current_route->getRouteName();
+  if ($route === 'entity.media.canonical') {
+    $variables['spotlight'] = TRUE;
+  }
 }

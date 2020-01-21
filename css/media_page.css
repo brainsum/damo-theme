@@ -55,8 +55,7 @@
     max-height: 100%;
     margin: 0 auto;
 
-    -webkit-transform: translate(-50%, -50%);
-            transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
 }
 
 .left-wrapper.images-wrapper .image.active
@@ -88,7 +87,6 @@
 
 .right-wrapper .top-controls .controller
 {
-    display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
 
@@ -310,8 +308,7 @@
     width: 15px;
     height: 15px;
 
-    -webkit-transform: translateY(-50%);
-            transform: translateY(-50%);
+    transform: translateY(-50%);
 }
 
 .title-wrapper .icon i
@@ -423,4 +420,9 @@ main .region-highlighted
     color: #c1c1c1;
     border-color: #eee;
     background: #eee;
+}
+
+#spotlight .footer
+{
+    display: none;
 }

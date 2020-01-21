@@ -9,6 +9,8 @@ body.path-frontpage {
   .container {
     width: 100% !important;
   }
+  .block-views-exposed-filter-blockunpublished-assets-unpublished-assets,
+  .block-views-exposed-filter-blockunpublished-assets-user-unpublished-assets,
   .view-media-library {
     position: relative;
     margin: 0 auto;
@@ -106,6 +108,8 @@ body.path-frontpage {
   }
 
   @media (min-width: 992px) and (max-width: 1247px) {
+    .block-views-exposed-filter-blockunpublished-assets-unpublished-assets,
+    .block-views-exposed-filter-blockunpublished-assets-user-unpublished-assets,
     .view-media-library {
       .views-row {
         width: 19vw;
@@ -118,6 +122,8 @@ body.path-frontpage {
   }
 
   @media (max-width: 992px) {
+    .block-views-exposed-filter-blockunpublished-assets-unpublished-assets,
+    .block-views-exposed-filter-blockunpublished-assets-user-unpublished-assets,
     .view-media-library {
       .views-row {
         width: 23vw;
@@ -170,7 +176,8 @@ body.path-frontpage {
       }
     }
   }
-
+  .block-views-exposed-filter-blockunpublished-assets-unpublished-assets,
+  .block-views-exposed-filter-blockunpublished-assets-user-unpublished-assets,
   #block-damo-theme-exposed-asset-search-form {
     padding-left: 38px;
     z-index: 999;
@@ -191,6 +198,8 @@ body.path-frontpage {
   }
 
   @media (max-width: 575px) {
+    .block-views-exposed-filter-blockunpublished-assets-unpublished-assets,
+    .block-views-exposed-filter-blockunpublished-assets-user-unpublished-assets,
     .view-media-library {
       .view-content {
         width: 325px;
@@ -214,6 +223,8 @@ body.path-frontpage {
     }
   }
   @media (min-width: 1247px) and (max-width: 1600px) {
+    .block-views-exposed-filter-blockunpublished-assets-unpublished-assets,
+    .block-views-exposed-filter-blockunpublished-assets-user-unpublished-assets,
     .view-media-library {
       .views-row {
         height: 11.9vw;
@@ -242,4 +253,10 @@ body.no-filter {
   .usage-wrapper {
     margin-top: 85px;
   }
+}
+
+.block-views-exposed-filter-blockunpublished-assets-user-unpublished-assets,
+.block-views-exposed-filter-blockunpublished-assets-unpublished-assets {
+  margin:0 auto 40px auto !important;
+  top: 20px;
 }

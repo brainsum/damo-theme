@@ -148,7 +148,7 @@ select.form-control-sm:not([size]):not([multiple]),
 .input-group-sm > select.input-group-addon:not([size]):not([multiple]),
 .input-group-sm > .input-group-btn > select.btn:not([size]):not([multiple])
 {
-    height: 1.563rem;
+    height: 1.562rem;
 }
 
 .form-control-lg,

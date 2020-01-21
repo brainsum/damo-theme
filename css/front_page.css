@@ -6,8 +6,14 @@ body.path-frontpage .container
     width: 100% !important;
 }
 
+body.media--view .block-views-exposed-filter-blockunpublished-assets-unpublished-assets,
+body.media--view .block-views-exposed-filter-blockunpublished-assets-user-unpublished-assets,
 body.media--view .view-media-library,
+body.path-admin .block-views-exposed-filter-blockunpublished-assets-unpublished-assets,
+body.path-admin .block-views-exposed-filter-blockunpublished-assets-user-unpublished-assets,
 body.path-admin .view-media-library,
+body.path-frontpage .block-views-exposed-filter-blockunpublished-assets-unpublished-assets,
+body.path-frontpage .block-views-exposed-filter-blockunpublished-assets-user-unpublished-assets,
 body.path-frontpage .view-media-library
 {
     position: relative;
@@ -15,8 +21,14 @@ body.path-frontpage .view-media-library
     margin: 0 auto;
 }
 
+body.media--view .block-views-exposed-filter-blockunpublished-assets-unpublished-assets .views-row,
+body.media--view .block-views-exposed-filter-blockunpublished-assets-user-unpublished-assets .views-row,
 body.media--view .view-media-library .views-row,
+body.path-admin .block-views-exposed-filter-blockunpublished-assets-unpublished-assets .views-row,
+body.path-admin .block-views-exposed-filter-blockunpublished-assets-user-unpublished-assets .views-row,
 body.path-admin .view-media-library .views-row,
+body.path-frontpage .block-views-exposed-filter-blockunpublished-assets-unpublished-assets .views-row,
+body.path-frontpage .block-views-exposed-filter-blockunpublished-assets-user-unpublished-assets .views-row,
 body.path-frontpage .view-media-library .views-row
 {
     position: relative;
@@ -30,15 +42,27 @@ body.path-frontpage .view-media-library .views-row
     border-bottom: 10px solid #fff;
 }
 
+body.media--view .block-views-exposed-filter-blockunpublished-assets-unpublished-assets .views-row .card,
+body.media--view .block-views-exposed-filter-blockunpublished-assets-user-unpublished-assets .views-row .card,
 body.media--view .view-media-library .views-row .card,
+body.path-admin .block-views-exposed-filter-blockunpublished-assets-unpublished-assets .views-row .card,
+body.path-admin .block-views-exposed-filter-blockunpublished-assets-user-unpublished-assets .views-row .card,
 body.path-admin .view-media-library .views-row .card,
+body.path-frontpage .block-views-exposed-filter-blockunpublished-assets-unpublished-assets .views-row .card,
+body.path-frontpage .block-views-exposed-filter-blockunpublished-assets-user-unpublished-assets .views-row .card,
 body.path-frontpage .view-media-library .views-row .card
 {
     border: none;
 }
 
+body.media--view .block-views-exposed-filter-blockunpublished-assets-unpublished-assets .views-row .card.card-inverse.card--media,
+body.media--view .block-views-exposed-filter-blockunpublished-assets-user-unpublished-assets .views-row .card.card-inverse.card--media,
 body.media--view .view-media-library .views-row .card.card-inverse.card--media,
+body.path-admin .block-views-exposed-filter-blockunpublished-assets-unpublished-assets .views-row .card.card-inverse.card--media,
+body.path-admin .block-views-exposed-filter-blockunpublished-assets-user-unpublished-assets .views-row .card.card-inverse.card--media,
 body.path-admin .view-media-library .views-row .card.card-inverse.card--media,
+body.path-frontpage .block-views-exposed-filter-blockunpublished-assets-unpublished-assets .views-row .card.card-inverse.card--media,
+body.path-frontpage .block-views-exposed-filter-blockunpublished-assets-user-unpublished-assets .views-row .card.card-inverse.card--media,
 body.path-frontpage .view-media-library .views-row .card.card-inverse.card--media
 {
     position: relative;
@@ -49,15 +73,27 @@ body.path-frontpage .view-media-library .views-row .card.card-inverse.card--medi
     background-color: #e2e2e2;
 }
 
+body.media--view .block-views-exposed-filter-blockunpublished-assets-unpublished-assets .views-row .card.card-inverse.card--media .spotlight-group,
+body.media--view .block-views-exposed-filter-blockunpublished-assets-user-unpublished-assets .views-row .card.card-inverse.card--media .spotlight-group,
 body.media--view .view-media-library .views-row .card.card-inverse.card--media .spotlight-group,
+body.path-admin .block-views-exposed-filter-blockunpublished-assets-unpublished-assets .views-row .card.card-inverse.card--media .spotlight-group,
+body.path-admin .block-views-exposed-filter-blockunpublished-assets-user-unpublished-assets .views-row .card.card-inverse.card--media .spotlight-group,
 body.path-admin .view-media-library .views-row .card.card-inverse.card--media .spotlight-group,
+body.path-frontpage .block-views-exposed-filter-blockunpublished-assets-unpublished-assets .views-row .card.card-inverse.card--media .spotlight-group,
+body.path-frontpage .block-views-exposed-filter-blockunpublished-assets-user-unpublished-assets .views-row .card.card-inverse.card--media .spotlight-group,
 body.path-frontpage .view-media-library .views-row .card.card-inverse.card--media .spotlight-group
 {
     height: 100%;
 }
 
+body.media--view .block-views-exposed-filter-blockunpublished-assets-unpublished-assets .views-row .card.card-inverse.card--media .spotlight-group a,
+body.media--view .block-views-exposed-filter-blockunpublished-assets-user-unpublished-assets .views-row .card.card-inverse.card--media .spotlight-group a,
 body.media--view .view-media-library .views-row .card.card-inverse.card--media .spotlight-group a,
+body.path-admin .block-views-exposed-filter-blockunpublished-assets-unpublished-assets .views-row .card.card-inverse.card--media .spotlight-group a,
+body.path-admin .block-views-exposed-filter-blockunpublished-assets-user-unpublished-assets .views-row .card.card-inverse.card--media .spotlight-group a,
 body.path-admin .view-media-library .views-row .card.card-inverse.card--media .spotlight-group a,
+body.path-frontpage .block-views-exposed-filter-blockunpublished-assets-unpublished-assets .views-row .card.card-inverse.card--media .spotlight-group a,
+body.path-frontpage .block-views-exposed-filter-blockunpublished-assets-user-unpublished-assets .views-row .card.card-inverse.card--media .spotlight-group a,
 body.path-frontpage .view-media-library .views-row .card.card-inverse.card--media .spotlight-group a
 {
     display: block;
@@ -65,8 +101,14 @@ body.path-frontpage .view-media-library .views-row .card.card-inverse.card--medi
     height: 100%;
 }
 
+body.media--view .block-views-exposed-filter-blockunpublished-assets-unpublished-assets .views-row .card.card-inverse.card--media img,
+body.media--view .block-views-exposed-filter-blockunpublished-assets-user-unpublished-assets .views-row .card.card-inverse.card--media img,
 body.media--view .view-media-library .views-row .card.card-inverse.card--media img,
+body.path-admin .block-views-exposed-filter-blockunpublished-assets-unpublished-assets .views-row .card.card-inverse.card--media img,
+body.path-admin .block-views-exposed-filter-blockunpublished-assets-user-unpublished-assets .views-row .card.card-inverse.card--media img,
 body.path-admin .view-media-library .views-row .card.card-inverse.card--media img,
+body.path-frontpage .block-views-exposed-filter-blockunpublished-assets-unpublished-assets .views-row .card.card-inverse.card--media img,
+body.path-frontpage .block-views-exposed-filter-blockunpublished-assets-user-unpublished-assets .views-row .card.card-inverse.card--media img,
 body.path-frontpage .view-media-library .views-row .card.card-inverse.card--media img
 {
     position: relative;
@@ -81,8 +123,14 @@ body.path-frontpage .view-media-library .views-row .card.card-inverse.card--medi
     transform: translate(-50%, -50%) !important;
 }
 
+body.media--view .block-views-exposed-filter-blockunpublished-assets-unpublished-assets .views-row .card-content,
+body.media--view .block-views-exposed-filter-blockunpublished-assets-user-unpublished-assets .views-row .card-content,
 body.media--view .view-media-library .views-row .card-content,
+body.path-admin .block-views-exposed-filter-blockunpublished-assets-unpublished-assets .views-row .card-content,
+body.path-admin .block-views-exposed-filter-blockunpublished-assets-user-unpublished-assets .views-row .card-content,
 body.path-admin .view-media-library .views-row .card-content,
+body.path-frontpage .block-views-exposed-filter-blockunpublished-assets-unpublished-assets .views-row .card-content,
+body.path-frontpage .block-views-exposed-filter-blockunpublished-assets-user-unpublished-assets .views-row .card-content,
 body.path-frontpage .view-media-library .views-row .card-content
 {
     position: absolute;
@@ -96,15 +144,27 @@ body.path-frontpage .view-media-library .views-row .card-content
     background: transparent;
 }
 
+body.media--view .block-views-exposed-filter-blockunpublished-assets-unpublished-assets .views-row .card-content .card-img-overlay,
+body.media--view .block-views-exposed-filter-blockunpublished-assets-user-unpublished-assets .views-row .card-content .card-img-overlay,
 body.media--view .view-media-library .views-row .card-content .card-img-overlay,
+body.path-admin .block-views-exposed-filter-blockunpublished-assets-unpublished-assets .views-row .card-content .card-img-overlay,
+body.path-admin .block-views-exposed-filter-blockunpublished-assets-user-unpublished-assets .views-row .card-content .card-img-overlay,
 body.path-admin .view-media-library .views-row .card-content .card-img-overlay,
+body.path-frontpage .block-views-exposed-filter-blockunpublished-assets-unpublished-assets .views-row .card-content .card-img-overlay,
+body.path-frontpage .block-views-exposed-filter-blockunpublished-assets-user-unpublished-assets .views-row .card-content .card-img-overlay,
 body.path-frontpage .view-media-library .views-row .card-content .card-img-overlay
 {
     z-index: 999;
 }
 
+body.media--view .block-views-exposed-filter-blockunpublished-assets-unpublished-assets .views-row .card-content .btn-sm,
+body.media--view .block-views-exposed-filter-blockunpublished-assets-user-unpublished-assets .views-row .card-content .btn-sm,
 body.media--view .view-media-library .views-row .card-content .btn-sm,
+body.path-admin .block-views-exposed-filter-blockunpublished-assets-unpublished-assets .views-row .card-content .btn-sm,
+body.path-admin .block-views-exposed-filter-blockunpublished-assets-user-unpublished-assets .views-row .card-content .btn-sm,
 body.path-admin .view-media-library .views-row .card-content .btn-sm,
+body.path-frontpage .block-views-exposed-filter-blockunpublished-assets-unpublished-assets .views-row .card-content .btn-sm,
+body.path-frontpage .block-views-exposed-filter-blockunpublished-assets-user-unpublished-assets .views-row .card-content .btn-sm,
 body.path-frontpage .view-media-library .views-row .card-content .btn-sm
 {
     z-index: 9999;
@@ -118,8 +178,14 @@ body.path-frontpage .view-media-library .views-row .card-content .btn-sm
     opacity: 0;
 }
 
+body.media--view .block-views-exposed-filter-blockunpublished-assets-unpublished-assets .views-row .card-content h4,
+body.media--view .block-views-exposed-filter-blockunpublished-assets-user-unpublished-assets .views-row .card-content h4,
 body.media--view .view-media-library .views-row .card-content h4,
+body.path-admin .block-views-exposed-filter-blockunpublished-assets-unpublished-assets .views-row .card-content h4,
+body.path-admin .block-views-exposed-filter-blockunpublished-assets-user-unpublished-assets .views-row .card-content h4,
 body.path-admin .view-media-library .views-row .card-content h4,
+body.path-frontpage .block-views-exposed-filter-blockunpublished-assets-unpublished-assets .views-row .card-content h4,
+body.path-frontpage .block-views-exposed-filter-blockunpublished-assets-user-unpublished-assets .views-row .card-content h4,
 body.path-frontpage .view-media-library .views-row .card-content h4
 {
     font-size: 14px;
@@ -132,8 +198,14 @@ body.path-frontpage .view-media-library .views-row .card-content h4
     overflow-wrap: break-word;
 }
 
+body.media--view .block-views-exposed-filter-blockunpublished-assets-unpublished-assets .views-row .card-content .card-text,
+body.media--view .block-views-exposed-filter-blockunpublished-assets-user-unpublished-assets .views-row .card-content .card-text,
 body.media--view .view-media-library .views-row .card-content .card-text,
+body.path-admin .block-views-exposed-filter-blockunpublished-assets-unpublished-assets .views-row .card-content .card-text,
+body.path-admin .block-views-exposed-filter-blockunpublished-assets-user-unpublished-assets .views-row .card-content .card-text,
 body.path-admin .view-media-library .views-row .card-content .card-text,
+body.path-frontpage .block-views-exposed-filter-blockunpublished-assets-unpublished-assets .views-row .card-content .card-text,
+body.path-frontpage .block-views-exposed-filter-blockunpublished-assets-user-unpublished-assets .views-row .card-content .card-text,
 body.path-frontpage .view-media-library .views-row .card-content .card-text
 {
     transition: opacity 250ms ease-in;
@@ -142,43 +214,79 @@ body.path-frontpage .view-media-library .views-row .card-content .card-text
     color: #fff;
 }
 
+body.media--view .block-views-exposed-filter-blockunpublished-assets-unpublished-assets .views-row .card-content:hover,
+body.media--view .block-views-exposed-filter-blockunpublished-assets-user-unpublished-assets .views-row .card-content:hover,
 body.media--view .view-media-library .views-row .card-content:hover,
+body.path-admin .block-views-exposed-filter-blockunpublished-assets-unpublished-assets .views-row .card-content:hover,
+body.path-admin .block-views-exposed-filter-blockunpublished-assets-user-unpublished-assets .views-row .card-content:hover,
 body.path-admin .view-media-library .views-row .card-content:hover,
+body.path-frontpage .block-views-exposed-filter-blockunpublished-assets-unpublished-assets .views-row .card-content:hover,
+body.path-frontpage .block-views-exposed-filter-blockunpublished-assets-user-unpublished-assets .views-row .card-content:hover,
 body.path-frontpage .view-media-library .views-row .card-content:hover
 {
     background: rgba(0, 0, 0, .5);
 }
 
+body.media--view .block-views-exposed-filter-blockunpublished-assets-unpublished-assets .views-row .card-content:hover .btn-sm,
+body.media--view .block-views-exposed-filter-blockunpublished-assets-user-unpublished-assets .views-row .card-content:hover .btn-sm,
 body.media--view .view-media-library .views-row .card-content:hover .btn-sm,
+body.path-admin .block-views-exposed-filter-blockunpublished-assets-unpublished-assets .views-row .card-content:hover .btn-sm,
+body.path-admin .block-views-exposed-filter-blockunpublished-assets-user-unpublished-assets .views-row .card-content:hover .btn-sm,
 body.path-admin .view-media-library .views-row .card-content:hover .btn-sm,
+body.path-frontpage .block-views-exposed-filter-blockunpublished-assets-unpublished-assets .views-row .card-content:hover .btn-sm,
+body.path-frontpage .block-views-exposed-filter-blockunpublished-assets-user-unpublished-assets .views-row .card-content:hover .btn-sm,
 body.path-frontpage .view-media-library .views-row .card-content:hover .btn-sm
 {
     opacity: 1;
 }
 
+body.media--view .block-views-exposed-filter-blockunpublished-assets-unpublished-assets .views-row .card-content:hover h4,
+body.media--view .block-views-exposed-filter-blockunpublished-assets-user-unpublished-assets .views-row .card-content:hover h4,
 body.media--view .view-media-library .views-row .card-content:hover h4,
+body.path-admin .block-views-exposed-filter-blockunpublished-assets-unpublished-assets .views-row .card-content:hover h4,
+body.path-admin .block-views-exposed-filter-blockunpublished-assets-user-unpublished-assets .views-row .card-content:hover h4,
 body.path-admin .view-media-library .views-row .card-content:hover h4,
+body.path-frontpage .block-views-exposed-filter-blockunpublished-assets-unpublished-assets .views-row .card-content:hover h4,
+body.path-frontpage .block-views-exposed-filter-blockunpublished-assets-user-unpublished-assets .views-row .card-content:hover h4,
 body.path-frontpage .view-media-library .views-row .card-content:hover h4
 {
     opacity: 1;
 }
 
+body.media--view .block-views-exposed-filter-blockunpublished-assets-unpublished-assets .views-row .card-content:hover .card-text,
+body.media--view .block-views-exposed-filter-blockunpublished-assets-user-unpublished-assets .views-row .card-content:hover .card-text,
 body.media--view .view-media-library .views-row .card-content:hover .card-text,
+body.path-admin .block-views-exposed-filter-blockunpublished-assets-unpublished-assets .views-row .card-content:hover .card-text,
+body.path-admin .block-views-exposed-filter-blockunpublished-assets-user-unpublished-assets .views-row .card-content:hover .card-text,
 body.path-admin .view-media-library .views-row .card-content:hover .card-text,
+body.path-frontpage .block-views-exposed-filter-blockunpublished-assets-unpublished-assets .views-row .card-content:hover .card-text,
+body.path-frontpage .block-views-exposed-filter-blockunpublished-assets-user-unpublished-assets .views-row .card-content:hover .card-text,
 body.path-frontpage .view-media-library .views-row .card-content:hover .card-text
 {
     opacity: 1;
 }
 
+body.media--view .block-views-exposed-filter-blockunpublished-assets-unpublished-assets .views-row .card-content .media-category,
+body.media--view .block-views-exposed-filter-blockunpublished-assets-user-unpublished-assets .views-row .card-content .media-category,
 body.media--view .view-media-library .views-row .card-content .media-category,
+body.path-admin .block-views-exposed-filter-blockunpublished-assets-unpublished-assets .views-row .card-content .media-category,
+body.path-admin .block-views-exposed-filter-blockunpublished-assets-user-unpublished-assets .views-row .card-content .media-category,
 body.path-admin .view-media-library .views-row .card-content .media-category,
+body.path-frontpage .block-views-exposed-filter-blockunpublished-assets-unpublished-assets .views-row .card-content .media-category,
+body.path-frontpage .block-views-exposed-filter-blockunpublished-assets-user-unpublished-assets .views-row .card-content .media-category,
 body.path-frontpage .view-media-library .views-row .card-content .media-category
 {
     display: block;
 }
 
+body.media--view .block-views-exposed-filter-blockunpublished-assets-unpublished-assets .views-row .card-content .card--inner-text,
+body.media--view .block-views-exposed-filter-blockunpublished-assets-user-unpublished-assets .views-row .card-content .card--inner-text,
 body.media--view .view-media-library .views-row .card-content .card--inner-text,
+body.path-admin .block-views-exposed-filter-blockunpublished-assets-unpublished-assets .views-row .card-content .card--inner-text,
+body.path-admin .block-views-exposed-filter-blockunpublished-assets-user-unpublished-assets .views-row .card-content .card--inner-text,
 body.path-admin .view-media-library .views-row .card-content .card--inner-text,
+body.path-frontpage .block-views-exposed-filter-blockunpublished-assets-unpublished-assets .views-row .card-content .card--inner-text,
+body.path-frontpage .block-views-exposed-filter-blockunpublished-assets-user-unpublished-assets .views-row .card-content .card--inner-text,
 body.path-frontpage .view-media-library .views-row .card-content .card--inner-text
 {
     position: relative;
@@ -194,15 +302,27 @@ body.path-frontpage .view-media-library .views-row .card-content .card--inner-te
 
 @media (min-width: 992px) and (max-width: 1247px)
 {
+    body.media--view .block-views-exposed-filter-blockunpublished-assets-unpublished-assets .views-row,
+    body.media--view .block-views-exposed-filter-blockunpublished-assets-user-unpublished-assets .views-row,
     body.media--view .view-media-library .views-row,
+    body.path-admin .block-views-exposed-filter-blockunpublished-assets-unpublished-assets .views-row,
+    body.path-admin .block-views-exposed-filter-blockunpublished-assets-user-unpublished-assets .views-row,
     body.path-admin .view-media-library .views-row,
+    body.path-frontpage .block-views-exposed-filter-blockunpublished-assets-unpublished-assets .views-row,
+    body.path-frontpage .block-views-exposed-filter-blockunpublished-assets-user-unpublished-assets .views-row,
     body.path-frontpage .view-media-library .views-row
     {
         width: 19vw;
         height: 14vw;
     }
+    body.media--view .block-views-exposed-filter-blockunpublished-assets-unpublished-assets .views-row img,
+    body.media--view .block-views-exposed-filter-blockunpublished-assets-user-unpublished-assets .views-row img,
     body.media--view .view-media-library .views-row img,
+    body.path-admin .block-views-exposed-filter-blockunpublished-assets-unpublished-assets .views-row img,
+    body.path-admin .block-views-exposed-filter-blockunpublished-assets-user-unpublished-assets .views-row img,
     body.path-admin .view-media-library .views-row img,
+    body.path-frontpage .block-views-exposed-filter-blockunpublished-assets-unpublished-assets .views-row img,
+    body.path-frontpage .block-views-exposed-filter-blockunpublished-assets-user-unpublished-assets .views-row img,
     body.path-frontpage .view-media-library .views-row img
     {
         max-height: 130px;
@@ -211,8 +331,14 @@ body.path-frontpage .view-media-library .views-row .card-content .card--inner-te
 
 @media (max-width: 992px)
 {
+    body.media--view .block-views-exposed-filter-blockunpublished-assets-unpublished-assets .views-row,
+    body.media--view .block-views-exposed-filter-blockunpublished-assets-user-unpublished-assets .views-row,
     body.media--view .view-media-library .views-row,
+    body.path-admin .block-views-exposed-filter-blockunpublished-assets-unpublished-assets .views-row,
+    body.path-admin .block-views-exposed-filter-blockunpublished-assets-user-unpublished-assets .views-row,
     body.path-admin .view-media-library .views-row,
+    body.path-frontpage .block-views-exposed-filter-blockunpublished-assets-unpublished-assets .views-row,
+    body.path-frontpage .block-views-exposed-filter-blockunpublished-assets-user-unpublished-assets .views-row,
     body.path-frontpage .view-media-library .views-row
     {
         position: relative;
@@ -290,8 +416,14 @@ body.path-frontpage .useage-overlay-wrapper .overlay-content span.close
     color: black;
 }
 
+body.media--view .block-views-exposed-filter-blockunpublished-assets-unpublished-assets,
+body.media--view .block-views-exposed-filter-blockunpublished-assets-user-unpublished-assets,
 body.media--view #block-damo-theme-exposed-asset-search-form,
+body.path-admin .block-views-exposed-filter-blockunpublished-assets-unpublished-assets,
+body.path-admin .block-views-exposed-filter-blockunpublished-assets-user-unpublished-assets,
 body.path-admin #block-damo-theme-exposed-asset-search-form,
+body.path-frontpage .block-views-exposed-filter-blockunpublished-assets-unpublished-assets,
+body.path-frontpage .block-views-exposed-filter-blockunpublished-assets-user-unpublished-assets,
 body.path-frontpage #block-damo-theme-exposed-asset-search-form
 {
     z-index: 999;
@@ -329,23 +461,41 @@ body.path-frontpage .view-header
 
 @media (max-width: 575px)
 {
+    body.media--view .block-views-exposed-filter-blockunpublished-assets-unpublished-assets .view-content,
+    body.media--view .block-views-exposed-filter-blockunpublished-assets-user-unpublished-assets .view-content,
     body.media--view .view-media-library .view-content,
+    body.path-admin .block-views-exposed-filter-blockunpublished-assets-unpublished-assets .view-content,
+    body.path-admin .block-views-exposed-filter-blockunpublished-assets-user-unpublished-assets .view-content,
     body.path-admin .view-media-library .view-content,
+    body.path-frontpage .block-views-exposed-filter-blockunpublished-assets-unpublished-assets .view-content,
+    body.path-frontpage .block-views-exposed-filter-blockunpublished-assets-user-unpublished-assets .view-content,
     body.path-frontpage .view-media-library .view-content
     {
         width: 325px;
         margin: 0 auto;
     }
+    body.media--view .block-views-exposed-filter-blockunpublished-assets-unpublished-assets .views-row,
+    body.media--view .block-views-exposed-filter-blockunpublished-assets-user-unpublished-assets .views-row,
     body.media--view .view-media-library .views-row,
+    body.path-admin .block-views-exposed-filter-blockunpublished-assets-unpublished-assets .views-row,
+    body.path-admin .block-views-exposed-filter-blockunpublished-assets-user-unpublished-assets .views-row,
     body.path-admin .view-media-library .views-row,
+    body.path-frontpage .block-views-exposed-filter-blockunpublished-assets-unpublished-assets .views-row,
+    body.path-frontpage .block-views-exposed-filter-blockunpublished-assets-user-unpublished-assets .views-row,
     body.path-frontpage .view-media-library .views-row
     {
         width: 320px;
         height: 225px;
         margin: 0 auto;
     }
+    body.media--view .block-views-exposed-filter-blockunpublished-assets-unpublished-assets .views-row .card.card-inverse.card--media img,
+    body.media--view .block-views-exposed-filter-blockunpublished-assets-user-unpublished-assets .views-row .card.card-inverse.card--media img,
     body.media--view .view-media-library .views-row .card.card-inverse.card--media img,
+    body.path-admin .block-views-exposed-filter-blockunpublished-assets-unpublished-assets .views-row .card.card-inverse.card--media img,
+    body.path-admin .block-views-exposed-filter-blockunpublished-assets-user-unpublished-assets .views-row .card.card-inverse.card--media img,
     body.path-admin .view-media-library .views-row .card.card-inverse.card--media img,
+    body.path-frontpage .block-views-exposed-filter-blockunpublished-assets-unpublished-assets .views-row .card.card-inverse.card--media img,
+    body.path-frontpage .block-views-exposed-filter-blockunpublished-assets-user-unpublished-assets .views-row .card.card-inverse.card--media img,
     body.path-frontpage .view-media-library .views-row .card.card-inverse.card--media img
     {
         max-height: 225px;
@@ -354,8 +504,14 @@ body.path-frontpage .view-header
 
 @media (min-width: 1247px) and (max-width: 1600px)
 {
+    body.media--view .block-views-exposed-filter-blockunpublished-assets-unpublished-assets .views-row,
+    body.media--view .block-views-exposed-filter-blockunpublished-assets-user-unpublished-assets .views-row,
     body.media--view .view-media-library .views-row,
+    body.path-admin .block-views-exposed-filter-blockunpublished-assets-unpublished-assets .views-row,
+    body.path-admin .block-views-exposed-filter-blockunpublished-assets-user-unpublished-assets .views-row,
     body.path-admin .view-media-library .views-row,
+    body.path-frontpage .block-views-exposed-filter-blockunpublished-assets-unpublished-assets .views-row,
+    body.path-frontpage .block-views-exposed-filter-blockunpublished-assets-user-unpublished-assets .views-row,
     body.path-frontpage .view-media-library .views-row
     {
         height: 11.9vw;
@@ -387,4 +543,12 @@ body.no-filter .header-background
 body.no-filter .usage-wrapper
 {
     margin-top: 85px;
+}
+
+.block-views-exposed-filter-blockunpublished-assets-user-unpublished-assets,
+.block-views-exposed-filter-blockunpublished-assets-unpublished-assets
+{
+    top: 20px;
+
+    margin: 0 auto 40px auto !important;
 }

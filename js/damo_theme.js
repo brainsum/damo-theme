@@ -10,11 +10,15 @@
     attach: function (context, settings) {
       var resetButton,
           searchSelect = '#views-exposed-form-asset-search-asset-search select',
+          searchSelect2 = '#views-exposed-form-unpublished-assets-unpublished-assets select',
+          searchSelect3 = '#block-exposedformunpublished-assetsuser-unpublished-assets select',
           searchInput = '.search-wrapper #edit-text',
           width = 0,
           itemsPerRow = 0;
 
       $(searchSelect).niceSelect();
+      $(searchSelect2).niceSelect();
+      $(searchSelect3).niceSelect();
 
       if (!$(".exposed_form_reset").length){
         $("[id^='views-exposed-form']").find('#edit-actions').append('<button class="exposed_form_reset hidden" onclick="javascript:jQuery(this.form).clearForm();jQuery(this.form).find(\'.form-submit\').trigger(\'click\');return false;" class="exposed_form_reset"><i class="fas fa-times"></i>' + Drupal.t('CLEAR ALL FILTERS') + '</button>');
