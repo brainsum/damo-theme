@@ -526,7 +526,23 @@ body.path-frontpage #block-damo-theme-exposed-asset-search-form
 
     padding-left: 38px;
 
-    border-radius: 50px;
+    border-radius: 0;
+}
+
+@media (min-width: 576px)
+{
+    body.media--view .block-views-exposed-filter-blockunpublished-assets-unpublished-assets,
+    body.media--view .block-views-exposed-filter-blockunpublished-assets-user-unpublished-assets,
+    body.media--view #block-damo-theme-exposed-asset-search-form,
+    body.path-admin .block-views-exposed-filter-blockunpublished-assets-unpublished-assets,
+    body.path-admin .block-views-exposed-filter-blockunpublished-assets-user-unpublished-assets,
+    body.path-admin #block-damo-theme-exposed-asset-search-form,
+    body.path-frontpage .block-views-exposed-filter-blockunpublished-assets-unpublished-assets,
+    body.path-frontpage .block-views-exposed-filter-blockunpublished-assets-user-unpublished-assets,
+    body.path-frontpage #block-damo-theme-exposed-asset-search-form
+    {
+        border-radius: 50px;
+    }
 }
 
 body.media--view .form-group,
@@ -549,13 +565,26 @@ body.path-frontpage .view-header
 
     max-width: 1031px;
     margin: 0 auto;
-    margin-top: -41px;
+    margin-top: 0;
     margin-bottom: 37px;
 
+    text-align: center;
     letter-spacing: 2.5px;
     text-transform: uppercase;
 
     color: #a2a2a2;
+}
+
+@media (min-width: 576px)
+{
+    body.media--view .view-header,
+    body.path-admin .view-header,
+    body.path-frontpage .view-header
+    {
+        margin-top: -41px;
+
+        text-align: left;
+    }
 }
 
 @media (max-width: 575px)

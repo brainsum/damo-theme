@@ -825,16 +825,22 @@ body.path-admin .btn
  * @include align-content(flex-start | flex-end | center | space-between | space-around | stretch);
  * Default: stretch
  */
+.block-views-exposed-filter-blockunpublished-assets-user-unpublished-assets form .js-form-item.form-type-textfield,
+.block-views-exposed-filter-blockunpublished-assets-unpublished-assets form .js-form-item.form-type-textfield,
 .block-views-exposed-filter-blockasset-search-asset-search form .js-form-item.form-type-textfield
 {
     margin-top: 3px;
 }
 
+.block-views-exposed-filter-blockunpublished-assets-user-unpublished-assets form .form-item,
+.block-views-exposed-filter-blockunpublished-assets-unpublished-assets form .form-item,
 .block-views-exposed-filter-blockasset-search-asset-search form .form-item
 {
     float: left;
 }
 
+.block-views-exposed-filter-blockunpublished-assets-user-unpublished-assets form .form-item #edit-text,
+.block-views-exposed-filter-blockunpublished-assets-unpublished-assets form .form-item #edit-text,
 .block-views-exposed-filter-blockasset-search-asset-search form .form-item #edit-text
 {
     color: #4f545c;
@@ -842,28 +848,55 @@ body.path-admin .btn
     background: #f1f1f1;
 }
 
+.block-views-exposed-filter-blockunpublished-assets-user-unpublished-assets form .form-item #edit-text:focus,
+.block-views-exposed-filter-blockunpublished-assets-unpublished-assets form .form-item #edit-text:focus,
 .block-views-exposed-filter-blockasset-search-asset-search form .form-item #edit-text:focus
 {
     border: 1px solid #56ace7;
     box-shadow: 0 0 0 1px #56ace7;
 }
 
+.block-views-exposed-filter-blockunpublished-assets-user-unpublished-assets form i,
+.block-views-exposed-filter-blockunpublished-assets-unpublished-assets form i,
 .block-views-exposed-filter-blockasset-search-asset-search form i
 {
     display: none;
 }
 
+.block-views-exposed-filter-blockunpublished-assets-user-unpublished-assets form .js-form-type-textfield,
+.block-views-exposed-filter-blockunpublished-assets-unpublished-assets form .js-form-type-textfield,
+.block-views-exposed-filter-blockasset-search-asset-search form .js-form-type-textfield
+{
+    width: 100%;
+}
+
+@media (min-width: 576px)
+{
+    .block-views-exposed-filter-blockunpublished-assets-user-unpublished-assets form .js-form-type-textfield,
+    .block-views-exposed-filter-blockunpublished-assets-unpublished-assets form .js-form-type-textfield,
+    .block-views-exposed-filter-blockasset-search-asset-search form .js-form-type-textfield
+    {
+        width: calc(100% - 210px);
+    }
+}
+
+.block-views-exposed-filter-blockunpublished-assets-user-unpublished-assets form .search-wrapper,
+.block-views-exposed-filter-blockunpublished-assets-unpublished-assets form .search-wrapper,
 .block-views-exposed-filter-blockasset-search-asset-search form .search-wrapper
 {
     position: relative;
 }
 
+.block-views-exposed-filter-blockunpublished-assets-user-unpublished-assets form .search-wrapper input,
+.block-views-exposed-filter-blockunpublished-assets-unpublished-assets form .search-wrapper input,
 .block-views-exposed-filter-blockasset-search-asset-search form .search-wrapper input
 {
     padding-top: 10px;
     padding-bottom: 9px;
 }
 
+.block-views-exposed-filter-blockunpublished-assets-user-unpublished-assets form .search-wrapper i,
+.block-views-exposed-filter-blockunpublished-assets-unpublished-assets form .search-wrapper i,
 .block-views-exposed-filter-blockasset-search-asset-search form .search-wrapper i
 {
     font-size: 20px;
@@ -887,28 +920,61 @@ body.path-admin .btn
     border-radius: 0 22px 22px 0;
 }
 
+.block-views-exposed-filter-blockunpublished-assets-user-unpublished-assets form .search-wrapper.focused i,
+.block-views-exposed-filter-blockunpublished-assets-unpublished-assets form .search-wrapper.focused i,
 .block-views-exposed-filter-blockasset-search-asset-search form .search-wrapper.focused i
 {
     color: white;
     background-color: #56ace7;
 }
 
+.block-views-exposed-filter-blockunpublished-assets-user-unpublished-assets .js-form-item-category,
+.block-views-exposed-filter-blockunpublished-assets-unpublished-assets .js-form-item-category,
+#views-exposed-form-asset-search-asset-search .js-form-item-category
+{
+    position: relative;
+    left: 50%;
+
+    transform: translateX(-50%);
+}
+
+@media (min-width: 576px)
+{
+    .block-views-exposed-filter-blockunpublished-assets-user-unpublished-assets .js-form-item-category,
+    .block-views-exposed-filter-blockunpublished-assets-unpublished-assets .js-form-item-category,
+    #views-exposed-form-asset-search-asset-search .js-form-item-category
+    {
+        position: relative;
+        left: 0;
+
+        transform: translateX(0);
+    }
+}
+
+.block-views-exposed-filter-blockunpublished-assets-user-unpublished-assets .select-wrapper,
+.block-views-exposed-filter-blockunpublished-assets-unpublished-assets .select-wrapper,
 #views-exposed-form-asset-search-asset-search .select-wrapper
 {
     margin-top: 7px;
     padding-left: 10px;
 }
 
+.block-views-exposed-filter-blockunpublished-assets-user-unpublished-assets .select-wrapper::after,
+.block-views-exposed-filter-blockunpublished-assets-unpublished-assets .select-wrapper::after,
 #views-exposed-form-asset-search-asset-search .select-wrapper::after
 {
     display: none;
 }
 
+.block-views-exposed-filter-blockunpublished-assets-user-unpublished-assets .select-wrapper select,
+.block-views-exposed-filter-blockunpublished-assets-unpublished-assets .select-wrapper select,
 #views-exposed-form-asset-search-asset-search .select-wrapper select
 {
     display: none;
 }
 
+.block-views-exposed-filter-blockunpublished-assets-user-unpublished-assets .select-wrapper .nice-select,
+.block-views-exposed-filter-blockunpublished-assets-unpublished-assets .select-wrapper .nice-select,
 #views-exposed-form-asset-search-asset-search .select-wrapper .nice-select
 {
     width: 200px;
@@ -918,6 +984,8 @@ body.path-admin .btn
     background: #f1f1f1;
 }
 
+.block-views-exposed-filter-blockunpublished-assets-user-unpublished-assets .select-wrapper .nice-select ul,
+.block-views-exposed-filter-blockunpublished-assets-unpublished-assets .select-wrapper .nice-select ul,
 #views-exposed-form-asset-search-asset-search .select-wrapper .nice-select ul
 {
     overflow-y: auto;
@@ -925,11 +993,15 @@ body.path-admin .btn
     max-height: 400px;
 }
 
+.block-views-exposed-filter-blockunpublished-assets-user-unpublished-assets .select-wrapper .nice-select:after,
+.block-views-exposed-filter-blockunpublished-assets-unpublished-assets .select-wrapper .nice-select:after,
 #views-exposed-form-asset-search-asset-search .select-wrapper .nice-select:after
 {
     margin-top: -3px;
 }
 
+.block-views-exposed-filter-blockunpublished-assets-user-unpublished-assets .select-wrapper .nice-select .current,
+.block-views-exposed-filter-blockunpublished-assets-unpublished-assets .select-wrapper .nice-select .current,
 #views-exposed-form-asset-search-asset-search .select-wrapper .nice-select .current
 {
     overflow: hidden;
@@ -937,6 +1009,8 @@ body.path-admin .btn
     text-overflow: ellipsis;
 }
 
+.block-views-exposed-filter-blockunpublished-assets-user-unpublished-assets .select-wrapper .nice-select .option,
+.block-views-exposed-filter-blockunpublished-assets-unpublished-assets .select-wrapper .nice-select .option,
 #views-exposed-form-asset-search-asset-search .select-wrapper .nice-select .option
 {
     font-family: 'Montserrat', sans-serif;
@@ -952,6 +1026,12 @@ body.path-admin .btn
     color: #6b6b6b;
 }
 
+.block-views-exposed-filter-blockunpublished-assets-user-unpublished-assets .select-wrapper .nice-select .option:hover,
+.block-views-exposed-filter-blockunpublished-assets-user-unpublished-assets .select-wrapper .nice-select .option.focus,
+.block-views-exposed-filter-blockunpublished-assets-user-unpublished-assets .select-wrapper .nice-select .option.selected.focus,
+.block-views-exposed-filter-blockunpublished-assets-unpublished-assets .select-wrapper .nice-select .option:hover,
+.block-views-exposed-filter-blockunpublished-assets-unpublished-assets .select-wrapper .nice-select .option.focus,
+.block-views-exposed-filter-blockunpublished-assets-unpublished-assets .select-wrapper .nice-select .option.selected.focus,
 #views-exposed-form-asset-search-asset-search .select-wrapper .nice-select .option:hover,
 #views-exposed-form-asset-search-asset-search .select-wrapper .nice-select .option.focus,
 #views-exposed-form-asset-search-asset-search .select-wrapper .nice-select .option.selected.focus
@@ -959,6 +1039,8 @@ body.path-admin .btn
     background-color: #f6f6f6;
 }
 
+.block-views-exposed-filter-blockunpublished-assets-user-unpublished-assets .select-wrapper .nice-select .option.selected.focus,
+.block-views-exposed-filter-blockunpublished-assets-unpublished-assets .select-wrapper .nice-select .option.selected.focus,
 #views-exposed-form-asset-search-asset-search .select-wrapper .nice-select .option.selected.focus
 {
     font-family: 'Montserrat', sans-serif;
@@ -966,6 +1048,8 @@ body.path-admin .btn
     font-style: normal;
 }
 
+.block-views-exposed-filter-blockunpublished-assets-user-unpublished-assets .select-wrapper .nice-select span,
+.block-views-exposed-filter-blockunpublished-assets-unpublished-assets .select-wrapper .nice-select span,
 #views-exposed-form-asset-search-asset-search .select-wrapper .nice-select span
 {
     font-family: 'Montserrat', sans-serif;
@@ -985,11 +1069,15 @@ body.path-admin .btn
     color: #333;
 }
 
+.block-views-exposed-filter-blockunpublished-assets-user-unpublished-assets .select-wrapper .nice-select ul.list,
+.block-views-exposed-filter-blockunpublished-assets-unpublished-assets .select-wrapper .nice-select ul.list,
 #views-exposed-form-asset-search-asset-search .select-wrapper .nice-select ul.list
 {
     width: 200px;
 }
 
+.block-views-exposed-filter-blockunpublished-assets-user-unpublished-assets .exposed_form_reset,
+.block-views-exposed-filter-blockunpublished-assets-unpublished-assets .exposed_form_reset,
 #views-exposed-form-asset-search-asset-search .exposed_form_reset
 {
     font-family: 'Montserrat', sans-serif;
@@ -1015,6 +1103,8 @@ body.path-admin .btn
     background: white;
 }
 
+.block-views-exposed-filter-blockunpublished-assets-user-unpublished-assets .exposed_form_reset i,
+.block-views-exposed-filter-blockunpublished-assets-unpublished-assets .exposed_form_reset i,
 #views-exposed-form-asset-search-asset-search .exposed_form_reset i
 {
     display: block;
@@ -1057,6 +1147,38 @@ body.path-admin .btn
     text-align: right;
 }
 
+.dam-local-task-back-button .dam-add-media-asset-link,
+.dam-local-task-extension-wrapper .dam-add-media-asset-link
+{
+    float: left;
+}
+
+@media (min-width: 576px)
+{
+    .dam-local-task-back-button .dam-add-media-asset-link,
+    .dam-local-task-extension-wrapper .dam-add-media-asset-link
+    {
+        float: none;
+    }
+}
+
+.dam-local-task-back-button .dam-media-collection-link,
+.dam-local-task-extension-wrapper .dam-media-collection-link
+{
+    float: right;
+
+    padding: 15px 0;
+}
+
+@media (min-width: 576px)
+{
+    .dam-local-task-back-button .dam-media-collection-link,
+    .dam-local-task-extension-wrapper .dam-media-collection-link
+    {
+        float: none;
+    }
+}
+
 .dam-local-task-back-button a,
 .dam-local-task-extension-wrapper a
 {
@@ -1089,7 +1211,8 @@ body.path-frontpage .dam-local-task-extension-wrapper
 
 body.path-frontpage .header-background
 {
-    height: 230px;
+    height: auto;
+    margin-bottom: -20px;
 }
 
 body.media--view .dam-local-task-back-button
@@ -1101,12 +1224,105 @@ body.media--view .dam-local-task-back-button
     display: block;
 
     width: auto;
-    margin-right: 240px;
 }
 
-body.media--view .dam-local-task-extension-wrapper
+#block-exposedformunpublished-assetsuser-unpublished-assets .select-wrapper,
+#views-exposed-form-unpublished-assets-unpublished-assets .select-wrapper
+{
+    width: auto;
+}
+
+#block-exposedformunpublished-assetsuser-unpublished-assets .select-wrapper:after,
+#views-exposed-form-unpublished-assets-unpublished-assets .select-wrapper:after
 {
     display: none;
+}
+
+#block-exposedformunpublished-assetsuser-unpublished-assets .nice-select,
+#views-exposed-form-unpublished-assets-unpublished-assets .nice-select
+{
+    line-height: 30px;
+
+    top: 10px;
+
+    margin-right: 30px;
+}
+
+#block-exposedformunpublished-assetsuser-unpublished-assets .form-item,
+#views-exposed-form-unpublished-assets-unpublished-assets .form-item
+{
+    width: auto;
+}
+
+#block-exposedformunpublished-assetsuser-unpublished-assets .form-item label,
+#views-exposed-form-unpublished-assets-unpublished-assets .form-item label
+{
+    position: relative;
+    top: -4px;
+}
+
+#block-exposedformunpublished-assetsuser-unpublished-assets #edit-actions,
+#views-exposed-form-unpublished-assets-unpublished-assets #edit-actions
+{
+    float: right;
+}
+
+#block-exposedformunpublished-assetsuser-unpublished-assets #edit-actions .form-submit,
+#views-exposed-form-unpublished-assets-unpublished-assets #edit-actions .form-submit
+{
+    font-size: 14px;
+
+    padding: 12px 20px;
+
+    border-radius: 40px;
+}
+
+@media (max-width: 1200px)
+{
+    .dam-local-task-extension-wrapper
+    {
+        position: relative;
+        top: 0;
+        left: 0;
+
+        float: right;
+
+        width: 100%;
+        padding-top: 25px;
+
+        transform: translateX(0);
+    }
+    .dam-local-task-extension-wrapper a
+    {
+        display: inline-block;
+
+        max-width: 175px;
+    }
+}
+
+@media (max-width: 452px)
+{
+    .dam-local-task-back-button .dam-add-media-asset-link
+    {
+        display: block;
+        float: none;
+
+        margin: 0 auto;
+    }
+    .dam-local-task-extension-wrapper .dam-add-media-asset-link
+    {
+        display: block;
+        float: none;
+
+        margin: 0 auto;
+    }
+    .dam-local-task-extension-wrapper .dam-media-collection-link
+    {
+        display: block;
+        float: none;
+
+        margin: 0 auto;
+    }
 }
 
 .dam-logo
@@ -1127,6 +1343,22 @@ body.media--view .dam-local-task-extension-wrapper
 .dam-logo img
 {
     width: 150px;
+}
+
+@media (max-width: 1390px)
+{
+    .dam-logo
+    {
+        position: relative;
+
+        display: block;
+
+        height: 90px;
+    }
+    .dam-logo a
+    {
+        display: block;
+    }
 }
 
 /*!

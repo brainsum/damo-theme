@@ -24,6 +24,12 @@
     i {
       display: none;
     }
+    .js-form-type-textfield {
+      @include media-breakpoint-up(sm) {
+        width: calc(100% - 210px);
+      }
+      width: 100%;
+    }
     .search-wrapper{
       position: relative;
       input {
@@ -60,6 +66,16 @@
 .block-views-exposed-filter-blockunpublished-assets-user-unpublished-assets,
 .block-views-exposed-filter-blockunpublished-assets-unpublished-assets,
 #views-exposed-form-asset-search-asset-search {
+  .js-form-item-category {
+    @include media-breakpoint-up(sm) {
+      left: 0;
+      transform: translateX(0);
+      position: relative;
+    }
+    left: 50%;
+    transform: translateX(-50%);
+    position: relative;
+  }
   .select-wrapper {
     padding-left: 10px;
     margin-top: 7px;
@@ -155,6 +171,19 @@
 .dam-local-task-back-button,
 .dam-local-task-extension-wrapper {
   @include fontArialBold;
+  .dam-add-media-asset-link {
+    @include media-breakpoint-up(sm) {
+      float: none;
+    }
+    float: left;
+  }
+  .dam-media-collection-link {
+    @include media-breakpoint-up(sm) {
+      float: none;
+    }
+    float: right;
+    padding: 15px 0;
+  }
   line-height: 12px;
   // text-transform: uppercase;
   font-size: 11px;
@@ -190,20 +219,20 @@ body {
     }
 
     .header-background {
-      height: 230px;
+      height: auto;
+      margin-bottom: -20px;
     }
   }
   &.media--view {
     .dam-local-task-back-button {
+      @include media-breakpoint-up(lg) {
+
+      }
       width: auto;
       left: initial;
       right: 0;
-      margin-right: 240px;
       top: 37px;
       display: block;
-    }
-    .dam-local-task-extension-wrapper {
-      display: none;
     }
   }
 }
@@ -237,6 +266,46 @@ body {
       padding: 12px 20px;
       font-size: 14px;
       border-radius: 40px;
+    }
+  }
+}
+
+@media (max-width: 1200px) {
+  .dam-local-task-extension-wrapper {
+    position: relative;
+    top: 0;
+    float: right;
+    width: 100%;
+    left: 0;
+    transform: translateX(0);
+    padding-top: 25px;
+    a {
+      display: inline-block;
+      max-width: 175px;
+    }
+  }
+}
+
+@media (max-width: 452px) {
+  .dam-local-task-back-button {
+    .dam-add-media-asset-link {
+      float: none;
+      margin: 0 auto;
+      display: block;
+    }
+  }
+  .dam-local-task-extension-wrapper {
+    .dam-add-media-asset-link {
+      float: none;
+      margin: 0 auto;
+      display: block;
+    }
+  }
+  .dam-local-task-extension-wrapper {
+    .dam-media-collection-link {
+      float: none;
+      margin: 0 auto;
+      display: block;
     }
   }
 }

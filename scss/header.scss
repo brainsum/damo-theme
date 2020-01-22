@@ -188,7 +188,10 @@ header {
 @media(max-width: 991px) {
   .dam-local-task-extension-wrapper {
     width: 720px;
-    top: -90px;
+    padding: 17px;
+    margin-top: 5px;
+    top: 0;
+    position: relative;
   }
   .views-exposed-form {
     max-width: 720px;
@@ -210,7 +213,10 @@ header {
 @media(max-width: 767px) {
   .dam-local-task-extension-wrapper,
   .views-exposed-form {
-    max-width: 540px;
+    @include media-breakpoint-up(sm) {
+      max-width: 540px;
+    }
+    width: 100%;
   }
 }
 
@@ -305,5 +311,11 @@ header {
         }
       }
     }
+  }
+}
+
+@media (max-width: 991px) {
+  #block-damo-theme-assets-navigation {
+    padding-top: 0px;
   }
 }

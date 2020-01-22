@@ -181,7 +181,10 @@ body.path-frontpage {
   #block-damo-theme-exposed-asset-search-form {
     padding-left: 38px;
     z-index: 999;
-    border-radius: 50px;
+    @include media-breakpoint-up(sm) {
+      border-radius: 50px;
+    }
+    border-radius: 0px;
   }
   .form-group {
     margin-bottom: 15px;
@@ -190,10 +193,15 @@ body.path-frontpage {
     @include fontArialBold;
     @include buttonFontStyle;
     @include fontColor1;
+    @include media-breakpoint-up(sm) {
+      margin-top: -41px;
+      text-align: left;
+    }
     font-size: 10px;
     max-width: 1031px;
     margin: 0 auto;
-    margin-top: -41px;
+    text-align: center;
+    margin-top: 0;
     margin-bottom: 37px;
   }
 

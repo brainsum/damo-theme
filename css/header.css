@@ -334,9 +334,12 @@ header.navbar .header-background::after
 {
     .dam-local-task-extension-wrapper
     {
-        top: -90px;
+        position: relative;
+        top: 0;
 
         width: 720px;
+        margin-top: 5px;
+        padding: 17px;
     }
     .views-exposed-form
     {
@@ -359,6 +362,15 @@ header.navbar .header-background::after
 }
 
 @media (max-width: 767px)
+{
+    .dam-local-task-extension-wrapper,
+    .views-exposed-form
+    {
+        width: 100%;
+    }
+}
+
+@media (max-width: 767px) and (min-width: 576px)
 {
     .dam-local-task-extension-wrapper,
     .views-exposed-form
@@ -506,4 +518,12 @@ header.navbar .header-background::after
 {
     border-radius: 30px;
     background: rgba(90, 202, 197, .1);
+}
+
+@media (max-width: 991px)
+{
+    #block-damo-theme-assets-navigation
+    {
+        padding-top: 0;
+    }
 }
