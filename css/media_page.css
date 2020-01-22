@@ -171,6 +171,19 @@
     display: block;
 }
 
+.media-page-wrapper.non-image .left-wrapper
+{
+    min-height: 150px;
+}
+
+.media-page-wrapper.non-image .left-wrapper img
+{
+    position: relative;
+    left: 50%;
+
+    transform: translateX(-50%);
+}
+
 .media-page-wrapper .left-wrapper
 {
     float: left;
