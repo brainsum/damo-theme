@@ -57,6 +57,11 @@
 }
 
 .media-page-wrapper {
+  &.non-image {
+    .left-wrapper {
+      height: 150px;
+    }
+  }
   // @include flex;
   // @include flex-direction(column);
   .left-wrapper {

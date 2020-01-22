@@ -34,12 +34,26 @@
 <div{{ attributes }}>
   {{ title_suffix.contextual_links }}
 
-  {{ content.name }}
+  {# {{ content.name }} #}
   {% if buttons %}
     {{ buttons }}
   {% endif %}
   {% if media_collection_data %}
     {{ media_collection_data }}
   {% endif %}
-  {{ content }}
+  {# {{ content }} #}
+
+  <div class="media-page-wrapper non-image">
+    <div class="images-wrapper left-wrapper">
+      {# <img src="{{ content.field_file }}"> #}
+    </div>
+    <div class="right-wrapper">
+      <div class="top-controls">
+      <h4 class="media-title">
+        {{ content.name[0] }}
+      </h4>
+      {{ content.buttons }}
+      </div>
+    </div>
+  </div>
 </div>
