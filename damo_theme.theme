@@ -43,6 +43,9 @@ function damo_theme_preprocess_page(&$variables) {
   if ($routeName === 'entity.media.collection' || $routeName === 'view.unpublished_assets.unpublished_assets') {
     $variables['#attached']['library'][] = 'damo_theme/front_page';
   }
+  if ($routeName === 'entity.media.add_page') {
+    $variables['page']['#title'] = t('Add new content');
+  }
 }
 
 /**
