@@ -180,6 +180,7 @@
     min-height: 150px;
 }
 
+.media-page-wrapper.non-image .left-wrapper video,
 .media-page-wrapper.non-image .left-wrapper img
 {
     position: relative;
