@@ -145,9 +145,7 @@
     top: 0;
     left: 50%;
 
-    -webkit-transform: translateX(-50%);
-        -ms-transform: translateX(-50%);
-            transform: translateX(-50%);
+    transform: translateX(-50%);
 }
 
 @media (min-width: 992px)
@@ -164,10 +162,13 @@
         max-height: 100%;
         margin: 0 auto;
 
-        -webkit-transform: translate(-50%, -50%);
-            -ms-transform: translate(-50%, -50%);
-                transform: translate(-50%, -50%);
+<<<<<<< Updated upstream
+        transform: translate(-50%, -50%);
     }
+=======
+    -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+>>>>>>> Stashed changes
 }
 
 .left-wrapper.images-wrapper .image.active
@@ -185,9 +186,7 @@
     position: relative;
     left: 50%;
 
-    -webkit-transform: translateX(-50%);
-        -ms-transform: translateX(-50%);
-            transform: translateX(-50%);
+    transform: translateX(-50%);
 }
 
 .media-page-wrapper .left-wrapper
@@ -238,8 +237,6 @@
     font-family: 'Montserrat', sans-serif;
     font-weight: 700;
     font-style: normal;
-
-    word-break: break-all;
 }
 
 .right-wrapper .top-controls .controller
@@ -253,10 +250,8 @@
 {
     .right-wrapper .top-controls .controller
     {
-        display: -webkit-box;
-        display: -webkit-flex;
         display: -ms-flexbox;
-        display:         flex;
+        display: flex;
     }
 }
 
@@ -264,10 +259,8 @@
 {
     .right-wrapper .top-controls .controller
     {
-        display: -webkit-box;
-        display: -webkit-flex;
         display: -ms-flexbox;
-        display:         flex;
+        display: flex;
     }
 }
 
@@ -498,7 +491,6 @@
     height: 15px;
 
     -webkit-transform: translateY(-50%);
-        -ms-transform: translateY(-50%);
             transform: translateY(-50%);
 }
 
@@ -635,9 +627,7 @@ main .region-highlighted
 
         padding: 15px 0;
 
-        -webkit-transform: translateX(0);
-            -ms-transform: translateX(0);
-                transform: translateX(0);
+        transform: translateX(0);
     }
     .dam-local-task-back-button a,
     .dam-local-task-extension-wrapper a

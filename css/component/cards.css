@@ -371,8 +371,10 @@
     .card-columns
     {
         -webkit-column-count: 3;
+           -moz-column-count: 3;
                 column-count: 3;
         -webkit-column-gap: 1.25rem;
+           -moz-column-gap: 1.25rem;
                 column-gap: 1.25rem;
     }
     .card-columns .card

@@ -20,9 +20,6 @@
       $(searchSelect2).niceSelect();
       $(searchSelect3).niceSelect();
 
-      if (!$(".exposed_form_reset").length){
-        $("[id^='views-exposed-form']").find('#edit-actions').append('<button class="exposed_form_reset hidden" onclick="javascript:jQuery(this.form).clearForm();jQuery(this.form).find(\'.form-submit\').trigger(\'click\');return false;" class="exposed_form_reset"><i class="fas fa-times"></i>' + Drupal.t('CLEAR ALL FILTERS') + '</button>');
-      }
       resetButton = $('#views-exposed-form-asset-search-asset-search .exposed_form_reset');
       resetButton.on('click', function(){
         $(searchSelect).val('All').niceSelect('update');

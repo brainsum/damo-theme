@@ -217,6 +217,7 @@ body.path-frontpage .view-media-library .views-row .card.card-inverse.card--medi
     height: auto;
 
     -webkit-transform: translate(-50%, -50%) !important;
+        -ms-transform: translate(-50%, -50%) !important;
             transform: translate(-50%, -50%) !important;
 }
 
@@ -270,7 +271,8 @@ body.path-frontpage .view-media-library .views-row .card-content .btn-sm
 
     min-width: 33px;
 
-    transition: opacity 250ms ease-in;
+    -webkit-transition: opacity 250ms ease-in;
+            transition: opacity 250ms ease-in;
 
     opacity: 0;
 }
@@ -287,7 +289,8 @@ body.path-frontpage .view-media-library .views-row .card-content h4
 {
     font-size: 14px;
 
-    transition: opacity 250ms ease-in;
+    -webkit-transition: opacity 250ms ease-in;
+            transition: opacity 250ms ease-in;
 
     opacity: 0;
     color: #fff;
@@ -305,7 +308,8 @@ body.path-frontpage .block-views-exposed-filter-blockunpublished-assets-unpublis
 body.path-frontpage .block-views-exposed-filter-blockunpublished-assets-user-unpublished-assets .views-row .card-content .card-text,
 body.path-frontpage .view-media-library .views-row .card-content .card-text
 {
-    transition: opacity 250ms ease-in;
+    -webkit-transition: opacity 250ms ease-in;
+            transition: opacity 250ms ease-in;
 
     opacity: 0;
     color: #fff;
@@ -395,6 +399,7 @@ body.path-frontpage .view-media-library .views-row .card-content .card--inner-te
     padding: 15px;
 
     -webkit-transform: translateY(-100%);
+        -ms-transform: translateY(-100%);
             transform: translateY(-100%);
 }
 
@@ -495,6 +500,7 @@ body.path-frontpage .useage-overlay-wrapper .overlay-content
     padding: 50px;
 
     -webkit-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
             transform: translateY(-50%);
 
     background: white;

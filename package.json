@@ -19,5 +19,18 @@
     "gulp-eslint": "^3.0.1",
     "gulp-sass": "^2.3.2",
     "gulp-sourcemaps": "^2.6.5"
-  }
+  },
+  "browserslist": [
+    "> 1%",
+    "ie >= 8",
+    "edge >= 15",
+    "ie_mob >= 10",
+    "ff >= 45",
+    "chrome >= 45",
+    "safari >= 7",
+    "opera >= 23",
+    "ios >= 7",
+    "android >= 4",
+    "bb >= 10"
+  ]
 }

@@ -1,6 +1,7 @@
 .fade
 {
-    transition: opacity .15s linear;
+    -webkit-transition: opacity .15s linear;
+            transition: opacity .15s linear;
 
     opacity: 0;
 }
@@ -38,7 +39,10 @@ tbody.collapse.in
 
     height: 0;
 
-    transition-timing-function: ease;
-    transition-duration: .35s;
-    transition-property: height;
+    -webkit-transition-timing-function: ease;
+            transition-timing-function: ease;
+    -webkit-transition-duration: .35s;
+            transition-duration: .35s;
+    -webkit-transition-property: height;
+            transition-property: height;
 }

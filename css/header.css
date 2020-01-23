@@ -138,6 +138,7 @@
     min-height: 200px;
 
     -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
             transform: translate(-50%, -50%);
 
     background: url('../images/header.jpg') no-repeat center center;
@@ -261,7 +262,8 @@
     margin: .5rem 1rem;
     padding: .5rem 0;
 
-    transition: border-bottom .2s;
+    -webkit-transition: border-bottom .2s;
+            transition: border-bottom .2s;
 
     color: #fff;
     border-bottom: 2px solid transparent;
@@ -462,6 +464,7 @@ header.navbar .header-background::after
     padding: 50px;
 
     -webkit-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
             transform: translateY(-50%);
 
     background: white;

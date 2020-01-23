@@ -51,7 +51,8 @@ html.js .btn .ajax-throbber
 
 html.js .form-item .input-group-addon .glyphicon
 {
-    transition: 150ms color, 150ms opacity;
+    -webkit-transition: 150ms color, 150ms opacity;
+            transition: 150ms color, 150ms opacity;
 
     opacity: .5;
 }
