@@ -114,3 +114,8 @@ function damo_theme_preprocess_image(&$variables) {
     $variables['spotlight'] = TRUE;
   }
 }
+
+
+function damo_theme_preprocess_media(&$variables) {
+  $variables['status'] = $variables['media']->isPublished();
+}

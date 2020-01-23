@@ -191,9 +191,15 @@
     }
   }
 }
+.media-status,
 .field--label-inline,
 .field--label-above {
   @include fontArialBold;
+
+  @include media-breakpoint-down(sm) {
+    padding-left: 20px;
+  }
+
   overflow: hidden;
   padding-left: 165px;
   padding-top: 20px;

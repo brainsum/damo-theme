@@ -41,4 +41,9 @@
     {{ media_collection_data }}
   {% endif %}
   {{ content }}
+  {% if not status %}
+    <div class="media-status">
+      {{ 'This asset is unpublished' |t }}
+    </div>
+  {% endif %}
 </div>
