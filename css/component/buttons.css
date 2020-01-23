@@ -1564,6 +1564,7 @@ input[type='button'].btn-block
 
 .table .btn-group
 {
+    display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
 }

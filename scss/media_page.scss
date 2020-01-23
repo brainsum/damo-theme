@@ -101,6 +101,7 @@
 
     .media-title {
       @include fontArialBold;
+      word-break: break-all;
     }
     .controller {
       @include media-breakpoint-up(xl) {

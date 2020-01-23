@@ -34,6 +34,12 @@
     box-shadow: 0 0 3px rgba(98, 179, 229, .5);
 }
 
+.form-control::-webkit-input-placeholder
+{
+    opacity: 1;
+    color: #5e5e5e;
+}
+
 .form-control:-ms-input-placeholder
 {
     opacity: 1;

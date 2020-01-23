@@ -216,7 +216,8 @@ body.path-frontpage .view-media-library .views-row .card.card-inverse.card--medi
     width: auto;
     height: auto;
 
-    transform: translate(-50%, -50%) !important;
+    -webkit-transform: translate(-50%, -50%) !important;
+            transform: translate(-50%, -50%) !important;
 }
 
 body.media--view .block-views-exposed-filter-blockunpublished-assets-unpublished-assets .views-row .card-content,
@@ -393,7 +394,8 @@ body.path-frontpage .view-media-library .views-row .card-content .card--inner-te
     width: 100%;
     padding: 15px;
 
-    transform: translateY(-100%);
+    -webkit-transform: translateY(-100%);
+            transform: translateY(-100%);
 }
 
 @media (min-width: 992px) and (max-width: 1247px)
@@ -492,7 +494,8 @@ body.path-frontpage .useage-overlay-wrapper .overlay-content
     margin: 0 auto;
     padding: 50px;
 
-    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
 
     background: white;
     box-shadow: 4px 5px 11px -4px black;

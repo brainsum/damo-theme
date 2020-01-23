@@ -45,7 +45,8 @@
     width: 16px;
     height: 16px;
 
-    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
 
     border: 0 !important;
     background-color: transparent !important;

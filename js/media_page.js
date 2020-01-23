@@ -33,9 +33,9 @@
         else {
           $('.image-controls').find('.no-badge').removeClass('inactive');
         }
-
+        
       });
-
+      
       recalculateImageHeight(mobileCheck()); 
       
       if ($('.field--type-entity-reference').length < 1) {

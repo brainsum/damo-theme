@@ -17,8 +17,11 @@
 
 html.no-touchevents .card--media .card-img
 {
-    transition: transform .3s;
-    transform: translateZ(0);
+    transition: -webkit-transform .3s;
+    transition:         transform .3s;
+    transition:         transform .3s, -webkit-transform .3s;
+    -webkit-transform: translateZ(0);
+            transform: translateZ(0);
 }
 
 .card--media .card-actions
@@ -31,6 +34,7 @@ html.no-touchevents .card--media .card-img
 
 .card--media .card-img-overlay
 {
+    display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
 
@@ -38,6 +42,7 @@ html.no-touchevents .card--media .card-img
 
     -ms-flex-wrap: wrap;
         flex-wrap: wrap;
+    -webkit-box-align: end;
     -ms-flex-align: end;
     align-items: flex-end;
 }
@@ -54,7 +59,8 @@ html.no-touchevents .card--media .card-actions
 
 html.no-touchevents .card--media:hover .card-img
 {
-    transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+            transform: scale(1.1);
 }
 
 html.no-touchevents .card--media:hover .card-img-overlay,

@@ -912,7 +912,8 @@ body.path-admin .btn
     padding: 9px 12px;
 
     transition: background-color ease-in-out .15s, color ease-in-out .15s;
-    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
 
     color: #999;
     border: 1px solid white;
@@ -1143,7 +1144,8 @@ body.path-admin .btn
 
     width: 1140px;
 
-    transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
     text-align: right;
 }
 
@@ -1520,64 +1522,88 @@ body.media--view .dam-local-task-back-button
 
 .fa-spin
 {
-    animation: fa-spin 2s infinite linear;
+    -webkit-animation: fa-spin 2s infinite linear;
+            animation: fa-spin 2s infinite linear;
 }
 
 .fa-pulse
 {
-    animation: fa-spin 1s infinite steps(8);
+    -webkit-animation: fa-spin 1s infinite steps(8);
+            animation: fa-spin 1s infinite steps(8);
+}
+
+@-webkit-keyframes fa-spin
+{
+    0%
+    {
+        -webkit-transform: rotate(0deg);
+                transform: rotate(0deg);
+    }
+    100%
+    {
+        -webkit-transform: rotate(360deg);
+                transform: rotate(360deg);
+    }
 }
 
 @keyframes fa-spin
 {
     0%
     {
-        transform: rotate(0deg);
+        -webkit-transform: rotate(0deg);
+                transform: rotate(0deg);
     }
     100%
     {
-        transform: rotate(360deg);
+        -webkit-transform: rotate(360deg);
+                transform: rotate(360deg);
     }
 }
 
 .fa-rotate-90
 {
-    transform: rotate(90deg);
+    -webkit-transform: rotate(90deg);
+            transform: rotate(90deg);
 
     -ms-filter: 'progid:DXImageTransform.Microsoft.BasicImage(rotation=1)';
 }
 
 .fa-rotate-180
 {
-    transform: rotate(180deg);
+    -webkit-transform: rotate(180deg);
+            transform: rotate(180deg);
 
     -ms-filter: 'progid:DXImageTransform.Microsoft.BasicImage(rotation=2)';
 }
 
 .fa-rotate-270
 {
-    transform: rotate(270deg);
+    -webkit-transform: rotate(270deg);
+            transform: rotate(270deg);
 
     -ms-filter: 'progid:DXImageTransform.Microsoft.BasicImage(rotation=3)';
 }
 
 .fa-flip-horizontal
 {
-    transform: scale(-1, 1);
+    -webkit-transform: scale(-1, 1);
+            transform: scale(-1, 1);
 
     -ms-filter: 'progid:DXImageTransform.Microsoft.BasicImage(rotation=0, mirror=1)';
 }
 
 .fa-flip-vertical
 {
-    transform: scale(1, -1);
+    -webkit-transform: scale(1, -1);
+            transform: scale(1, -1);
 
     -ms-filter: 'progid:DXImageTransform.Microsoft.BasicImage(rotation=2, mirror=1)';
 }
 
 .fa-flip-horizontal.fa-flip-vertical
 {
-    transform: scale(-1, -1);
+    -webkit-transform: scale(-1, -1);
+            transform: scale(-1, -1);
 
     -ms-filter: 'progid:DXImageTransform.Microsoft.BasicImage(rotation=2, mirror=1)';
 }
@@ -1588,7 +1614,8 @@ body.media--view .dam-local-task-back-button
 :root .fa-flip-horizontal,
 :root .fa-flip-vertical
 {
-    filter: none;
+    -webkit-filter: none;
+            filter: none;
 }
 
 .fa-stack
@@ -7908,6 +7935,7 @@ readers do not read off random characters that represent icons */
 
 .maintenance-page
 {
+    display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
 
@@ -7915,8 +7943,10 @@ readers do not read off random characters that represent icons */
 
     color: #5e5e5e;
 
+    -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
+    -webkit-box-pack: center;
     -ms-flex-pack: center;
     justify-content: center;
 }

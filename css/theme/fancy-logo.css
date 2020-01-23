@@ -34,7 +34,8 @@
     height: 200px;
 
     content: ' ';
-    transform: rotate(16.5deg) skew(-29deg);
+    -webkit-transform: rotate(16.5deg) skew(-29deg);
+            transform: rotate(16.5deg) skew(-29deg);
 
     background: #62b3e5;
 
@@ -43,16 +44,22 @@
 
 .fancy-logo:not(.fixed)::after
 {
+    transition: width .2s, -webkit-transform .2s ease .2s;
     transition: width .2s, transform .2s ease .2s;
-    transform: rotate(16.5deg) skew(-29deg);
+    transition: width .2s, transform .2s ease .2s, -webkit-transform .2s ease .2s;
+    -webkit-transform: rotate(16.5deg) skew(-29deg);
+            transform: rotate(16.5deg) skew(-29deg);
 }
 
 .fancy-logo.fixed::after
 {
     width: 100%;
 
+    transition: width .2s ease .2s, -webkit-transform .2s;
     transition: transform .2s, width .2s ease .2s;
-    transform: rotate(0) skew(0) translate3d(60px, -40px, 0);
+    transition: transform .2s, width .2s ease .2s, -webkit-transform .2s;
+    -webkit-transform: rotate(0) skew(0) translate3d(60px, -40px, 0);
+            transform: rotate(0) skew(0) translate3d(60px, -40px, 0);
 }
 
 .navbar-toggler

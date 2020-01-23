@@ -68,8 +68,11 @@
        -moz-user-select: none;
         -ms-user-select: none;
             user-select: none;
+    transition: border-color .1s, -webkit-transform .15s;
     transition: transform .15s, border-color .1s;
-    transform: translateZ(0);
+    transition: transform .15s, border-color .1s, -webkit-transform .15s;
+    -webkit-transform: translateZ(0);
+            transform: translateZ(0);
 
     border-color: transparent;
 }
@@ -91,7 +94,8 @@
 
 .view-mode-entity-browser:active
 {
-    transform: scale(.98);
+    -webkit-transform: scale(.98);
+            transform: scale(.98);
 }
 
 .view-mode-entity-browser::before
