@@ -1,5 +1,5 @@
 global:
-  version: VERSION
+  version: 1.0.0
   css:
     base:
       css/base/reset.css: { weight: -10 }
@@ -37,7 +37,7 @@ global:
 
 # Copied and rewritten from Seven
 admin:
-  version: VERSION
+  version: 1.0.0
   css:
     layout:
       css/admin/system.admin.css: {}
@@ -45,11 +45,10 @@ admin:
       css/admin/admin-list.css: {}
 
 tabs-toggle:
-  version: VERSION
+  version: 1.0.0
   js:
     js/tabs-toggle.js: {}
   dependencies:
-    - core/matchmedia
     - core/jquery
     - core/drupal
     - core/jquery.once
@@ -112,7 +111,7 @@ fancy-logo:
     - damo_theme/requestAnimationFrame
 
 media_library:
-  version: VERSION
+  version: 1.0.0
   css:
     theme:
       css/theme/media_library.view.css: {}
@@ -121,49 +120,49 @@ media_library:
     - core/modernizr
 
 adminimal-admin-toolbar:
-  version: VERSION
+  version: 1.0.0
   css:
     theme:
       css/theme/adminimal-admin-toolbar.css: {}
 
 dropdown:
-  version: VERSION
+  version: 1.0.0
   css:
     component:
       css/component/dropdown.css: {}
 
 popover:
-  version: VERSION
+  version: 1.0.0
   css:
     component:
       css/component/popover.css: {}
 
 jquery.ui.autocomplete:
-  version: VERSION
+  version: 1.0.0
   css:
     theme:
       css/theme/ui.autocomplete.css: {}
 
 drupal.tabledrag:
-  version: VERSION
+  version: 1.0.0
   css:
     component:
       css/component/tabledrag.css: {}
 
 drupal.field_ui:
-  version: VERSION
+  version: 1.0.0
   css:
     theme:
       css/theme/field_ui.admin.css: {}
 
 modal:
-  version: VERSION
+  version: 1.0.0
   css:
     component:
       css/component/modal.css: {}
 
 drupal.ajax:
-  version: VERSION
+  version: 1.0.0
   css:
     component:
       css/component/ajax-progress.css: {}
@@ -191,13 +190,13 @@ requestAnimationFrame:
     js/polyfill/requestAnimationFrame.js: { browsers: { IE: 'lte IE 9' } }
 
 dialog:
-  version: VERSION
+  version: 1.0.0
   css:
     theme:
       css/components/dialog.css: {}
 
 header:
-  version: VERSION
+  version: 1.0.0
   css:
     theme:
       css/header.css: {}
@@ -207,24 +206,24 @@ header:
     js/jquery.nice-select.js: {}
 
 media_assets:
-  version: VERSION
+  version: 1.0.0
   css:
     theme:
       css/media-assets.css: {}
 
 main_page_boxes:
-  version: VERSION
+  version: 1.0.0
   css:
     theme:
       css/main_page_boxes.css: {}
 
 site_intro:
-  version: VERSION
+  version: 1.0.0
   css:
     theme:
       css/site_intro.css: {}
 media_page:
-  version: VERSION
+  version: 1.0.0
   css:
     theme:
       css/media_page.css: {}
@@ -232,7 +231,7 @@ media_page:
     js/media_page.js: {}
     js/spotlight.bundle.js: {}
 front_page:
-  version: VERSION
+  version: 1.0.0
   css:
     theme:
       css/front_page.css: {}
