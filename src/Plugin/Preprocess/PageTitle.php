@@ -15,7 +15,7 @@ use Drupal\bootstrap\Utility\Variables;
  *
  * @BootstrapPreprocess("page_title")
  */
-class PageTitle extends PreprocessBase implements PreprocessInterface {
+class PageTitle extends PreprocessBase {
 
   /**
    * {@inheritdoc}

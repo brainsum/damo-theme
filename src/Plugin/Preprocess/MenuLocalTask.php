@@ -14,7 +14,7 @@ use Drupal\bootstrap\Utility\Variables;
  *
  * @BootstrapPreprocess("menu_local_task")
  */
-class MenuLocalTask extends PreprocessBase implements PreprocessInterface {
+class MenuLocalTask extends PreprocessBase {
 
   /**
    * {@inheritdoc}

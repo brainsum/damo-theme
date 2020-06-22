@@ -15,7 +15,7 @@ use Drupal\bootstrap\Utility\Element;
  *
  * @BootstrapPreprocess("media")
  */
-class MediaBase extends PreprocessBase implements PreprocessInterface {
+class MediaBase extends PreprocessBase {
 
   /**
    * {@inheritdoc}

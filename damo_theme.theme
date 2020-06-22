@@ -108,7 +108,7 @@ function damo_theme_preprocess(&$variables, $hook) {
  * Implements hook_preprocess_image().
  */
 function damo_theme_preprocess_image(&$variables) {
-  $current_route = \Drupal::routeMatch();
+  $current_route = Drupal::routeMatch();
   $route = $current_route->getRouteName();
   if ($route === 'entity.media.canonical') {
     $variables['spotlight'] = TRUE;

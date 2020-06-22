@@ -4,9 +4,9 @@ namespace Drupal\damo_theme\Plugin\Preprocess;
 
 use Drupal\bootstrap\Plugin\Preprocess\BootstrapDropdown as BootstrapBootstrapDropdown;
 use Drupal\bootstrap\Utility\Variables;
-use Drupal\bootstrap\Utility\Unicode;
 use Drupal\bootstrap\Utility\Element;
 use Drupal\bootstrap\Annotation\BootstrapPreprocess;
+use function mb_strpos;
 
 /**
  * Pre-processes variables for the "bootstrap_dropdown" theme hook.
@@ -25,7 +25,7 @@ class BootstrapDropdown extends BootstrapBootstrapDropdown {
 
     // Remove -xs class from operations.
     $toggle = Element::create($variables->toggle);
-    $operations = !!Unicode::strpos($variables->theme_hook_original, 'operations');
+    $operations = (bool) mb_strpos($variables->theme_hook_original, 'operations');
     if ($operations) {
       $toggle->removeClass('btn-xs');
     }

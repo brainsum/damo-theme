@@ -18,7 +18,7 @@ use Drupal\bootstrap\Utility\Variables;
  *
  * @BootstrapPreprocess("menu_local_action")
  */
-class MenuLocalAction extends PreprocessBase implements PreprocessInterface {
+class MenuLocalAction extends PreprocessBase {
 
   /**
    * {@inheritdoc}

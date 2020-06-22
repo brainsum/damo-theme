@@ -13,4 +13,4 @@ use Drupal\bootstrap\Annotation\BootstrapPreprocess;
  *
  * @BootstrapPreprocess("views_view")
  */
-class ViewBase extends PreprocessBase implements PreprocessInterface {}
+class ViewBase extends PreprocessBase {}

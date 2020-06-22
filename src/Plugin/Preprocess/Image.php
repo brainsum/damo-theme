@@ -13,7 +13,7 @@ use Drupal\bootstrap\Utility\Variables;
  *
  * @BootstrapPreprocess("image")
  */
-class Image extends PreprocessBase implements PreprocessInterface {
+class Image extends PreprocessBase {
 
   /**
    * {@inheritdoc}
