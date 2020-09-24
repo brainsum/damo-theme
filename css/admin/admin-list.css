@@ -25,3 +25,27 @@
 
     background: url(/core/misc/icons/bebebe/chevron-disc-left.svg) no-repeat right 1.25em;
 }
+
+.view-display-id-global_media_library_page .views-row .form-type-checkbox
+{
+    position: absolute;
+    z-index: 99999;
+    top: 0;
+
+    margin-left: 5px;
+}
+
+.view-display-id-global_media_library_page #edit-submit
+{
+    padding-top: 20px;
+}
+
+.view-display-id-global_media_library_page .views-exposed-form
+{
+    padding-top: 25px;
+}
+
+.view-display-id-global_media_library_page .views-exposed-form label
+{
+    min-width: 135px;
+}

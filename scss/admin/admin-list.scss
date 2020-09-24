@@ -21,3 +21,23 @@
     padding-left: 1rem;
   }
 }
+.view-display-id-global_media_library_page {
+  .views-row {
+    .form-type-checkbox {
+      margin-left: 5px;
+      position: absolute;
+      z-index: 99999;
+      top: 0;
+    }
+  }
+  #edit-submit {
+    padding-top: 20px;
+  }
+  .views-exposed-form {
+    padding-top: 25px;
+
+    label {
+      min-width: 135px;
+    }
+  }
+}
