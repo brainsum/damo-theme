@@ -403,6 +403,25 @@ body.path-frontpage .view-media-library .views-row .card-content .card--inner-te
             transform: translateY(-100%);
 }
 
+body.media--view .block-views-exposed-filter-blockunpublished-assets-unpublished-assets .views-row .card-content .card--inner-text .card-text,
+body.media--view .block-views-exposed-filter-blockunpublished-assets-user-unpublished-assets .views-row .card-content .card--inner-text .card-text,
+body.media--view .view-media-library .views-row .card-content .card--inner-text .card-text,
+body.path-admin .block-views-exposed-filter-blockunpublished-assets-unpublished-assets .views-row .card-content .card--inner-text .card-text,
+body.path-admin .block-views-exposed-filter-blockunpublished-assets-user-unpublished-assets .views-row .card-content .card--inner-text .card-text,
+body.path-admin .view-media-library .views-row .card-content .card--inner-text .card-text,
+body.path-frontpage .block-views-exposed-filter-blockunpublished-assets-unpublished-assets .views-row .card-content .card--inner-text .card-text,
+body.path-frontpage .block-views-exposed-filter-blockunpublished-assets-user-unpublished-assets .views-row .card-content .card--inner-text .card-text,
+body.path-frontpage .view-media-library .views-row .card-content .card--inner-text .card-text
+{
+    display: block;
+    overflow: hidden;
+
+    width: 100%;
+
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
 @media (min-width: 992px) and (max-width: 1247px)
 {
     body.media--view .block-views-exposed-filter-blockunpublished-assets-unpublished-assets .views-row,

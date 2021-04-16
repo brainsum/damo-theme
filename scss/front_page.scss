@@ -102,6 +102,13 @@ body.path-frontpage {
           top: 100%;
           transform: translateY(-100%);
           padding: 15px;
+          .card-text {
+            white-space: nowrap;
+            width: 100%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: block;
+          }
         }
       }
     }
