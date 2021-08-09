@@ -178,7 +178,7 @@ requestAnimationFrame:
     name: MIT
     gpl-compatible: true
   js:
-    js/polyfill/requestAnimationFrame.js: { browsers: { IE: 'lte IE 9' } }
+    js/polyfill/requestAnimationFrame.js: { browsers: { IE: "lte IE 9" } }
 
 dialog:
   version: 1.0.0
@@ -191,7 +191,7 @@ header:
   css:
     theme:
       css/header.css: {}
-      css/utils/nice-select.css : {}
+      css/utils/nice-select.css: {}
   js:
     js/damo_theme.js: {}
     js/jquery.nice-select.js: {}
@@ -230,3 +230,12 @@ front_page:
   css:
     theme:
       css/front_page.css: {}
+
+assets_wfa_widget:
+  css:
+    theme:
+      assets_wfa_widget/buildtoembed/main.assets_wfa_widget.chunk.css: {}
+  js:
+    assets_wfa_widget/buildtoembed/runtime-main.assets_wfa_widget.js: {}
+    assets_wfa_widget/buildtoembed/2.assets_wfa_widget.chunk.js: {}
+    assets_wfa_widget/buildtoembed/main.assets_wfa_widget.chunk.js: {}
