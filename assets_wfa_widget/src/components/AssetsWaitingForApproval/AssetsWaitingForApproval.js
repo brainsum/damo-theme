@@ -38,18 +38,18 @@ const AssetsWaitingForApproval = () => {
       <Row>
         <Col>
           <div className={styles.header}>
-            <div className={styles.title}>Assets waiting for approval</div>
+            <div className={styles.header__title}>Assets waiting for approval</div>
             {getSelectedImages(images).length !== 0 ? (
               <div className={styles.header__buttons}>
-                <button className={`${styles["header-button"]} ${styles["approve"]}`} onClick={() => approveHandler(true)}>
+                <button className={`${styles["header__button"]} ${styles["header__button--approve"]}`} onClick={() => approveHandler(true)}>
                   Approve selected items
                 </button>
-                <button className={`${styles["header-button"]} ${styles["decline"]}`} onClick={() => approveHandler(false)}>
+                <button className={`${styles["header__button"]} ${styles["header__button--decline"]}`} onClick={() => approveHandler(false)}>
                   Decline
                 </button>
               </div>
             ) : (
-              <div className={styles.title__placeholder}>Please select some assets.</div>
+              <div className={styles.header__placeholder}>Please select some assets.</div>
             )}
           </div>
         </Col>
