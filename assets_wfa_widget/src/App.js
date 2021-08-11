@@ -1,7 +1,7 @@
-import "./App.css";
+import AssetsWaitingForApproval from "./components/AssetsWaitingForApproval/AssetsWaitingForApproval";
 
 function App() {
-  return <div className="App">React Widget</div>;
+  return <AssetsWaitingForApproval />;
 }
 
 export default App;
