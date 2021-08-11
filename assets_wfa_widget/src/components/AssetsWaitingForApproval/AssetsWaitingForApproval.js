@@ -2,10 +2,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { useState, useEffect } from "react";
 import Axios from "axios";
 import Image from "./Image";
-import { Container, Row, Col } from "react-bootstrap";
-import styles from "./AssetsWaitingForApproval.module.scss";
+import Header from "./Header";
 
-const getSelectedImages = (images) => images.filter((image) => image.selected);
 const AUTH_HEADER = {
   username: process.env.REACT_APP_API_CALL_USERNAME,
   password: process.env.REACT_APP_API_CALL_PASSWORD,
@@ -37,6 +35,19 @@ const AssetsWaitingForApproval = () => {
 
   const selectImageHandler = (image) => {
     image.selected = !image.selected;
+    setImages([...images]);
+  };
+
+  const selectAllHandler = () => {
+    if (images.every((image) => image.selected === true)) {
+      images.forEach((image) => {
+        image.selected = false;
+      });
+    } else {
+      images.forEach((image) => {
+        image.selected = true;
+      });
+    }
     setImages([...images]);
   };
 
@@ -78,30 +89,6 @@ const AssetsWaitingForApproval = () => {
       });
   };
 
-  const header = (
-    <Container>
-      <Row>
-        <Col>
-          <div className={styles.header}>
-            <div className={styles.header__title}>Assets waiting for approval</div>
-            {getSelectedImages(images).length !== 0 ? (
-              <div className={styles.header__buttons}>
-                <button className={`${styles["header__button"]} ${styles["header__button--approve"]}`} onClick={() => approveHandler(true)}>
-                  Approve selected items
-                </button>
-                <button className={`${styles["header__button"]} ${styles["header__button--decline"]}`} onClick={() => approveHandler(false)}>
-                  Decline
-                </button>
-              </div>
-            ) : (
-              <div className={styles.header__placeholder}>Please select some assets.</div>
-            )}
-          </div>
-        </Col>
-      </Row>
-    </Container>
-  );
-
   const imageList = (
     <div className="region region-content">
       <div className="views-element-container">
@@ -118,7 +105,7 @@ const AssetsWaitingForApproval = () => {
 
   return (
     <div>
-      {header}
+      <Header images={images} approveHandler={approveHandler} selectAllHandler={selectAllHandler} />
       {imageList}
     </div>
   );

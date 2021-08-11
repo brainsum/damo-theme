@@ -1,6 +1,6 @@
 .header {
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: center;
   min-height: 50px;
   padding: 0 40px;
@@ -19,14 +19,35 @@
     line-height: 30px;
     margin-right: 20px;
     font-weight: 700;
+  }
 
-    &__placeholder {
-      font-family: Roboto;
-      font-size: 20px;
+  &__placeholder {
+    font-family: Roboto;
+    font-size: 20px;
+    color: #000000;
+    text-decoration: none solid rgb(0, 0, 0);
+    line-height: 30px;
+    font-weight: 700;
+  }
+
+  .filters {
+    min-width: 100px;
+
+    &__select-all {
+      background: transparent;
       color: #000000;
-      text-decoration: none solid rgb(0, 0, 0);
-      line-height: 30px;
+      font-family: Roboto;
       font-weight: 700;
+      font-size: 14px;
+      margin-left: 20px;
+      text-decoration: none solid rgb(255, 255, 255);
+      border: none;
+      text-decoration: underline;
+      cursor: pointer;
+
+      &:focus {
+        outline: 0;
+      }
     }
   }
 
