@@ -1,19 +1,38 @@
-import styles from "./AssetsWaitingForApproval.module.scss";
-import { useState, useEffect } from "react";
-import Image from "./Image";
-import apiCall from "./api";
-import { Container, Row, Col } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { useState, useEffect } from "react";
+import Axios from "axios";
+import Image from "./Image";
+import { Container, Row, Col } from "react-bootstrap";
+import styles from "./AssetsWaitingForApproval.module.scss";
 
 const getSelectedImages = (images) => images.filter((image) => image.selected);
+const AUTH_HEADER = {
+  username: process.env.REACT_APP_API_CALL_USERNAME,
+  password: process.env.REACT_APP_API_CALL_PASSWORD,
+};
 
 const AssetsWaitingForApproval = () => {
   const [images, setImages] = useState([]);
 
   useEffect(() => {
-    // Axios get images...
-    const res = apiCall;
-    setImages(res);
+    // Get images waiting for approval
+
+    const imagesURL = "/jsonapi/media/image?filter[status]=0&include=field_category,field_image,field_keywords,thumbnail";
+
+    Axios.get(imagesURL, {
+      auth: AUTH_HEADER,
+    })
+      .then((res) => {
+        const data = res?.data?.data || [];
+        const images = [];
+        data.forEach((element) => {
+          images.push({ id: element?.id || 0, src: element?.thumbnail?.uri?.url || "", alt: element?.field_image?.meta?.alt || "" });
+        });
+        setImages(images);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }, []);
 
   const selectImageHandler = (image) => {
@@ -24,13 +43,39 @@ const AssetsWaitingForApproval = () => {
   const approveHandler = (approve) => {
     const selectedImages = images.filter((image) => image.selected);
 
+    const updateStatusURL = "http://damopen.docker.localhost:8000/subrequests";
+    const postData = [];
+
     if (approve) {
-      console.log("APPROVE: ");
-      console.log(selectedImages);
+      selectedImages.forEach((image) => {
+        postData.push({
+          requestId: "" + image.id,
+          uri: "/jsonapi/media/image/" + image.id,
+          action: "patch",
+          body: `{"data":{"status":"1","type":"media", "id":"${image.id}"}}`,
+        });
+      });
     } else {
-      console.log("DECLINE: ");
-      console.log(selectedImages);
+      selectedImages.forEach((image) => {
+        postData.push({
+          requestId: "" + image.id,
+          uri: "/jsonapi/media/image" + image.id,
+          action: "delete",
+        });
+      });
     }
+
+    Axios.post(updateStatusURL, postData, {
+      auth: AUTH_HEADER,
+    })
+      .then((res) => {
+        console.log("SUCCESS: ");
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log("ERROR: ");
+        console.log(err);
+      });
   };
 
   const header = (
