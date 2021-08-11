@@ -15,6 +15,9 @@ gulp.task(
     },
     () => {
       return gulp.src("./build/static/js/main.*.chunk.js").pipe(rename("./buildtoembed/main.assets_wfa_widget.chunk.js")).pipe(gulp.dest("."));
+    },
+    () => {
+      return gulp.src("./build/static/media/**/*").pipe(gulp.dest("./buildtoembed/static/media"));
     }
   )
 );
