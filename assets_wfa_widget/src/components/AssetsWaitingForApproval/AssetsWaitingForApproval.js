@@ -62,24 +62,38 @@ const AssetsWaitingForApproval = () => {
     const updateStatusURL = "http://damopen.docker.localhost:8000/subrequests";
     const postData = [];
 
-    if (approve) {
-      selectedImages.forEach((image) => {
-        postData.push({
-          requestId: "" + image.id,
-          uri: "/jsonapi/media/image/" + image.id,
-          action: "patch",
-          body: `{"data":{"status":"1","type":"media", "id":"${image.id}"}}`,
+    Axios.get('/session/token?_format=json', {
+    }).then((res) => {
+      if (approve) {
+        selectedImages.forEach((image) => {
+          postData.push({
+            requestId: "" + image.id,
+            uri: "/jsonapi/media/image/" + image.id,
+            action: "update",
+            body: `{"data":{"type":"media--image", "id":"${image.id}","attributes":{"status":"1"}}}`,
+            headers: {
+              "Accept": "application/json",
+              "Content-Type": "application/vnd.api+json",
+              "X-CSRF-Token": res.data
+            }
+          });
         });
-      });
-    } else {
-      selectedImages.forEach((image) => {
-        postData.push({
-          requestId: "" + image.id,
-          uri: "/jsonapi/media/image" + image.id,
-          action: "delete",
+      } else {
+        selectedImages.forEach((image) => {
+          postData.push({
+            requestId: "" + image.id,
+            uri: "/jsonapi/media/image" + image.id,
+            action: "delete",
+            body: `{"data":{"type":"media--image", "id":"${image.id}"}}`,
+            headers: {
+              "Accept": "application/json",
+              "Content-Type": "application/vnd.api+json",
+              "X-CSRF-Token": res.data
+            }
+          });
         });
-      });
-    }
+      }
+    });
 
     Axios.post(updateStatusURL, postData, {
       auth: AUTH_HEADER,
