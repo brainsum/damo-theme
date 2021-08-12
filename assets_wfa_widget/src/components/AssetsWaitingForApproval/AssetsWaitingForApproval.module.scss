@@ -1,11 +1,14 @@
 .header {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
   min-height: 50px;
   padding: 0 40px;
+  flex-wrap: wrap;
 
   &__buttons {
+    min-width: 340px;
+
     button {
       margin-right: 20px;
     }
@@ -28,10 +31,10 @@
     text-decoration: none solid rgb(0, 0, 0);
     line-height: 30px;
     font-weight: 700;
+    min-width: 340px;
   }
 
   .filters {
-    min-width: 100px;
 
     &__select-all {
       background: transparent;
@@ -44,6 +47,7 @@
       border: none;
       text-decoration: underline;
       cursor: pointer;
+      min-width: 100px;
 
       &:focus {
         outline: 0;

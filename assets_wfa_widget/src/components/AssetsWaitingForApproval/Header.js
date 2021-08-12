@@ -3,7 +3,7 @@ import styles from "./AssetsWaitingForApproval.module.scss";
 
 const getSelectedImages = (images) => images.filter((image) => image.selected);
 
-const Header = ({ images, approveHandler, selectAllHandler }) => {
+const Header = ({ images, approveHandler, selectAllHandler, filterHandler, showSelectedOnly }) => {
   return (
     <Container>
       <Row>
@@ -25,6 +25,10 @@ const Header = ({ images, approveHandler, selectAllHandler }) => {
             <div className={styles["filters"]}>
               <button className={styles["filters__select-all"]} onClick={selectAllHandler}>
                 {images.every((image) => image.selected === true) ? "Deselect all" : "Select all"}
+              </button>
+              <button className={styles["filters__select-all"]} onClick={filterHandler}>
+                {!showSelectedOnly && <span>Show selected only</span>}
+                {showSelectedOnly && <span>Show all</span>}
               </button>
             </div>
           </div>
