@@ -11,6 +11,7 @@ const AUTH_HEADER = {
 
 const AssetsWaitingForApproval = () => {
   const [images, setImages] = useState([]);
+  const [showSelectedOnly, setShowSelectedOnly] = useState(false);
 
   useEffect(() => {
     // Get images waiting for approval
@@ -51,6 +52,10 @@ const AssetsWaitingForApproval = () => {
     setImages([...images]);
   };
 
+  const filterHandler = () => {
+    setShowSelectedOnly((prev) => !prev);
+  };
+
   const approveHandler = (approve) => {
     const selectedImages = images.filter((image) => image.selected);
 
@@ -89,12 +94,17 @@ const AssetsWaitingForApproval = () => {
       });
   };
 
+  let filteredImages = images;
+  if (showSelectedOnly) {
+    filteredImages = images.filter((image) => image.selected);
+  }
+
   const imageList = (
     <div className="region region-content">
       <div className="views-element-container">
         <div className="assets-library unpublished-assets-library view-media-library view view-unpublished-assets view-id-unpublished_assets view-display-id-unpublished_assets js-view-dom-id-05c584ebdc7dfcb5a9045db210b02f4d99b6d8382701e8ba198069d9233ab838">
           <div className="view-content">
-            {images.map((image) => (
+            {filteredImages.map((image) => (
               <Image image={image} clickHandler={selectImageHandler} key={image.id} />
             ))}
           </div>
@@ -105,7 +115,7 @@ const AssetsWaitingForApproval = () => {
 
   return (
     <div>
-      <Header images={images} approveHandler={approveHandler} selectAllHandler={selectAllHandler} />
+      <Header images={images} approveHandler={approveHandler} selectAllHandler={selectAllHandler} filterHandler={filterHandler} showSelectedOnly={showSelectedOnly} />
       {imageList}
     </div>
   );
