@@ -56,54 +56,50 @@ const AssetsWaitingForApproval = () => {
     setShowSelectedOnly((prev) => !prev);
   };
 
-  const approveHandler = (approve) => {
+  const approveHandler = async (approve) => {
+    const updateStatusURL = "/subrequests";
     const selectedImages = images.filter((image) => image.selected);
-
-    const updateStatusURL = "http://damopen.docker.localhost:8000/subrequests";
     const postData = [];
 
-    Axios.get('/session/token?_format=json', {
-    }).then((res) => {
-      if (approve) {
-        selectedImages.forEach((image) => {
-          postData.push({
-            requestId: "" + image.id,
-            uri: "/jsonapi/media/image/" + image.id,
-            action: "update",
-            body: `{"data":{"type":"media--image", "id":"${image.id}","attributes":{"status":"1"}}}`,
-            headers: {
-              "Accept": "application/json",
-              "Content-Type": "application/vnd.api+json",
-              "X-CSRF-Token": res.data
-            }
-          });
+    const token = await Axios.get("/session/token?_format=json", {}).then((res) => res.data);
+
+    if (approve) {
+      selectedImages.forEach((image) => {
+        postData.push({
+          requestId: "" + image.id,
+          uri: "/jsonapi/media/image/" + image.id,
+          action: "update",
+          body: `{"data":{"type":"media--image", "id":"${image.id}","attributes":{"status":"1"}}}`,
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/vnd.api+json",
+            "X-CSRF-Token": token,
+          },
         });
-      } else {
-        selectedImages.forEach((image) => {
-          postData.push({
-            requestId: "" + image.id,
-            uri: "/jsonapi/media/image" + image.id,
-            action: "delete",
-            body: `{"data":{"type":"media--image", "id":"${image.id}"}}`,
-            headers: {
-              "Accept": "application/json",
-              "Content-Type": "application/vnd.api+json",
-              "X-CSRF-Token": res.data
-            }
-          });
+      });
+    } else {
+      selectedImages.forEach((image) => {
+        postData.push({
+          requestId: "" + image.id,
+          uri: "/jsonapi/media/image/" + image.id,
+          action: "delete",
+          body: `{"data":{"type":"media--image", "id":"${image.id}"}}`,
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/vnd.api+json",
+            "X-CSRF-Token": token,
+          },
         });
-      }
-    });
+      });
+    }
 
     Axios.post(updateStatusURL, postData, {
       auth: AUTH_HEADER,
     })
       .then((res) => {
-        console.log("SUCCESS: ");
-        console.log(res);
+        window.location.reload();
       })
       .catch((err) => {
-        console.log("ERROR: ");
         console.log(err);
       });
   };
@@ -128,10 +124,15 @@ const AssetsWaitingForApproval = () => {
   );
 
   return (
-    <div>
-      <Header images={images} approveHandler={approveHandler} selectAllHandler={selectAllHandler} filterHandler={filterHandler} showSelectedOnly={showSelectedOnly} />
-      {imageList}
-    </div>
+    <>
+      {images.length > 0 && (
+        <div>
+          <Header images={images} approveHandler={approveHandler} selectAllHandler={selectAllHandler} filterHandler={filterHandler} showSelectedOnly={showSelectedOnly} />
+          {imageList}
+        </div>
+      )}
+      {images.length === 0 && <div>No results found.</div>}
+    </>
   );
 };
 
