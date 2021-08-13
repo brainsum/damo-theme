@@ -15,7 +15,7 @@ const Header = ({ images, approveHandler, selectAllHandler, filterHandler, showS
                 <button className={`${styles["header__button"]} ${styles["header__button--approve"]}`} onClick={() => approveHandler(true)}>
                   Approve selected items
                 </button>
-                <button className={`${styles["header__button"]} ${styles["header__button--decline"]}`} onClick={() => approveHandler(false)}>
+                <button className={`${styles["header__button"]}`} onClick={() => approveHandler(false)}>
                   Decline
                 </button>
               </div>
