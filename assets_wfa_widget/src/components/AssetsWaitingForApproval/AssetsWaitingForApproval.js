@@ -12,11 +12,12 @@ const AUTH_HEADER = {
 const AssetsWaitingForApproval = () => {
   const [images, setImages] = useState([]);
   const [showSelectedOnly, setShowSelectedOnly] = useState(false);
+  const [showImageDetails, setShowImageDetails] = useState(-1);
 
   useEffect(() => {
     // Get images waiting for approval
 
-    const imagesURL = "/jsonapi/media/image?filter[status]=0&include=field_category,field_image,field_keywords,thumbnail";
+    const imagesURL = "/jsonapi/media/image?filter[status]=0&include=field_category,field_image,field_keywords,thumbnail,uid";
 
     Axios.get(imagesURL, {
       auth: AUTH_HEADER,
@@ -25,7 +26,31 @@ const AssetsWaitingForApproval = () => {
         const data = res?.data?.data || [];
         const images = [];
         data.forEach((element) => {
-          images.push({ id: element?.id || 0, src: element?.thumbnail?.uri?.url || "", alt: element?.field_image?.meta?.alt || "" });
+          const categories = [];
+          if (Array.isArray(element?.field_category)) {
+            element?.field_category?.forEach((category) => {
+              categories.push({ name: category.name });
+            });
+          }
+
+          const keywords = [];
+          if (Array.isArray(element?.field_keywords)) {
+            element?.field_keywords?.forEach((keyword) => {
+              keywords.push({ name: keyword.name });
+            });
+          }
+
+          images.push({
+            id: element?.id || 0,
+            src: element?.thumbnail?.uri?.url || "",
+            alt: element?.field_image?.meta?.alt || "",
+            name: element?.name || "",
+            categories: categories || [],
+            keywords: keywords || [],
+            filename: element?.field_image?.filename || "",
+            filesize: element?.field_image?.filesize || 0,
+            created: element?.created || 0,
+          });
         });
         setImages(images);
       })
@@ -115,7 +140,7 @@ const AssetsWaitingForApproval = () => {
         <div className="assets-library unpublished-assets-library view-media-library view view-unpublished-assets view-id-unpublished_assets view-display-id-unpublished_assets js-view-dom-id-05c584ebdc7dfcb5a9045db210b02f4d99b6d8382701e8ba198069d9233ab838">
           <div className="view-content">
             {filteredImages.map((image) => (
-              <Image image={image} clickHandler={selectImageHandler} key={image.id} />
+              <Image image={image} clickHandler={selectImageHandler} key={image.id} showImageDetails={showImageDetails} setShowImageDetails={setShowImageDetails} />
             ))}
           </div>
         </div>
