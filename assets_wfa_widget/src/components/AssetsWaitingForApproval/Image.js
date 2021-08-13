@@ -52,7 +52,7 @@ const Image = ({ image, clickHandler, showImageDetails, setShowImageDetails }) =
               <div className={styles.info__category}>Category: {image.categories.map((category) => category.name + "")}</div>
               <div className={styles.info__keywords}>Keywords: {image.keywords.map((keyword, i, keywords) => keyword.name + (i < keywords.lenght - 1 ? ", " : ""))}</div>
             </div>
-            <button className={`${styles["header__button"]} ${styles["header__button--decline"]} ${styles["popover__edit-asset"]}`} onClick={editAssetHandler}>
+            <button className={`${styles["header__button"]} ${styles["popover__edit-asset"]}`} onClick={editAssetHandler}>
               Edit asset
             </button>
           </div>

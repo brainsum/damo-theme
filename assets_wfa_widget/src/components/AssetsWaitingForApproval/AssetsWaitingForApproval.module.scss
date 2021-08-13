@@ -56,7 +56,7 @@
 
   &__button {
     background: transparent;
-    color: #ffffff;
+    color: #565656;
     font-size: 14px;
     font-family: "Montserrat";
     font-weight: 400;
@@ -67,18 +67,16 @@
     border: none;
     border-radius: 120px;
     cursor: pointer;
+    border: 1px solid #d4d4d4;
 
     &:focus {
       outline: 0;
     }
 
     &--approve {
+      border: none;
       background-color: #4cbac6;
-    }
-
-    &--decline {
-      border: 1px solid #d4d4d4;
-      color: #565656;
+      color: #ffffff;
     }
   }
 }
