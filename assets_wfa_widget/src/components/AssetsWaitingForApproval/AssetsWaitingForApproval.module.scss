@@ -15,7 +15,7 @@
   }
 
   &__title {
-    font-family: Montserrat;
+    font-family: "Montserrat";
     font-size: 24px;
     color: #000000;
     text-decoration: none solid rgb(0, 0, 0);
@@ -25,7 +25,7 @@
   }
 
   &__placeholder {
-    font-family: Roboto;
+    font-family: "Roboto", sans-serif;
     font-size: 20px;
     color: #000000;
     text-decoration: none solid rgb(0, 0, 0);
@@ -35,11 +35,10 @@
   }
 
   .filters {
-
     &__select-all {
       background: transparent;
       color: #000000;
-      font-family: Roboto;
+      font-family: "Roboto", sans-serif;
       font-weight: 700;
       font-size: 14px;
       margin-left: 20px;
@@ -59,7 +58,7 @@
     background: transparent;
     color: #ffffff;
     font-size: 14px;
-    font-family: Montserrat;
+    font-family: "Montserrat";
     font-weight: 400;
     text-decoration: none solid rgb(255, 255, 255);
     padding: 5px 16px;
@@ -183,5 +182,59 @@
         }
       }
     }
+  }
+}
+
+.popover {
+  width: 100%;
+  padding: 0 3px;
+  position: absolute;
+  top: 80%;
+  z-index: 101;
+
+  &__container {
+    position: relative;
+    width: 100%;
+    min-height: 200px;
+    padding: 30px 15px 15px 15px;
+    overflow-wrap: break-word;
+    background: #ffffff;
+    box-shadow: 1px 1px 8px 0px rgba(0, 0, 0, 0.25);
+
+    .close-icon {
+      position: absolute;
+      top: 10px;
+      right: 16px;
+      cursor: pointer;
+    }
+
+    .info {
+      &__name {
+        font-family: "Montserrat";
+        font-size: 17px;
+        color: #000000;
+        text-decoration: none solid rgb(0, 0, 0);
+        font-weight: 700;
+        margin-bottom: 10px;
+      }
+      &__filesize,
+      &__created,
+      &__filename,
+      &__category,
+      &__keywords {
+        font-family: "Roboto", sans-serif;
+        font-size: 14px;
+        color: #565656;
+        text-decoration: none solid rgb(86, 86, 86);
+      }
+      &__category,
+      &__keywords {
+        margin-top: 14px;
+      }
+    }
+  }
+
+  &__edit-asset {
+    margin-top: 25px;
   }
 }
