@@ -20,7 +20,7 @@
  * @see template_preprocess_input()
  */
 #}
-{% spaceless %}
+{% apply spaceless %}
   {%
     set classes = [
       'form-control',
@@ -36,4 +36,4 @@
       <input{{ attributes.addClass(classes) }} />
     {% endif %}
   {% endblock %}
-{% endspaceless %}
+{% endapply %}

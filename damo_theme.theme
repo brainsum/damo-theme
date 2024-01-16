@@ -93,7 +93,9 @@ function damo_theme_preprocess(&$variables, $hook) {
   //
   // @todo Move this to @BootstrapPreprocess class or other!
   // @todo Add more variables.
-  $base_theme_path = base_path() . drupal_get_path('theme', 'damo_theme');
+  $base_theme_path = base_path();
+  $base_theme_path .= \Drupal::service('extension.list.theme')
+    ->getPath('damo_theme');
 
   $variables['damo_base'] = [
     'root' => $base_theme_path,

@@ -22,10 +22,10 @@
  * @see template_preprocess_input()
  */
 #}
-{% spaceless %}
+{% apply spaceless %}
   {% block input %}
     <a href="#" class="dropdown-item" data-target="dropdown-button">{{ label }}</a>
     <button{{ attributes.addClass('hidden-xs-up') }}>{{ label }}</button>
     {{ children }}
   {% endblock %}
-{% endspaceless %}
+{% endapply %}
