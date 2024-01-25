@@ -25,32 +25,28 @@
  * @see template_preprocess_status_messages()
  */
 #}
-{%
-  set status_heading = {
-    'status': 'Status message'|t,
-    'error': 'Error message'|t,
-    'warning': 'Warning message'|t,
-    'info': 'Informative message'|t,
-  }
-%}
-{%
-  set status_classes = {
-    'status': 'success',
-    'error': 'danger',
-    'warning': 'warning',
-    'info': 'info',
-  }
-%}
+{% set status_heading = {
+  'status': 'Status message'|t,
+  'error': 'Error message'|t,
+  'warning': 'Warning message'|t,
+  'info': 'Informative message'|t,
+} %}
+{% set status_classes = {
+  'status': 'success',
+  'error': 'danger',
+  'warning': 'warning',
+  'info': 'info',
+} %}
 {% for type, messages in message_list %}
-{%
-  set classes = [
-    'alert',
-    'alert-' ~ status_classes[type],
-    'alert-dismissible',
-  ]
-%}
+{% set classes = [
+  'alert',
+  'alert-' ~ status_classes[type],
+  'alert-dismissible',
+] %}
 <div{{ attributes.addClass(classes) }} role="alert">
-  <button type="button" class="close" data-dismiss="alert" aria-label="{{ 'Close'|t }}"><span aria-hidden="true">&times;</span></button>
+  <button type="button" class="close" data-dismiss="alert" aria-label="{{ 'Close'|t }}">
+    <span aria-hidden="true">&times;</span>
+  </button>
   {% if status_headings[type] %}
     <h4 class="sr-only">{{ status_headings[type] }}</h4>
   {% endif %}

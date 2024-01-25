@@ -47,28 +47,27 @@
  * @see template_preprocess_form_element()
  */
 #}
-{%
-  set classes = [
-    'form-item',
-    'js-form-item',
-    'form-type-' ~ type|clean_class,
-    'js-form-type-' ~ type|clean_class,
-    'form-item-' ~ name|clean_class,
-    'js-form-item-' ~ name|clean_class,
-    title_display not in ['after', 'before'] ? 'form-no-label',
-    disabled == 'disabled' ? 'form-disabled',
-    is_form_group ? 'form-group',
-    is_radio or is_checkbox ? 'form-check',
-    is_autocomplete ? 'form-autocomplete',
-    has_error ? 'error has-error',
-  ]
-%}{%
-  set description_classes = [
-    'description',
-    'help-block',
-    description_display == 'invisible' ? 'sr-only',
-  ]
-%}
+{% set classes = [
+  'form-item',
+  'js-form-item',
+  'form-type-' ~ type|clean_class,
+  'js-form-type-' ~ type|clean_class,
+  'form-item-' ~ name|clean_class,
+  'js-form-item-' ~ name|clean_class,
+  title_display not in ['after', 'before'] ? 'form-no-label',
+  disabled == 'disabled' ? 'form-disabled',
+  is_form_group ? 'form-group',
+  is_radio or is_checkbox ? 'form-check',
+  is_autocomplete ? 'form-autocomplete',
+  has_error ? 'error has-error',
+] %}
+
+{% set description_classes = [
+  'description',
+  'help-block',
+  description_display == 'invisible' ? 'sr-only',
+] %}
+
 <div{{ attributes.addClass(classes) }}>
   {% if label_display in ['before', 'invisible'] %}
     {{ label }}

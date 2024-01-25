@@ -16,12 +16,10 @@
 <div class="js-text-format-wrapper clearfix text-format-wrapper js-form-item form-item form-group">
   {{ children }}
   {% if description %}
-    {%
-      set classes = [
-        'help-block',
-        aria_description ? 'description',
-      ]
-    %}
+    {% set classes = [
+      'help-block',
+      aria_description ? 'description',
+    ] %}
     <small{{ attributes.addClass(classes) }}>{{ description }}</small>
   {% endif %}
 </div>

@@ -107,14 +107,12 @@
         {% endblock %}
       {% endif %}
       {# Content #}
-      {%
-        set content_classes = [
-          page.sidebar_first and page.sidebar_second and not is_admin_route ? 'col-sm-6',
-          (page.sidebar_first and page.sidebar_second is empty) and not is_admin_route ? 'col-sm-9',
-          (page.sidebar_second and page.sidebar_first is empty) and not is_admin_route ? 'col-sm-9',
-          is_admin_route or (page.sidebar_first is empty and page.sidebar_second is empty) ? 'col-sm-12'
-        ]
-      %}
+      {% set content_classes = [
+        page.sidebar_first and page.sidebar_second and not is_admin_route ? 'col-sm-6',
+        (page.sidebar_first and page.sidebar_second is empty) and not is_admin_route ? 'col-sm-9',
+        (page.sidebar_second and page.sidebar_first is empty) and not is_admin_route ? 'col-sm-9',
+        is_admin_route or (page.sidebar_first is empty and page.sidebar_second is empty) ? 'col-sm-12'
+      ] %}
       <section{{ content_attributes.addClass(content_classes) }}>
 
         {# Highlighted #}

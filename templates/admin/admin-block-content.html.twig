@@ -17,13 +17,12 @@
  * @see seven_preprocess_admin_block_content()
  */
 #}
-{%
-  set classes = [
-    'admin-list',
-    'list-unstyled',
-    compact ? 'compact',
-  ]
-%}
+{% set classes = [
+  'admin-list',
+  'list-unstyled',
+  compact ? 'compact',
+] %}
+
 {% if content %}
   <ul{{ attributes.addClass(classes) }}>
     {% for item in content %}

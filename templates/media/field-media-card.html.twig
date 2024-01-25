@@ -39,12 +39,10 @@
  */
 #}
 {% if not label_hidden %}
-  {%
-    set title_classes = [
-      'field--label',
-      label_display == 'visually_hidden' ? 'sr-only',
-    ]
-  %}
+  {% set title_classes = [
+    'field--label',
+    label_display == 'visually_hidden' ? 'sr-only',
+  ] %}
   {% set title_element = label_display == 'inline' ? 'span' : 'div' %}
   <{{ title_element }}{{ title_attributes.addClass(title_classes) }}>{{ label }}</{{ title_element }}>
 {% endif %}

@@ -18,16 +18,16 @@
  * @see template_preprocess_form_element_label()
  */
 #}
-{%-
-  set classes = [
-    is_checkbox or is_radio ? 'form-check-label' : 'form-control-label',
-    title_display == 'after' ? 'option',
-    title_display == 'invisible' and not (is_checkbox or is_radio) ? 'sr-only',
-    required ? 'js-form-required',
-    required ? 'form-required',
-    description ? 'no-description',
-  ]
--%}
+
+{% set classes = [
+  is_checkbox or is_radio ? 'form-check-label' : 'form-control-label',
+  title_display == 'after' ? 'option',
+  title_display == 'invisible' and not (is_checkbox or is_radio) ? 'sr-only',
+  required ? 'js-form-required',
+  required ? 'form-required',
+  description ? 'no-description',
+] %}
+
 {% if title is not empty and title_display == 'invisible' and (is_checkbox or is_radio) -%}
   {#
   Clear but preserve label text as attribute (e.g. for screen readers) for

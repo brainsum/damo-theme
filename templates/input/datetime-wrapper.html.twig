@@ -15,16 +15,18 @@
  * @see template_preprocess_datetime_wrapper()
  */
 #}
-{%
-  set title_classes = [
-    'form-control-label',
-    required ? 'form-required',
-  ]
-%}
+
+{% set title_classes = [
+  'form-control-label',
+  required ? 'form-required',
+] %}
+
 {% if title %}
   <label{{ title_attributes.addClass(title_classes) }}>{{ title }}</label>
 {% endif %}
+
 {{ content }}
+
 {% if description %}
   <small class="help-block">{{ description }}</small>
 {% endif %}

@@ -13,13 +13,11 @@
  */
 #}
 {% if content %}
-{%
-  set classes = [
-    'card',
-    'card-inverse',
-    'card--media',
-  ]
-%}
+{% set classes = [
+  'card',
+  'card-inverse',
+  'card--media',
+] %}
 <div{{ attributes.addClass(classes) }}>
   {{ content.thumbnail }}
   {% block actions %}
@@ -28,23 +26,23 @@
   {% endblock %}
 </div>
 {% block card_content %}
-    <div class="card-content">
-    <a href="{{ view_url }}" class="card-img-overlay"></a>
-      {{ delete_link }}
-      {{ edit_link }}
-      <div class="card--inner-text">
-        <h4 class="card-title">{{ content.name }}</h4>
-        <small class="media-category card-text">
-          {{ content.field_category }}
-          {{ content.field_template_category }}
-          {{ content.field_field_category }}
-        </small>
-        <small class="media-industry card-text">
-          {{ content.field_keywords }}
-          {{ content.field_template_keywords }}
-          {{ content.field_field_keywords }}
-        </small>
-      </div>
+  <div class="card-content">
+  <a href="{{ view_url }}" class="card-img-overlay"></a>
+    {{ delete_link }}
+    {{ edit_link }}
+    <div class="card--inner-text">
+      <h4 class="card-title">{{ content.name }}</h4>
+      <small class="media-category card-text">
+        {{ content.field_category }}
+        {{ content.field_template_category }}
+        {{ content.field_field_category }}
+      </small>
+      <small class="media-industry card-text">
+        {{ content.field_keywords }}
+        {{ content.field_template_keywords }}
+        {{ content.field_field_keywords }}
+      </small>
     </div>
+  </div>
 {% endblock %}
 {% endif %}

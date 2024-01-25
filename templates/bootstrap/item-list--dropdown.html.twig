@@ -22,13 +22,11 @@
  * @see template_preprocess_item_list()
  */
 #}
-{%
-  set classes = [
-    'dropdown-menu',
-    alignment == 'left' ? 'dropdown-menu-left',
-    alignment == 'right' ? 'dropdown-menu-right',
-  ]
-%}
+{% set classes = [
+  'dropdown-menu',
+  alignment == 'left' ? 'dropdown-menu-left',
+  alignment == 'right' ? 'dropdown-menu-right',
+] %}
 {% if items or empty -%}
   {%- if items -%}
     <div{{ attributes.addClass(classes) }} role="menu">

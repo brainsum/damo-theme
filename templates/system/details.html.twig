@@ -17,13 +17,11 @@
  */
 #}
 <details{{ attributes }}>
-  {%
-    set summary_classes = [
-      'form-control-label',
-      required ? 'js-form-required',
-      required ? 'form-required',
-    ]
-  %}
+  {% set summary_classes = [
+    'form-control-label',
+    required ? 'js-form-required',
+    required ? 'form-required',
+  ] %}
   <summary{{ summary_attributes.addClass(summary_classes) }}>
     {{- title ? title : "Details"|t -}}
   </summary>

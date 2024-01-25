@@ -41,24 +41,21 @@
  * @ingroup templates
  */
 #}
-{%
-  set classes = [
-    'panel',
-    errors ? 'panel-danger' : 'panel-' ~ panel_type|clean_class,
-  ]
-%}
+{% set classes = [
+  'panel',
+  errors ? 'panel-danger' : 'panel-' ~ panel_type|clean_class,
+] %}
+
 <div{{ attributes.addClass(classes) }}>
 
   {# Heading #}
   {% if heading %}
     {% block heading %}
       <div class="panel-heading">
-        {%
-          set heading_classes = [
-            'panel-title',
-            required ? 'form-required' : '',
-          ]
-        %}
+        {% set heading_classes = [
+          'panel-title',
+          required ? 'form-required' : '',
+        ] %}
         {% if collapsible %}
           <a{{ heading_attributes.addClass(heading_classes) }} href="{{ target }}">{{ heading }}</a>
         {% else %}
@@ -70,21 +67,17 @@
 
   {# Body #}
   {% block body %}
-    {%
-      set body_classes = [
+    {% set body_classes = [
       'panel-body',
       collapsible ? 'panel-collapse',
       collapsible ? 'collapse',
       collapsible ? 'fade',
       errors or collapsible and not collapsed ? 'in',
-      ]
-    %}
-    {%
-      set description_classes = [
-        'help-block',
-        description and description.position == 'invisible' ? 'sr-only',
-      ]
-    %}
+    ] %}
+    {% set description_classes = [
+      'help-block',
+      description and description.position == 'invisible' ? 'sr-only',
+    ] %}
 
     {% if errors %}
       <div class="alert alert-danger" role="alert">
@@ -106,13 +99,10 @@
   {# Footer #}
   {% if footer %}
     {% block footer %}
-      {%
-        set footer_classes = [
-          'panel-footer',
-        ]
-      %}
+      {% set footer_classes = [
+        'panel-footer',
+      ] %}
       <div{{ footer_attributes.addClass(footer_classes) }}>{{ footer }}</div>
     {% endblock %}
   {% endif %}
-
 </div>

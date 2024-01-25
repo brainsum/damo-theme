@@ -1,4 +1,3 @@
-{% extends "input--button.html.twig" %}
 {#
 /**
  * @file
@@ -22,10 +21,13 @@
  * @see template_preprocess_input()
  */
 #}
-{% apply spaceless %}
-  {% block input %}
+
+{% extends "input--button.html.twig" %}
+
+{% block input %}
+  {% apply spaceless %}
     <a href="#" class="dropdown-item" data-target="dropdown-button">{{ label }}</a>
     <button{{ attributes.addClass('hidden-xs-up') }}>{{ label }}</button>
     {{ children }}
-  {% endblock %}
-{% endapply %}
+  {% endapply %}
+{% endblock %}

@@ -32,24 +32,20 @@
 #}
 <div{{ attributes }}>
   {% for theme_group in theme_groups %}
-    {%
-      set theme_group_classes = [
-        'system-themes-list',
-        'system-themes-list-' ~ theme_group.state,
-        'clearfix',
-      ]
-    %}
+    {% set theme_group_classes = [
+      'system-themes-list',
+      'system-themes-list-' ~ theme_group.state,
+      'clearfix',
+    ] %}
     <div{{ theme_group.attributes.addClass(theme_group_classes) }}>
       <h2 class="system-themes-list__header">{{ theme_group.title }}</h2>
       {% for theme in theme_group.themes %}
-        {%
-          set theme_classes = [
-            theme.is_default ? 'theme-default',
-            theme.is_admin ? 'theme-admin',
-            'theme-selector',
-            'clearfix',
-          ]
-        %}
+        {% set theme_classes = [
+          theme.is_default ? 'theme-default',
+          theme.is_admin ? 'theme-admin',
+          'theme-selector',
+          'clearfix',
+        ] %}
         <div{{ theme.attributes.addClass(theme_classes) }}>
           {% if theme.screenshot %}
             {{ theme.screenshot }}
