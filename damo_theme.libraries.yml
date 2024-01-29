@@ -207,7 +207,7 @@ site_intro:
     theme:
       css/site_intro.css: {}
 media_page:
-  version: 1.0.0
+  version: 1.0.1
   css:
     theme:
       css/media_page.css: {}

@@ -15,9 +15,12 @@
       var that = this;
       var height = 0;
       checkbox = $('#watermark');
+      var activeImage = $('.images-wrapper .image.active');
 
-      identifier = $('.images-wrapper .image.active').attr('identifier');
-      that.disableCheckbox(identifier);
+      identifier = activeImage.attr('identifier');
+      if(activeImage.length > 0) {
+        that.disableCheckbox(identifier);
+      }
 
       $('.image-controls .link').on('click', function(){
         identifier = $(this).attr('identifier');
@@ -25,7 +28,7 @@
         that.disableCheckbox(identifier);
       });
       checkbox.on('change', function(){
-        identifier = $('.images-wrapper .image.active').attr('identifier');
+        identifier = activeImage.attr('identifier');
         that.toggleCheckbox(identifier);
         if (checkbox.is(':checked')) {
           $('.image-controls').find('.no-badge').addClass('inactive');
@@ -33,10 +36,10 @@
         else {
           $('.image-controls').find('.no-badge').removeClass('inactive');
         }
-        
+
       });
-      
-      
+
+
       if ($('.field--type-entity-reference').length < 1) {
         $('.usage-wrapper').addClass('no-margin');
       }
@@ -49,7 +52,7 @@
         }
         height = height * -1;
       }
-      recalculateImageHeight(mobileCheck()); 
+      recalculateImageHeight(mobileCheck());
       $('.dam-local-task-back-button a').on('click', function(e){
         e.preventDefault();
         e.stopPropagation();
@@ -66,7 +69,7 @@
       }
 
       window.addEventListener('resize', ()=> {
-        recalculateImageHeight(mobileCheck()); 
+        recalculateImageHeight(mobileCheck());
       });
       function recalculateImageHeight(isMobile) {
         if (!isMobile) {
@@ -80,7 +83,7 @@
           $('.usage-wrapper').css('margin-top', 0);
         }
       }
-      
+
     },
 
     toggleCheckbox: function(identifier) {
