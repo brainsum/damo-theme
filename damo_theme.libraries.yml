@@ -82,7 +82,7 @@ bootstrap-scripts:
 # ------------------------------------------------------------------------------
 
 fancy-logo:
-  version: 1.0
+  version: 1.0.1
   css:
     theme:
       css/theme/fancy-logo.css: {}
@@ -91,7 +91,7 @@ fancy-logo:
   dependencies:
     - core/drupal
     - core/jquery
-    - core/jquery.once
+    - core/once
     - damo_theme/requestAnimationFrame
 
 media_library:

@@ -4,14 +4,14 @@
  * throttling to prevent too many function calls.
  */
 
-(function (Drupal, $) {
+(function (Drupal, $, once) {
   'use strict';
 
   Drupal.behaviors.fancyLogoAnimation = {
     attach: function (context, settings) {
       var latestKnownScrollY = 0;
       var ticking = false;
-      var $logo = $('.fancy-logo').once('fancy-logo');
+      var $logo = $(once('fancy-logo', '.fancy-logo'));
       var classAfterScroll = 'fixed';
 
       function update() {
@@ -37,4 +37,4 @@
     }
   };
 
-})(Drupal, jQuery);
+})(Drupal, jQuery, once);
