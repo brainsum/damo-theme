@@ -52,20 +52,6 @@ tabs-toggle:
     - core/jquery
     - core/drupal
 
-drupal.collapse:
-  js:
-    /core/misc/details-aria.js: {}
-    # collapse.js will be replaced by Bootstrap's version.
-    # @see \Drupal\damo_base\Plugin\Alter\LibraryInfo::alter
-    # @see https://www.drupal.org/node/2840414
-    /core/misc/collapse.js: {}
-  dependencies:
-    - core/jquery
-    - core/modernizr
-    - core/drupal
-    - core/drupal.form
-    - core/jquery.once
-
 # @todo use custom build.
 bootstrap-scripts:
   version: 4.0.0-alpha6
