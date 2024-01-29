@@ -45,14 +45,12 @@ admin:
       css/admin/admin-list.css: {}
 
 tabs-toggle:
-  version: 1.0.0
+  version: 1.0.1
   js:
     js/tabs-toggle.js: {}
   dependencies:
     - core/jquery
     - core/drupal
-    - core/jquery.once
-    - core/drupal.debounce
 
 drupal.collapse:
   js:
