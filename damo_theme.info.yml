@@ -81,7 +81,7 @@ libraries-extend:
     - damo_theme/modal
   bootstrap/drupal.ajax:
     - damo_theme/drupal.ajax
-  core/jquery.ui.autocomplete:
+  jquery_ui_autocomplete/autocomplete:
     - damo_theme/jquery.ui.autocomplete
   field_ui/drupal.field_ui:
     - damo_theme/drupal.field_ui
