@@ -51,7 +51,7 @@ libraries-override:
     js:
       js/misc/ajax.js: js/misc/ajax.js
 
-  core/jquery.ui.dialog:
+  jquery_ui_dialog/dialog:
     css:
       component:
         assets/vendor/jquery.ui/themes/base/dialog.css: css/component/dialog.css
