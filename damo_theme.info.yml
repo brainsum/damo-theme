@@ -89,7 +89,7 @@ libraries-extend:
 # Content and design related styles must be available in WYSIWYG editors too.
 #
 # @see https://www.drupal.org/docs/8/api/ckeditor-api
-ckeditor_stylesheets:
+ckeditor5_stylesheets:
   - css/base/reset.css
   - css/base/code.css
   - css/base/fonts.css
