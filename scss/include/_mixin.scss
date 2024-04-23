@@ -18,6 +18,7 @@ $fw--900: 900; // black/heavy
 $fs--normal: normal;
 $fs--italic: italic;
 $ff--montserrat: 'Montserrat', sans-serif;
+$ff--roboto: "Roboto", sans-serif;
 
 $color1: #68809a;
 $color1hover: #7ea8d6;
@@ -25,12 +26,26 @@ $color2: #57b3af;
 $color2hover: #5acac5;
 $text_color: #fff;
 
+// <uniquifier>: Use a unique and descriptive class name
+
+@mixin montserrat--bold() {
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+}
+
+@mixin roboto--regular() {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
 @mixin fontArialNormal() {  // Arial Normal
   font-family: $ff--montserrat;
   font-weight: $fw--400;
   font-style: $fs--normal;
 }
-
 
 @mixin fontArialBold() {  // Arial Bold
   font-family: $ff--montserrat;
@@ -38,21 +53,21 @@ $text_color: #fff;
   font-style: $fs--normal;
 }
 
-@mixin headerBackground() {  // Arial Bold
-  background: #cecece;
+@mixin headerBackground() {
+  background: $header-bgr;
 }
 
-@mixin buttonColor2() {  // Arial Bold
+@mixin buttonColor2() {
   background: #57b3af;
 }
-@mixin buttonColor2Hover() {  // Arial Bold
+@mixin buttonColor2Hover() {
   background: #5acac5;
 }
-@mixin buttonColor1() {  // Arial Bold
+@mixin buttonColor1() {
   background: #68809a;
 }
 
-@mixin buttonColor1Hover() {  // Arial Bold
+@mixin buttonColor1Hover() {
   background: #7ea8d6;
 }
 

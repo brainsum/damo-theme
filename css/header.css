@@ -122,7 +122,7 @@
 
     overflow: hidden;
 
-    background-color: rgba(103, 175, 225, .5);
+    background-color: #333738;
 }
 
 .navbar .header-video
@@ -285,7 +285,7 @@ header.navbar .header-background
 
     width: 100%;
 
-    background: #cecece;
+    background: #333738;
     background-position: 0 -60%;
     background-size: 100%;
 }
@@ -301,7 +301,7 @@ header.navbar .header-background::after
 
     content: '';
 
-    background-color: rgba(0, 0, 0, .63);
+    background: #333738;
 }
 
 .fancy-logo

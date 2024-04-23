@@ -159,6 +159,12 @@ drupal.dialog.ajax:
   js:
     js/dialog.ajax.js: {}
 
+edit-menu.toolbar:
+  version: 1.0.0
+  css:
+    component:
+      css/theme/edit-menu--toolbar.css: {}
+
 # ------------------------------------------------------------------------------
 # Polyfills & Shims
 # ------------------------------------------------------------------------------
