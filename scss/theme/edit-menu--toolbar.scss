@@ -1,0 +1,48 @@
+@import "../include/mixin";
+
+.edit-menu--toolbar {
+  padding: 26px 0;
+  max-width: 1300px;
+  display: flex;
+  justify-content: flex-start;
+  margin: 0 auto;
+  .section__inner {
+    max-width: 991px;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .edit-menu--buttonset {
+    display: flex;
+    justify-content: flex-start;
+    .edit-menu--button {
+      @include montserrat--bold;
+      font-size: 12px;
+      font-weight: bold;
+      color: #000000;
+      display: flex;
+      justify-content: center;
+      border: 1px solid #d4d4d4;
+      border-radius: 21px;
+      padding: 10px 15px;
+      margin-right: 10px;
+      &:hover {
+        background-color: #f5f5f5;
+      }
+    }
+  }
+
+  .media-status {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    background-color: #f5f5f5;
+    padding: 5px 15px;
+    border-radius: 21px;
+    .media-status--icon {
+      margin-right: 5px;
+    }
+  }
+}

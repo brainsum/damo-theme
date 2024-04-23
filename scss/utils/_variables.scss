@@ -42,6 +42,9 @@ $colors: (
   @return map-get($colors, $name);
 }
 
+$toolbar-bgr: #3e4242;
+$header-bgr : #333738;
+
 // Options
 //
 //
@@ -100,7 +103,7 @@ $font-family-sans-serif:
   "Cantarell", // Linux GNOME
   "Fira Sans", // Firefox OS [R.I.P.]
   "Droid Sans", // Older Android
-  "Helvetica Neue", Arial, sans-serif; // Basic web fallback
+  "Roboto", sans-serif; // Basic web fallback
 
 $font-size-root: 16px;
 $font-size-base: 1rem;

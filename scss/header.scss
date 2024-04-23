@@ -25,7 +25,7 @@ $slope-min-height: 50px;
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(103, 175, 225, .5);
+    background-color: $header-bgr;
   }
 
   .header-video {
@@ -152,7 +152,7 @@ header {
         position: absolute;
         top: 0;
         left: 0;
-        background-color: rgba(0, 0, 0, 0.63);
+        @include headerBackground;
       }
     }
   }

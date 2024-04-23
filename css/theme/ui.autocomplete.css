@@ -5,7 +5,7 @@
  */
 .ui-autocomplete
 {
-    font-family: 'HelveticaNeue', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', Arial, sans-serif;
+    font-family: 'HelveticaNeue', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Roboto', sans-serif;
     font-size: 1rem;
 
     z-index: 1000;

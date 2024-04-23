@@ -1,0 +1,200 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,600,700');
+/**
+ * @file
+ *** FOUNDATION FOR SITES AND CUSTOM MIXINS
+ */
+/**
+ * @group Foundation for Sites mixins
+ * Mixins placeholder file
+ * @todo These are mostly from Foundation and should be removed and used straight from Foundation.
+ */
+.clearfix:before,
+.clearfix:after
+{
+    display: table;
+
+    content: ' ';
+}
+
+.clearfix:after
+{
+    clear: both;
+}
+
+/**
+ * Horizontally or vertically aligns the items within a flex container.
+ *
+ * @param {Keyword} $x [null] - Horizontal alignment to use. Can be `left`,
+ * `right`, `center`, `justify`, or `spaced`. Or, set it to `null`
+ * (the default) to not set horizontal alignment.
+ * @param {Keyword} $y [null] - Vertical alignment to use. Can be `top`,
+ * `bottom`, `middle`, or `stretch`. Or, set it to `null` (the default) to not
+ * set vertical alignment.
+ */
+/**
+ * Vertically align a single column within a flex row. Apply this mixin to a
+ * flex column.
+ *
+ * @param {Keyword} $y [null] - Vertical alignment to use. Can be `top`,
+ * `bottom`, `middle`, or `stretch`. Or, set it to `null` (the default) to not
+ * set vertical alignment.
+ */
+/**
+ * Changes the source order of a flex child. Children with lower numbers appear
+ * first in the layout.
+ *
+ * @param {Number} $order [0] - Order number to apply.
+ */
+/**
+ * Change flex-direction
+ *
+ * @param {Keyword} $direction [row] - Flex direction to use. Can be
+ * - row (default): same as text direction
+ * - row-reverse: opposite to text direction
+ * - column: same as row but top to bottom
+ * - column-reverse: same as row-reverse top to bottom
+ */
+/**
+ * @include flex-wrap(nowrap | wrap | wrap-reverse);
+ * Default: nowrap
+ */
+/**
+ * @include flex-flow(values);
+ * Default: row nowrap
+ */
+/**
+ * @include order(int);
+ * Default: 0
+ */
+/**
+ * @include flex-grow(int);
+ * Default: 1
+ */
+/**
+ * @include flex-shrink(int);
+ * Default: 0
+ */
+/**
+ * @include flex-basis(int);
+ * Default: auto
+ */
+/**
+ * @include justify-content(flex-start | flex-end | center | space-between
+ * | space-around);
+ * Default: flex-start
+ */
+/**
+ * @include align-items(flex-start | flex-end | center | baseline | stretch);
+ * Default: stretch
+ */
+/**
+ * @include align-self(auto | flex-start | flex-end | center | baseline | stretch);
+ * Default: auto
+ */
+/**
+ * @include align-content(flex-start | flex-end | center | space-between | space-around | stretch);
+ * Default: stretch
+ */
+.edit-menu--toolbar
+{
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display:         flex;
+
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 26px 0;
+
+    -webkit-box-pack: start;
+    -webkit-justify-content: flex-start;
+    -ms-flex-pack: start;
+            justify-content: flex-start;
+}
+
+.edit-menu--toolbar .section__inner
+{
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display:         flex;
+
+    width: 100%;
+    max-width: 991px;
+    margin: 0 auto;
+
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    -ms-flex-pack: justify;
+            justify-content: space-between;
+}
+
+.edit-menu--toolbar .edit-menu--buttonset
+{
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display:         flex;
+
+    -webkit-box-pack: start;
+    -webkit-justify-content: flex-start;
+    -ms-flex-pack: start;
+            justify-content: flex-start;
+}
+
+.edit-menu--toolbar .edit-menu--buttonset .edit-menu--button
+{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    font-weight: bold;
+    font-style: normal;
+
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display:         flex;
+
+    margin-right: 10px;
+    padding: 10px 15px;
+
+    color: #000;
+    border: 1px solid #d4d4d4;
+    border-radius: 21px;
+
+    font-optical-sizing: auto;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+            justify-content: center;
+}
+
+.edit-menu--toolbar .edit-menu--buttonset .edit-menu--button:hover
+{
+    background-color: #f5f5f5;
+}
+
+.edit-menu--toolbar .media-status
+{
+    font-size: 16px;
+
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display:         flex;
+
+    padding: 5px 15px;
+
+    border-radius: 21px;
+    background-color: #f5f5f5;
+
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+            align-items: center;
+}
+
+.edit-menu--toolbar .media-status .media-status--icon
+{
+    margin-right: 5px;
+}

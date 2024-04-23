@@ -67,3 +67,8 @@ body.navbar-is-static-top
         top: 39px;
     }
 }
+
+.toolbar .toolbar-bar
+{
+    background-color: #3e4242;
+}

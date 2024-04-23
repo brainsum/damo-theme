@@ -40,10 +40,6 @@
   {% if media_collection_data %}
     {{ media_collection_data }}
   {% endif %}
+  {% include '@damo_theme/system/edit-menu.html.twig' %}
   {{ content }}
-  {% if not status %}
-    <div class="media-status">
-      {{ 'This asset is unpublished'|t }}
-    </div>
-  {% endif %}
 </div>

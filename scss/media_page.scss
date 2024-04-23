@@ -49,7 +49,7 @@
     }
     // @include media-breakpoint-up(md) {
     //   position: absolute;
-    //   left: 50%;	            
+    //   left: 50%;
     //   top: 50%;
     //   transform: translate(-50%, -50%);
     // }
@@ -57,6 +57,7 @@
 }
 
 .media-page-wrapper {
+  display: flex;
   &.non-image {
     .left-wrapper {
       min-height: 150px;
@@ -72,29 +73,29 @@
   // @include flex-direction(column);
   .left-wrapper {
     width: 70%;
-    float: left;
+    // float: left;
   }
   @include media-breakpoint-down(md) {
     .left-wrapper {
       width: 100%;
-      float: none;
+      // float: none;
     }
     .right-wrapper {
       width: 100%;
-      float: none;
+      // float: none;
     }
   }
 }
 
 .right-wrapper {
   width: 30%;
-  float: left;
+  // float: left;
 
   .top-controls {
     padding: 15px 25px 15px;
     background: #ffffff;
     border-bottom: 1px solid #EEEEEE;
-    
+
     .disabled {
       opacity: 0.4;
     }
@@ -191,7 +192,7 @@
     }
   }
 }
-.media-status,
+
 .field--label-inline,
 .field--label-above {
   @include fontArialBold;
@@ -338,10 +339,10 @@ main {
     border-radius: 4px;
     background: #68809a;
   }
-  
+
   .button--gray {
     &.disabled {
-      img { 
+      img {
         display: none;
         color: #c1c1c1;
       }
@@ -350,7 +351,7 @@ main {
 }
 
 .button {
-  &.disabled { 
+  &.disabled {
     background: #eeeeee;
     border-color: #eeeeee;
     color: #c1c1c1;
@@ -364,7 +365,7 @@ main {
 }
 
 @media (max-width: 1670px) {
-  .dam-local-task-back-button, 
+  .dam-local-task-back-button,
   .dam-local-task-extension-wrapper {
     position: relative;
     float: right;
@@ -384,7 +385,7 @@ main {
 }
 
 @media (max-width: 576px) {
-  .dam-local-task-back-button, 
+  .dam-local-task-back-button,
   .dam-local-task-extension-wrapper {
     float: none;
     margin: 0 auto;
