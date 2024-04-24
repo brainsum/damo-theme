@@ -3,7 +3,7 @@
  * Toggleable responsive tabs for Local Tasks menus.
  */
 
-(function (Drupal, $) {
+(function (Drupal, $, once) {
   'use strict';
 
   Drupal.behaviors.damoTheme = {
@@ -106,7 +106,15 @@
       //     menuWrapper.classList.remove('active');
       //   }
       // });
+
+      const userBtn = once('userBtn', document.getElementById("js-user-menu"));
+      const userMenu = once('userMenu',document.getElementById("js-user-dropdown"));
+      userBtn.forEach(item => {
+        item.addEventListener('click', (e)=> {
+          userMenu[0].classList.toggle('active');
+        })
+      })
     }
   };
 
-})(Drupal, jQuery);
+})(Drupal, jQuery, once);
