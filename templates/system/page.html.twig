@@ -63,12 +63,13 @@
 {% if page.navigation or page.navigation_collapsible %}
   {% block navbar %}
     <header{{ navbar_attributes }} id="navbar" role="banner">
+      <div class="header--inner">
       {% if navbar_attributes.inner_container %}
         <div class="{{ container_class }}">
       {% endif %}
 
       {% block navigation %}
-        <div class="header-background"></div>
+        {#<div class="header-background"></div>#}
         {{ attach_library('damo_theme/header') }}
         {{ attach_library('damo_theme/front_page') }}
         {{ page.navigation }}
@@ -81,33 +82,12 @@
       {% if not navbar_attributes.inner_container %}
         </div>
       {% endif %}
+      </div>
     </header>
   {% endblock %}
 {% endif %}
 
 {# Main #}
-{% if media_description %}
-  {% if is_front %}
-    <div class="usage-wrapper">
-      <div class="control-wrapper">
-        <i class="fas fa-question-circle"></i>
-        <span class="control-title">{{ media_description.content.title }}</span>
-      </div>
-    </div>
-  {% endif %}
-  <div class="useage-overlay-wrapper">
-    <div class="overlay-content">
-      <span class="close"><i class="fas fa-times"></i></span>
-      <h4 class="title">
-        {{ media_description.content.title }}
-      </h4>
-      <p class="description">
-        {{ media_description.content.description }}
-      </p>
-    </div>
-  </div>
-  </div>
-{% endif %}
 {% block main %}
   <main role="main" class="{{ container_class }} js-quickedit-main-content">
     <div class="row">
@@ -163,6 +143,13 @@
           {% endblock %}
         {% endif %}
 
+        {# secondary_navigation #}
+        {% if page.secondary_navigation %}
+          {% block secondary_navigation %}
+            {{ page.secondary_navigation }}
+          {% endblock %}
+        {% endif %}
+
         {# Content #}
         {% block content %}
           <a id="main-content"></a>
@@ -179,6 +166,27 @@
     </div>
   </main>
 {% endblock %}
+{% if media_description %}
+  {% if is_front %}
+    <div class="usage-wrapper">
+      <div class="control-wrapper">
+        <i class="fas fa-question-circle"></i>
+        <span class="control-title">{{ media_description.content.title }}</span>
+      </div>
+    </div>
+  {% endif %}
+  <div class="useage-overlay-wrapper">
+    <div class="overlay-content">
+      <span class="close"><i class="fas fa-times"></i></span>
+      <h4 class="title">
+        {{ media_description.content.title }}
+      </h4>
+      <p class="description">
+        {{ media_description.content.description }}
+      </p>
+    </div>
+  </div>
+{% endif %}
 
 {% if page.footer %}
   {% block footer %}

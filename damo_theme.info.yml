@@ -110,6 +110,7 @@ regions:
   header: 'Header'
   highlighted: 'Highlighted'
   help: 'Help'
+  secondary_navigation: 'Secondary navigation'
   content: 'Content'
   sidebar_first: 'Primary'
   sidebar_second: 'Secondary'

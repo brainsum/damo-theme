@@ -177,8 +177,7 @@ body.path-frontpage {
     }
   }
   .block-views-exposed-filter-blockunpublished-assets-unpublished-assets,
-  .block-views-exposed-filter-blockunpublished-assets-user-unpublished-assets,
-  #block-damo-theme-exposed-asset-search-form {
+  .block-views-exposed-filter-blockunpublished-assets-user-unpublished-assets {
     padding-left: 38px;
     z-index: 999;
     @include media-breakpoint-up(sm) {
@@ -186,23 +185,29 @@ body.path-frontpage {
     }
     border-radius: 0px;
   }
-  .form-group {
-    margin-bottom: 15px;
-  }
   .view-header {
     @include fontArialBold;
     @include buttonFontStyle;
     @include fontColor1;
     @include media-breakpoint-up(sm) {
-      margin-top: -41px;
-      text-align: left;
+      // margin-top: -41px;
+      // text-align: left;
     }
     font-size: 10px;
     max-width: 1031px;
     margin: 0 auto;
     text-align: center;
-    margin-top: 0;
-    margin-bottom: 37px;
+/*    margin-top: 0;
+    margin-bottom: 37px;*/
+  }
+
+  .view-asset-search {
+    .view-header {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: -50px;
+    }
   }
 
   @media (max-width: 575px) {

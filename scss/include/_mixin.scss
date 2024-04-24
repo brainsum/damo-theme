@@ -20,18 +20,19 @@ $fs--italic: italic;
 $ff--montserrat: 'Montserrat', sans-serif;
 $ff--roboto: "Roboto", sans-serif;
 
-$color1: #68809a;
-$color1hover: #7ea8d6;
-$color2: #57b3af;
-$color2hover: #5acac5;
-$text_color: #fff;
-
 // <uniquifier>: Use a unique and descriptive class name
 
 @mixin montserrat--bold() {
   font-family: "Montserrat", sans-serif;
   font-optical-sizing: auto;
   font-weight: 700;
+  font-style: normal;
+}
+
+@mixin montserrat--medium() {
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
   font-style: normal;
 }
 
@@ -587,5 +588,10 @@ $-zf-flex-direction: (
   }
 
   align-content: $value;
+}
+
+@mixin content-width($maxwidth: 1300px) {
+  max-width: $maxwidth;
+  margin: 0 auto;
 }
 
