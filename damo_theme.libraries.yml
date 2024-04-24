@@ -194,6 +194,10 @@ header:
   js:
     js/damo_theme.js: {}
     js/jquery.nice-select.js: {}
+  dependencies:
+    - core/drupal
+    - core/jquery
+    - core/once
 
 media_assets:
   version: 1.0.0
