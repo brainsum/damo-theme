@@ -1,5 +1,6 @@
 .form-control {
   background-color: #FFFFFF;
+  border: none;
   border-radius: 4px;
   font-size: 14px;
   &.form-file {
@@ -26,4 +27,3 @@
     max-width: 300px;
   }
 }
-

@@ -206,11 +206,7 @@ body.path-frontpage {
       position: absolute;
       left: 0;
       right: 0;
-      top: -12px;
-      max-width: 150px;
-      @media screen and (min-width: 1024px) {
-        top: -50px;
-      }
+      top: -50px;
     }
   }
 

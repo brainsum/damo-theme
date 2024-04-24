@@ -576,21 +576,9 @@ body.path-admin .view-asset-search .view-header,
 body.path-frontpage .view-asset-search .view-header
 {
     position: absolute;
-    top: -12px;
+    top: -50px;
     right: 0;
     left: 0;
-
-    max-width: 150px;
-}
-
-@media screen and (min-width: 1024px)
-{
-    body.media--view .view-asset-search .view-header,
-    body.path-admin .view-asset-search .view-header,
-    body.path-frontpage .view-asset-search .view-header
-    {
-        top: -50px;
-    }
 }
 
 @media (max-width: 575px)
