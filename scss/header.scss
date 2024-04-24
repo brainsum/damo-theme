@@ -254,17 +254,9 @@ header {
     .header--inner {
       @include content-width();
       display: flex;
-      flex-direction: column;
       align-items: center;
-      padding-bottom: 20px;
-      @media screen and (min-width: 1024px) {
-        flex-direction: row;
-        height: 70px;
-        padding: 0 20px 0;
-      }
     }
   }
-
 
   .form-group,
   .form-actions,
@@ -285,20 +277,16 @@ header {
     display: flex;
   }
   a {
-    @include transition(all .2s ease-in-out);
-    @include montserrat--medium;
     pointer-events: all;
+    @include montserrat--bold;
     font-size: 12px;
+    font-weight: bold;
     color: #ffffff;
     display: flex;
     justify-content: center;
     border-radius: 21px;
-    padding: 8px 13px;
+    padding: 8px 15px;
     align-items: center;
-    height: 40px;
-    &:hover {
-      opacity: .8;
-    }
   }
   .dam-local-task-back-button {
     margin-left: 10px;
@@ -307,8 +295,8 @@ header {
       display: block;
     }
     a {
-      border: 1px solid rgba(#ffffff, .5);
-    }
+        border: 1px solid rgba(#ffffff, .5);
+      }
   }
 }
 
@@ -324,7 +312,7 @@ header {
       background-image: url("../images/plus_icon.svg");
       background-repeat: no-repeat;
       background-size: 24px;
-      margin-right: 4px;
+      margin-right: 2px;
     }
   }
   .dam-media-collection-link {
@@ -531,7 +519,6 @@ header {
     padding-left: 0;
   }
   a {
-    @include transition(all .2s ease-in-out);
     @include montserrat--bold;
     font-size: 12px;
     font-weight: bold;
@@ -544,7 +531,7 @@ header {
     margin-right: 6px;
     text-transform: uppercase;
     &:hover {
-      background-color: rgba(#565656, .2);
+      background-color: #f5f5f5;
     }
     &.is-active {
       background-color: #565656;
