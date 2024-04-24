@@ -45,19 +45,3 @@
     src: url('../../fonts/HelveticaNeueLTCom-Hv.eot?#iefix') format('embedded-opentype'), url('../../fonts/HelveticaNeueLTCom-Hv.woff2') format('woff2'), url('../../fonts/HelveticaNeueLTCom-Hv.woff') format('woff'), url('../../fonts/HelveticaNeueLTCom-Hv.ttf') format('truetype'), url('../../fonts/HelveticaNeueLTCom-Hv.svg#HelveticaNeueLTCom-Hv') format('svg');
     unicode-range: U+0-10FFFF;
 }
-
-.montserrat-bold
-{
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 700;
-    font-style: normal;
-
-    font-optical-sizing: auto;
-}
-
-.roboto-regular
-{
-    font-family: 'Roboto', sans-serif;
-    font-weight: 400;
-    font-style: normal;
-}

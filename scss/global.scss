@@ -5,8 +5,6 @@
 @import "include/form";
 @import "include/buttons";
 @import "pages/media_add";
-@import "elements/search";
-@import "elements/logo";
 
 @import "font_awsome/fontawesome.scss";
 @import "font_awsome/solid.scss";
@@ -48,14 +46,6 @@ body {
     }
     @include media-breakpoint-up(xl) {
       content: "xl"
-    }
-  }
-}
-
-header {
-  &.navbar {
-    .header-slope {
-      fill: #EBEBEB;
     }
   }
 }
@@ -338,12 +328,4 @@ body.path-media {
 
 .view-empty {
   text-align: center;
-}
-
-.dam-local-task-extension-wrapper {
-  pointer-events: none;
-
-  a {
-    pointer-events: all;
-  }
 }

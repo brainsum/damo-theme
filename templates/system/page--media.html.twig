@@ -63,12 +63,12 @@
 {% if page.navigation or page.navigation_collapsible %}
   {% block navbar %}
     <header{{ navbar_attributes }} id="navbar" role="banner">
+      <div class="header--inner">
       {% if navbar_attributes.inner_container %}
         <div class="{{ container_class }}">
       {% endif %}
 
       {% block navigation %}
-        <div class="header-background"></div>
         {{ attach_library('damo_theme/header') }}
         {{ attach_library('damo_theme/front_page') }}
         {{ page.navigation }}
@@ -81,6 +81,7 @@
       {% if not navbar_attributes.inner_container %}
         </div>
       {% endif %}
+      </div>
     </header>
   {% endblock %}
 {% endif %}

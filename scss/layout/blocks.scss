@@ -1,4 +1,5 @@
 @import "../index";
+@import "../include/mixin";
 
 .block-local-actions-block {
   margin: $spacer 0;
@@ -35,3 +36,25 @@
     margin-left: 1em;
   }
 }
+
+.block-facet-blockasset-category {
+  display: flex;
+  align-items: center;
+  h2 {
+    @include montserrat--medium;
+    text-transform: capitalize;
+    font-size: 12px;
+    margin-right: 8px;
+    margin-bottom: 0;
+  }
+  select,
+  select:focus-visible {
+    @include montserrat--bold;
+    background: transparent;
+    border: 0;
+    font-size: 12px;
+    text-align: right;
+    cursor: pointer;
+  }
+}
+

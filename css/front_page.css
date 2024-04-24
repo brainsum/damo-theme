@@ -523,13 +523,10 @@ body.path-frontpage .useage-overlay-wrapper .overlay-content span.close
 
 body.media--view .block-views-exposed-filter-blockunpublished-assets-unpublished-assets,
 body.media--view .block-views-exposed-filter-blockunpublished-assets-user-unpublished-assets,
-body.media--view #block-damo-theme-exposed-asset-search-form,
 body.path-admin .block-views-exposed-filter-blockunpublished-assets-unpublished-assets,
 body.path-admin .block-views-exposed-filter-blockunpublished-assets-user-unpublished-assets,
-body.path-admin #block-damo-theme-exposed-asset-search-form,
 body.path-frontpage .block-views-exposed-filter-blockunpublished-assets-unpublished-assets,
-body.path-frontpage .block-views-exposed-filter-blockunpublished-assets-user-unpublished-assets,
-body.path-frontpage #block-damo-theme-exposed-asset-search-form
+body.path-frontpage .block-views-exposed-filter-blockunpublished-assets-user-unpublished-assets
 {
     z-index: 999;
 
@@ -542,23 +539,13 @@ body.path-frontpage #block-damo-theme-exposed-asset-search-form
 {
     body.media--view .block-views-exposed-filter-blockunpublished-assets-unpublished-assets,
     body.media--view .block-views-exposed-filter-blockunpublished-assets-user-unpublished-assets,
-    body.media--view #block-damo-theme-exposed-asset-search-form,
     body.path-admin .block-views-exposed-filter-blockunpublished-assets-unpublished-assets,
     body.path-admin .block-views-exposed-filter-blockunpublished-assets-user-unpublished-assets,
-    body.path-admin #block-damo-theme-exposed-asset-search-form,
     body.path-frontpage .block-views-exposed-filter-blockunpublished-assets-unpublished-assets,
-    body.path-frontpage .block-views-exposed-filter-blockunpublished-assets-user-unpublished-assets,
-    body.path-frontpage #block-damo-theme-exposed-asset-search-form
+    body.path-frontpage .block-views-exposed-filter-blockunpublished-assets-user-unpublished-assets
     {
         border-radius: 50px;
     }
-}
-
-body.media--view .form-group,
-body.path-admin .form-group,
-body.path-frontpage .form-group
-{
-    margin-bottom: 15px;
 }
 
 body.media--view .view-header,
@@ -574,26 +561,24 @@ body.path-frontpage .view-header
 
     max-width: 1031px;
     margin: 0 auto;
-    margin-top: 0;
-    margin-bottom: 37px;
 
     text-align: center;
     letter-spacing: 2.5px;
     text-transform: uppercase;
 
     color: #a2a2a2;
+    /*    margin-top: 0;
+    margin-bottom: 37px;*/
 }
 
-@media (min-width: 576px)
+body.media--view .view-asset-search .view-header,
+body.path-admin .view-asset-search .view-header,
+body.path-frontpage .view-asset-search .view-header
 {
-    body.media--view .view-header,
-    body.path-admin .view-header,
-    body.path-frontpage .view-header
-    {
-        margin-top: -41px;
-
-        text-align: left;
-    }
+    position: absolute;
+    top: -50px;
+    right: 0;
+    left: 0;
 }
 
 @media (max-width: 575px)
