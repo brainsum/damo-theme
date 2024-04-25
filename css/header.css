@@ -1406,3 +1406,19 @@ header .form-text
     height: 10px !important;
     margin-left: 14px !important;
 }
+
+.collection-text,
+.empty-collection-text
+{
+    padding-left: 33px !important;
+}
+
+.collection-icon,
+.empty-collection-icon
+{
+    position: absolute !important;
+    left: 15px !important;
+
+    width: 21px !important;
+    margin-top: -3px !important;
+}
