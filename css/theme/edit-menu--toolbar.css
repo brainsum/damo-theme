@@ -120,8 +120,7 @@
     display:         flex;
 
     width: 100%;
-    max-width: 991px;
-    margin: 0 auto;
+    max-width: 990px;
 
     -webkit-box-pack: justify;
     -webkit-justify-content: space-between;

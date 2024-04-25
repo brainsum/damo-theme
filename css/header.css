@@ -231,6 +231,12 @@
 
     min-width: 400px;
     margin-right: 70px;
+    /*      &.focused {
+        i {
+          background-color: #56ACE7;
+          color: white;
+        }
+      }*/
 }
 
 .block-views-exposed-filter-blockunpublished-assets-user-unpublished-assets form .search-wrapper input,
@@ -239,7 +245,7 @@
 {
     font-size: 20px;
 
-    padding: 5px 20px;
+    padding: 5px 80px 5px 20px;
 
     border-radius: 20px;
 }
@@ -258,8 +264,11 @@
     display:         flex;
 
     width: 80px;
-    height: 39px;
+    height: 40px;
     padding: 0 12px;
+
+    -webkit-transition: all .2s ease-in-out;
+            transition: all .2s ease-in-out;
 
     border-radius: 20px;
     background-color: #e2e2e2;
@@ -280,16 +289,27 @@
 .block-views-exposed-filter-blockasset-search-asset-search form .search-wrapper svg
 {
     display: block;
+
+    -webkit-transition: all .2s ease-in-out;
+            transition: all .2s ease-in-out;
+
+    fill: #000;
     /*-webkit-transition: background-color ease-in-out 0.15s, color ease-in-out 0.15s;
         transition: background-color ease-in-out 0.15s, color ease-in-out 0.15s;*/
 }
 
-.block-views-exposed-filter-blockunpublished-assets-user-unpublished-assets form .search-wrapper.focused i,
-.block-views-exposed-filter-blockunpublished-assets-unpublished-assets form .search-wrapper.focused i,
-.block-views-exposed-filter-blockasset-search-asset-search form .search-wrapper.focused i
+.block-views-exposed-filter-blockunpublished-assets-user-unpublished-assets form .search-wrapper input:focus ~ .svg-holder,
+.block-views-exposed-filter-blockunpublished-assets-unpublished-assets form .search-wrapper input:focus ~ .svg-holder,
+.block-views-exposed-filter-blockasset-search-asset-search form .search-wrapper input:focus ~ .svg-holder
 {
-    color: white;
-    background-color: #56ace7;
+    background-color: #4cbac6;
+}
+
+.block-views-exposed-filter-blockunpublished-assets-user-unpublished-assets form .search-wrapper input:focus ~ .svg-holder svg,
+.block-views-exposed-filter-blockunpublished-assets-unpublished-assets form .search-wrapper input:focus ~ .svg-holder svg,
+.block-views-exposed-filter-blockasset-search-asset-search form .search-wrapper input:focus ~ .svg-holder svg
+{
+    fill: #e2e2e2;
 }
 
 .block-views-exposed-filter-blockunpublished-assets-user-unpublished-assets .js-form-item-category,
@@ -957,6 +977,7 @@ header.navbar .header--inner
     display:         flex;
 
     max-width: 1300px;
+    height: 70px;
     margin: 0 auto;
 
     -webkit-box-align: center;
@@ -1006,8 +1027,11 @@ header .form-text
     display: -ms-flexbox;
     display:         flex;
 
+    height: 40px;
     padding: 8px 15px;
 
+    -webkit-transition: all .2s ease-in-out;
+            transition: all .2s ease-in-out;
     pointer-events: all;
 
     color: #fff;
@@ -1022,6 +1046,11 @@ header .form-text
     -webkit-align-items: center;
     -ms-flex-align: center;
             align-items: center;
+}
+
+.block-dam-navigation-block a:hover
+{
+    opacity: .8;
 }
 
 .block-dam-navigation-block .dam-local-task-back-button
@@ -1330,6 +1359,8 @@ header .form-text
     margin-right: 6px;
     padding: 10px 15px;
 
+    -webkit-transition: all .2s ease-in-out;
+            transition: all .2s ease-in-out;
     text-transform: uppercase;
 
     color: #000;
@@ -1345,7 +1376,7 @@ header .form-text
 
 .facets-widget-links a:hover
 {
-    background-color: #f5f5f5;
+    background-color: rgba(86, 86, 86, .2);
 }
 
 .facets-widget-links a.is-active
