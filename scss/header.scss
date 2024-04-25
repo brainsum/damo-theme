@@ -226,10 +226,17 @@ header {
     .header--inner {
       @include content-width();
       display: flex;
+      flex-direction: column;
       align-items: center;
-      height: 70px;
+      padding-bottom: 20px;
+      @media screen and (min-width: 1024px) {
+        flex-direction: row;
+        height: 70px;
+        padding: 0 20px 0;
+      }
     }
   }
+
 
   .form-group,
   .form-actions,
@@ -251,15 +258,14 @@ header {
   }
   a {
     @include transition(all .2s ease-in-out);
-    @include montserrat--bold;
+    @include montserrat--medium;
     pointer-events: all;
     font-size: 12px;
-    font-weight: bold;
     color: #ffffff;
     display: flex;
     justify-content: center;
     border-radius: 21px;
-    padding: 8px 15px;
+    padding: 8px 13px;
     align-items: center;
     height: 40px;
     &:hover {
@@ -290,7 +296,7 @@ header {
       background-image: url("../images/plus_icon.svg");
       background-repeat: no-repeat;
       background-size: 24px;
-      margin-right: 2px;
+      margin-right: 4px;
     }
   }
   .dam-media-collection-link {
@@ -528,11 +534,19 @@ header {
 }
 
 .collection-item-number-wrapper {
+  position: absolute !important;
+  z-index: 2 !important;
   width: 15px !important;
   height: 10px !important;
-  z-index: 2 !important;
-  position: fixed !important;
-  margin-left: 14px !important;
+  margin-left: 0 !important;
+  left: 20px !important;
+  top: 11px !important;
+  color: $blue-button !important;
+}
+
+
+.collection-item-number {
+  line-height: 1 !important;
 }
 
 .collection-text,

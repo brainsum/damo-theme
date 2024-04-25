@@ -229,14 +229,35 @@
 {
     position: relative;
 
-    min-width: 400px;
-    margin-right: 70px;
+    width: 380px;
+    margin-bottom: 15px;
     /*      &.focused {
         i {
           background-color: #56ACE7;
           color: white;
         }
       }*/
+}
+
+@media screen and (min-width: 1024px)
+{
+    .block-views-exposed-filter-blockunpublished-assets-user-unpublished-assets form .search-wrapper,
+    .block-views-exposed-filter-blockunpublished-assets-unpublished-assets form .search-wrapper,
+    .block-views-exposed-filter-blockasset-search-asset-search form .search-wrapper
+    {
+        margin-right: 30px;
+        margin-bottom: 0;
+    }
+}
+
+@media screen and (min-width: 1366px)
+{
+    .block-views-exposed-filter-blockunpublished-assets-user-unpublished-assets form .search-wrapper,
+    .block-views-exposed-filter-blockunpublished-assets-unpublished-assets form .search-wrapper,
+    .block-views-exposed-filter-blockasset-search-asset-search form .search-wrapper
+    {
+        margin-right: 70px;
+    }
 }
 
 .block-views-exposed-filter-blockunpublished-assets-user-unpublished-assets form .search-wrapper input,
@@ -614,8 +635,14 @@
 .dam-logo
 {
     position: relative;
+}
 
-    margin-right: auto;
+@media screen and (min-width: 1024px)
+{
+    .dam-logo
+    {
+        margin-right: auto;
+    }
 }
 
 @media (max-width: 1390px)
@@ -625,8 +652,7 @@
         position: relative;
 
         display: block;
-
-        height: 90px;
+        /*    height: 90px;*/
         /*float: left;*/
     }
     .dam-logo a
@@ -975,15 +1001,36 @@ header.navbar .header--inner
     display: -webkit-flex;
     display: -ms-flexbox;
     display:         flex;
+            flex-direction: column;
 
     max-width: 1300px;
-    height: 70px;
     margin: 0 auto;
+    padding-bottom: 20px;
 
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+        -ms-flex-direction: column;
     -webkit-box-align: center;
     -webkit-align-items: center;
     -ms-flex-align: center;
             align-items: center;
+}
+
+@media screen and (min-width: 1024px)
+{
+    header.navbar .header--inner
+    {
+                flex-direction: row;
+
+        height: 70px;
+        padding: 0 20px 0;
+
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: normal;
+        -webkit-flex-direction: row;
+            -ms-flex-direction: row;
+    }
 }
 
 header .form-group,
@@ -1018,8 +1065,7 @@ header .form-text
 {
     font-family: 'Montserrat', sans-serif;
     font-size: 12px;
-    font-weight: 700;
-    font-weight: bold;
+    font-weight: 500;
     font-style: normal;
 
     display: -webkit-box;
@@ -1028,7 +1074,7 @@ header .form-text
     display:         flex;
 
     height: 40px;
-    padding: 8px 15px;
+    padding: 8px 13px;
 
     -webkit-transition: all .2s ease-in-out;
             transition: all .2s ease-in-out;
@@ -1087,7 +1133,7 @@ header .form-text
 {
     width: 24px;
     height: 24px;
-    margin-right: 2px;
+    margin-right: 4px;
 
     content: '';
 
@@ -1399,12 +1445,21 @@ header .form-text
 
 .collection-item-number-wrapper
 {
-    position: fixed !important;
+    position: absolute !important;
     z-index: 2 !important;
+    top: 11px !important;
+    left: 20px !important;
 
     width: 15px !important;
     height: 10px !important;
-    margin-left: 14px !important;
+    margin-left: 0 !important;
+
+    color: #4cbac6 !important;
+}
+
+.collection-item-number
+{
+    line-height: 1 !important;
 }
 
 .collection-text,
