@@ -1389,3 +1389,20 @@ header .form-text
 {
     display: none;
 }
+
+.dam-media-collection-link
+{
+    position: relative !important;
+
+    background-color: rgba(76, 186, 198, .5) !important;
+}
+
+.collection-item-number-wrapper
+{
+    position: fixed !important;
+    z-index: 2 !important;
+
+    width: 15px !important;
+    height: 10px !important;
+    margin-left: 14px !important;
+}
