@@ -16,14 +16,16 @@
 
 .dam-logo {
   position: relative;
-  margin-right: auto;
+  @media screen and (min-width: 1024px) {
+    margin-right: auto;
+  }
 }
 
 @media (max-width: 1390px) {
   .dam-logo {
     position: relative;
     display: block;
-    height: 90px;
+/*    height: 90px;*/
     /*float: left;*/
     a {
       display: block;
