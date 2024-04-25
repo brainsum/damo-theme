@@ -227,6 +227,7 @@ header {
       @include content-width();
       display: flex;
       align-items: center;
+      height: 70px;
     }
   }
 
@@ -249,8 +250,9 @@ header {
     display: flex;
   }
   a {
-    pointer-events: all;
+    @include transition(all .2s ease-in-out);
     @include montserrat--bold;
+    pointer-events: all;
     font-size: 12px;
     font-weight: bold;
     color: #ffffff;
@@ -259,6 +261,10 @@ header {
     border-radius: 21px;
     padding: 8px 15px;
     align-items: center;
+    height: 40px;
+    &:hover {
+      opacity: .8;
+    }
   }
   .dam-local-task-back-button {
     margin-left: 10px;
@@ -267,8 +273,8 @@ header {
       display: block;
     }
     a {
-        border: 1px solid rgba(#ffffff, .5);
-      }
+      border: 1px solid rgba(#ffffff, .5);
+    }
   }
 }
 
@@ -491,6 +497,7 @@ header {
     padding-left: 0;
   }
   a {
+    @include transition(all .2s ease-in-out);
     @include montserrat--bold;
     font-size: 12px;
     font-weight: bold;
@@ -503,7 +510,7 @@ header {
     margin-right: 6px;
     text-transform: uppercase;
     &:hover {
-      background-color: #f5f5f5;
+      background-color: rgba(#565656, .2);
     }
     &.is-active {
       background-color: #565656;

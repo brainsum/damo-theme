@@ -35,15 +35,16 @@
       margin-right: 70px;
       min-width: 400px;
       input {
-        padding: 5px 20px;
+        padding: 5px 80px 5px 20px;
         font-size: 20px;
         border-radius: 20px;
       }
       .svg-holder {
+        @include transition(all .2s ease-in-out);
         position: absolute;
         top: 0;
         right: 0;
-        height: 39px;
+        height: 40px;
         padding: 0 12px;
         background-color: #e2e2e2;
         display: flex;
@@ -54,18 +55,28 @@
         box-shadow: 0 1px 7px rgba(0,0,0,0.29);
       }
       svg {
+        @include transition(all .2s ease-in-out);
         display: block;
-
+        fill: #000;
         /*-webkit-transition: background-color ease-in-out 0.15s, color ease-in-out 0.15s;
         transition: background-color ease-in-out 0.15s, color ease-in-out 0.15s;*/
 
       }
-      &.focused {
+      input:focus {
+        &~.svg-holder {
+          background-color: #4cbac6;
+          svg {
+            fill: #e2e2e2;
+          }
+        }
+      }
+
+/*      &.focused {
         i {
           background-color: #56ACE7;
           color: white;
         }
-      }
+      }*/
     }
   }
 }

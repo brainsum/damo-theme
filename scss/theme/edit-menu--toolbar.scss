@@ -1,16 +1,14 @@
 @import "../include/mixin";
 
 .edit-menu--toolbar {
+  @include content-width();
   padding: 26px 0;
-  max-width: 1300px;
   display: flex;
   justify-content: flex-start;
-  margin: 0 auto;
   .section__inner {
-    max-width: 991px;
+    max-width: 990px;
     display: flex;
     justify-content: space-between;
-    margin: 0 auto;
     width: 100%;
   }
 
