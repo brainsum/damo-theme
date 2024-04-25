@@ -521,3 +521,17 @@ header {
     }
   }
 }
+
+.dam-media-collection-link {
+  background-color: rgba(76, 186, 198, .5) !important;
+  position: relative !important;
+}
+
+.collection-item-number-wrapper {
+  width: 15px !important;
+  height: 10px !important;
+  z-index: 2 !important;
+  position: fixed !important;
+  margin-left: 14px !important;
+}
+
