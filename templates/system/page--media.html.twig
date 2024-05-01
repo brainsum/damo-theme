@@ -62,7 +62,7 @@
 {# Navbar #}
 {% if page.navigation or page.navigation_collapsible %}
   {% block navbar %}
-    {% include '@damo_theme/custom/admin-menu.html.twig' %}
+    {{ drupal_block('header_menu_block') }}
     <header{{ navbar_attributes }} id="navbar" role="banner">
       <div class="header--inner">
       {% if navbar_attributes.inner_container %}
