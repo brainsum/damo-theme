@@ -104,7 +104,6 @@ small
 {
     font-size: 14px;
 
-    border: none;
     border-radius: 4px;
     background-color: #fff;
 }
@@ -114,6 +113,11 @@ small
     padding-right: 0;
     padding-left: 0;
 
+    border: none;
+}
+
+.search-wrapper .form-control
+{
     border: none;
 }
 
