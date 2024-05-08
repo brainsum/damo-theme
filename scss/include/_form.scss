@@ -1,6 +1,5 @@
 .form-control {
   background-color: #FFFFFF;
-  border: none;
   border-radius: 4px;
   font-size: 14px;
   &.form-file {
@@ -8,6 +7,10 @@
     padding-left: 0;
     padding-right: 0;
   }
+}
+
+.search-wrapper .form-control {
+  border: none;
 }
 .form-control-label {
   color: #333333;
@@ -23,3 +26,4 @@
     max-width: 300px;
   }
 }
+
