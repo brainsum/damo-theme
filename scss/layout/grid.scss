@@ -1,3 +1,12 @@
 @import "../index";
+
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1300px
+);
+
 @import "../../node_modules/bootstrap/scss/grid";
 // @todo Generate custom grid system with BS mixins?
+

@@ -156,13 +156,6 @@
     }
 }
 
-.page-header
-{
-    font-weight: bold;
-
-    margin-bottom: 1.5rem;
-}
-
 .region-help > .glyphicon
 {
     font-size: 1.25rem;
@@ -203,4 +196,20 @@
     -webkit-align-items: center;
     -ms-flex-align: center;
             align-items: center;
+}
+
+.path-collections .region-secondary-navigation
+{
+    margin-top: 40px;
+    margin-bottom: 55px;
+
+    background-color: #fff;
+}
+
+.path-collections .region-secondary-navigation .region--inner
+{
+    -webkit-box-pack: start;
+    -webkit-justify-content: flex-start;
+    -ms-flex-pack: start;
+            justify-content: flex-start;
 }

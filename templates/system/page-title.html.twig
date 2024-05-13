@@ -17,13 +17,13 @@
  */
 #}
 {% block page_title %}
-  {% if title_prefix %}
+{#  {% if title_prefix %}
     <span class="title-prefix">{{ title_prefix }}</span>
-  {% endif %}
+  {% endif %}#}
   {% if title %}
-    <h1{{ title_attributes.addClass('page-header') }}>{{ title }}</h1>
+    <h1{{ title_attributes.addClass('page-title') }}>{{ title }}</h1>
   {% endif %}
-  {% if title_suffix %}
+{#  {% if title_suffix %}
     <span class="title-suffix">{{ title_suffix }}</span>
-  {% endif %}
+  {% endif %}#}
 {% endblock %}

@@ -310,16 +310,6 @@ body.path-media {
   }
 }
 
-// body.path-user {
-.page-title-wrapper {
-  max-width: 1124px;
-  margin: 0 auto;
-  display: block;
-  span {
-    font-size: 2.5rem;
-  }
-}
-
 .fancy-logo {
   position: absolute;
   top: 0 !important;
@@ -328,4 +318,17 @@ body.path-media {
 
 .view-empty {
   text-align: center;
+}
+
+.view-collections {
+  .title {
+    @include montserrat--bold;
+    font-size: 14px;
+    color: $black;
+  }
+  .data {
+    @include roboto--regular;
+    font-size: 13px;
+    color: $grey-text-color;
+  }
 }
