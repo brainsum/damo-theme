@@ -26,3 +26,19 @@
     }
   }
 }
+
+.view-collections {
+  .title {
+    @include montserrat--bold;
+    font-size: 14px;
+    color: $black;
+  }
+  .data {
+    @include roboto--regular;
+    font-size: 13px;
+    color: $grey-text-color;
+  }
+}
+
+
+
