@@ -12,26 +12,24 @@
  * @ingroup themeable
  */
 #}
-{% if content %}
-<div class="card">
-  <div  class="card-img-top">
-    <img src="{{ directory }}/images/remove-icon.png" class="remove-icon-collection-list button--remove-in-collection remove-icon-collection-list-hidden">
-    <a class="card-img-overlay"></a>
-    {{ content.thumbnail }}
-  </div>
-  <div class="card-body">
-    <div class="text-overlay">
-      <div class="card--inner-text">
-        <p class="title">{{ content.name }}</p>
-        <p class="keywords">{{ content.field_keywords }}</p>
-      </div>
-      {# The last part of the DOM is in the app/web/profiles/contrib/damopen/modules/media_collection/templates/media-collection-item.html.twig file #}
-{% endif %}
 
-      {#
-      <div class="thumbnail">  {{ items_target_id }} </div>
-<a href="/collection-view/{{ id }}">
-<div class="title"> {{ field_title }} </div>
-<div class="data">  {{ items_target_id_1 }} items  Created by: {{ uid }} </div>
-</a>
-#}
+{% if content %}
+  <div class="col-md-4 col-sm-12">
+    <div class="card" {{ attributes }}>
+      <div  class="card-img-top">
+        <img src="/{{ directory }}/images/remove-icon.png" class="remove-icon-collection-list button--remove-in-collection remove-icon-collection-list-hidden">
+        <a class="card-img-overlay"></a>
+        {{ content.thumbnail }}
+      </div>
+      <div class="card-body">
+        <div class="text-overlay">
+          <div class="card--inner-text">
+            <p class="title">{{ content.name }}</p>
+            <p class="keywords">{{ content.field_keywords }}</p>
+          </div>
+          <p>ASSET TYPE: <span class="asset-type">{{ content.asset_type }}</span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+{% endif %}
