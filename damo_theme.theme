@@ -117,7 +117,30 @@ function damo_theme_preprocess_image(&$variables) {
   }
 }
 
-
 function damo_theme_preprocess_media(&$variables) {
   $variables['status'] = $variables['media']->isPublished();
+  $parameter = \Drupal::routeMatch()->getParameter('arg_0');
+  if ($parameter) {
+    // Load media collection.
+    $media_collection = \Drupal::entityTypeManager()
+      ->getStorage('media_collection')
+      ->load($parameter);
+    // Load media collection items.
+    $collection_items = $media_collection->get('items')->getValue();
+    foreach ($collection_items as $item) {
+      $items[] = $item['target_id'];
+    }
+    $media_collection_items = \Drupal::entityTypeManager()->getStorage('media_collection_item')->loadMultiple($items);
+    foreach ($media_collection_items as $c_item) {
+      if ($variables['mid'] === $c_item->get('media')->target_id) {
+        $style_id = $c_item->get('style')->getValue()[0]['target_id'];
+        // Get Style name.
+        $style = \Drupal::entityTypeManager()->getStorage('image_style')->load($style_id);
+        $variables['content']['asset_type'] = $style->get('label');
+        $variables['attributes']['data-collection-item-uuid'] = $c_item->uuid();
+        $variables['attributes']['data-collection-uuid'] = $media_collection->uuid();
+      }
+    }
+    // devel_dump($media_collection_items);
+  }
 }
