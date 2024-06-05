@@ -9,6 +9,34 @@ main .region-content {
   }
 }
 
+.view-collections,
+.view-shared-collections {
+  .title {
+    @include montserrat--bold;
+    font-size: 14px;
+    color: $black;
+    padding: 0 15px;
+  }
+  .data {
+    @include roboto--regular;
+    font-size: 13px;
+    color: $grey-text-color;
+    padding: 0 15px;
+  }
+  .card-body{
+    display: none;    
+  }
+  .thumbnail {
+    min-height: 210px;
+    .col-md-4 {
+      width: 100%;
+    }
+    .card {
+      height: 100%;
+    }
+  }
+}
+
 .back-to-collections {
   transition: all 250ms ease-in;
   font-size: 16px;
@@ -65,6 +93,18 @@ main .region-content {
     .empty_the_collection_btn {
       color: rgba($grey-text-color, .5);
     }
+  }
+}
+
+.block-views-blockshared-collections-block-1 {
+  margin-top: 50px;
+  >h2 {
+    @include montserrat--bold;
+    font-size: 20px;
+    color: black;
+    text-transform: none;
+    padding: 0 15px;
+    margin-bottom: 20px;
   }
 }
 
@@ -501,27 +541,6 @@ Shared collection
   background: #bdbdbd !important;
 }
 
-
-.view-collections .card-body{
-  display: none;    
-}
-
-.view-collections .thumbnail .col-md-4 {
-  width: 100%;
-}
-
-.view-collections .thumbnail {
-  min-height: 210px;
-}
-
-.view-collections .thumbnail .card {
-  height: 100%;
-}
-
-.view-collections .title,
-.view-collections .data {
-  padding: 0 15px;
-}
 
 .collection-button {
   z-index: 9999;

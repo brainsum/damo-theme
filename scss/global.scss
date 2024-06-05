@@ -27,7 +27,7 @@ html {
 }
 
 body {
-  background-color: white;
+  background-color: #f7f7f7;
 
   &::before {
     content: "xs";
@@ -185,7 +185,7 @@ main {
       }
     }
     .view-content {
-      border-left: 10px solid white;
+      // border-left: 10px solid white;
       padding-bottom: 10px;
       // padding: 15px 0;
       &::after {
@@ -318,17 +318,4 @@ body.path-media {
 
 .view-empty {
   text-align: center;
-}
-
-.view-collections {
-  .title {
-    @include montserrat--bold;
-    font-size: 14px;
-    color: $black;
-  }
-  .data {
-    @include roboto--regular;
-    font-size: 13px;
-    color: $grey-text-color;
-  }
 }

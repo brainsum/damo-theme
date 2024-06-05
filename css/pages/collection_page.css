@@ -1,1 +1,706 @@
-@import"https://fonts.googleapis.com/css?family=Montserrat:400,600,700";.clearfix:before,.clearfix:after{content:" ";display:table}.clearfix:after{clear:both}main .region-content .view-collection-view-page .view-content{border-left:none}.back-to-collections{transition:all 250ms ease-in;font-size:16px;text-decoration:underline;color:#565656}.back-to-collections:hover{color:#5acac5}.media_collection{margin-top:25px}.media_collection--top>h1:not(.collection-title){display:none}.media_collection--top h1{font-size:32px;font-family:"Montserrat",sans-serif;font-optical-sizing:auto;font-weight:700;font-style:normal;color:#000}.media_collection>p{color:#565656}.media_collection .collection-links-wrapper{margin-bottom:20px}@media(max-width: 991px){.media_collection .collection-links-wrapper{flex-direction:column;-mox-box-align:center;align-items:center;height:auto;margin-bottom:30px}.media_collection .collection-links-wrapper .collection_btn{margin-left:0;text-align:center;max-width:none;width:100%;margin-bottom:15px;padding:15px 25px}}.media_collection--top{display:flex;flex-direction:column;margin-top:30px;margin-bottom:30px}@media(min-width: 768px){.media_collection--top{justify-content:space-between;flex-direction:row;margin-bottom:0}}.media_collection--top .empty_the_collection_btn{color:rgba(86,86,86,.5)}.view-collections .title{font-family:"Montserrat",sans-serif;font-optical-sizing:auto;font-weight:700;font-style:normal;font-size:14px;color:#000}.view-collections .data{font-family:"Roboto",sans-serif;font-weight:400;font-style:normal;font-size:13px;color:#565656}.collection_share_btn{margin-left:1rem}.collection_btn{border:0;border-radius:55px;padding:15px 35px;font-size:12px;font-weight:700;letter-spacing:1.5px;margin-bottom:30px;text-align:center}.collection_download_btn{background-color:#6cc04a;color:#fff;text-transform:uppercase}.empty_the_collection_btn,.collection_share_btn{background-color:#e2e2e2;color:#000}.empty_the_collection_btn{margin-bottom:0}.card{border:0 !important}.card-body{padding:10px;height:80px;background-color:#fafafa}.card-body .asset-type{font-weight:normal}.card-img-top{background-color:#e3e3e3;height:200px}.card-img-top .spotlight-group{height:200px}.card-img-top img{height:100%;width:auto;margin:0 auto;display:block}.remove-icon-collection-list{position:absolute;right:12px;top:12px;cursor:pointer;z-index:1000;visibility:hidden;background-clip:#dadada}.text-overlay-hover .remove-icon-collection-list{visibility:visible !important}.remove-icon-collection-list-hidden{display:none !important}.text-overlay{position:absolute;height:40px;margin-top:-55px;margin-bottom:0;visibility:hidden}.path-collection .title{font-size:13px;margin-bottom:0;color:#fff;font-weight:700}.keywords{color:#bfbfbf;font-size:13px;font-weight:normal}.field--label{font-weight:normal}.card-body>p{margin-top:20px;margin-left:5px;font-weight:600}.text-overlay-hover .text-overlay{visibility:visible !important}.card .card-img-overlay{transition:all 250ms ease-in;height:200px}.text-overlay-hover .card-img-overlay{background:rgba(0,0,0,.1)}.view-media-library .card-content .btn{margin:5px}.add-to-collection-text{padding:13px 5px !important;vertical-align:middle;letter-spacing:1px;font-weight:bold}.link .plus{height:14px}.link .disabled img{display:none}.path-collection .ui-dialog{z-index:1000;top:155px !important}.ui-dialog-titlebar-close{background-image:url("../../images/close.png");background-repeat:no-repeat !important;border:1px solid #292929;border-radius:5px;background-size:14px;background-position:center;cursor:pointer}.ui-widget-overlay{z-index:1}.path-collection .ui-widget-header{background:rgba(0,0,0,0);padding:0}.path-collection .ui-widget-header span{display:none}.path-collection .ui-widget-header button{background-size:13px;background-position-x:15px;background-position-y:12px;background-color:#fff !important;width:100px !important;height:36px !important;border-radius:20px;margin-top:-60px;margin-right:-55px;text-indent:0;text-transform:uppercase;font-size:11px;font-weight:bold;letter-spacing:1px;padding:0;padding-left:15px;padding-top:2px}.path-collection .ui-widget-header .ui-icon-closethick{width:16px}.path-collection .ui-widget{width:964px !important;padding:30px 40px}.path-collection .form-control-label{font-size:24px;font-weight:bold;margin-bottom:10px}.path-collection .form-type-url{margin-bottom:80px}.path-collection .description{color:#bfbfbf}.path-collection input{height:50px}.path-collection .form-item-emails input{width:50%;float:right;margin-right:205px}.path-collection .form-item-emails small{float:right;margin-right:208px}.path-collection .js-form-submit{position:absolute;bottom:116px;right:55px;border-radius:50px;width:191px;height:44px;font-size:14px;font-weight:bold;letter-spacing:1px}.path-collection .confirm-delete-form .js-form-submit{position:relative !important;bottom:0;right:0}.path-collection .shared-collection-header{color:#000;font-size:22px;margin-top:20px;margin-bottom:15px;font-weight:bold}.path-collection .shared_media_collection p{margin:0}.media_collection .collection-links-wrapper{margin-top:20px;display:flex;flex-basis:150px}.media_collection .collection-links-wrapper a:hover,.media_collection .collection-links-wrapper a:focus{color:#666 !important}.media_collection .collection-links-wrapper .collection_download_btn{order:1}.media_collection .collection-links-wrapper .empty_the_collection_btn{order:3;background-color:#e2e2e2;color:#000;margin-left:auto;margin-bottom:30px}.media_collection .collection-links-wrapper .collection_share_btn{order:2}.shared_media_collection .collection-links-wrapper{margin-top:20px}.shared_media_collection .item-download-btn{background-color:#6cc04a;color:#fff;border:0;border-radius:55px;padding:15px 35px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:12px 20px;position:absolute;left:calc(50% - 75px);top:80px;margin:0;visibility:hidden}.shared_media_collection .text-overlay-hover .item-download-btn{visibility:visible !important}.shared_media_collection .card{height:auto}.shared_media_collection .card-body{height:128px}.shared_media_collection .card-body div:last-of-type:not(.keywords){position:absolute;bottom:15px;cursor:pointer;width:300px}.shared_media_collection .card-body div:last-of-type:not(.keywords) i{font-size:24px;margin-right:5px;opacity:.5}.shared_media_collection .field--name-field-keywords,.shared_media_collection .field--name-name{margin-bottom:-10px;color:#bfbfbf}.shared_media_collection .field--name-field-keywords .field--item,.shared_media_collection .field--name-field-keywords .field--name-name{width:300px;font-size:13px;margin-bottom:0;color:#fff;font-weight:700}.shared_media_collection .dam-media-description-title{vertical-align:super}.zoom-width{-webkit-animation-name:zoomWidthAndFontSize;-webkit-animation-duration:1s;animation-name:zoomWidthAndFontSize;animation-iteration-count:1;animation-duration:1s}@keyframes zoomWidthAndFontSize{0%{margin-right:0}50%{margin-right:50px}100%{margin-right:0}}.collection-list{display:block;width:300px;max-height:0px;overflow:hidden;position:absolute;background:#fff;box-shadow:0px 0px 11px 0px #000;border-radius:5px}.collection-list.active{max-height:1000px;padding:10px}.collection-list .collection-link-wrapper{display:block;width:100%;padding:5px 0}.collection-list .collection-divider{border-top:1px solid #e2e2e2;padding:0px !important;margin-top:10px;margin-bottom:10px;display:block;width:100%}.collection-list .add-to-collection-link{display:block;width:-moz-fit-content;width:fit-content}.collection-list .add-to-collection-link.in-collection{pointer-events:none;background:#bdbdbd !important}.view-collections .card-body{display:none}.view-collections .thumbnail .col-md-4{width:100%}.view-collections .thumbnail{min-height:210px}.view-collections .thumbnail .card{height:100%}.view-collections .title,.view-collections .data{padding:0 15px}.collection-button{z-index:9999;padding:0 !important}.collection-button img{width:33px;margin-top:6px;margin-right:5px;cursor:pointer}.in-collection{opacity:1 !important}.in-collection img{cursor:inherit !important}.dam-media-collection-link{background:rgba(0,0,0,0) !important}.collection-item-number-wrapper{width:15px;height:10px;z-index:2;position:fixed;margin-left:14px}.collection-item-number{text-align:center;display:block;letter-spacing:1px}.collection-text{padding-left:33px}.empty-collection-text{padding-left:30px}.collection-icon{width:35px;margin-top:-10px;position:absolute}.empty-collection-icon{width:35px;margin-top:-10px;position:absolute}.card-content .disabled{pointer-events:all !important}
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,600,700");
+/**
+ * @file
+ *** FOUNDATION FOR SITES AND CUSTOM MIXINS
+ */
+/**
+ * @group Foundation for Sites mixins
+ * Mixins placeholder file
+ * @todo These are mostly from Foundation and should be removed and used straight from Foundation.
+ */
+.clearfix:before, .clearfix:after {
+  content: " ";
+  display: table;
+}
+.clearfix:after {
+  clear: both;
+}
+
+/**
+ * Horizontally or vertically aligns the items within a flex container.
+ *
+ * @param {Keyword} $x [null] - Horizontal alignment to use. Can be `left`,
+ * `right`, `center`, `justify`, or `spaced`. Or, set it to `null`
+ * (the default) to not set horizontal alignment.
+ * @param {Keyword} $y [null] - Vertical alignment to use. Can be `top`,
+ * `bottom`, `middle`, or `stretch`. Or, set it to `null` (the default) to not
+ * set vertical alignment.
+ */
+/**
+ * Vertically align a single column within a flex row. Apply this mixin to a
+ * flex column.
+ *
+ * @param {Keyword} $y [null] - Vertical alignment to use. Can be `top`,
+ * `bottom`, `middle`, or `stretch`. Or, set it to `null` (the default) to not
+ * set vertical alignment.
+ */
+/**
+ * Changes the source order of a flex child. Children with lower numbers appear
+ * first in the layout.
+ *
+ * @param {Number} $order [0] - Order number to apply.
+ */
+/**
+ * Change flex-direction
+ *
+ * @param {Keyword} $direction [row] - Flex direction to use. Can be
+ * - row (default): same as text direction
+ * - row-reverse: opposite to text direction
+ * - column: same as row but top to bottom
+ * - column-reverse: same as row-reverse top to bottom
+ */
+/**
+ * @include flex-wrap(nowrap | wrap | wrap-reverse);
+ * Default: nowrap
+ */
+/**
+ * @include flex-flow(values);
+ * Default: row nowrap
+ */
+/**
+ * @include order(int);
+ * Default: 0
+ */
+/**
+ * @include flex-grow(int);
+ * Default: 1
+ */
+/**
+ * @include flex-shrink(int);
+ * Default: 0
+ */
+/**
+ * @include flex-basis(int);
+ * Default: auto
+ */
+/**
+ * @include justify-content(flex-start | flex-end | center | space-between
+ * | space-around);
+ * Default: flex-start
+ */
+/**
+ * @include align-items(flex-start | flex-end | center | baseline | stretch);
+ * Default: stretch
+ */
+/**
+ * @include align-self(auto | flex-start | flex-end | center | baseline | stretch);
+ * Default: auto
+ */
+/**
+ * @include align-content(flex-start | flex-end | center | space-between | space-around | stretch);
+ * Default: stretch
+ */
+main .region-content .view-collection-view-page .view-content {
+  border-left: none;
+}
+
+.view-collections .title,
+.view-shared-collections .title {
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 14px;
+  color: #000;
+  padding: 0 15px;
+}
+.view-collections .data,
+.view-shared-collections .data {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 13px;
+  color: #565656;
+  padding: 0 15px;
+}
+.view-collections .card-body,
+.view-shared-collections .card-body {
+  display: none;
+}
+.view-collections .thumbnail,
+.view-shared-collections .thumbnail {
+  min-height: 210px;
+}
+.view-collections .thumbnail .col-md-4,
+.view-shared-collections .thumbnail .col-md-4 {
+  width: 100%;
+}
+.view-collections .thumbnail .card,
+.view-shared-collections .thumbnail .card {
+  height: 100%;
+}
+
+.back-to-collections {
+  transition: all 250ms ease-in;
+  font-size: 16px;
+  text-decoration: underline;
+  color: #565656;
+}
+.back-to-collections:hover {
+  color: #5acac5;
+}
+
+.media_collection {
+  margin-top: 25px;
+}
+.media_collection--top > h1:not(.collection-title) {
+  display: none;
+}
+.media_collection--top h1 {
+  font-size: 32px;
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+  color: black;
+}
+.media_collection > p {
+  color: #565656;
+}
+.media_collection .collection-links-wrapper {
+  margin-bottom: 20px;
+}
+@media (max-width: 991px) {
+  .media_collection .collection-links-wrapper {
+    flex-direction: column;
+    -mox-box-align: center;
+    align-items: center;
+    height: auto;
+    margin-bottom: 30px;
+  }
+  .media_collection .collection-links-wrapper .collection_btn {
+    margin-left: 0;
+    text-align: center;
+    max-width: none;
+    width: 100%;
+    margin-bottom: 15px;
+    padding: 15px 25px;
+  }
+}
+.media_collection--top {
+  display: flex;
+  flex-direction: column;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+@media (min-width: 768px) {
+  .media_collection--top {
+    justify-content: space-between;
+    flex-direction: row;
+    margin-bottom: 0;
+  }
+}
+.media_collection--top .empty_the_collection_btn {
+  color: rgba(86, 86, 86, 0.5);
+}
+
+.block-views-blockshared-collections-block-1 {
+  margin-top: 50px;
+}
+.block-views-blockshared-collections-block-1 > h2 {
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 20px;
+  color: black;
+  text-transform: none;
+  padding: 0 15px;
+  margin-bottom: 20px;
+}
+
+.view-collections .title {
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 14px;
+  color: #000;
+}
+.view-collections .data {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 13px;
+  color: #565656;
+}
+
+.collection_share_btn {
+  margin-left: 1rem;
+}
+
+.collection_btn {
+  border: 0;
+  border-radius: 55px;
+  padding: 15px 35px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.collection_download_btn {
+  background-color: #6cc04a;
+  color: white;
+  text-transform: uppercase;
+}
+
+.empty_the_collection_btn,
+.collection_share_btn {
+  background-color: #e2e2e2;
+  color: black;
+}
+
+.empty_the_collection_btn {
+  margin-bottom: 0;
+}
+
+.card {
+  border: 0 !important;
+}
+
+.card-body {
+  padding: 10px;
+  height: 80px;
+  background-color: #fafafa;
+}
+
+.card-body .asset-type {
+  font-weight: normal;
+}
+
+.card-img-top {
+  background-color: #e3e3e3;
+  height: 200px;
+}
+
+.card-img-top .spotlight-group {
+  height: 200px;
+}
+
+.card-img-top img {
+  height: 100%;
+  width: auto;
+  margin: 0 auto;
+  display: block;
+}
+
+.remove-icon-collection-list {
+  position: absolute;
+  right: 12px;
+  top: 12px;
+  cursor: pointer;
+  z-index: 1000;
+  visibility: hidden;
+  background-clip: #dadada;
+}
+
+.text-overlay-hover .remove-icon-collection-list {
+  visibility: visible !important;
+}
+
+.remove-icon-collection-list-hidden {
+  display: none !important;
+}
+
+.text-overlay {
+  position: absolute;
+  height: 40px;
+  margin-top: -55px;
+  margin-bottom: 0;
+  visibility: hidden;
+}
+
+.path-collection .title {
+  font-size: 13px;
+  margin-bottom: 0;
+  color: white;
+  font-weight: 700;
+}
+
+.keywords {
+  color: rgb(191, 191, 191);
+  font-size: 13px;
+  font-weight: normal;
+}
+
+.field--label {
+  font-weight: normal;
+}
+
+.card-body > p {
+  margin-top: 20px;
+  margin-left: 5px;
+  font-weight: 600;
+}
+
+.text-overlay-hover .text-overlay {
+  visibility: visible !important;
+}
+
+.card .card-img-overlay {
+  transition: all 250ms ease-in;
+  height: 200px;
+}
+
+.text-overlay-hover .card-img-overlay {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.view-media-library .card-content .btn {
+  margin: 5px;
+}
+
+.add-to-collection-text {
+  padding: 13px 5px !important;
+  vertical-align: middle;
+  letter-spacing: 1px;
+  font-weight: bold;
+}
+
+.link .plus {
+  height: 14px;
+}
+
+.link .disabled img {
+  display: none;
+}
+
+.path-collection .ui-dialog {
+  z-index: 1000;
+  top: 155px !important;
+}
+
+.ui-dialog-titlebar-close {
+  background-image: url("../../images/close.png");
+  background-repeat: no-repeat !important;
+  border: 1px solid #292929;
+  border-radius: 5px;
+  background-size: 14px;
+  background-position: center;
+  cursor: pointer;
+}
+
+.ui-widget-overlay {
+  z-index: 1;
+}
+
+/*
+Share modal
+*/
+.path-collection .ui-widget-header {
+  background: transparent;
+  padding: 0;
+}
+
+.path-collection .ui-widget-header span {
+  display: none;
+}
+
+.path-collection .ui-widget-header button {
+  background-size: 13px;
+  background-position-x: 15px;
+  background-position-y: 12px;
+  background-color: white !important;
+  width: 100px !important;
+  height: 36px !important;
+  border-radius: 20px;
+  margin-top: -60px;
+  margin-right: -55px;
+  text-indent: 0;
+  text-transform: uppercase;
+  font-size: 11px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  padding: 0;
+  padding-left: 15px;
+  padding-top: 2px;
+}
+
+.path-collection .ui-widget-header .ui-icon-closethick {
+  width: 16px;
+}
+
+.path-collection .ui-widget {
+  width: 964px !important;
+  padding: 30px 40px;
+}
+
+.path-collection .form-control-label {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.path-collection .form-type-url {
+  margin-bottom: 80px;
+}
+
+.path-collection .description {
+  color: #bfbfbf;
+}
+
+.path-collection input {
+  height: 50px;
+}
+
+.path-collection .form-item-emails input {
+  width: 50%;
+  float: right;
+  margin-right: 205px;
+}
+
+.path-collection .form-item-emails small {
+  float: right;
+  margin-right: 208px;
+}
+
+.path-collection .js-form-submit {
+  position: absolute;
+  bottom: 116px;
+  right: 55px;
+  border-radius: 50px;
+  width: 191px;
+  height: 44px;
+  font-size: 14px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.path-collection .confirm-delete-form .js-form-submit {
+  position: relative !important;
+  bottom: 0;
+  right: 0;
+}
+
+/*
+Shared collection
+*/
+.path-collection .shared-collection-header {
+  color: black;
+  font-size: 22px;
+  margin-top: 20px;
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+
+.path-collection .shared_media_collection p {
+  margin: 0;
+}
+
+.media_collection .collection-links-wrapper {
+  margin-top: 20px;
+  display: flex;
+  flex-basis: 150px;
+}
+
+.media_collection .collection-links-wrapper a:hover,
+.media_collection .collection-links-wrapper a:focus {
+  color: #666 !important;
+}
+
+.media_collection .collection-links-wrapper .collection_download_btn {
+  order: 1;
+}
+
+.media_collection .collection-links-wrapper .empty_the_collection_btn {
+  order: 3;
+  background-color: #e2e2e2;
+  color: black;
+  margin-left: auto;
+  margin-bottom: 30px;
+}
+
+.media_collection .collection-links-wrapper .collection_share_btn {
+  order: 2;
+}
+
+.shared_media_collection .collection-links-wrapper {
+  margin-top: 20px;
+}
+
+.shared_media_collection .item-download-btn {
+  background-color: #6cc04a;
+  color: white;
+  border: 0;
+  border-radius: 55px;
+  padding: 15px 35px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 12px 20px;
+  position: absolute;
+  left: calc(50% - 75px);
+  top: 80px;
+  margin: 0;
+  visibility: hidden;
+}
+
+.shared_media_collection .text-overlay-hover .item-download-btn {
+  visibility: visible !important;
+}
+
+.shared_media_collection .card {
+  height: auto;
+}
+
+.shared_media_collection .card-body {
+  height: 128px;
+}
+
+.shared_media_collection .card-body div:last-of-type:not(.keywords) {
+  position: absolute;
+  bottom: 15px;
+  cursor: pointer;
+  width: 300px;
+}
+
+.shared_media_collection .card-body div:last-of-type:not(.keywords) i {
+  font-size: 24px;
+  margin-right: 5px;
+  opacity: 0.5;
+}
+
+.shared_media_collection .field--name-field-keywords,
+.shared_media_collection .field--name-name {
+  margin-bottom: -10px;
+  color: #bfbfbf;
+}
+
+.shared_media_collection .field--name-field-keywords .field--item,
+.shared_media_collection .field--name-field-keywords .field--name-name {
+  width: 300px;
+  font-size: 13px;
+  margin-bottom: 0;
+  color: white;
+  font-weight: 700;
+}
+
+.shared_media_collection .dam-media-description-title {
+  vertical-align: super;
+}
+
+.zoom-width {
+  -webkit-animation-name: zoomWidthAndFontSize;
+  -webkit-animation-duration: 1s;
+  animation-name: zoomWidthAndFontSize;
+  animation-iteration-count: 1;
+  animation-duration: 1s;
+}
+
+@keyframes zoomWidthAndFontSize {
+  0% {
+    margin-right: 0;
+  }
+  50% {
+    margin-right: 50px;
+  }
+  100% {
+    margin-right: 0;
+  }
+}
+.collection-list {
+  display: block;
+  width: 300px;
+  max-height: 0px;
+  overflow: hidden;
+  position: absolute;
+  background: white;
+  box-shadow: 0px 0px 11px 0px black;
+  border-radius: 5px;
+}
+
+.collection-list.active {
+  max-height: 1000px;
+  padding: 10px;
+}
+
+.collection-list .collection-link-wrapper {
+  display: block;
+  width: 100%;
+  padding: 5px 0;
+}
+
+.collection-list .collection-divider {
+  border-top: 1px solid #e2e2e2;
+  padding: 0px !important;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  display: block;
+  width: 100%;
+}
+
+.collection-list .add-to-collection-link {
+  display: block;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.collection-list .add-to-collection-link.in-collection {
+  pointer-events: none;
+  background: #bdbdbd !important;
+}
+
+.collection-button {
+  z-index: 9999;
+  padding: 0 !important;
+}
+
+.collection-button img {
+  width: 33px;
+  margin-top: 6px;
+  margin-right: 5px;
+  cursor: pointer;
+}
+
+.in-collection {
+  opacity: 1 !important;
+}
+
+.in-collection img {
+  cursor: inherit !important;
+}
+
+.dam-media-collection-link {
+  background: transparent !important;
+}
+
+.collection-item-number-wrapper {
+  width: 15px;
+  height: 10px;
+  z-index: 2;
+  position: fixed;
+  margin-left: 14px;
+}
+
+.collection-item-number {
+  text-align: center;
+  display: block;
+  letter-spacing: 1px;
+}
+
+.collection-text {
+  padding-left: 33px;
+}
+
+.empty-collection-text {
+  padding-left: 30px;
+}
+
+.collection-icon {
+  width: 35px;
+  margin-top: -10px;
+  position: absolute;
+}
+
+.empty-collection-icon {
+  width: 35px;
+  margin-top: -10px;
+  position: absolute;
+}
+
+.card-content .disabled {
+  pointer-events: all !important;
+}
+/*# sourceMappingURL=collection_page.css.map */
