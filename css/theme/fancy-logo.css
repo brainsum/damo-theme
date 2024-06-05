@@ -1,121 +1,75 @@
-.navbar
-{
-    background: 0;
+.navbar {
+  background: 0;
 }
 
-.fancy-logo
-{
-    position: fixed;
-    z-index: 500;
-    top: 0;
-    left: 0;
-
-    width: 100%;
+.fancy-logo {
+  position: fixed;
+  width: 100%;
+  z-index: 500;
+  top: 0;
+  left: 0;
+}
+.fancy-logo .navbar-brand {
+  margin: 20px;
+  display: inline-block;
+  padding: 0;
+}
+.fancy-logo::after {
+  transform: rotate(16.5deg) skew(-29deg);
+  will-change: transform, width;
+  background: #62b3e5;
+  content: " ";
+  position: absolute;
+  display: block;
+  z-index: -1;
+  top: -84px;
+  left: -60px;
+  width: 200px;
+  height: 200px;
+}
+.fancy-logo:not(.fixed)::after {
+  transition: width 0.2s, transform 0.2s ease 0.2s;
+  transform: rotate(16.5deg) skew(-29deg);
+}
+.fancy-logo.fixed::after {
+  transition: transform 0.2s, width 0.2s ease 0.2s;
+  transform: rotate(0) skew(0) translate3d(60px, -40px, 0);
+  width: 100%;
 }
 
-.fancy-logo .navbar-brand
-{
-    display: inline-block;
-
-    margin: 20px;
-    padding: 0;
+.navbar-toggler {
+  margin: 18px 1rem;
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 255, 255, 0.75)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+  border-color: rgba(255, 255, 255, 0.1);
 }
 
-.fancy-logo::after
-{
-    position: absolute;
-    z-index: -1;
-    top: -84px;
-    left: -60px;
-
-    display: block;
-
-    width: 200px;
-    height: 200px;
-
-    content: ' ';
-    -webkit-transform: rotate(16.5deg) skew(-29deg);
-        -ms-transform: rotate(16.5deg) skew(-29deg);
-            transform: rotate(16.5deg) skew(-29deg);
-
+@media (max-width: 991px) {
+  .navbar-nav .nav-link {
+    margin: 0;
+  }
+}
+.region-navigation-collapsible {
+  position: fixed;
+  z-index: 500;
+  right: 0;
+  top: 0;
+  z-index: 501;
+}
+.region-navigation-collapsible .navbar-collapse {
+  clear: both;
+  margin: 0.5rem;
+}
+@media (max-width: 991px) {
+  .region-navigation-collapsible .navbar-collapse {
+    margin: 1rem;
     background: #62b3e5;
-
-    will-change: transform, width;
+  }
 }
 
-.fancy-logo:not(.fixed)::after
-{
-    -webkit-transition: width .2s, -webkit-transform .2s ease .2s;
-            transition: width .2s, -webkit-transform .2s ease .2s;
-            transition: width .2s, transform .2s ease .2s;
-            transition: width .2s, transform .2s ease .2s, -webkit-transform .2s ease .2s;
-    -webkit-transform: rotate(16.5deg) skew(-29deg);
-        -ms-transform: rotate(16.5deg) skew(-29deg);
-            transform: rotate(16.5deg) skew(-29deg);
+.toolbar-fixed .fancy-logo, .toolbar-fixed .region-navigation-collapsible {
+  top: 39px;
 }
-
-.fancy-logo.fixed::after
-{
-    width: 100%;
-
-    -webkit-transition: width .2s ease .2s, -webkit-transform .2s;
-            transition: width .2s ease .2s, -webkit-transform .2s;
-            transition: transform .2s, width .2s ease .2s;
-            transition: transform .2s, width .2s ease .2s, -webkit-transform .2s;
-    -webkit-transform: rotate(0) skew(0) translate3d(60px, -40px, 0);
-            transform: rotate(0) skew(0) translate3d(60px, -40px, 0);
+.toolbar-horizontal.toolbar-tray-open .fancy-logo, .toolbar-horizontal.toolbar-tray-open .region-navigation-collapsible {
+  top: 78px;
 }
-
-.navbar-toggler
-{
-    margin: 18px 1rem;
-
-    border-color: rgba(255, 255, 255, .1);
-    background-image: url('data:image/svg+xml;charset=utf8,%3Csvg viewBox=\'0 0 32 32\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpath stroke=\'rgba(255, 255, 255, 0.75)\' stroke-width=\'2\' stroke-linecap=\'round\' stroke-miterlimit=\'10\' d=\'M4 8h24M4 16h24M4 24h24\'/%3E%3C/svg%3E');
-}
-
-@media (max-width: 991px)
-{
-    .navbar-nav .nav-link
-    {
-        margin: 0;
-    }
-}
-
-.region-navigation-collapsible
-{
-    position: fixed;
-    z-index: 500;
-    z-index: 501;
-    top: 0;
-    right: 0;
-}
-
-.region-navigation-collapsible .navbar-collapse
-{
-    clear: both;
-
-    margin: .5rem;
-}
-
-@media (max-width: 991px)
-{
-    .region-navigation-collapsible .navbar-collapse
-    {
-        margin: 1rem;
-
-        background: #62b3e5;
-    }
-}
-
-.toolbar-fixed .fancy-logo,
-.toolbar-fixed .region-navigation-collapsible
-{
-    top: 39px;
-}
-
-.toolbar-horizontal.toolbar-tray-open .fancy-logo,
-.toolbar-horizontal.toolbar-tray-open .region-navigation-collapsible
-{
-    top: 78px;
-}
+/*# sourceMappingURL=fancy-logo.css.map */

@@ -1,281 +1,204 @@
-.table
-{
-    width: 100%;
-    max-width: 100%;
-    margin-bottom: 1rem;
+.table {
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: 1rem;
 }
-
 .table th,
-.table td
-{
-    padding: .75rem;
-
-    vertical-align: top;
-
-    border-top: 1px solid #eceeef;
+.table td {
+  padding: 0.75rem;
+  vertical-align: top;
+  border-top: 1px solid #eceeef;
 }
-
-.table thead th
-{
-    vertical-align: bottom;
-
-    border-bottom: 2px solid #eceeef;
+.table thead th {
+  vertical-align: bottom;
+  border-bottom: 2px solid #eceeef;
 }
-
-.table tbody + tbody
-{
-    border-top: 2px solid #eceeef;
+.table tbody + tbody {
+  border-top: 2px solid #eceeef;
 }
-
-.table .table
-{
-    background-color: #fff;
+.table .table {
+  background-color: #fff;
 }
 
 .table-sm th,
-.table-sm td
-{
-    padding: .5rem;
+.table-sm td {
+  padding: 0.5rem;
 }
 
-.table-bordered
-{
-    border: 1px solid #eceeef;
+.table-bordered {
+  border: 1px solid #eceeef;
 }
-
 .table-bordered th,
-.table-bordered td
-{
-    border: 1px solid #eceeef;
+.table-bordered td {
+  border: 1px solid #eceeef;
 }
-
 .table-bordered thead th,
-.table-bordered thead td
-{
-    border-bottom-width: 2px;
+.table-bordered thead td {
+  border-bottom-width: 2px;
 }
 
-.table-striped tbody tr:nth-of-type(odd)
-{
-    background-color: rgba(0, 0, 0, .05);
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: rgba(0, 0, 0, 0.05);
 }
 
-.table-hover tbody tr:hover
-{
-    background-color: rgba(0, 0, 0, .075);
+.table-hover tbody tr:hover {
+  background-color: rgba(0, 0, 0, 0.075);
 }
 
 .table-active,
 .table-active > th,
-.table-active > td
-{
-    background-color: rgba(0, 0, 0, .075);
+.table-active > td {
+  background-color: rgba(0, 0, 0, 0.075);
 }
 
-.table-hover .table-active:hover
-{
-    background-color: rgba(0, 0, 0, .075);
+.table-hover .table-active:hover {
+  background-color: rgba(0, 0, 0, 0.075);
 }
-
 .table-hover .table-active:hover > td,
-.table-hover .table-active:hover > th
-{
-    background-color: rgba(0, 0, 0, .075);
+.table-hover .table-active:hover > th {
+  background-color: rgba(0, 0, 0, 0.075);
 }
 
 .table-success,
 .table-success > th,
-.table-success > td
-{
-    background-color: #d7e8c4;
+.table-success > td {
+  background-color: #d7e8c4;
 }
 
-.table-hover .table-success:hover
-{
-    background-color: #cbe1b2;
+.table-hover .table-success:hover {
+  background-color: #cbe1b2;
 }
-
 .table-hover .table-success:hover > td,
-.table-hover .table-success:hover > th
-{
-    background-color: #cbe1b2;
+.table-hover .table-success:hover > th {
+  background-color: #cbe1b2;
 }
 
 .table-info,
 .table-info > th,
-.table-info > td
-{
-    background-color: #cce5f4;
+.table-info > td {
+  background-color: #cce5f4;
 }
 
-.table-hover .table-info:hover
-{
-    background-color: #b7daef;
+.table-hover .table-info:hover {
+  background-color: #b7daef;
 }
-
 .table-hover .table-info:hover > td,
-.table-hover .table-info:hover > th
-{
-    background-color: #b7daef;
+.table-hover .table-info:hover > th {
+  background-color: #b7daef;
 }
 
 .table-warning,
 .table-warning > th,
-.table-warning > td
-{
-    background-color: #ffe1c6;
+.table-warning > td {
+  background-color: #ffe1c6;
 }
 
-.table-hover .table-warning:hover
-{
-    background-color: #ffd4ad;
+.table-hover .table-warning:hover {
+  background-color: #ffd4ad;
 }
-
 .table-hover .table-warning:hover > td,
-.table-hover .table-warning:hover > th
-{
-    background-color: #ffd4ad;
+.table-hover .table-warning:hover > th {
+  background-color: #ffd4ad;
 }
 
 .table-danger,
 .table-danger > th,
-.table-danger > td
-{
-    background-color: #eed9e1;
+.table-danger > td {
+  background-color: #eed9e1;
 }
 
-.table-hover .table-danger:hover
-{
-    background-color: #e6c7d3;
+.table-hover .table-danger:hover {
+  background-color: #e6c7d3;
 }
-
 .table-hover .table-danger:hover > td,
-.table-hover .table-danger:hover > th
-{
-    background-color: #e6c7d3;
+.table-hover .table-danger:hover > th {
+  background-color: #e6c7d3;
 }
 
-.thead-inverse th
-{
-    color: #fff;
-    background-color: #373a3c;
+.thead-inverse th {
+  color: #fff;
+  background-color: #373a3c;
 }
 
-.thead-default th
-{
-    color: #55595c;
-    background-color: #eceeef;
+.thead-default th {
+  color: #55595c;
+  background-color: #eceeef;
 }
 
-.table-inverse
-{
-    color: #eceeef;
-    background-color: #373a3c;
+.table-inverse {
+  color: #eceeef;
+  background-color: #373a3c;
 }
-
 .table-inverse th,
 .table-inverse td,
-.table-inverse thead th
-{
-    border-color: #55595c;
+.table-inverse thead th {
+  border-color: #55595c;
+}
+.table-inverse.table-bordered {
+  border: 0;
 }
 
-.table-inverse.table-bordered
-{
-    border: 0;
+.table-responsive {
+  display: block;
+  width: 100%;
+  min-height: 0%;
+  overflow-x: auto;
 }
 
-.table-responsive
-{
-    display: block;
-    overflow-x: auto;
-
-    width: 100%;
-    min-height: 0;
+.table-reflow thead {
+  float: left;
 }
-
-.table-reflow thead
-{
-    float: left;
+.table-reflow tbody {
+  display: block;
+  white-space: nowrap;
 }
-
-.table-reflow tbody
-{
-    display: block;
-
-    white-space: nowrap;
-}
-
 .table-reflow th,
-.table-reflow td
-{
-    border-top: 1px solid #eceeef;
-    border-left: 1px solid #eceeef;
+.table-reflow td {
+  border-top: 1px solid #eceeef;
+  border-left: 1px solid #eceeef;
 }
-
 .table-reflow th:last-child,
-.table-reflow td:last-child
-{
-    border-right: 1px solid #eceeef;
+.table-reflow td:last-child {
+  border-right: 1px solid #eceeef;
 }
-
 .table-reflow thead:last-child tr:last-child th,
 .table-reflow thead:last-child tr:last-child td,
 .table-reflow tbody:last-child tr:last-child th,
 .table-reflow tbody:last-child tr:last-child td,
 .table-reflow tfoot:last-child tr:last-child th,
-.table-reflow tfoot:last-child tr:last-child td
-{
-    border-bottom: 1px solid #eceeef;
+.table-reflow tfoot:last-child tr:last-child td {
+  border-bottom: 1px solid #eceeef;
 }
-
-.table-reflow tr
-{
-    float: left;
+.table-reflow tr {
+  float: left;
 }
-
 .table-reflow tr th,
-.table-reflow tr td
-{
-    display: block !important;
-
-    border: 1px solid #eceeef;
+.table-reflow tr td {
+  display: block !important;
+  border: 1px solid #eceeef;
 }
 
-.table
-{
-    margin: 1rem 0;
+.table {
+  margin: 1rem 0;
+}
+.table thead th {
+  text-transform: uppercase;
+  font-size: 0.875rem;
+  font-weight: normal;
+  color: #7b7b7b;
+}
+.table thead th a {
+  color: inherit;
+}
+.table thead th.is-active a {
+  color: #0065a0;
+}
+.table thead th a:hover, .table thead th.is-active a:hover {
+  color: #d51067;
 }
 
-.table thead th
-{
-    font-size: .875rem;
-    font-weight: normal;
-
-    text-transform: uppercase;
-
-    color: #7b7b7b;
-}
-
-.table thead th a
-{
-    color: inherit;
-}
-
-.table thead th.is-active a
-{
-    color: #0065a0;
-}
-
-.table thead th a:hover,
-.table thead th.is-active a:hover
-{
-    color: #d51067;
-}
-
-.table-responsive
-{
-    overflow-x: visible;
+.table-responsive {
+  overflow-x: visible;
 }
 
 /**
@@ -286,12 +209,10 @@
  *
  * @todo REFACTOR for Bootstrap
  */
-table.sticky-header
-{
-    z-index: 500;
-    top: 0;
-
-    margin-top: 0;
-
-    background-color: #fff;
+table.sticky-header {
+  background-color: #fff;
+  margin-top: 0;
+  z-index: 500;
+  top: 0;
 }
+/*# sourceMappingURL=tables.css.map */

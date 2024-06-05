@@ -27,6 +27,7 @@ global:
       css/component/pager.css: {}
       css/component/tables.css: {}
       css/component/tabs.css: {}
+      css/pages/collection_page.css: {}
     state:
       css/state/animation.css: {}
     theme:

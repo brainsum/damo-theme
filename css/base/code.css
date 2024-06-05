@@ -1,70 +1,50 @@
 code,
 kbd,
 pre,
-samp
-{
-    font-family: Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+samp {
+  font-family: Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
-code
-{
-    font-size: 90%;
-
-    padding: .2rem .4rem;
-
-    color: #bd4147;
-    border-radius: .25rem;
-    background-color: #f7f7f9;
+code {
+  padding: 0.2rem 0.4rem;
+  font-size: 90%;
+  color: #bd4147;
+  background-color: #f7f7f9;
+  border-radius: 0.25rem;
 }
 
-kbd
-{
-    font-size: 90%;
-
-    padding: .2rem .4rem;
-
-    color: #fff;
-    border-radius: .2rem;
-    background-color: #333;
-    box-shadow: inset 0 -.1rem 0 rgba(0, 0, 0, .25);
+kbd {
+  padding: 0.2rem 0.4rem;
+  font-size: 90%;
+  color: #fff;
+  background-color: #333;
+  border-radius: 0.2rem;
+  box-shadow: inset 0 -0.1rem 0 rgba(0, 0, 0, 0.25);
+}
+kbd kbd {
+  padding: 0;
+  font-size: 100%;
+  font-weight: bold;
+  box-shadow: none;
 }
 
-kbd kbd
-{
-    font-size: 100%;
-    font-weight: bold;
-
-    padding: 0;
-
-    box-shadow: none;
+pre {
+  display: block;
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 90%;
+  color: #373a3c;
+}
+pre code {
+  padding: 0;
+  font-size: inherit;
+  color: inherit;
+  background-color: transparent;
+  border-radius: 0;
 }
 
-pre
-{
-    font-size: 90%;
-
-    display: block;
-
-    margin-top: 0;
-    margin-bottom: 1rem;
-
-    color: #373a3c;
+.pre-scrollable {
+  max-height: 340px;
+  overflow-y: scroll;
 }
-
-pre code
-{
-    font-size: inherit;
-
-    padding: 0;
-
-    color: inherit;
-    border-radius: 0;
-    background-color: transparent;
-}
-
-.pre-scrollable
-{
-    overflow-y: scroll;
-
-    max-height: 340px;
-}
+/*# sourceMappingURL=code.css.map */

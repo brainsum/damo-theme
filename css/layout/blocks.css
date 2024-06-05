@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Montserrat:400,600,700');
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,600,700");
 /**
  * @file
  *** FOUNDATION FOR SITES AND CUSTOM MIXINS
@@ -8,17 +8,12 @@
  * Mixins placeholder file
  * @todo These are mostly from Foundation and should be removed and used straight from Foundation.
  */
-.clearfix:before,
-.clearfix:after
-{
-    display: table;
-
-    content: ' ';
+.clearfix:before, .clearfix:after {
+  content: " ";
+  display: table;
 }
-
-.clearfix:after
-{
-    clear: both;
+.clearfix:after {
+  clear: both;
 }
 
 /**
@@ -95,94 +90,63 @@
  * @include align-content(flex-start | flex-end | center | space-between | space-around | stretch);
  * Default: stretch
  */
-.block-local-actions-block
-{
-    margin: 1rem 0;
+.block-local-actions-block {
+  margin: 1rem 0;
 }
-
 .block-local-actions-block a.btn + a.btn,
-.block-local-actions-block a.button,
-.block-local-actions-block a.button
-{
-    margin-left: .25rem;
+.block-local-actions-block a.button, .block-local-actions-block a.button {
+  margin-left: 0.25rem;
 }
 
-.block-local-tasks-block
-{
-    margin-bottom: 1rem;
+.block-local-tasks-block {
+  margin-bottom: 1rem;
 }
 
-.block > h2
-{
-    font-size: 1rem;
-    font-weight: bold;
-
-    text-transform: uppercase;
-
-    color: #7b7b7b;
+.block > h2 {
+  font-size: 1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #7b7b7b;
+}
+.region-sidebar .block {
+  margin-bottom: 1rem;
 }
 
-.region-sidebar .block
-{
-    margin-bottom: 1rem;
+.menu-account {
+  float: right;
 }
 
-.menu-account
-{
-    float: right;
+@media (min-width: 576px) {
+  .block-system-menu-blockfooter {
+    display: inline-block;
+    margin-left: 1em;
+  }
 }
 
-@media (min-width: 576px)
-{
-    .block-system-menu-blockfooter
-    {
-        display: inline-block;
-
-        margin-left: 1em;
-    }
+.block-facet-blockasset-category {
+  display: flex;
+  align-items: center;
 }
-
-.block-facet-blockasset-category
-{
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display:         flex;
-
-    -webkit-box-align: center;
-    -webkit-align-items: center;
-    -ms-flex-align: center;
-            align-items: center;
+.block-facet-blockasset-category h2 {
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+  text-transform: capitalize;
+  font-size: 12px;
+  margin-right: 8px;
+  margin-bottom: 0;
 }
-
-.block-facet-blockasset-category h2
-{
-    font-family: 'Montserrat', sans-serif;
-    font-size: 12px;
-    font-weight: 500;
-    font-style: normal;
-
-    margin-right: 8px;
-    margin-bottom: 0;
-
-    text-transform: capitalize;
-
-    font-optical-sizing: auto;
-}
-
 .block-facet-blockasset-category select,
-.block-facet-blockasset-category select:focus-visible
-{
-    font-family: 'Montserrat', sans-serif;
-    font-size: 12px;
-    font-weight: 700;
-    font-style: normal;
-
-    cursor: pointer;
-    text-align: right;
-
-    border: 0;
-    background: transparent;
-
-    font-optical-sizing: auto;
+.block-facet-blockasset-category select:focus-visible {
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+  background: transparent;
+  border: 0;
+  font-size: 12px;
+  text-align: right;
+  cursor: pointer;
 }
+/*# sourceMappingURL=blocks.css.map */

@@ -1,74 +1,40 @@
 /**
  * AJAX (throbber) styling.
  */
-@-webkit-keyframes glyphicon-spin
-{
-    0%
-    {
-        -webkit-transform: rotate(0deg);
-                transform: rotate(0deg);
-    }
-    100%
-    {
-        -webkit-transform: rotate(359deg);
-                transform: rotate(359deg);
-    }
+@keyframes glyphicon-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(359deg);
+  }
 }
-@keyframes glyphicon-spin
-{
-    0%
-    {
-        -webkit-transform: rotate(0deg);
-                transform: rotate(0deg);
-    }
-    100%
-    {
-        -webkit-transform: rotate(359deg);
-                transform: rotate(359deg);
-    }
+.glyphicon-spin {
+  display: inline-block;
+  animation: glyphicon-spin 1s infinite linear;
 }
 
-.glyphicon-spin
-{
-    display: inline-block;
-
-    -webkit-animation: glyphicon-spin 1s infinite linear;
-            animation: glyphicon-spin 1s infinite linear;
+a .glyphicon-spin {
+  display: inline-block;
+  text-decoration: none;
 }
 
-a .glyphicon-spin
-{
-    display: inline-block;
-
-    text-decoration: none;
+html.js .btn .ajax-throbber {
+  margin-left: 0.5em;
+  margin-right: -0.25em;
 }
-
-html.js .btn .ajax-throbber
-{
-    margin-right: -.25em;
-    margin-left: .5em;
+html.js .form-item .input-group-addon .glyphicon {
+  opacity: 0.5;
+  transition: 150ms color, 150ms opacity;
 }
-
-html.js .form-item .input-group-addon .glyphicon
-{
-    -webkit-transition: 150ms color, 150ms opacity;
-            transition: 150ms color, 150ms opacity;
-
-    opacity: .5;
+html.js .form-item .input-group-addon .glyphicon.glyphicon-spin {
+  color: #62b3e5;
+  opacity: 1;
 }
-
-html.js .form-item .input-group-addon .glyphicon.glyphicon-spin
-{
-    opacity: 1;
-    color: #62b3e5;
+html.js .form-item .input-group-addon .input-group-addon {
+  background-color: rgb(255, 255, 255);
 }
-
-html.js .form-item .input-group-addon .input-group-addon
-{
-    background-color: white;
+html.js .ajax-new-content:empty {
+  display: none !important;
 }
-
-html.js .ajax-new-content:empty
-{
-    display: none !important;
-}
+/*# sourceMappingURL=ajax-progress.css.map */

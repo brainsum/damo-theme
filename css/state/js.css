@@ -8,22 +8,19 @@
  * For anything you want to hide on page load when JS is enabled, so
  * that you can use the JS to control visibility and avoid flicker.
  */
-.js .js-hide
-{
-    display: none;
+.js .js-hide {
+  display: none;
 }
 
 /**
  * For anything you want to show on page load only when JS is enabled.
  */
-.js-show
-{
-    display: none;
+.js-show {
+  display: none;
 }
 
-.js .js-show
-{
-    display: block;
+.js .js-show {
+  display: block;
 }
 
 /**
@@ -34,7 +31,7 @@
  *
  * @todo Move this to `details.scss`?
  */
-.js details:not([open]) .details-wrapper
-{
-    display: none;
+.js details:not([open]) .details-wrapper {
+  display: none;
 }
+/*# sourceMappingURL=js.css.map */
