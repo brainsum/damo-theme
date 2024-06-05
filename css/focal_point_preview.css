@@ -1,14 +1,10 @@
-#focal-point-preview-wrapper td
-{
-    padding: 5px;
+#focal-point-preview-wrapper td {
+  padding: 5px;
 }
-
-#focal-point-preview-wrapper tbody tr
-{
-    border-bottom: 1px solid #eee;
+#focal-point-preview-wrapper tbody tr {
+  border-bottom: 1px solid #eeeeee;
 }
-
-#focal-point-preview-wrapper thead tr
-{
-    border-bottom: 2px solid #eee;
+#focal-point-preview-wrapper thead tr {
+  border-bottom: 2px solid #eeeeee;
 }
+/*# sourceMappingURL=focal_point_preview.css.map */

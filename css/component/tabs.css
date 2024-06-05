@@ -20,18 +20,13 @@
 
   Style guide 4.3
 */
-.nav-tabs .nav-item + .nav-item
-{
-    margin-left: 1px;
+.nav-tabs .nav-item + .nav-item {
+  margin-left: 1px;
 }
-
-.nav-tabs .nav-link
-{
-    line-height: normal;
-
-    padding: .4em 1em;
-
-    color: #0065a0;
+.nav-tabs .nav-link {
+  padding: 0.4em 1em;
+  line-height: normal;
+  color: #0065a0;
 }
 
 /*
@@ -55,92 +50,59 @@
 
   Style guide 4.3.1
 */
-.tabs--header
-{
-    clear: both;
+.tabs--header {
+  clear: both;
+}
+.tabs--header .nav-item .nav-link {
+  background-color: #cce5f4;
+  color: #0065a0;
+  padding: 0.5em 2em;
+}
+.tabs--header .nav-item .nav-link:focus, .tabs--header .nav-item .nav-link:hover {
+  background-color: #fff;
+  color: #0065a0;
+}
+.tabs--header .nav-item .nav-link.is-active {
+  background-color: #fff;
+  color: #0065a0;
+}
+.tabs--header .dropdown.open .dropdown-toggle, .tabs--header .dropdown.open .dropdown-toggle:focus, .tabs--header .dropdown.open .dropdown-toggle:hover {
+  background-color: #fff;
+  color: #e56385;
 }
 
-.tabs--header .nav-item .nav-link
-{
-    padding: .5em 2em;
-
-    color: #0065a0;
-    background-color: #cce5f4;
+.tabs--primary {
+  border-bottom: 3px solid #62b3e5;
+}
+.tabs--primary .nav-link {
+  background-color: #cce5f4;
+}
+.tabs--primary .nav-item.active .nav-link, .tabs--primary .nav-item.active .nav-link:focus, .tabs--primary .nav-item.active .nav-link:hover, .tabs--primary .nav-item .nav-link.is-active, .tabs--primary .nav-item .nav-link.is-active:focus, .tabs--primary .nav-item .nav-link.is-active:hover {
+  background-color: #62b3e5;
+  color: #fff;
 }
 
-.tabs--header .nav-item .nav-link:focus,
-.tabs--header .nav-item .nav-link:hover
-{
-    color: #0065a0;
-    background-color: #fff;
+.tabs--secondary {
+  margin-top: 1rem;
+}
+.tabs--secondary .nav-link {
+  padding: 0.25em 0.75em;
+}
+.tabs--secondary .nav-link.is-active, .tabs--secondary .nav-link.is-active:focus, .tabs--secondary .nav-link.is-active:hover {
+  color: #fff;
+  background-color: #62b3e5;
 }
 
-.tabs--header .nav-item .nav-link.is-active
-{
-    color: #0065a0;
-    background-color: #fff;
-}
-
-.tabs--header .dropdown.open .dropdown-toggle,
-.tabs--header .dropdown.open .dropdown-toggle:focus,
-.tabs--header .dropdown.open .dropdown-toggle:hover
-{
-    color: #e56385;
-    background-color: #fff;
-}
-
-.tabs--primary
-{
-    border-bottom: 3px solid #62b3e5;
-}
-
-.tabs--primary .nav-link
-{
-    background-color: #cce5f4;
-}
-
-.tabs--primary .nav-item.active .nav-link,
-.tabs--primary .nav-item.active .nav-link:focus,
-.tabs--primary .nav-item.active .nav-link:hover,
-.tabs--primary .nav-item .nav-link.is-active,
-.tabs--primary .nav-item .nav-link.is-active:focus,
-.tabs--primary .nav-item .nav-link.is-active:hover
-{
-    color: #fff;
-    background-color: #62b3e5;
-}
-
-.tabs--secondary
-{
-    margin-top: 1rem;
-}
-
-.tabs--secondary .nav-link
-{
-    padding: .25em .75em;
-}
-
-.tabs--secondary .nav-link.is-active,
-.tabs--secondary .nav-link.is-active:focus,
-.tabs--secondary .nav-link.is-active:hover
-{
-    color: #fff;
-    background-color: #62b3e5;
-}
-
-@media (max-width: 767px)
-{
-    .tabs--primary .nav-item,
-    .tabs--secondary .nav-item
-    {
-        display: block;
-        float: none;
-    }
-    .tabs--primary .nav-item + .nav-item,
-    .tabs--secondary .nav-item + .nav-item
-    {
-        margin-left: 0;
-    }
+@media (max-width: 767px) {
+  .tabs--primary .nav-item,
+  .tabs--secondary .nav-item {
+    display: block;
+    float: none;
+  }
+  .tabs--primary .nav-item + .nav-item,
+  .tabs--secondary .nav-item + .nav-item {
+    margin-left: 0;
+  }
 }
 
 /*
@@ -166,26 +128,20 @@
 
   Style guide 4.3.2
 */
-.tabs--sm
-{
-    font-size: .875rem;
-
-    border-bottom-width: 2px;
+.tabs--sm {
+  border-bottom-width: 2px;
+  font-size: 0.875rem;
 }
 
-.tabs--lg
-{
-    font-size: 1.25rem;
-
-    border-bottom-width: 4px;
+.tabs--lg {
+  border-bottom-width: 4px;
+  font-size: 1.25rem;
 }
 
-.eb-tabs
-{
-    margin-bottom: 2rem;
+.eb-tabs {
+  margin-bottom: 2rem;
 }
-
-.eb-tabs > ul
-{
-    border-bottom: 0;
+.eb-tabs > ul {
+  border-bottom: 0;
 }
+/*# sourceMappingURL=tabs.css.map */

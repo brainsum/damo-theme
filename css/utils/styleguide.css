@@ -19,385 +19,236 @@
   Style guide: 4.2
  */
 html,
-body
-{
-    height: 100%;
-    padding: 0;
+body {
+  padding: 0;
+  height: 100%;
 }
 
-.styleguide
-{
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display:         flex;
-
-    height: 100%;
+.styleguide {
+  display: flex;
+  height: 100%;
 }
-
-.styleguide a:focus
-{
-    outline: none;
+.styleguide a:focus {
+  outline: none;
 }
-
-.styleguide__aside
-{
-    overflow-y: auto;
-
-    width: calc(100% / 4);
-    padding: 2rem;
-
-    background: #f8f8f8;
+.styleguide__aside {
+  padding: 2rem;
+  width: 25%;
+  background: #f8f8f8;
+  overflow-y: auto;
 }
-
-@media (min-width: 1580px)
-{
-    .styleguide__aside
-    {
-        width: calc(100% / 5);
-    }
+@media (min-width: 1580px) {
+  .styleguide__aside {
+    width: 20%;
+  }
 }
-
-.styleguide__aside__logo
-{
-    margin-top: -2rem;
-    margin-left: -2rem;
+.styleguide__aside__logo {
+  margin-top: -2rem;
+  margin-left: -2rem;
 }
-
-.styleguide__aside__title
-{
-    font-size: 2.25rem;
-
-    margin-top: 3rem;
-    margin-bottom: 3rem;
-
-    text-align: center;
+.styleguide__aside__title {
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+  font-size: 2.25rem;
+  text-align: center;
 }
-
-.styleguide__nav ul
-{
-    margin: 0;
-    padding: 0;
-
-    list-style: none;
+.styleguide__nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
-
-.styleguide__nav ul a
-{
-    display: inline-block;
-
-    white-space: nowrap;
+.styleguide__nav ul a {
+  display: inline-block;
+  white-space: nowrap;
 }
-
-.styleguide__nav ul ul
-{
-    margin-left: .5rem;
+.styleguide__nav ul ul {
+  margin-left: 0.5rem;
 }
-
-.styleguide__nav ul li
-{
-    position: relative;
-
-    padding: .5rem 1rem;
+.styleguide__nav ul li {
+  position: relative;
+  padding: 0.5rem 1rem;
 }
-
-.styleguide__nav ul li.is-open > ul
-{
-    display: block;
+.styleguide__nav ul li.is-open > ul {
+  display: block;
 }
-
-.styleguide__nav > ul > li > a
-{
-    font-size: 1.5rem;
+.styleguide__nav > ul > li > a {
+  font-size: 1.5rem;
 }
-
-.styleguide__nav-is-in-viewport
-{
-    color: #d51067 !important;
+.styleguide__nav-is-in-viewport {
+  color: #d51067 !important;
 }
-
-.styleguide__content
-{
-    overflow-y: auto;
-
-    width: calc(100% / 4 * 3);
-    padding: 2rem;
+.styleguide__content {
+  padding: 2rem;
+  overflow-y: auto;
+  width: 75%;
 }
-
-@media (min-width: 1580px)
-{
-    .styleguide__content
-    {
-        width: calc(100% / 5 * 4);
-    }
+@media (min-width: 1580px) {
+  .styleguide__content {
+    width: 80%;
+  }
 }
-
-.styleguide__section
-{
-    margin-bottom: 3rem;
+.styleguide__section {
+  margin-bottom: 3rem;
 }
-
 .styleguide__section--depth-4 + .styleguide__section--depth-1,
 .styleguide__section--depth-4 + .styleguide__section--depth-2,
-.styleguide__section--depth-4 + .styleguide__section--depth-3
-{
-    margin-top: 6rem;
+.styleguide__section--depth-4 + .styleguide__section--depth-3 {
+  margin-top: 6rem;
 }
-
 .styleguide__section--depth-3 + .styleguide__section--depth-1,
-.styleguide__section--depth-3 + .styleguide__section--depth-2
-{
-    margin-top: 6rem;
+.styleguide__section--depth-3 + .styleguide__section--depth-2 {
+  margin-top: 6rem;
 }
-
-.styleguide__title
-{
-    margin-bottom: 1rem;
+.styleguide__title {
+  margin-bottom: 1rem;
 }
-
-.styleguide__anchor
-{
-    display: inline-block;
-
-    margin-right: .25rem;
+.styleguide__anchor {
+  display: inline-block;
+  margin-right: 0.25rem;
 }
-
-.styleguide__anchor,
-.styleguide__anchor:visited
-{
-    color: #d2d2d2;
+.styleguide__anchor, .styleguide__anchor:visited {
+  color: #d2d2d2;
 }
-
-.styleguide__anchor:hover
-{
-    color: #e56385;
+.styleguide__anchor:hover {
+  color: #e56385;
 }
-
-.styleguide__example
-{
-    padding: 1rem;
-
-    border: 1px solid #f9f9f9;
+.styleguide__example {
+  padding: 1rem;
+  border: 1px solid #f9f9f9;
 }
-
-.styleguide__example h4
-{
-    margin-bottom: 1rem;
-
-    color: #5e5e5e;
+.styleguide__example h4 {
+  margin-bottom: 1rem;
+  color: #5e5e5e;
 }
-
-.styleguide__modifier:not(:last-child)
-{
-    margin-bottom: 1rem;
+.styleguide__modifier:not(:last-child) {
+  margin-bottom: 1rem;
 }
-
-.styleguide__modifier-title
-{
-    margin-bottom: .5rem;
+.styleguide__modifier-title {
+  margin-bottom: 0.5rem;
 }
-
-.styleguide__source
-{
-    margin-top: 1rem;
-    margin-bottom: .5rem;
+.styleguide__source {
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
 }
-
-.styleguide__colors
-{
-    width: 100%;
-
-    table-layout: fixed;
+.styleguide__colors {
+  width: 100%;
+  table-layout: fixed;
 }
-
 .styleguide__colors th,
-.styleguide__colors td
-{
-    padding: 1rem;
-
-    text-align: center;
+.styleguide__colors td {
+  padding: 1rem;
+  text-align: center;
 }
-
-.styleguide__colors th
-{
-    font-weight: 400;
-
-    text-transform: capitalize;
+.styleguide__colors th {
+  text-transform: capitalize;
+  font-weight: 400;
 }
-
-.styleguide__colors td
-{
-    color: #fff;
+.styleguide__colors td {
+  color: #fff;
 }
-
-.styleguide__brand-colors tbody tr:nth-child(-n + 2) td
-{
-    color: #333;
+.styleguide__brand-colors tbody tr:nth-child(-n+2) td {
+  color: #333333;
 }
-
-.styleguide__grey-colors tbody tr td:nth-child(-n + 2)
-{
-    color: #333;
+.styleguide__grey-colors tbody tr td:nth-child(-n+2) {
+  color: #333333;
 }
 
 /**
  * prettyprint.js styling
  */
-pre.linenums
-{
-    overflow-x: hidden;
-
-    margin-bottom: 0;
+pre.linenums {
+  overflow-x: hidden;
+  margin-bottom: 0;
 }
 
-ol.linenums
-{
-    overflow-x: auto;
-
-    margin: 1rem 0 0;
-    padding: 1rem 1rem .75rem;
-
-    list-style: none;
-
-    border: 1px solid #eee;
-    border-left: .25rem solid #62b3e5;
-    background: #f9f9f9;
+ol.linenums {
+  overflow-x: auto;
+  margin: 1rem 0 0;
+  padding: 1rem 1rem 0.75rem;
+  list-style: none;
+  background: #f9f9f9;
+  border: 1px solid #eeeeee;
+  border-left: 0.25rem solid #62b3e5;
 }
-
-ol.linenums li
-{
-    font-size: .75rem;
+ol.linenums li {
+  font-size: 0.75rem;
 }
-
 ol.linenums li code,
-ol.linenums li span
-{
-    vertical-align: middle;
+ol.linenums li span {
+  vertical-align: middle;
 }
 
 /* SPAN elements with the classes below are added by prettyprint. */
-.pln
-{
-    color: #000;
-}
-
-/* plain text */
-.str
-{
-    color: #080;
-}
-
-/* string content */
-.kwd
-{
-    color: #008;
-}
-
-/* a keyword */
-.com
-{
-    color: #800;
-}
-
-/* a comment */
-.typ
-{
-    color: #606;
-}
-
-/* a type name */
-.lit
-{
-    color: #066;
-}
-
-/* a literal value */
+.pln {
+  color: #000;
+} /* plain text */
+.str {
+  color: #080;
+} /* string content */
+.kwd {
+  color: #008;
+} /* a keyword */
+.com {
+  color: #800;
+} /* a comment */
+.typ {
+  color: #606;
+} /* a type name */
+.lit {
+  color: #066;
+} /* a literal value */
 /* punctuation, lisp open bracket, lisp close bracket */
-.pun,
-.opn,
-.clo
-{
-    color: #660;
+.pun, .opn, .clo {
+  color: #660;
 }
 
-.tag
-{
-    color: #008;
-}
-
-/* a markup tag name */
-.atn
-{
-    color: #606;
-}
-
-/* a markup attribute name */
-.atv
-{
-    color: #080;
-}
-
-/* a markup attribute value */
-.dec,
-.var
-{
-    color: #606;
-}
-
-/* a declaration; a variable name */
-.fun
-{
-    color: red;
-}
-
-/* a function name */
+.tag {
+  color: #008;
+} /* a markup tag name */
+.atn {
+  color: #606;
+} /* a markup attribute name */
+.atv {
+  color: #080;
+} /* a markup attribute value */
+.dec, .var {
+  color: #606;
+} /* a declaration; a variable name */
+.fun {
+  color: red;
+} /* a function name */
 /* Use higher contrast and text-weight for printable form. */
-@media print, projection
-{
-    .str
-    {
-        color: #060;
-    }
-    .kwd
-    {
-        font-weight: bold;
-
-        color: #006;
-    }
-    .com
-    {
-        font-style: italic;
-
-        color: #600;
-    }
-    .typ
-    {
-        font-weight: bold;
-
-        color: #404;
-    }
-    .lit
-    {
-        color: #044;
-    }
-    .pun,
-    .opn,
-    .clo
-    {
-        color: #440;
-    }
-    .tag
-    {
-        font-weight: bold;
-
-        color: #006;
-    }
-    .atn
-    {
-        color: #404;
-    }
-    .atv
-    {
-        color: #060;
-    }
+@media print, projection {
+  .str {
+    color: #060;
+  }
+  .kwd {
+    color: #006;
+    font-weight: bold;
+  }
+  .com {
+    color: #600;
+    font-style: italic;
+  }
+  .typ {
+    color: #404;
+    font-weight: bold;
+  }
+  .lit {
+    color: #044;
+  }
+  .pun, .opn, .clo {
+    color: #440;
+  }
+  .tag {
+    color: #006;
+    font-weight: bold;
+  }
+  .atn {
+    color: #404;
+  }
+  .atv {
+    color: #060;
+  }
 }
+/*# sourceMappingURL=styleguide.css.map */

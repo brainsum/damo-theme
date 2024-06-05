@@ -1,52 +1,34 @@
-.breadcrumb
-{
-    margin-bottom: 1rem;
-    padding: 0 0;
-
-    list-style: none;
-
-    border-radius: .25rem;
-    background-color: none;
+.breadcrumb {
+  padding: 0 0;
+  margin-bottom: 1rem;
+  list-style: none;
+  background-color: none;
+  border-radius: 0.25rem;
+}
+.breadcrumb::after {
+  content: "";
+  display: table;
+  clear: both;
 }
 
-.breadcrumb::after
-{
-    display: table;
-    clear: both;
-
-    content: '';
+.breadcrumb-item {
+  float: left;
 }
-
-.breadcrumb-item
-{
-    float: left;
+.breadcrumb-item + .breadcrumb-item::before {
+  display: inline-block;
+  padding-right: 0.5rem;
+  padding-left: 0.5rem;
+  color: #818a91;
+  content: "/";
 }
-
-.breadcrumb-item + .breadcrumb-item::before
-{
-    display: inline-block;
-
-    padding-right: .5rem;
-    padding-left: .5rem;
-
-    content: '/';
-
-    color: #818a91;
+.breadcrumb-item + .breadcrumb-item:hover::before {
+  text-decoration: underline;
 }
-
-.breadcrumb-item + .breadcrumb-item:hover::before
-{
-    text-decoration: underline;
+.breadcrumb-item + .breadcrumb-item:hover::before {
+  text-decoration: none;
 }
-
-.breadcrumb-item + .breadcrumb-item:hover::before
-{
-    text-decoration: none;
-}
-
-.breadcrumb-item.active
-{
-    color: #818a91;
+.breadcrumb-item.active {
+  color: #818a91;
 }
 
 /*
@@ -87,3 +69,4 @@
 
   Style guide 4.6.1.2
 */
+/*# sourceMappingURL=breadcrumbs.css.map */

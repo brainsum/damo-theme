@@ -1,8 +1,7 @@
-.field-ui-overview .field-plugin-settings-edit:not([disabled])
-{
-    padding: 1rem;
-
-    background-image: url(/core/misc/icons/787878/cog.svg);
-    background-repeat: no-repeat;
-    background-position: center center;
+.field-ui-overview .field-plugin-settings-edit:not([disabled]) {
+  background-image: url(/core/misc/icons/787878/cog.svg);
+  background-repeat: no-repeat;
+  background-position: center center;
+  padding: 1rem;
 }
+/*# sourceMappingURL=field_ui.admin.css.map */

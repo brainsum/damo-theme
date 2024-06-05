@@ -10,26 +10,18 @@
 
   Style guide: 4.4
 */
-a:not(.btn):not(.button):active
-{
-    color: #e56385;
+a:not(.btn):not(.button):active {
+  color: #e56385;
 }
-
-a:not(.btn):not(.button).disabled,
-a:not(.btn):not(.button)[disabled]
-{
-    cursor: not-allowed;
-    pointer-events: none;
-
-    color: #7b7b7b;
+a:not(.btn):not(.button).disabled, a:not(.btn):not(.button)[disabled] {
+  color: #7b7b7b;
+  pointer-events: none;
+  cursor: not-allowed;
 }
-
-.article a:not(.btn):not(.button):visited
-{
-    color: #62b3e5;
+.article a:not(.btn):not(.button):visited {
+  color: #62b3e5;
 }
-
-.article a:not(.btn):not(.button):visited:hover
-{
-    color: #d51067;
+.article a:not(.btn):not(.button):visited:hover {
+  color: #d51067;
 }
+/*# sourceMappingURL=links.css.map */

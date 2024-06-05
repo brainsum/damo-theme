@@ -1,94 +1,67 @@
 /**
  * Table drag styles.
  */
-body.drag
-{
-    cursor: move;
+body.drag {
+  cursor: move;
 }
 
-tr.region-title
-{
-    font-weight: bold;
+tr.region-title {
+  font-weight: bold;
 }
 
-tr.region-message
-{
-    color: #999;
+tr.region-message {
+  color: #999;
 }
 
-tr.region-populated
-{
-    display: none;
+tr.region-populated {
+  display: none;
 }
 
-tr.add-new .tabledrag-changed
-{
-    display: none;
+tr.add-new .tabledrag-changed {
+  display: none;
 }
 
-.tabledrag-toggle-weight-wrapper
-{
-    text-align: right;
+.tabledrag-toggle-weight-wrapper {
+  text-align: right;
+}
+[dir=rtl] .tabledrag-toggle-weight-wrapper {
+  text-align: left;
 }
 
-[dir='rtl'] .tabledrag-toggle-weight-wrapper
-{
-    text-align: left;
+.tabledrag-toggle-weight {
+  float: right;
+  margin-bottom: 1rem;
 }
 
-.tabledrag-toggle-weight
-{
-    float: right;
-
-    margin-bottom: 1rem;
+.tabledrag-changed-warning {
+  margin: 0;
+  overflow: hidden;
+  clear: both;
 }
 
-.tabledrag-changed-warning
-{
-    clear: both;
-    overflow: hidden;
-
-    margin: 0;
+.tabledrag-handle {
+  color: #818a91;
+  cursor: move;
+  float: left;
+  font-size: 125%;
+  line-height: 1;
+  margin: -10px 0 0 -10px;
+  padding: 10px;
+}
+.tabledrag-handle:hover, .tabledrag-handle:focus {
+  color: #62b3e5;
 }
 
-.tabledrag-handle
-{
-    font-size: 125%;
-    line-height: 1;
-
-    float: left;
-
-    margin: -10px 0 0 -10px;
-    padding: 10px;
-
-    cursor: move;
-
-    color: #818a91;
+.indentation {
+  float: left; /* LTR */
+  height: 1.7em;
+  margin: -0.4em 0.2em -0.4em -0.4em; /* LTR */
+  padding: 0.42em 0 0.42em 0.6em; /* LTR */
+  width: 20px;
 }
-
-.tabledrag-handle:hover,
-.tabledrag-handle:focus
-{
-    color: #62b3e5;
+[dir=rtl] .indentation {
+  float: right;
+  margin: -0.4em -0.4em -0.4em 0.2em;
+  padding: 0.42em 0.6em 0.42em 0;
 }
-
-.indentation
-{
-    float: left;
-    /* LTR */
-
-    width: 20px;
-    /* LTR */
-    height: 1.7em;
-    margin: -.4em .2em -.4em -.4em;
-    /* LTR */
-    padding: .42em 0 .42em .6em;
-}
-
-[dir='rtl'] .indentation
-{
-    float: right;
-
-    margin: -.4em -.4em -.4em .2em;
-    padding: .42em .6em .42em 0;
-}
+/*# sourceMappingURL=tabledrag.css.map */
