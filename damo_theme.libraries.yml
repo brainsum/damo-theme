@@ -62,6 +62,15 @@ bootstrap-scripts:
   dependencies:
     - core/jquery
 
+bulk-upload:
+  version: 1.0.0
+  js:
+    react_widgets/bulk-upload/dist/assets/index.js: {}
+  dependencies:
+    - core/drupal
+    - core/jquery
+    - core/once
+
 # @todo Check these:
 # css/component/action-links.css: {}
 # css/component/collapse-processed.css: {}

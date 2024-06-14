@@ -17,12 +17,13 @@ const AssetsWaitingForApproval = () => {
   useEffect(() => {
     // Get images waiting for approval
 
-    const imagesURL = "/jsonapi/media/image?filter[status]=0&include=field_category,field_image,field_keywords,thumbnail,uid";
+    const imagesURL = "/jsonapi/media/image?filter[status]=0&include=field_category,field_image,field_keywords,thumbnail";
 
     Axios.get(imagesURL, {
       auth: AUTH_HEADER,
     })
       .then((res) => {
+        console.log(AUTH_HEADER);
         const data = res?.data?.data || [];
         const images = [];
         data.forEach((element) => {
@@ -156,7 +157,7 @@ const AssetsWaitingForApproval = () => {
           {imageList}
         </div>
       )}
-      {images.length === 0 && <div>No results found.</div>}
+      {images.length === 0 && <div>No results found333.</div>}
     </>
   );
 };
