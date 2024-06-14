@@ -92,9 +92,6 @@ body.path-frontpage {
             opacity: 1;
           }
         }
-        .media-category {
-          display: block;
-        }
         .card--inner-text {
           display: block;
           position: relative;
@@ -203,10 +200,12 @@ body.path-frontpage {
 
   .view-asset-search {
     .view-header {
-      position: absolute;
-      left: 0;
-      right: 0;
-      top: -50px;
+      @include media-breakpoint-up(md) {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: -50px;
+      }
     }
   }
 
