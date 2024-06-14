@@ -32,16 +32,16 @@
     {{ edit_link }}
     <div class="card--inner-text">
       <h4 class="card-title">{{ content.name }}</h4>
-      <small class="media-category card-text">
+      <div class="media-category card-text">
         {{ content.field_category }}
         {{ content.field_template_category }}
         {{ content.field_field_category }}
-      </small>
-      <small class="media-industry card-text">
+      </div>
+      <div class="media-industry card-text">
         {{ content.field_keywords }}
         {{ content.field_template_keywords }}
         {{ content.field_field_keywords }}
-      </small>
+      </div>
     </div>
   </div>
 {% endblock %}

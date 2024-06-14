@@ -67,8 +67,12 @@
   .region--inner {
     @include content-width();
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
     align-items: center;
+    @include media-breakpoint-up(md) {
+      flex-direction: row;
+    }
   }
   .path-collections & {
     // background-color: $white;

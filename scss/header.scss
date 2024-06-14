@@ -178,7 +178,11 @@ $slope-min-height: 50px;
 .create-collection-wrapper {
   display: flex;
   align-items: center;
-  margin-left: 20px;
+  margin-top: 20px;
+  @include media-breakpoint-up(md) {
+    margin-top: 0;
+    margin-left: 20px;
+  }
   a {
     @include transition(all .2s ease-in-out);
     @include montserrat--medium;

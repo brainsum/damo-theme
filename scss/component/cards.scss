@@ -15,3 +15,10 @@
     text-decoration: none;
   }
 }
+
+.media-industry .field__items {
+  max-height: 15px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
