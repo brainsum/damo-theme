@@ -141,6 +141,12 @@ function damo_theme_preprocess_media(&$variables) {
         $variables['attributes']['data-collection-uuid'] = $media_collection->uuid();
       }
     }
-    // devel_dump($media_collection_items);
   }
+  $route = \Drupal::routeMatch()->getRouteName();
+  $variables['content']['link'] = TRUE;
+  if ($route === "view.collections.collections_page") {
+    $variables['content']['link'] = FALSE;
+  } 
+  $variables['#cache'] = [];
+  $variables['#cache']['max-age'] = 0;
 }
