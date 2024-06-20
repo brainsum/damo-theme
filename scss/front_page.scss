@@ -47,6 +47,9 @@ body.path-frontpage {
               height: auto;
               width: auto;
             }
+            .field--type-image img {
+              transform: translate(-50%, 0) !important;
+            }
           }
         }
       }
