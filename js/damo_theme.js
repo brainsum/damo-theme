@@ -19,7 +19,9 @@
       $(searchSelect).niceSelect();
       $(searchSelect2).niceSelect();
       $(searchSelect3).niceSelect();
-
+      $("body").on('click', 'div.ui-widget-overlay',function(){
+        $("#drupal-modal").dialog( "close" );
+      });
       resetButton = $('#views-exposed-form-asset-search-asset-search .exposed_form_reset');
       resetButton.on('click', function(){
         $(searchSelect).val('All').niceSelect('update');
