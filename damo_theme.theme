@@ -143,7 +143,9 @@ function damo_theme_preprocess_media(&$variables) {
     }
   }
   $route = \Drupal::routeMatch()->getRouteName();
-  $variables['content']['link'] = TRUE;
+  if ($route === 'view.collection_view_page.collection_view') {
+    $variables['content']['link'] = TRUE;
+  }
   if ($route === "view.collections.collections_page") {
     $variables['content']['link'] = FALSE;
   } 
