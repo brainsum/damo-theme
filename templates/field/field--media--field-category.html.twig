@@ -73,7 +73,7 @@
       <div class="field__items">
     {% endif %}
       {% for item in items %}
-        {% if element["#view_mode"] == "full" %}
+        {% if element['#view_mode'] == "full" %}
           <div{{ item.attributes.addClass('field--item') }}>
             <a href="/assets?category={{ item.content['#title'] }}">
               {{- item.content['#title'] -}}
