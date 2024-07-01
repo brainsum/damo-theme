@@ -40,6 +40,7 @@
   {% if media_collection_data %}
     {{ media_collection_data }}
   {% endif %}
+  {{ drupal_block('damo_edit_menu_block') }}
   <div class="media-page-wrapper non-image">
     <div class="images-wrapper left-wrapper">
       <div class="media-thumbnail">
@@ -48,11 +49,14 @@
     </div>
     <div class="right-wrapper">
       <div class="top-controls">
-      <h4 class="media-title">
-        {{ content.name[0] }}
-      </h4>
-      {{ content.buttons }}
+        <h4 class="media-title">
+          {{ content.name[0] }}
+        </h4>
+        {{ content.buttons }}
       </div>
     </div>
   </div>
 </div>
+
+{{ content.field_category }}
+{{ content.field_keywords }}

@@ -38,6 +38,7 @@
  * @see template_preprocess_field()
  */
 #}
+
 {% set classes = [
   'field',
   'field--name-' ~ field_name|clean_class,
@@ -71,10 +72,16 @@
     {% if multiple %}
       <div class="field__items">
     {% endif %}
-      {% for item in items %}
-        <a href="/assets?category=All&text={{ item.content }}" {{ item.attributes.addClass('field--item') }}>
-          {{ item.content }}
-        </a>
+      {% for item in items %}        
+        {% if element['#view_mode'] == "full" %}
+            <div{{ item.attributes.addClass('field--item') }}>
+              <a href="/assets?category=All&text={{ item.content['#title'] }}">
+                {{- item.content['#title'] -}}
+              </a>
+            </div>
+          {% else %}
+            {{- item.content -}} {% if not loop.last  %}{{", "}}{% endif %}  
+        {% endif %}        
       {% endfor %}
     {% if multiple %}
       </div>

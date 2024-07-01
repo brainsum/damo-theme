@@ -38,19 +38,53 @@
  * @see template_preprocess_field()
  */
 #}
-{% if not label_hidden %}
-  {% set title_classes = [
-    'field--label',
-    label_display == 'visually_hidden' ? 'sr-only',
-  ] %}
-  {% set title_element = label_display == 'inline' ? 'span' : 'div' %}
-  <{{ title_element }}{{ title_attributes.addClass(title_classes) }}>{{ label }}</{{ title_element }}>
-{% endif %}
-{% if items|length > 0 %}
-  <div{{ attributes.addClass('field__items') }}>
+
+{% set classes = [
+  'field',
+  'field--name-' ~ field_name|clean_class,
+  'field--type-' ~ field_type|clean_class,
+  'field--label-' ~ label_display,
+] %}
+{% set title_classes = [
+  'field--label',
+  label_display == 'visually_hidden' ? 'sr-only',
+] %}
+
+{% if label_hidden %}
+  {% if multiple %}
+    <div{{ attributes.addClass(classes, 'field--items') }}>
+      {% for item in items %}
+        <a href="/assets?category={{ item.content['#title'] }}" {{ item.attributes.addClass('field--item') }}>
+          {{ item.content }}
+        </a>
+      {% endfor %}
+    </div>
+  {% else %}
     {% for item in items %}
-      {{ item.content }}
+      <a href="/assets?category={{ item.content['#title'] }}" {{ attributes.addClass(classes, 'field--item') }}>
+        {{ item.content }}
+      </a>
     {% endfor %}
+  {% endif %}
+{% else %}
+  <div{{ attributes.addClass(classes) }}>
+    <div{{ title_attributes.addClass(title_classes) }}>{{ label }}</div>
+    {% if multiple %}
+      <div class="field__items">
+    {% endif %}
+      {% for item in items %}
+        {% if element["#view_mode"] == "full" %}
+          <div{{ item.attributes.addClass('field--item') }}>
+            <a href="/assets?category={{ item.content['#title'] }}">
+              {{- item.content['#title'] -}}
+            </a>
+          </div>
+          {% else %}
+          {{- item.content -}} {% if not loop.last %}{{", "}}{% endif %} 
+        {% endif %}
+      {% endfor %}
+    {% if multiple %}
+      </div>
+    {% endif %}
   </div>
 {% endif %}
-
