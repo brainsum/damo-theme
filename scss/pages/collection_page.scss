@@ -210,6 +210,12 @@ main .region-content {
   visibility: hidden;
 }
 
+.view-collection-view-page .text-overlay {
+  visibility: visible;
+  position: relative;
+  margin-top: 0;
+}
+
 .path-collection .title {
   font-size: 13px;
   margin-bottom: 0;
