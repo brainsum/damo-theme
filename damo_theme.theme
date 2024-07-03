@@ -136,7 +136,9 @@ function damo_theme_preprocess_media(&$variables) {
         $style_id = $c_item->get('style')->getValue()[0]['target_id'];
         // Get Style name.
         $style = \Drupal::entityTypeManager()->getStorage('image_style')->load($style_id);
-        $variables['content']['asset_type'] = $style->get('label');
+        if ($style) {
+          $variables['content']['asset_type'] = $style->get('label');
+        }
         $variables['attributes']['data-collection-item-uuid'] = $c_item->uuid();
         $variables['attributes']['data-collection-uuid'] = $media_collection->uuid();
       }
