@@ -49,10 +49,28 @@
     </div>
     <div class="right-wrapper">
       <div class="top-controls">
-        <h4 class="media-title">
-          {{ content.name[0] }}
-        </h4>
-        {{ content.buttons }}
+        <div class="controller">
+          <div class="link active">
+            <h4 class="media-title">
+              {{ content.name[0] }}
+            </h4>
+            {{ content.buttons }} 
+            {% if content.data %}
+              <div class="collection-list">
+                {% for collection in content.data.add_to_collection_list %}
+                  <div class="collection-link-wrapper">
+                    <a class="add-to-collection-link {% if collection.in_collection %} in-collection {% endif %}" title="{{ 'Add to'|t }} {{ collection.title }}" href="/collections/{{ collection.id }}/add/{{ collection.mid }}" data-item-style="other_hi_res_no_badge">{{ collection.title }}</a>                          
+                    <a class="{% if not collection.in_collection %} visually-hidden {% endif %} remove-from-collection-link" title="{{ 'Remove'|t }}" href="/collections/remove/{{ collection.uuid }}" data-item-uuid={{ collection.itemuuid }}></a>                      
+                  </div>
+                {% endfor %}
+                <span class="collection-divider"></span>
+                <div class="collection-link-wrapper create-collection">
+                  <a href="/collections/add?destination=/media/{{ content.data.mid }}&source={{ content.data.mid }}" class="use-ajax add-to-collection-link" data-dialog-type="modal">Create a new collection</a>
+                </div>
+              </div>
+            {% endif %}
+          </div>
+        </div>
       </div>
     </div>
   </div>
