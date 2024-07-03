@@ -24,9 +24,17 @@ main .region-content {
     padding: 0 15px;
   }
   .card-body{
-    display: none;    
+    display: none;
   }
   .thumbnail {
+    .empty-placeholder{
+      background: url('../../images/empty-collection.png') no-repeat center center;
+      background-size: cover;
+      height: 100%;
+      width: 300px;
+      aspect-ratio: 500 / 334;
+      margin: 0 auto;
+    }
     min-height: 210px;
     .col-md-4 {
       width: 100%;
