@@ -75,7 +75,7 @@
       {% for item in items %}
         {% if element['#view_mode'] == "full" %}
           <div{{ item.attributes.addClass('field--item') }}>
-            <a href="/assets?category={{ item.content['#title'] }}">
+            <a href='{{- "/assets?f" ~ "[0]"|url_encode ~ "=asset_category" ~ ":"|url_encode ~ item.content['#entity'].tid.value -}}'>
               {{- item.content['#title'] -}}
             </a>
           </div>
