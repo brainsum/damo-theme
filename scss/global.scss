@@ -319,3 +319,18 @@ body.path-media {
 .view-empty {
   text-align: center;
 }
+
+.block-facet-blockasset-category {
+  .select2-container {
+    top: 8px;
+  }
+  .select2-selection {
+    height: 37px;
+    
+    .select2-search__field {
+      margin-top: 6px;
+      text-align: center;
+    }
+  }
+}
+
