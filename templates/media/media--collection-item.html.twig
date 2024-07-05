@@ -21,15 +21,21 @@
         {% if content.link %}
           <a class="card-img-overlay" href="/media/{{mid}}"></a>
         {% endif %}
+        {% if content.item_download_link %}
+          <span class="download-overlay"></span>
+          {{ content.item_download_link }}
+        {% endif %}
         {{ content.thumbnail }}
       </div>
-      <div class="card-body">
+      <div class="card-body {% if content.shared %}shared{% endif %}">
         <div class="text-overlay">
           <div class="card--inner-text">
             <p class="title">{{ content.name }}</p>
             <p class="keywords">{{ content.field_keywords }}</p>
           </div>
-          <p>ASSET TYPE: <span class="asset-type">{{ content.asset_type }}</span></p>
+          {% if content.asset_type %}
+            <p>ASSET TYPE: <span class="asset-type">{{ content.asset_type }}</span></p>
+          {% endif %}
         </div>
       </div>
     </div>
