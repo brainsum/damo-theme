@@ -8,6 +8,9 @@
  * @see http://drupal-bootstrap.org/api/bootstrap/docs%21plugins%21README.md/group/plugins/8
  */
 
+use Drupal\Core\StringTranslation\TranslatableMarkup;
+use Drupal\Core\Url;
+
 /**
  * Implements hook_preprocess_HOOK().
  */
@@ -141,6 +144,47 @@ function damo_theme_preprocess_media(&$variables) {
         }
         $variables['attributes']['data-collection-item-uuid'] = $c_item->uuid();
         $variables['attributes']['data-collection-uuid'] = $media_collection->uuid();
+      }
+    }
+  } else {
+    $route_name = \Drupal::routeMatch()->getRouteName();
+    if ($route_name === 'media_collection_share.collection.shared') {
+      $media_collection = \Drupal::entityTypeManager()->getStorage('shared_media_collection')->loadByProperties(['uuid' => \Drupal::routeMatch()->getParameter('uuid')]);
+      $media_collection = reset($media_collection);
+      $items = $media_collection->get('items')->getValue();
+      $item_ids = [];
+      foreach ($items as $item) {
+        $item_ids[] = $item['target_id'];
+      }
+      $query = \Drupal::entityQuery('media_collection_item')
+        ->condition('id', $item_ids, 'IN')
+        ->condition('media', $variables['mid'])
+        ->accessCheck(FALSE);
+      $result = $query->execute();
+      $result = reset($result);
+      // Load collection item.
+      $collection_item = \Drupal::entityTypeManager()->getStorage('media_collection_item')->load($result);
+      $style_id = $collection_item->get('style')->getValue()[0]['target_id'];
+      $variables['content']['shared'] = TRUE;
+      if ($style_id) {
+        $style = \Drupal::entityTypeManager()->getStorage('image_style')->load($style_id);
+        $variables['content']['asset_type'] = $style->get('label');
+        $variables['content']['item_download_link'] = [
+          '#type' => 'link',
+          '#title' => new TranslatableMarkup('Download'),
+          '#url' => Url::fromRoute(
+            'media_collection_share.collection.shared.item_download',
+            [
+              'uuid' => $collection_item->uuid(),
+            ]
+          ),
+          '#attributes' => [
+            'class' => [
+              'btn',
+              'item-download-btn',
+            ],
+          ],
+        ];
       }
     }
   }
