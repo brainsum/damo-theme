@@ -230,3 +230,9 @@ front_page:
   css:
     theme:
       css/front_page.css: {}
+damopen_upload:
+  css:
+    theme:
+      damopen_upload/example.css: {}
+  js:
+    damopen_upload/example.js: {}
