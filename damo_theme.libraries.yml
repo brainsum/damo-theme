@@ -233,6 +233,6 @@ front_page:
 damopen_upload:
   css:
     theme:
-      damopen_upload/example.css: {}
+      react_widgets/damo_upload/dist/assets/index.css: {}
   js:
-    damopen_upload/example.js: {}
+    react_widgets/damo_upload/dist/assets/index.js: {}
