@@ -10,12 +10,51 @@ import {
   Text,
   useToken,
 } from '@chakra-ui/react';
+import { useState } from 'react';
 import { FiPlus } from 'react-icons/fi';
 import { MdDone } from 'react-icons/md';
 import { TbTrashX } from 'react-icons/tb';
+import { Category, FileWithPreview, Keyword } from '../utils/types';
 
-export const Form = () => {
+interface FormProps {
+  selectedFiles: FileWithPreview[];
+  clearSelection: () => void;
+  selectAll: () => void;
+  removeFiles: () => void;
+  totalFiles: number;
+  categories: Category[];
+  keywords: Keyword[];
+  modifyFiles: (name: string, category: string, keywords: string[]) => void;
+}
+
+export const Form = ({
+  selectedFiles,
+  clearSelection,
+  selectAll,
+  removeFiles,
+  totalFiles,
+  categories,
+  keywords,
+  modifyFiles,
+}: FormProps) => {
   const defaultBorderColor = useToken('colors', 'damo.paleStone');
+  const selectedNumber = selectedFiles.length;
+  console.log(selectedFiles, 'selectedFiles');
+  const [name, setName] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState<Category['id']>('');
+  const [selectedKeywords, setSelectedKeywords] = useState<Keyword['id'][]>([]);
+
+  const handleKeywordClick = (keywordId: Keyword['id']) => {
+    setSelectedKeywords((prev) =>
+      prev.includes(keywordId)
+        ? prev.filter((k) => k !== keywordId)
+        : [...prev, keywordId]
+    );
+  };
+
+  const handleSubmit = () => {
+    modifyFiles(name, selectedCategory, selectedKeywords);
+  };
 
   return (
     <FormControl
@@ -25,11 +64,12 @@ export const Form = () => {
       gap="24px"
       borderLeft={`1px solid ${defaultBorderColor}`}
       maxWidth="350px"
+      userSelect="none"
     >
       <Stack direction="row" justifyContent="space-between">
         <Box>
           <Text as="b" fontWeight="semibold" fontSize="sm">
-            3 of 5 selected{' '}
+            {selectedNumber} of {totalFiles} selected{' '}
           </Text>
           <Button
             textDecor="underline"
@@ -37,6 +77,7 @@ export const Form = () => {
             color="black"
             fontWeight="normal"
             fontSize="sm"
+            onClick={clearSelection}
           >
             (Unselect)
           </Button>
@@ -47,6 +88,7 @@ export const Form = () => {
           variant="link"
           fontWeight="medium"
           fontSize="sm"
+          onClick={selectAll}
         >
           Select all
         </Button>
@@ -59,15 +101,19 @@ export const Form = () => {
           color="damo.graphiteGray"
           fontSize="sm"
           fontWeight="semibold"
+          htmlFor="title"
         >
           Name
         </FormLabel>
         {/* Make number of titles dynamic */}
         <Input
           type="text"
-          placeholder="Replace 3 titles..."
+          id="title"
+          placeholder={`Replace ${selectedNumber} titles...`}
           color="damo.graphiteGray"
           fontSize="sm"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
         />
       </Box>
 
@@ -76,6 +122,7 @@ export const Form = () => {
           color="damo.graphiteGray"
           fontSize="sm"
           fontWeight="semibold"
+          htmlFor="category"
         >
           Category
         </FormLabel>
@@ -83,10 +130,15 @@ export const Form = () => {
           placeholder="Select category"
           color="damo.graphiteGray"
           fontSize="sm"
+          title="category"
+          value={selectedCategory}
+          onChange={(e) => setSelectedCategory(e.target.value)}
         >
-          <option value="1">Category 1</option>
-          <option value="2">Category 2</option>
-          <option value="3">Category 3</option>
+          {categories.map((category) => (
+            <option key={category.id} value={category.id}>
+              {category.name}
+            </option>
+          ))}
         </Select>
       </Box>
 
@@ -95,7 +147,37 @@ export const Form = () => {
           Keywords
         </FormLabel>
         <Stack direction="row" wrap="wrap">
-          <Button
+          {keywords.map((keyword) => (
+            <Button
+              key={keyword.id}
+              size="sm"
+              bg={
+                selectedKeywords.includes(keyword.id)
+                  ? 'damo.coolCyan'
+                  : 'damo.cloudWhite'
+              }
+              color={
+                selectedKeywords.includes(keyword.id)
+                  ? 'white'
+                  : 'damo.obsidian'
+              }
+              rightIcon={
+                selectedKeywords.includes(keyword.id) ? (
+                  <MdDone size={18} />
+                ) : (
+                  <FiPlus size={18} />
+                )
+              }
+              borderRadius="full"
+              fontSize="xs"
+              fontWeight="normal"
+              padding="8px 16px"
+              onClick={() => handleKeywordClick(keyword.id)}
+            >
+              {keyword.name}
+            </Button>
+          ))}
+          {/* <Button
             size="sm"
             bg="damo.coolCyan"
             color="white"
@@ -106,67 +188,7 @@ export const Form = () => {
             padding="8px 16px"
           >
             Dev
-          </Button>
-          <Button
-            size="sm"
-            bg="damo.coolCyan"
-            color="white"
-            rightIcon={<MdDone size={18} />}
-            borderRadius="full"
-            fontSize="xs"
-            fontWeight="normal"
-            padding="8px 16px"
-          >
-            Company
-          </Button>
-          <Button
-            size="sm"
-            bg="damo.cloudWhite"
-            color="damo.obsidian"
-            rightIcon={<FiPlus size={18} />}
-            borderRadius="full"
-            fontSize="xs"
-            fontWeight="normal"
-            padding="8px 16px"
-          >
-            Jar
-          </Button>
-          <Button
-            size="sm"
-            bg="damo.cloudWhite"
-            color="damo.obsidian"
-            rightIcon={<FiPlus size={18} />}
-            borderRadius="full"
-            fontSize="xs"
-            fontWeight="normal"
-            padding="8px 16px"
-          >
-            Plant
-          </Button>
-          <Button
-            size="sm"
-            bg="damo.cloudWhite"
-            color="damo.obsidian"
-            rightIcon={<FiPlus size={18} />}
-            borderRadius="full"
-            fontSize="xs"
-            fontWeight="normal"
-            padding="8px 16px"
-          >
-            Nature
-          </Button>
-          <Button
-            size="sm"
-            bg="damo.cloudWhite"
-            color="damo.obsidian"
-            rightIcon={<FiPlus size={18} />}
-            borderRadius="full"
-            fontSize="xs"
-            fontWeight="normal"
-            padding="8px 16px"
-          >
-            Car
-          </Button>
+          </Button> */}
 
           {/* Work on user input functionality */}
           <Button
@@ -196,8 +218,10 @@ export const Form = () => {
           width="fit-content"
           color="damo.coolCyan"
           borderColor="damo.coolCyan"
+          onClick={handleSubmit}
+          disabled={!selectedNumber}
         >
-          Modify 3 selected items
+          Modify {selectedNumber} selected items
         </Button>
 
         <Button
@@ -208,8 +232,10 @@ export const Form = () => {
           fontWeight="medium"
           width="fit-content"
           leftIcon={<TbTrashX size={18} />}
+          onClick={removeFiles}
+          disabled={!selectedNumber}
         >
-          Remove 3 from upload pack
+          Remove {selectedNumber} from upload pack
         </Button>
       </Stack>
     </FormControl>
