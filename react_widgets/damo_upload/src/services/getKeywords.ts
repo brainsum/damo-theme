@@ -1,5 +1,5 @@
 import { DrupalJsonApiParams } from 'drupal-jsonapi-params';
-import { ApiResponse, Attributes, Keyword } from '../utils/types';
+import { ApiResponseArr, Attributes, Keyword } from '../utils/types';
 
 export const getKeywords = async () => {
   // ask adam about getting baseUrl from env or drupalsettings
@@ -14,7 +14,7 @@ export const getKeywords = async () => {
     `${baseUrl}/jsonapi/taxonomy_term/keyword?${params.getQueryString()}`
   );
 
-  const json: ApiResponse<Attributes> = await response.json();
+  const json: ApiResponseArr<Attributes> = await response.json();
   const keywords: Keyword[] = json.data.map((keyword) => ({
     id: keyword.id,
     type: keyword.type,

@@ -6,15 +6,18 @@ import {
   FormLabel,
   Input,
   Select,
+  Spinner,
   Stack,
   Text,
   useToken,
 } from '@chakra-ui/react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { FiPlus } from 'react-icons/fi';
 import { MdDone } from 'react-icons/md';
 import { TbTrashX } from 'react-icons/tb';
+//import { IoMdArrowDropdown } from "react-icons/io";
 import { Category, FileWithPreview, Keyword } from '../utils/types';
+import { CreateTagButton } from './CreateTagButton';
 
 interface FormProps {
   selectedFiles: FileWithPreview[];
@@ -24,6 +27,8 @@ interface FormProps {
   totalFiles: number;
   categories: Category[];
   keywords: Keyword[];
+  isKeywordLoading: boolean;
+  createKeyword: (name: string) => void;
   modifyFiles: (name: string, category: string, keywords: string[]) => void;
 }
 
@@ -34,15 +39,28 @@ export const Form = ({
   removeFiles,
   totalFiles,
   categories,
+
   keywords,
+  isKeywordLoading,
+  createKeyword,
   modifyFiles,
 }: FormProps) => {
   const defaultBorderColor = useToken('colors', 'damo.paleStone');
   const selectedNumber = selectedFiles.length;
+  console.log('🚀 ~ selectedNumber:', selectedNumber);
   console.log(selectedFiles, 'selectedFiles');
-  const [name, setName] = useState('');
+  const [title, setTitle] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<Category['id']>('');
   const [selectedKeywords, setSelectedKeywords] = useState<Keyword['id'][]>([]);
+
+  // Update selected keywords based on selected files
+  useEffect(() => {
+    const selectedKeywordsSet = new Set<Keyword['id']>();
+    selectedFiles.forEach((file) => {
+      file.keywords?.forEach((keyword) => selectedKeywordsSet.add(keyword));
+    });
+    setSelectedKeywords(Array.from(selectedKeywordsSet));
+  }, [selectedFiles]);
 
   const handleKeywordClick = (keywordId: Keyword['id']) => {
     setSelectedKeywords((prev) =>
@@ -52,8 +70,16 @@ export const Form = ({
     );
   };
 
+  const disableModifyBtn =
+    !selectedNumber ||
+    (!title && !selectedCategory && !selectedKeywords.length);
+  console.log('🚀 ~ disableModifyBtn:', disableModifyBtn);
+
   const handleSubmit = () => {
-    modifyFiles(name, selectedCategory, selectedKeywords);
+    modifyFiles(title, selectedCategory, selectedKeywords);
+    setTitle('');
+    setSelectedCategory('');
+    setSelectedKeywords([]);
   };
 
   return (
@@ -109,11 +135,11 @@ export const Form = ({
         <Input
           type="text"
           id="title"
-          placeholder={`Replace ${selectedNumber} titles...`}
+          placeholder={`Replace ${selectedNumber} ${selectedNumber > 1 ? 'titles' : 'title'}...`}
           color="damo.graphiteGray"
           fontSize="sm"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
         />
       </Box>
 
@@ -177,33 +203,12 @@ export const Form = ({
               {keyword.name}
             </Button>
           ))}
-          {/* <Button
-            size="sm"
-            bg="damo.coolCyan"
-            color="white"
-            rightIcon={<MdDone size={18} />}
-            borderRadius="full"
-            fontSize="xs"
-            fontWeight="normal"
-            padding="8px 16px"
-          >
-            Dev
-          </Button> */}
-
           {/* Work on user input functionality */}
-          <Button
-            size="sm"
-            bg="damo.cloudWhite"
-            color="damo.obsidian"
-            leftIcon={<FiPlus size={18} />}
-            borderRadius="full"
-            fontSize="xs"
-            fontWeight="normal"
-            padding="8px 16px"
-          >
-            Create new tag
-          </Button>
         </Stack>
+        <CreateTagButton
+          createKeywordHandler={createKeyword}
+          isLoading={isKeywordLoading}
+        />
       </Box>
 
       <Divider borderColor="damo.softPearl" />
@@ -219,7 +224,7 @@ export const Form = ({
           color="damo.coolCyan"
           borderColor="damo.coolCyan"
           onClick={handleSubmit}
-          disabled={!selectedNumber}
+          isDisabled={disableModifyBtn}
         >
           Modify {selectedNumber} selected items
         </Button>
@@ -233,7 +238,7 @@ export const Form = ({
           width="fit-content"
           leftIcon={<TbTrashX size={18} />}
           onClick={removeFiles}
-          disabled={!selectedNumber}
+          isDisabled={!selectedNumber}
         >
           Remove {selectedNumber} from upload pack
         </Button>

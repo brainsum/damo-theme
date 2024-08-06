@@ -4,7 +4,7 @@ import { FileCard } from './components/FileCard';
 import { Footer } from './components/Footer';
 import { Form } from './components/Form';
 import { useDropzone } from 'react-dropzone';
-import { useFileSelection } from './utils/hooks';
+import { useFileSelection } from './hooks/useFileSelection';
 
 function App() {
   // const [files, setFiles] = useState<FileWithPreview[]>([]);
@@ -18,10 +18,13 @@ function App() {
     onDrop,
     categories,
     keywords,
+    isKeywordLoading,
+    createKeyword,
     modifyFiles,
+    uploadImages,
   } = useFileSelection();
 
-  const { getRootProps, getInputProps, ...rest } = useDropzone({
+  const { getRootProps, getInputProps } = useDropzone({
     accept: {
       'image/*': ['.jpg', '.jpeg', '.png', '.gif'], //should check what imgs format will be accpeted
     },
@@ -54,7 +57,7 @@ function App() {
           userSelect="none"
           {...getRootProps()}
         >
-          {/* <input {...getInputProps()} /> */}
+          <input {...getInputProps()} />
           {!files.length ? (
             <Text as="span" alignSelf="center" margin="auto">
               Drag 'n' drop some files here, or click to select files
@@ -80,14 +83,16 @@ function App() {
             totalFiles={files.length}
             categories={categories}
             keywords={keywords}
+            isKeywordLoading={isKeywordLoading}
             modifyFiles={modifyFiles}
+            createKeyword={createKeyword}
           />
           // <ScaleFade initialScale={0.9} in={!!files.length}>
           // </ScaleFade>
         )}
       </Box>
 
-      <Footer />
+      <Footer uploadHandler={uploadImages} disabledBtn={!files.length} />
     </Box>
   );
 }
