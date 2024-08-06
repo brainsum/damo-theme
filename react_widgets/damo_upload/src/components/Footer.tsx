@@ -32,6 +32,7 @@ export const Footer = ({ uploadHandler, disabledBtn }: FooterProps) => {
         border={`1px solid ${buttonBorderColor}`}
         bgColor="transparent"
         borderRadius="lg"
+        onClick={() => window.location.assign('/')}
       >
         Cancel Upload
       </Button>
