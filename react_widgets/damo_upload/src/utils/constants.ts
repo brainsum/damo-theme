@@ -1,0 +1,1 @@
+export const BASE_URL = 'http://damopen.docker.localhost:8000';

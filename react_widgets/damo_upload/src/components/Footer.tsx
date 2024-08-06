@@ -1,6 +1,12 @@
 import { Button, Stack, useToken } from '@chakra-ui/react';
 
-export const Footer = () => {
+interface FooterProps {
+  uploadHandler: () => void;
+  disabledBtn: boolean;
+}
+
+export const Footer = ({ uploadHandler, disabledBtn }: FooterProps) => {
+  console.log('🚀 ~ Footer ~ disabledBtn:', disabledBtn);
   const [defaultBorderColor, buttonBorderColor] = useToken('colors', [
     'damo.paleStone',
     'damo.ashGray',
@@ -38,6 +44,8 @@ export const Footer = () => {
         color="white"
         bgColor="damo.coolCyan"
         borderRadius="lg"
+        onClick={uploadHandler}
+        isDisabled={disabledBtn}
       >
         Send to approval
       </Button>

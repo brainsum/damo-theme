@@ -3,16 +3,25 @@ export interface FileWithPreview extends File {
   fileType: string;
   category: Pick<Category, 'id' | 'name'> | null; //can a file have multiple categories?
   keywords: Keyword['id'][] | null;
-  name: string;
+  title: string;
+  fileName: string;
   id: number;
 }
 
-export interface ApiResponse<T> {
+export interface ApiResponseArr<T> {
   data: Array<{
     id: string;
     type: string;
     attributes: T;
   }>;
+}
+
+export interface ApiResponseObj<T> {
+  data: {
+    id: string;
+    type: string;
+    attributes: T;
+  };
 }
 
 export interface Attributes {

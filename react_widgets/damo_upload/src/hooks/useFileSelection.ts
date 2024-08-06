@@ -1,21 +1,25 @@
 import { useCallback, useEffect, useState } from 'react';
-import { Category, FileWithPreview, Keyword } from './types';
-import { getFileTypeLabel } from './utils';
+import { Category, FileWithPreview, Keyword } from '../utils/types';
+import { getFileTypeLabel } from '../utils/utils';
 import { getCategories } from '../services/getCategories';
 import { getKeywords } from '../services/getKeywords';
+import { postImages } from '../services/postImages';
+import { postKeyword } from '../services/postKeywords';
 
 export const useFileSelection = () => {
   const [files, setFiles] = useState<FileWithPreview[]>([]);
   const [selectedFiles, setSelectedFiles] = useState<FileWithPreview[]>([]);
   const [categories, setCategories] = useState<Category[]>([]);
   const [keywords, setKeywords] = useState<Keyword[]>([]);
+  const [isKeywordLoading, setIsKeywordLoading] = useState<boolean>(false);
 
   const onDrop = useCallback((acceptedFiles: File[]) => {
     console.log(acceptedFiles, 'acceptedFiles');
     const newFiles = acceptedFiles.map((file, idx) => ({
       ...file,
       id: idx,
-      name: file.name,
+      fileName: file.name,
+      title: file.name,
       previewURL: URL.createObjectURL(file),
       fileType: getFileTypeLabel(file.type),
       category: null,
@@ -59,18 +63,21 @@ export const useFileSelection = () => {
   );
 
   const modifyFiles = useCallback(
-    (name: string, category: string, keywords: string[]) => {
+    (title: string, category: string, keywords: string[]) => {
       setFiles((prevFiles) =>
         prevFiles.map((file) =>
           selectedFiles.includes(file)
             ? {
                 ...file,
-                name,
-                category: {
-                  id: category,
-                  name: categories.find((c) => c.id === category)?.name || '',
-                },
-                keywords,
+                title: title.length ? title : file.title,
+                category: category.length
+                  ? {
+                      id: category,
+                      name:
+                        categories.find((c) => c.id === category)?.name || '',
+                    }
+                  : file.category,
+                keywords: keywords.length ? keywords : file.keywords,
               }
             : file
         )
@@ -79,6 +86,32 @@ export const useFileSelection = () => {
     },
     [selectedFiles, categories, clearSelection]
   );
+
+  const uploadImages = async () => {
+    // const formData = new FormData();
+    // selectedFiles.forEach((file) => {
+    //   formData.append('files[]', file);
+    // });
+
+    console.log('entra a uploadImages');
+    console.log('files to upload', files);
+    await postImages({ files: files });
+  };
+
+  const createKeyword = async (keyword: string) => {
+    setIsKeywordLoading(true);
+    try {
+      const newKeyword = await postKeyword(keyword);
+      if (!newKeyword) {
+        throw new Error('Error creating keyword');
+      }
+
+      setKeywords((prevKeywords) => [...prevKeywords, newKeyword]);
+      setIsKeywordLoading(false);
+    } catch (err) {
+      console.error('Error creating keyword', err);
+    }
+  };
 
   useEffect(() => {
     const fetchCategoriesAndTags = async () => {
@@ -102,6 +135,9 @@ export const useFileSelection = () => {
     onDrop,
     categories,
     keywords,
+    isKeywordLoading,
+    createKeyword,
     modifyFiles,
+    uploadImages,
   };
 };

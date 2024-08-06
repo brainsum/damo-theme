@@ -10,7 +10,6 @@ import {
   Text,
   useToken,
 } from '@chakra-ui/react';
-import { useState } from 'react';
 import { FileWithPreview } from '../utils/types';
 
 interface FileCardProps {
@@ -70,7 +69,7 @@ export const FileCard = ({
       </CardBody>
       <CardFooter flexDir="column" padding="0 12px 12px 12px">
         <Heading as="h3" fontSize={15} fontWeight={500} noOfLines={1}>
-          {file.name}
+          {file.title}
         </Heading>
         <Box display="flex">
           <Text
