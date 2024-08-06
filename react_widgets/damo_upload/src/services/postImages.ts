@@ -1,109 +1,91 @@
-import {  FileWithPreview,} from '../utils/types';
+import { FileWithPreview } from '../utils/types';
 import { BASE_URL } from '../utils/constants';
 import { getCsrfToken } from './getCsrfToken';
-
+import { buildMediaEntity, fetchBlob } from '../utils/utils';
 
 interface PostImageProps {
   files: FileWithPreview[];
 }
-const fileToBase64 = (file: FileWithPreview) => {
-  return new Promise((resolve, reject) => {
-    const reader = new FileReader();
-    const blob = new Blob([file]);
-    reader.readAsDataURL(blob);
-    reader.onload = () => resolve((reader.result as string).split(',')[1]); // Remove the data URL prefix
-    reader.onerror = (error) => reject(error);
-  });
-};
 
-
-export const postImages = async ({files}: PostImageProps) => {
-  // ask adam about getting baseUrl from env or drupalsettings
-
+export const postImages = async ({ files }: PostImageProps) => {
   const csrfToken = await getCsrfToken();
 
   if (!csrfToken) {
     throw new Error('No CSRF token found');
   }
   const fileUploadPromises = files.map(async (file) => {
-    const fileBase64 = await fileToBase64(file);
+    const blob = await fetchBlob(file.previewURL);
+    console.log(blob, 'blobbb');
+
     try {
       const response = await fetch(
-        `${BASE_URL}/jsonapi/media/image/field_image`, {
+        `${BASE_URL}/jsonapi/media/image/field_image`,
+        {
           method: 'POST',
           headers: {
             'Content-Type': 'application/octet-stream',
-            'Accept': 'application/vnd.api+json',
+            Accept: 'application/vnd.api+json',
             'Content-Disposition': `file; filename="${file.fileName}"`,
             'X-CSRF-Token': csrfToken,
           },
-          body: JSON.stringify(fileBase64)
+          body: blob,
         }
       );
+      if (!response.ok) {
+        throw new Error(`Failed to upload file: ${file.fileName}`);
+      }
+
       const uploadedFile = await response.json();
       console.log('🚀 ~ fileUploadPromises ~ uploadedFile:', uploadedFile);
-
-
-
+      //return uploadedFile;
       // upload media entity
 
-      const mediaEntity = {
-        data: {
-          type: 'media--image',
-          attributes: {
-            name: file.title,
-          },
-          relationships:{
-            field_image: {
-              data: {
-                type: 'file--file',
-                id: uploadedFile.data.id,
-                // meta: {
-                //   alt: file.title, //where does this come from?
-                //   title: file.title,
-                // }
-              }
-            },
-            field_category: {
-              data: [
-                {
-                  type: 'taxonomy_term--category',
-                  id: file.category?.id
-                }
-              ]
-            },
-            field_keywords: {
-              data: file.keywords?.map((keyword) => ({
-                type: 'taxonomy_term--keyword',
-                id: keyword
-              }))
-            }
-          }
-        }
-      }
-  
+      const mediaEntity = buildMediaEntity(file, uploadedFile.data.id);
+      console.log(mediaEntity, 'mediaEntity');
+
       const mediaResponse = await fetch(`${BASE_URL}/jsonapi/media/image`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/vnd.api+json',
-          'Accept': 'application/vnd.api+json',
+          Accept: 'application/vnd.api+json',
           'X-CSRF-Token': csrfToken,
         },
-        body: JSON.stringify(mediaEntity)
+        body: JSON.stringify(mediaEntity),
       });
 
-      const uploadedMedia = await mediaResponse.json();
-      return uploadedMedia;
-    }catch (error) {
-      console.error('🚀 ~ postImages ~ error:', error);
-    }
-  })
+      if (!mediaResponse.ok) {
+        throw new Error(
+          `Failed to create media entity for file: ${file.fileName}`
+        );
+      }
 
-  try {
-    const uploadedFiles = await Promise.all(fileUploadPromises);
-    console.log('🚀 ~ postImages ~ uploadedFiles:', uploadedFiles);
-  } catch(err) {
-    console.error('Error uploading files', err)
+      const uploadedMedia = await mediaResponse.json();
+      return {
+        fileName: file.fileName,
+        status: 'success',
+        data: uploadedMedia,
+      };
+    } catch (error) {
+      console.error('🚀 ~ postImages ~ error:', error);
+      return { fileName: file.fileName, status: 'error', error: error.message };
+    }
+  });
+
+  const uploadResults = await Promise.allSettled(fileUploadPromises);
+
+  const errors = uploadResults
+    .filter((result) => result.status === 'rejected')
+    .map((result) => result.reason);
+
+  if (errors.length > 0) {
+    console.error('Error uploading files', errors);
+    return { success: false, errors };
   }
 
+  const successes = uploadResults
+    .filter((result) => result.status === 'fulfilled')
+    .map((result) => result.value);
+
+  console.log('All files uploaded successfully', successes);
+  return { success: true, data: successes };
 };

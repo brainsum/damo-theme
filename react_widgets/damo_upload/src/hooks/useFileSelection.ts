@@ -15,7 +15,7 @@ export const useFileSelection = () => {
 
   const onDrop = useCallback((acceptedFiles: File[]) => {
     console.log(acceptedFiles, 'acceptedFiles');
-    const newFiles = acceptedFiles.map((file, idx) => ({
+    const newFiles: FileWithPreview[] = acceptedFiles.map((file, idx) => ({
       ...file,
       id: idx,
       fileName: file.name,
@@ -24,6 +24,7 @@ export const useFileSelection = () => {
       fileType: getFileTypeLabel(file.type),
       category: null,
       keywords: null,
+      type: file.type,
     }));
     setFiles((prevfiles) => [...prevfiles, ...newFiles]);
   }, []);
@@ -88,14 +89,18 @@ export const useFileSelection = () => {
   );
 
   const uploadImages = async () => {
-    // const formData = new FormData();
-    // selectedFiles.forEach((file) => {
-    //   formData.append('files[]', file);
-    // });
-
     console.log('entra a uploadImages');
     console.log('files to upload', files);
-    await postImages({ files: files });
+    const response = await postImages({ files: files });
+
+    if (response.success) {
+      setFiles([]);
+      setSelectedFiles([]);
+      window.location.assign('/');
+    } else {
+      // TODO: notify user of error
+      throw Error('There was a problem uploading files');
+    }
   };
 
   const createKeyword = async (keyword: string) => {
@@ -114,7 +119,7 @@ export const useFileSelection = () => {
   };
 
   useEffect(() => {
-    const fetchCategoriesAndTags = async () => {
+    const fetchInitialResources = async () => {
       const [categories, keywords] = await Promise.all([
         getCategories(),
         getKeywords(),
@@ -122,7 +127,7 @@ export const useFileSelection = () => {
       setCategories(categories);
       setKeywords(keywords);
     };
-    fetchCategoriesAndTags();
+    fetchInitialResources();
   }, []);
 
   return {
