@@ -23,17 +23,10 @@ export const FileCard = ({
   isSelected,
   onToggleSelect,
 }: FileCardProps) => {
-  console.log(file, 'fileee');
-  console.log(isSelected, 'isSelected');
-  console.log(onToggleSelect, 'onToggleSelect');
   const [checkedBorderColor, defaultBorderColor] = useToken('colors', [
     'damo.coolCyan',
     'damo.paleStone',
   ]);
-  // const [isChecked, setIsChecked] = useState(false);
-  // const onChekboxChange = () => {
-  //   setIsChecked(!isChecked);
-  // };
 
   return (
     <Card
@@ -56,6 +49,8 @@ export const FileCard = ({
         display="flex"
         alignItems="center"
         justifyContent="center"
+        height={265}
+        overflow="hidden"
       >
         <Checkbox
           position="absolute"
@@ -65,7 +60,15 @@ export const FileCard = ({
           isChecked={isSelected}
           onChange={onToggleSelect}
         />
-        <Image src={file.previewURL} fallbackSrc="/thumbnail.png" />
+        <Box width="100%" height="100%">
+          <Image
+            src={file.previewURL}
+            fallbackSrc="/thumbnail.png"
+            width="100%"
+            height="100%"
+            objectFit="cover"
+          />
+        </Box>
       </CardBody>
       <CardFooter flexDir="column" padding="0 12px 12px 12px">
         <Heading as="h3" fontSize={15} fontWeight={500} noOfLines={1}>

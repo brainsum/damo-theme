@@ -3,10 +3,15 @@ import { Button, Stack, useToken } from '@chakra-ui/react';
 interface FooterProps {
   uploadHandler: () => void;
   disabledBtn: boolean;
+  userApprovalRequired: boolean;
 }
 
-export const Footer = ({ uploadHandler, disabledBtn }: FooterProps) => {
-  console.log('🚀 ~ Footer ~ disabledBtn:', disabledBtn);
+export const Footer = ({
+  uploadHandler,
+  disabledBtn,
+  userApprovalRequired,
+}: FooterProps) => {
+  console.log('🚀 ~ Footer ~ userApprovalRequired:', userApprovalRequired);
   const [defaultBorderColor, buttonBorderColor] = useToken('colors', [
     'damo.paleStone',
     'damo.ashGray',
@@ -48,7 +53,7 @@ export const Footer = ({ uploadHandler, disabledBtn }: FooterProps) => {
         onClick={uploadHandler}
         isDisabled={disabledBtn}
       >
-        Send to approval
+        {userApprovalRequired ? 'Send for approval' : 'Upload files'}
       </Button>
     </Stack>
   );

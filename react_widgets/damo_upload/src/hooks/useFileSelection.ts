@@ -5,6 +5,8 @@ import { getCategories } from '../services/getCategories';
 import { getKeywords } from '../services/getKeywords';
 import { postImages } from '../services/postImages';
 import { postKeyword } from '../services/postKeywords';
+import { useToast } from '@chakra-ui/react';
+import { TOASTS } from '../utils/constants';
 
 export const useFileSelection = () => {
   const [files, setFiles] = useState<FileWithPreview[]>([]);
@@ -12,6 +14,10 @@ export const useFileSelection = () => {
   const [categories, setCategories] = useState<Category[]>([]);
   const [keywords, setKeywords] = useState<Keyword[]>([]);
   const [isKeywordLoading, setIsKeywordLoading] = useState<boolean>(false);
+  const [userApprovalRequired, setUserApprovalRequired] =
+    useState<boolean>(false);
+
+  const toast = useToast();
 
   const onDrop = useCallback((acceptedFiles: File[]) => {
     console.log(acceptedFiles, 'acceptedFiles');
@@ -89,16 +95,26 @@ export const useFileSelection = () => {
   );
 
   const uploadImages = async () => {
-    console.log('entra a uploadImages');
     console.log('files to upload', files);
-    const response = await postImages({ files: files });
+
+    const filesWithNoCategory = files.filter((file) => !file.category);
+    if (filesWithNoCategory.length) {
+      toast(TOASTS.CATEGORY_MISSING);
+      return;
+    }
+    const response = await postImages(files, userApprovalRequired);
 
     if (response.success) {
-      setFiles([]);
-      setSelectedFiles([]);
-      window.location.assign('/');
+      toast(
+        userApprovalRequired
+          ? TOASTS.SENT_APPROVAL_SUCCESS
+          : TOASTS.UPLOAD_SUCCESS
+      );
+      setTimeout(() => {
+        window.location.assign('/');
+      }, 3000);
     } else {
-      // TODO: notify user of error
+      toast({ ...TOASTS.UPLOAD_ERROR, description: response.errors });
       throw Error('There was a problem uploading files');
     }
   };
@@ -107,14 +123,14 @@ export const useFileSelection = () => {
     setIsKeywordLoading(true);
     try {
       const newKeyword = await postKeyword(keyword);
-      if (!newKeyword) {
-        throw new Error('Error creating keyword');
-      }
 
       setKeywords((prevKeywords) => [...prevKeywords, newKeyword]);
       setIsKeywordLoading(false);
+      toast(TOASTS.KEYWORD_SUCCESS);
     } catch (err) {
       console.error('Error creating keyword', err);
+      setIsKeywordLoading(false);
+      toast(TOASTS.KEYWORD_ERROR);
     }
   };
 
@@ -128,6 +144,7 @@ export const useFileSelection = () => {
       setKeywords(keywords);
     };
     fetchInitialResources();
+    setUserApprovalRequired(window.drupalSettings.user.uploadNeedsApproval);
   }, []);
 
   return {
@@ -144,5 +161,6 @@ export const useFileSelection = () => {
     createKeyword,
     modifyFiles,
     uploadImages,
+    userApprovalRequired,
   };
 };

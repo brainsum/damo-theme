@@ -1,9 +1,9 @@
 import { DrupalJsonApiParams } from 'drupal-jsonapi-params';
 import { Category, Attributes, ApiResponseArr } from '../utils/types';
+import { BASE_URL } from '../utils/constants';
 
 export const getCategories = async () => {
   // ask adam about getting baseUrl from env or drupalsettings
-  const baseUrl = 'http://damopen.docker.localhost:8000';
   const resourceType = 'taxonomy_term--category';
 
   const params = new DrupalJsonApiParams();
@@ -11,7 +11,7 @@ export const getCategories = async () => {
   params.addFields(resourceType, ['name', 'status']).addFilter('status', '1');
 
   const response = await fetch(
-    `${baseUrl}/jsonapi/taxonomy_term/category?${params.getQueryString()}`
+    `${BASE_URL}/jsonapi/taxonomy_term/category?${params.getQueryString()}`
   );
 
   const json: ApiResponseArr<Attributes> = await response.json();
@@ -22,6 +22,5 @@ export const getCategories = async () => {
     status: category.attributes.status,
   }));
 
-  console.log('🚀 ~ getCategories ~ categories:', categories);
   return categories;
 };

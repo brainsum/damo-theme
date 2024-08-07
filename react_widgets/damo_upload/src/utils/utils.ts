@@ -13,13 +13,15 @@ export const getFileTypeLabel = (mimeType: string): string => {
 
 export const buildMediaEntity = (
   file: FileWithPreview,
-  uploadedFileId: string
+  uploadedFileId: string,
+  userApprovalRequired: boolean
 ) => {
   const mediaEntity = {
     data: {
       type: 'media--image',
       attributes: {
         name: file.title,
+        status: !userApprovalRequired,
       },
       relationships: {
         field_image: {
@@ -56,28 +58,6 @@ export const buildMediaEntity = (
 
   return mediaEntity;
 };
-
-// const fileToBase64 = (file: File): Promise<string> => {
-//   return new Promise((resolve, reject) => {
-//     const reader = new FileReader();
-//     reader.onloadend = () => resolve((reader.result as string).split(',')[1]); // Remove the data URL prefix
-//     reader.onerror = (error) => reject(error);
-//     reader.readAsDataURL(file);
-//   });
-// };
-
-// const toPlainFile = (file: FileWithPreview): File => {
-//   return new File([file], file.name, { type: file.type });
-// };
-
-// const readFileAsArrayBuffer = (file: File): Promise<ArrayBuffer> => {
-//   return new Promise((resolve, reject) => {
-//     const reader = new FileReader();
-//     reader.onloadend = () => resolve(reader.result as ArrayBuffer);
-//     reader.onerror = reject;
-//     reader.readAsArrayBuffer(file as Blob);
-//   });
-// };
 
 export async function fetchBlob(url: string): Promise<Blob> {
   const response = await fetch(url);

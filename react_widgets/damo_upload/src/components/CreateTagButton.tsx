@@ -33,7 +33,6 @@ export const CreateTagButton = ({
   };
 
   const handleTagCreation = () => {
-    console.log('Creating tag:', tagName);
     createKeywordHandler(tagName);
     setTagName('');
   };

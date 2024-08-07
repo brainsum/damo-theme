@@ -22,6 +22,7 @@ function App() {
     createKeyword,
     modifyFiles,
     uploadImages,
+    userApprovalRequired,
   } = useFileSelection();
 
   const { getRootProps, getInputProps } = useDropzone({
@@ -31,13 +32,6 @@ function App() {
     noDragEventsBubbling: true,
     onDrop,
   });
-  // console.log('🚀 ~ App ~ rest:', rest);
-  // console.log('🚀 ~ App ~ getInputProps:', getInputProps);
-  // console.log('🚀 ~ App ~ getRootProps:', getRootProps);
-
-  console.log(selectedFiles, 'selectedFiles');
-
-  console.log(files, 'files');
 
   return (
     <Box
@@ -87,12 +81,14 @@ function App() {
             modifyFiles={modifyFiles}
             createKeyword={createKeyword}
           />
-          // <ScaleFade initialScale={0.9} in={!!files.length}>
-          // </ScaleFade>
         )}
       </Box>
 
-      <Footer uploadHandler={uploadImages} disabledBtn={!files.length} />
+      <Footer
+        uploadHandler={uploadImages}
+        disabledBtn={!files.length}
+        userApprovalRequired={userApprovalRequired}
+      />
     </Box>
   );
 }

@@ -28,7 +28,6 @@ export const postKeyword = async (keyword: string) => {
       body: JSON.stringify(keywordEntity),
     });
     const json: ApiResponseObj<Attributes> = await response.json();
-    console.log('🚀 ~ postKeyword ~ json::', json);
     const newKeyword: Keyword = {
       id: json.data.id,
       type: json.data.type,
@@ -37,7 +36,6 @@ export const postKeyword = async (keyword: string) => {
     };
     return newKeyword;
   } catch (err) {
-    console.error('Error creating keyword', err);
-    return null;
+    throw Error('Error creating keyword');
   }
 };
