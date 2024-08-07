@@ -46,8 +46,6 @@ export const Form = ({
 }: FormProps) => {
   const defaultBorderColor = useToken('colors', 'damo.paleStone');
   const selectedNumber = selectedFiles.length;
-  console.log('🚀 ~ selectedNumber:', selectedNumber);
-  console.log(selectedFiles, 'selectedFiles');
   const [title, setTitle] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<Category['id']>('');
   const [selectedKeywords, setSelectedKeywords] = useState<Keyword['id'][]>([]);
@@ -72,7 +70,6 @@ export const Form = ({
   const disableModifyBtn =
     !selectedNumber ||
     (!title && !selectedCategory && !selectedKeywords.length);
-  console.log('🚀 ~ disableModifyBtn:', disableModifyBtn);
 
   const handleSubmit = () => {
     modifyFiles(title, selectedCategory, selectedKeywords);

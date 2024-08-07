@@ -3,11 +3,10 @@ import { BASE_URL } from '../utils/constants';
 import { getCsrfToken } from './getCsrfToken';
 import { buildMediaEntity, fetchBlob } from '../utils/utils';
 
-interface PostImageProps {
-  files: FileWithPreview[];
-}
-
-export const postImages = async ({ files }: PostImageProps) => {
+export const postImages = async (
+  files: FileWithPreview[],
+  userApprovalRequired: boolean
+) => {
   const csrfToken = await getCsrfToken();
 
   if (!csrfToken) {
@@ -37,11 +36,12 @@ export const postImages = async ({ files }: PostImageProps) => {
 
       const uploadedFile = await response.json();
       console.log('🚀 ~ fileUploadPromises ~ uploadedFile:', uploadedFile);
-      //return uploadedFile;
-      // upload media entity
 
-      const mediaEntity = buildMediaEntity(file, uploadedFile.data.id);
-      console.log(mediaEntity, 'mediaEntity');
+      const mediaEntity = buildMediaEntity(
+        file,
+        uploadedFile.data.id,
+        userApprovalRequired
+      );
 
       const mediaResponse = await fetch(`${BASE_URL}/jsonapi/media/image`, {
         method: 'POST',
@@ -67,7 +67,7 @@ export const postImages = async ({ files }: PostImageProps) => {
       };
     } catch (error) {
       console.error('🚀 ~ postImages ~ error:', error);
-      return { fileName: file.fileName, status: 'error', error: error.message };
+      return { fileName: file.fileName, status: 'error', error };
     }
   });
 
