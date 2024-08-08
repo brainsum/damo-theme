@@ -246,6 +246,10 @@ main .region-content {
   color: rgb(191, 191, 191);
   font-size: 13px;
   font-weight: normal;
+  max-height: 15px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .field--label {
