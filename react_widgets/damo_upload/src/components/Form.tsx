@@ -14,7 +14,6 @@ import { useEffect, useState } from 'react';
 import { FiPlus } from 'react-icons/fi';
 import { MdDone } from 'react-icons/md';
 import { TbTrashX } from 'react-icons/tb';
-//import { IoMdArrowDropdown } from "react-icons/io";
 import { Category, FileWithPreview, Keyword } from '../utils/types';
 import { CreateTagButton } from './CreateTagButton';
 
@@ -127,7 +126,6 @@ export const Form = ({
         >
           Name
         </FormLabel>
-        {/* Make number of titles dynamic */}
         <Input
           type="text"
           id="title"

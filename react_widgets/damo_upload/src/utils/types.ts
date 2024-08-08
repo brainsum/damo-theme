@@ -37,19 +37,3 @@ export interface Category {
 }
 
 export type Keyword = Category;
-
-export type FileSelectionContextType = {
-  files: FileWithPreview[];
-  selectedFiles: FileWithPreview[];
-  toggleFileSelection: (file: FileWithPreview) => void;
-  clearSelection: (fileArr?: FileWithPreview[]) => void;
-  selectAll: (fileArr: FileWithPreview[]) => void;
-  removeFiles: (fileArr: FileWithPreview[]) => void;
-  onDrop: (acceptedFiles: File[]) => void;
-  categories: Category[];
-  keywords: Keyword[];
-  isKeywordLoading: boolean;
-  createKeyword: (keyword: string) => Promise<void>;
-  modifyFiles: (title: string, category: string, keywords: string[]) => void;
-  uploadImages: () => Promise<void>;
-};

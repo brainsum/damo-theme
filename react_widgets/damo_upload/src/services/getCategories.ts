@@ -3,7 +3,6 @@ import { Category, Attributes, ApiResponseArr } from '../utils/types';
 import { BASE_URL } from '../utils/constants';
 
 export const getCategories = async () => {
-  // ask adam about getting baseUrl from env or drupalsettings
   const resourceType = 'taxonomy_term--category';
 
   const params = new DrupalJsonApiParams();
