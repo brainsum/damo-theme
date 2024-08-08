@@ -157,6 +157,42 @@ main .region-content {
   color: black;
 }
 
+.collection-edit {
+  border: 0;
+  border-radius: 55px;
+  padding: 15px 35px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-align: center;
+  background-color: #e2e2e2;
+  color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: auto;
+  margin-right: 10px;
+  line-height: 1;
+  @include media-breakpoint-down(sm) {
+    margin-bottom: 10px;
+    margin-right: 0;
+    width: 100%;
+  }
+  &::before {
+    content:"";
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-pencil"><path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"/><path d="m15 5 4 4"/></svg>') no-repeat;
+    width: 18px;
+    height: 18px;
+    display: inline-block;
+    background-size: 18px;
+    margin-right: 8px;
+  }
+  &:hover,
+  &:focus {
+    color: #666 !important;
+  }
+}
+
 .empty_the_collection_btn {
   margin-bottom: 0;
 }
