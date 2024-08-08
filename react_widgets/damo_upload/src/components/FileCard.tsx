@@ -1,4 +1,3 @@
-//import ThumbnailImg from '../../public/thumbnail.png'
 import {
   Box,
   Card,

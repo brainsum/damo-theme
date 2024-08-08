@@ -1,5 +1,4 @@
 import { Box, Flex, Text } from '@chakra-ui/react';
-import './App.css';
 import { FileCard } from './components/FileCard';
 import { Footer } from './components/Footer';
 import { Form } from './components/Form';
@@ -7,7 +6,6 @@ import { useDropzone } from 'react-dropzone';
 import { useFileSelection } from './hooks/useFileSelection';
 
 function App() {
-  // const [files, setFiles] = useState<FileWithPreview[]>([]);
   const {
     files,
     selectedFiles,

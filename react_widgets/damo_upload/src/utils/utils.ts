@@ -28,10 +28,6 @@ export const buildMediaEntity = (
           data: {
             type: 'file--file',
             id: uploadedFileId,
-            // meta: {
-            //   alt: file.title, //where does this come from?
-            //   title: file.title,
-            // },
           },
         },
         field_category: {

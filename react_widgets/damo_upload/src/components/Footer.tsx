@@ -11,7 +11,6 @@ export const Footer = ({
   disabledBtn,
   userApprovalRequired,
 }: FooterProps) => {
-  console.log('🚀 ~ Footer ~ userApprovalRequired:', userApprovalRequired);
   const [defaultBorderColor, buttonBorderColor] = useToken('colors', [
     'damo.paleStone',
     'damo.ashGray',
@@ -42,7 +41,6 @@ export const Footer = ({
         Cancel Upload
       </Button>
 
-      {/* If you have sufficient permit, you can directly upload instead of sending for approval. */}
       <Button
         padding="10px 16px"
         fontWeight={500}

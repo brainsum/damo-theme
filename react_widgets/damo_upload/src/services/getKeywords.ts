@@ -3,7 +3,6 @@ import { ApiResponseArr, Attributes, Keyword } from '../utils/types';
 import { BASE_URL } from '../utils/constants';
 
 export const getKeywords = async () => {
-  // ask adam about getting baseUrl from env or drupalsettings
   const resourceType = 'taxonomy_term--keyword';
 
   const params = new DrupalJsonApiParams();
