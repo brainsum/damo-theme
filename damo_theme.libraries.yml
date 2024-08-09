@@ -230,3 +230,9 @@ front_page:
   css:
     theme:
       css/front_page.css: {}
+damopen_upload:
+  css:
+    theme:
+      react_widgets/damo_upload/dist/assets/index.css: {}
+  js:
+    react_widgets/damo_upload/dist/assets/index.js: {}
