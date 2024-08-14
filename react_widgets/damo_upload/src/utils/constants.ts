@@ -2,6 +2,8 @@ import { UseToastOptions } from '@chakra-ui/react';
 
 export const BASE_URL = window.location.origin;
 
+export const ACCEPTED_FILE_TYPES = ['.jpg', '.jpeg', '.png', '.gif', '.webp'];
+
 export const DEFAULT_TOAST_CONFIG = {
   defaultOptions: {
     duration: 4000,
@@ -17,13 +19,15 @@ export enum ToastType {
   UPLOAD_ERROR = 'UPLOAD_ERROR',
   KEYWORD_ERROR = 'KEYWORD_ERROR',
   KEYWORD_SUCCESS = 'KEYWORD_SUCCESS',
+  GET_ERROR = 'GET_ERROR',
+  FILE_REJECTED = 'FILE_REJECTED',
 }
 
 export const TOASTS: Readonly<Record<ToastType, UseToastOptions>> =
   Object.freeze({
     [ToastType.CATEGORY_MISSING]: {
       title: 'Category missing',
-      description: 'Please select a category for all files',
+      description: 'Please select at least one category for every file',
       status: 'warning',
     },
     [ToastType.SENT_APPROVAL_SUCCESS]: {
@@ -47,5 +51,14 @@ export const TOASTS: Readonly<Record<ToastType, UseToastOptions>> =
     [ToastType.KEYWORD_SUCCESS]: {
       title: 'Tag created successfully',
       status: 'success',
+    },
+    [ToastType.GET_ERROR]: {
+      title: 'Error fetching data',
+      status: 'error',
+    },
+    [ToastType.FILE_REJECTED]: {
+      title: 'File rejected',
+      description: `File type must be: ${ACCEPTED_FILE_TYPES.join(', ')}`,
+      status: 'error',
     },
   });

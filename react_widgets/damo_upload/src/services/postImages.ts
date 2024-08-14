@@ -9,14 +9,22 @@ export const postImages = async (
 ) => {
   const csrfToken = await getCsrfToken();
 
-  if (!csrfToken) {
+  if (
+    typeof csrfToken === 'object' &&
+    csrfToken !== null &&
+    'error' in csrfToken
+  ) {
     throw new Error('No CSRF token found');
   }
   const fileUploadPromises = files.map(async (file) => {
     const blob = await fetchBlob(file.previewURL);
-    console.log(blob, 'blobbb');
 
     try {
+      // Simulate an error for a specific file for error testing (e.g., based on the file name)
+      // if (file.fileName === 'person.jpg') {
+      //   console.log('entra al iffff');
+      //   throw new Error('Simulated error for testing');
+      // }
       const response = await fetch(
         `${BASE_URL}/jsonapi/media/image/field_image`,
         {
@@ -35,8 +43,6 @@ export const postImages = async (
       }
 
       const uploadedFile = await response.json();
-      console.log('🚀 ~ fileUploadPromises ~ uploadedFile:', uploadedFile);
-
       const mediaEntity = buildMediaEntity(
         file,
         uploadedFile.data.id,
@@ -66,8 +72,11 @@ export const postImages = async (
         data: uploadedMedia,
       };
     } catch (error) {
-      console.error('🚀 ~ postImages ~ error:', error);
-      return { fileName: file.fileName, status: 'error', error };
+      return Promise.reject({
+        fileName: file.fileName,
+        status: 'error',
+        error,
+      });
     }
   });
 

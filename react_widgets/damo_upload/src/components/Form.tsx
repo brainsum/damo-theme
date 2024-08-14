@@ -5,7 +5,6 @@ import {
   FormControl,
   FormLabel,
   Input,
-  Select,
   Stack,
   Text,
   useToken,
@@ -16,6 +15,7 @@ import { MdDone } from 'react-icons/md';
 import { TbTrashX } from 'react-icons/tb';
 import { Category, FileWithPreview, Keyword } from '../utils/types';
 import { CreateTagButton } from './CreateTagButton';
+import { MultiSelect } from './MultiSelect';
 
 interface FormProps {
   selectedFiles: FileWithPreview[];
@@ -27,7 +27,7 @@ interface FormProps {
   keywords: Keyword[];
   isKeywordLoading: boolean;
   createKeyword: (name: string) => void;
-  modifyFiles: (name: string, category: string, keywords: string[]) => void;
+  modifyFiles: (name: string, category: Category[], keywords: string[]) => void;
 }
 
 export const Form = ({
@@ -46,17 +46,14 @@ export const Form = ({
   const defaultBorderColor = useToken('colors', 'damo.paleStone');
   const selectedNumber = selectedFiles.length;
   const [title, setTitle] = useState('');
-  const [selectedCategory, setSelectedCategory] = useState<Category['id']>('');
+  const [selectedCategories, setSelectedCategories] = useState<Category[]>([]);
   const [selectedKeywords, setSelectedKeywords] = useState<Keyword['id'][]>([]);
 
-  // Update selected keywords based on selected files
-  useEffect(() => {
-    const selectedKeywordsSet = new Set<Keyword['id']>();
-    selectedFiles.forEach((file) => {
-      file.keywords?.forEach((keyword) => selectedKeywordsSet.add(keyword));
-    });
-    setSelectedKeywords(Array.from(selectedKeywordsSet));
-  }, [selectedFiles]);
+  const resetStates = () => {
+    setSelectedKeywords([]);
+    setSelectedCategories([]);
+    setTitle('');
+  };
 
   const handleKeywordClick = (keywordId: Keyword['id']) => {
     setSelectedKeywords((prev) =>
@@ -66,16 +63,36 @@ export const Form = ({
     );
   };
 
-  const disableModifyBtn =
-    !selectedNumber ||
-    (!title && !selectedCategory && !selectedKeywords.length);
+  const handleCategorySelect = (category: Category) => {
+    console.log('entraaa');
+    setSelectedCategories((prev) =>
+      prev.includes(category)
+        ? prev.filter((c) => c !== category)
+        : [...prev, category]
+    );
+  };
+
+  const disableModifyBtn = !selectedNumber;
 
   const handleSubmit = () => {
-    modifyFiles(title, selectedCategory, selectedKeywords);
+    modifyFiles(title, selectedCategories, selectedKeywords);
     setTitle('');
-    setSelectedCategory('');
+    setSelectedCategories([]);
     setSelectedKeywords([]);
   };
+
+  // Update selected keywords based on selected files
+  useEffect(() => {
+    console.log(selectedFiles, 'selected files');
+    if (selectedFiles.length === 1) {
+      // Only update if one file is selected
+      setSelectedKeywords(selectedFiles[0].keywords ?? []);
+      setSelectedCategories(selectedFiles[0].categories ?? []);
+      setTitle(selectedFiles[0].title);
+    } else {
+      resetStates();
+    }
+  }, [selectedFiles]);
 
   return (
     <FormControl
@@ -138,34 +155,32 @@ export const Form = ({
       </Box>
 
       <Box>
-        <FormLabel
+        <Text
+          as="label"
           color="damo.graphiteGray"
           fontSize="sm"
           fontWeight="semibold"
-          htmlFor="category"
+          margin="0 12px 8px 0"
         >
           Category
-        </FormLabel>
-        <Select
+        </Text>
+        <MultiSelect
+          options={categories}
           placeholder="Select category"
-          color="damo.graphiteGray"
-          fontSize="sm"
-          title="category"
-          value={selectedCategory}
-          onChange={(e) => setSelectedCategory(e.target.value)}
-        >
-          {categories.map((category) => (
-            <option key={category.id} value={category.id}>
-              {category.name}
-            </option>
-          ))}
-        </Select>
+          onChangeHandler={handleCategorySelect}
+          selectedItems={selectedCategories}
+        />
       </Box>
 
       <Box>
-        <FormLabel fontSize="sm" fontWeight="semibold">
+        <Text
+          as="label"
+          fontSize="sm"
+          fontWeight="semibold"
+          margin="0 12px 8px 0"
+        >
           Keywords
-        </FormLabel>
+        </Text>
         <Stack direction="row" wrap="wrap">
           {keywords.map((keyword) => (
             <Button
@@ -197,7 +212,6 @@ export const Form = ({
               {keyword.name}
             </Button>
           ))}
-          {/* Work on user input functionality */}
         </Stack>
         <CreateTagButton
           createKeywordHandler={createKeyword}

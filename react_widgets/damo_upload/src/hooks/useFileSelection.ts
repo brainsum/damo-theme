@@ -1,12 +1,13 @@
 import { useCallback, useEffect, useState } from 'react';
 import { Category, FileWithPreview, Keyword } from '../utils/types';
-import { getFileTypeLabel } from '../utils/utils';
+import { getFileTypeLabel, stripFileExtension } from '../utils/utils';
 import { getCategories } from '../services/getCategories';
 import { getKeywords } from '../services/getKeywords';
 import { postImages } from '../services/postImages';
 import { postKeyword } from '../services/postKeywords';
 import { useToast } from '@chakra-ui/react';
 import { TOASTS } from '../utils/constants';
+import { FileRejection } from 'react-dropzone';
 
 export const useFileSelection = () => {
   const [files, setFiles] = useState<FileWithPreview[]>([]);
@@ -16,24 +17,32 @@ export const useFileSelection = () => {
   const [isKeywordLoading, setIsKeywordLoading] = useState<boolean>(false);
   const [userApprovalRequired, setUserApprovalRequired] =
     useState<boolean>(false);
+  const [isUploading, setIsUploading] = useState<boolean>(false);
+  const [uploadError, setUploadError] = useState<string | null>(null);
 
   const toast = useToast();
 
-  const onDrop = useCallback((acceptedFiles: File[]) => {
-    console.log(acceptedFiles, 'acceptedFiles');
-    const newFiles: FileWithPreview[] = acceptedFiles.map((file, idx) => ({
-      ...file,
-      id: idx,
-      fileName: file.name,
-      title: file.name,
-      previewURL: URL.createObjectURL(file),
-      fileType: getFileTypeLabel(file.type),
-      category: null,
-      keywords: null,
-      type: file.type,
-    }));
-    setFiles((prevfiles) => [...prevfiles, ...newFiles]);
-  }, []);
+  const onDrop = useCallback(
+    (acceptedFiles: File[], rejectedFiles: FileRejection[]) => {
+      const newFiles: FileWithPreview[] = acceptedFiles.map((file, idx) => ({
+        ...file,
+        id: idx,
+        fileName: file.name,
+        title: stripFileExtension(file.name),
+        previewURL: URL.createObjectURL(file),
+        fileType: getFileTypeLabel(file.type),
+        categories: null,
+        keywords: null,
+        type: file.type,
+      }));
+      setFiles((prevfiles) => [...prevfiles, ...newFiles]);
+
+      if (rejectedFiles.length) {
+        toast(TOASTS.FILE_REJECTED);
+      }
+    },
+    [toast]
+  );
 
   const toggleFileSelection = useCallback((file: FileWithPreview) => {
     setSelectedFiles((prevSelected) => {
@@ -70,39 +79,36 @@ export const useFileSelection = () => {
   );
 
   const modifyFiles = useCallback(
-    (title: string, category: string, keywords: string[]) => {
+    (title: string, categories: Category[], keywords: string[]) => {
       setFiles((prevFiles) =>
         prevFiles.map((file) =>
           selectedFiles.includes(file)
             ? {
                 ...file,
                 title: title.length ? title : file.title,
-                category: category.length
-                  ? {
-                      id: category,
-                      name:
-                        categories.find((c) => c.id === category)?.name || '',
-                    }
-                  : file.category,
-                keywords: keywords.length ? keywords : file.keywords,
+                categories: categories,
+                keywords: keywords,
               }
             : file
         )
       );
       clearSelection();
     },
-    [selectedFiles, categories, clearSelection]
+    [selectedFiles, clearSelection]
   );
 
   const uploadImages = async () => {
-    console.log('files to upload', files);
-
-    const filesWithNoCategory = files.filter((file) => !file.category);
+    setUploadError(null);
+    const filesWithNoCategory = files.filter(
+      (file) => !file.categories || !file.categories.length
+    );
     if (filesWithNoCategory.length) {
       toast(TOASTS.CATEGORY_MISSING);
       return;
     }
+    setIsUploading(true);
     const response = await postImages(files, userApprovalRequired);
+    setIsUploading(false);
 
     if (response.success) {
       toast(
@@ -114,23 +120,26 @@ export const useFileSelection = () => {
         window.location.assign('/');
       }, 3000);
     } else {
-      toast({ ...TOASTS.UPLOAD_ERROR, description: response.errors });
-      throw Error('There was a problem uploading files');
+      const errorMessages =
+        response.errors
+          ?.map((error) => `File: ${error.fileName} - ${error.error.message}`)
+          .join(', ') || 'An unknown error occurred';
+      toast({ ...TOASTS.UPLOAD_ERROR, description: errorMessages });
+      setUploadError(errorMessages);
+      console.error('There was a problem uploading files');
     }
   };
 
   const createKeyword = async (keyword: string) => {
     setIsKeywordLoading(true);
-    try {
-      const newKeyword = await postKeyword(keyword);
-
+    const newKeyword = await postKeyword(keyword);
+    if ('error' in newKeyword) {
+      setIsKeywordLoading(false);
+      toast(TOASTS.KEYWORD_ERROR);
+    } else {
       setKeywords((prevKeywords) => [...prevKeywords, newKeyword]);
       setIsKeywordLoading(false);
       toast(TOASTS.KEYWORD_SUCCESS);
-    } catch (err) {
-      console.error('Error creating keyword', err);
-      setIsKeywordLoading(false);
-      toast(TOASTS.KEYWORD_ERROR);
     }
   };
 
@@ -140,12 +149,17 @@ export const useFileSelection = () => {
         getCategories(),
         getKeywords(),
       ]);
-      setCategories(categories);
-      setKeywords(keywords);
+
+      if ('error' in categories || 'error' in keywords) {
+        toast(TOASTS.GET_ERROR);
+      } else {
+        setCategories(categories);
+        setKeywords(keywords);
+      }
     };
     fetchInitialResources();
     setUserApprovalRequired(window.drupalSettings.user.uploadNeedsApproval);
-  }, []);
+  }, [toast]);
 
   return {
     files,
@@ -161,6 +175,8 @@ export const useFileSelection = () => {
     createKeyword,
     modifyFiles,
     uploadImages,
+    isUploading,
+    uploadError,
     userApprovalRequired,
   };
 };

@@ -1,9 +1,12 @@
-import { Box, Flex, Text } from '@chakra-ui/react';
-import { FileCard } from './components/FileCard';
-import { Footer } from './components/Footer';
-import { Form } from './components/Form';
+import { Alert, AlertIcon, Box, Flex, Text } from '@chakra-ui/react';
 import { useDropzone } from 'react-dropzone';
 import { useFileSelection } from './hooks/useFileSelection';
+import { useMemo } from 'react';
+import { ACCEPTED_FILE_TYPES } from './utils/constants';
+import { FileCard } from './components/FileCard';
+import { Form } from './components/Form';
+import { Footer } from './components/Footer';
+import { LoaderModal } from './components/LoaderModal';
 
 function App() {
   const {
@@ -21,15 +24,36 @@ function App() {
     modifyFiles,
     uploadImages,
     userApprovalRequired,
+    isUploading,
+    uploadError,
   } = useFileSelection();
 
-  const { getRootProps, getInputProps } = useDropzone({
-    accept: {
-      'image/*': ['.jpg', '.jpeg', '.png', '.gif'], //should check what imgs format will be accpeted
-    },
-    noDragEventsBubbling: true,
-    onDrop,
-  });
+  const { getRootProps, getInputProps, isDragAccept, isDragReject } =
+    useDropzone({
+      accept: {
+        'image/*': ACCEPTED_FILE_TYPES,
+      },
+      noDragEventsBubbling: true,
+      onDrop,
+      disabled: isUploading,
+    });
+
+  const dropZoneStyles = useMemo(
+    () => ({
+      borderWidth: '2px',
+      borderRadius: 'md',
+      borderColor: isDragAccept
+        ? 'green.400'
+        : isDragReject
+          ? 'red.400'
+          : !files.length
+            ? 'damo.paleStone'
+            : 'transparent',
+      borderStyle: 'dashed',
+      margin: !files.length ? '50px' : '10px',
+    }),
+    [files.length, isDragAccept, isDragReject]
+  );
 
   return (
     <Box
@@ -47,7 +71,7 @@ function App() {
           padding="20px"
           justifyContent="center"
           userSelect="none"
-          {...getRootProps()}
+          {...getRootProps(dropZoneStyles)}
         >
           <input {...getInputProps()} />
           {!files.length ? (
@@ -82,11 +106,20 @@ function App() {
         )}
       </Box>
 
+      {uploadError && (
+        <Alert status="error">
+          <AlertIcon />
+          {uploadError}
+        </Alert>
+      )}
+
       <Footer
         uploadHandler={uploadImages}
-        disabledBtn={!files.length}
+        disabledBtn={!files.length || isUploading}
         userApprovalRequired={userApprovalRequired}
       />
+
+      <LoaderModal willOpen={isUploading} />
     </Box>
   );
 }
