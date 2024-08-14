@@ -1,3 +1,4 @@
+import { ACCEPTED_FILE_TYPES } from './constants';
 import { FileWithPreview } from './types';
 
 export const getFileTypeLabel = (mimeType: string): string => {
@@ -31,13 +32,11 @@ export const buildMediaEntity = (
           },
         },
         field_category: {
-          data: file.category
-            ? [
-                {
-                  type: 'taxonomy_term--category',
-                  id: file.category?.id,
-                },
-              ]
+          data: file.categories
+            ? file.categories?.map((category) => ({
+                type: 'taxonomy_term--category',
+                id: category.id,
+              }))
             : [],
         },
         field_keywords: {
@@ -61,4 +60,25 @@ export async function fetchBlob(url: string): Promise<Blob> {
     throw new Error(`Failed to fetch Blob from URL: ${response.statusText}`);
   }
   return await response.blob();
+}
+
+export function stripFileExtension(filename: string) {
+  // Create a regular expression from the ACCEPTED_FILE_TYPES array
+  const extensions = ACCEPTED_FILE_TYPES.map((ext) =>
+    ext.replace('.', '')
+  ).join('|');
+  const fileExtensions = new RegExp(`\\.(${extensions})$`, 'i');
+
+  // Replace the matched extension with an empty string
+  return filename.replace(fileExtensions, '');
+}
+
+export function handleFetchError(error: unknown) {
+  if (error instanceof TypeError) {
+    return { error: `NetWork Error: ${error.message}` };
+  } else if (error instanceof Error) {
+    return { error: `Fetch error: ${error.message}` };
+  } else {
+    return { error: 'An unknown error occurred' };
+  }
 }

@@ -5,10 +5,10 @@ import {
   Input,
   InputGroup,
   InputRightElement,
+  useOutsideClick,
 } from '@chakra-ui/react';
 import { ChangeEvent, KeyboardEvent, useRef, useState } from 'react';
 import { FiPlus } from 'react-icons/fi';
-import { useClickOutside } from '../hooks/useClickOutside';
 
 interface CreateTagButtonProps {
   isLoading: boolean;
@@ -37,8 +37,11 @@ export const CreateTagButton = ({
     setTagName('');
   };
 
-  useClickOutside(containerRef, () => {
-    setIsEditing(false);
+  useOutsideClick({
+    ref: containerRef,
+    handler: () => {
+      setIsEditing(false);
+    },
   });
 
   const handleInputKeyPress = async (e: KeyboardEvent<HTMLInputElement>) => {

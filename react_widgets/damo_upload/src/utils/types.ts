@@ -1,7 +1,7 @@
 export interface FileWithPreview extends File {
   previewURL: string;
   fileType: string;
-  category: Pick<Category, 'id' | 'name'> | null; //can a file have multiple categories?
+  categories: Category[] | null;
   keywords: Keyword['id'][] | null;
   title: string;
   fileName: string;

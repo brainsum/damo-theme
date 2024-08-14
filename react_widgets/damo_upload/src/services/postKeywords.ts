@@ -1,11 +1,16 @@
 import { BASE_URL } from '../utils/constants';
 import { ApiResponseObj, Attributes, Keyword } from '../utils/types';
+import { handleFetchError } from '../utils/utils';
 import { getCsrfToken } from './getCsrfToken';
 
 export const postKeyword = async (keyword: string) => {
   const csrfToken = await getCsrfToken();
 
-  if (!csrfToken) {
+  if (
+    typeof csrfToken === 'object' &&
+    csrfToken !== null &&
+    'error' in csrfToken
+  ) {
     throw new Error('No CSRF token found');
   }
 
@@ -27,6 +32,10 @@ export const postKeyword = async (keyword: string) => {
       },
       body: JSON.stringify(keywordEntity),
     });
+
+    if (!response.ok) {
+      throw new Error('Failed to create keyword');
+    }
     const json: ApiResponseObj<Attributes> = await response.json();
     const newKeyword: Keyword = {
       id: json.data.id,
@@ -36,6 +45,7 @@ export const postKeyword = async (keyword: string) => {
     };
     return newKeyword;
   } catch (err) {
-    throw Error('Error creating keyword');
+    console.error('Error creating keyword');
+    return handleFetchError(err);
   }
 };

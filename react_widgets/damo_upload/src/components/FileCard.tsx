@@ -99,7 +99,8 @@ export const FileCard = ({
             fontWeight={500}
             noOfLines={1}
           >
-            {file.category?.name || 'Uncategorized'}
+            {file.categories?.map((category) => category.name).join(', ') ||
+              'Uncategorized'}
           </Text>
         </Box>
       </CardFooter>

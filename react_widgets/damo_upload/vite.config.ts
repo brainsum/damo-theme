@@ -13,6 +13,6 @@ export default defineConfig({
         assetFileNames: 'assets/[name].[ext]',
       },
     },
-    chunkSizeWarningLimit: 600,
+    chunkSizeWarningLimit: 800,
   },
 });
