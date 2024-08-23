@@ -26,7 +26,15 @@ export const LoaderModal = ({ willOpen }: LoaderModalProps) => {
     >
       <ModalOverlay />
       <ModalContent>
-        <ModalBody textAlign="center" py="24px">
+        <ModalBody
+          textAlign="center"
+          py="24px"
+          display="flex"
+          flexDir="column"
+          justifyContent="center"
+          alignItems="center"
+          gap={8}
+        >
           <Spinner
             size="xl"
             thickness="4px"
