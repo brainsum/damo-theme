@@ -50,6 +50,7 @@ export const Footer = ({
         borderRadius="lg"
         onClick={uploadHandler}
         isDisabled={disabledBtn}
+        _hover={{ bgColor: 'damo.ashGray' }}
       >
         {userApprovalRequired ? 'Send for approval' : 'Upload files'}
       </Button>
