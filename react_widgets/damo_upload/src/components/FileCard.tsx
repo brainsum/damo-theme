@@ -66,6 +66,7 @@ export const FileCard = ({
             width="100%"
             height="100%"
             objectFit="cover"
+            borderTopRadius="lg"
           />
         </Box>
       </CardBody>
