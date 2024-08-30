@@ -9,7 +9,7 @@ import {
   Text,
   useToken,
 } from '@chakra-ui/react';
-import { FileWithPreview } from '../utils/types';
+import { FileWithPreview } from '@shared/utils';
 
 interface FileCardProps {
   file: FileWithPreview;

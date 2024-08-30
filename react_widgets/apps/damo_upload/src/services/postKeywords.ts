@@ -1,7 +1,12 @@
-import { BASE_URL } from '../utils/constants';
-import { ApiResponseObj, Attributes, Keyword } from '../utils/types';
-import { handleFetchError } from '../utils/utils';
+import {
+  ApiResponseObj,
+  Attributes,
+  BASE_URL,
+  handleFetchError,
+} from '@shared/utils';
 import { getCsrfToken } from './getCsrfToken';
+import Jsona from 'jsona';
+import { mapKeyword } from '@shared/utils/typeMappers';
 
 export const postKeyword = async (keyword: string) => {
   const csrfToken = await getCsrfToken();
@@ -37,12 +42,10 @@ export const postKeyword = async (keyword: string) => {
       throw new Error('Failed to create keyword');
     }
     const json: ApiResponseObj<Attributes> = await response.json();
-    const newKeyword: Keyword = {
-      id: json.data.id,
-      type: json.data.type,
-      name: json.data.attributes.name,
-      status: json.data.attributes.status,
-    };
+    const dataFormatter = new Jsona();
+    const formattedData = dataFormatter.deserialize(json);
+
+    const newKeyword = mapKeyword(formattedData);
     return newKeyword;
   } catch (err) {
     console.error('Error creating keyword');

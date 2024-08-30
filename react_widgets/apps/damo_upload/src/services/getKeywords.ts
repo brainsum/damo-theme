@@ -1,7 +1,13 @@
 import { DrupalJsonApiParams } from 'drupal-jsonapi-params';
-import { ApiResponseArr, Attributes, Keyword } from '../utils/types';
-import { BASE_URL } from '../utils/constants';
-import { handleFetchError } from '../utils/utils';
+import {
+  ApiResponseArr,
+  Attributes,
+  BASE_URL,
+  handleFetchError,
+  Keyword,
+} from '@shared/utils';
+import Jsona from 'jsona';
+import { mapKeyword } from '@shared/utils/typeMappers';
 
 export const getKeywords = async () => {
   const resourceType = 'taxonomy_term--keyword';
@@ -18,12 +24,9 @@ export const getKeywords = async () => {
       throw new Error('Failed to fetch keywords');
     }
     const json: ApiResponseArr<Attributes> = await response.json();
-    const keywords: Keyword[] = json.data.map((keyword) => ({
-      id: keyword.id,
-      type: keyword.type,
-      name: keyword.attributes.name,
-      status: keyword.attributes.status,
-    }));
+    const dataFormatter = new Jsona();
+    const formattedData = dataFormatter.deserialize(json);
+    const keywords: Keyword[] = formattedData.map(mapKeyword);
 
     return keywords;
   } catch (err) {

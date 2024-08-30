@@ -82,3 +82,8 @@ export function handleFetchError(error: unknown) {
     return { error: 'An unknown error occurred' };
   }
 }
+
+export function bytesToKilobytes(bytes: number): number {
+  const kilobytes = bytes / 1024;
+  return Math.round(kilobytes * 100) / 100; // rounding to 2 decimal places
+}

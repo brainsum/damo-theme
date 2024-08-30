@@ -13,9 +13,9 @@ import { useEffect, useState } from 'react';
 import { FiPlus } from 'react-icons/fi';
 import { MdDone } from 'react-icons/md';
 import { TbTrashX } from 'react-icons/tb';
-import { Category, FileWithPreview, Keyword } from '../utils/types';
 import { CreateTagButton } from './CreateTagButton';
 import { MultiSelect } from './MultiSelect';
+import { Category, FileWithPreview, Keyword } from '@shared/utils';
 
 interface FormProps {
   selectedFiles: FileWithPreview[];

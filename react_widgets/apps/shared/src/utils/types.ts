@@ -37,3 +37,23 @@ export interface Category {
 }
 
 export type Keyword = Category;
+
+export interface MediaFile {
+  id: string;
+  type: string;
+  fileName: string;
+  fileMime: string;
+  fileSize: number;
+  url: string | null;
+}
+
+export interface MediaImage {
+  id: string;
+  type: string;
+  status: boolean;
+  name: string;
+  //auhtor: not returne from drupal yet
+  categories: Category[] | null;
+  keywords: Keyword[] | null;
+  file: MediaFile;
+}

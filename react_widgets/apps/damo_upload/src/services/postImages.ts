@@ -1,7 +1,10 @@
-import { FileWithPreview } from '../utils/types';
-import { BASE_URL } from '../utils/constants';
+import {
+  BASE_URL,
+  buildMediaEntity,
+  fetchBlob,
+  FileWithPreview,
+} from '@shared/utils';
 import { getCsrfToken } from './getCsrfToken';
-import { buildMediaEntity, fetchBlob } from '../utils/utils';
 
 export const postImages = async (
   files: FileWithPreview[],

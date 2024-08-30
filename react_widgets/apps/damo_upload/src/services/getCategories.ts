@@ -1,7 +1,13 @@
+import {
+  ApiResponseArr,
+  Attributes,
+  BASE_URL,
+  Category,
+  handleFetchError,
+} from '@shared/utils';
+import { mapCategory } from '@shared/utils/typeMappers';
 import { DrupalJsonApiParams } from 'drupal-jsonapi-params';
-import { Category, Attributes, ApiResponseArr } from '../utils/types';
-import { BASE_URL } from '../utils/constants';
-import { handleFetchError } from '../utils/utils';
+import Jsona from 'jsona';
 
 export const getCategories = async () => {
   const resourceType = 'taxonomy_term--category';
@@ -19,12 +25,10 @@ export const getCategories = async () => {
     }
 
     const json: ApiResponseArr<Attributes> = await response.json();
-    const categories: Category[] = json.data.map((category) => ({
-      id: category.id,
-      type: category.type,
-      name: category.attributes.name,
-      status: category.attributes.status,
-    }));
+    const dataFormatter = new Jsona();
+    const formattedData = dataFormatter.deserialize(json);
+    const categories: Category[] = formattedData.map(mapCategory);
+    console.log('🚀 ~ getUnpublishedImgs ~ categories:', categories);
 
     return categories;
   } catch (err) {
