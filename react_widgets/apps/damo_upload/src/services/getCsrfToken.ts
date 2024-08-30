@@ -1,5 +1,4 @@
-import { BASE_URL } from '../utils/constants';
-import { handleFetchError } from '../utils/utils';
+import { BASE_URL, handleFetchError } from '@shared/utils';
 
 export const getCsrfToken = async () => {
   try {

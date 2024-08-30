@@ -46,6 +46,10 @@ export const theme = extendTheme({
       softSteel: '#a7a7a7',
       tangerine: '#ff8a00',
       ebony: '#111111',
+
+      coolCyanTransparent1: 'rgba(76, 186, 198, 0.2)',
+      coolCyanTransparent2: 'rgba(76, 186, 198, 0.4)',
+      snowWhiteTransparent: 'rgba(246, 246, 246, 0.4)',
     },
   },
 });

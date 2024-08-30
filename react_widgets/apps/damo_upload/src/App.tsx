@@ -2,11 +2,11 @@ import { Alert, AlertIcon, Box, Flex, Text } from '@chakra-ui/react';
 import { useDropzone } from 'react-dropzone';
 import { useFileSelection } from './hooks/useFileSelection';
 import { useMemo } from 'react';
-import { ACCEPTED_FILE_TYPES } from './utils/constants';
 import { FileCard } from './components/FileCard';
 import { Form } from './components/Form';
 import { Footer } from './components/Footer';
 import { LoaderModal } from './components/LoaderModal';
+import { ACCEPTED_FILE_TYPES } from '@shared/utils';
 
 function App() {
   const {

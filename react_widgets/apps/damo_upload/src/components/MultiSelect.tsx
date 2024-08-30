@@ -9,8 +9,8 @@ import {
   Text,
 } from '@chakra-ui/react';
 import { MdOutlineKeyboardArrowDown } from 'react-icons/md';
-import { Category } from '../utils/types';
 import { useMemo } from 'react';
+import { Category } from '@shared/utils';
 
 interface MultiSelectProps {
   options: Category[];

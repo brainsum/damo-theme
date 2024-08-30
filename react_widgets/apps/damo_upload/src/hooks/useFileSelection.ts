@@ -1,13 +1,18 @@
 import { useCallback, useEffect, useState } from 'react';
-import { Category, FileWithPreview, Keyword } from '../utils/types';
-import { getFileTypeLabel, stripFileExtension } from '../utils/utils';
 import { getCategories } from '../services/getCategories';
 import { getKeywords } from '../services/getKeywords';
 import { postImages } from '../services/postImages';
 import { postKeyword } from '../services/postKeywords';
 import { useToast } from '@chakra-ui/react';
-import { TOASTS } from '../utils/constants';
 import { FileRejection } from 'react-dropzone';
+import {
+  Category,
+  FileWithPreview,
+  getFileTypeLabel,
+  Keyword,
+  stripFileExtension,
+  TOASTS,
+} from '@shared/utils';
 
 export const useFileSelection = () => {
   const [files, setFiles] = useState<FileWithPreview[]>([]);
