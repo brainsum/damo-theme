@@ -1,17 +1,25 @@
 import { useToast } from '@chakra-ui/react';
 import { MediaImage, TOASTS } from '@shared/utils';
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import { getUnpublishedImgs } from '../services/getUnpublishedImgs';
 
 export const useImgSelection = () => {
   const [images, setImages] = useState<MediaImage[]>([]);
   const [selectedImgs, setSelectedImgs] = useState<MediaImage[]>([]);
+  const [showSelectedOnly, setShowSelectedOnly] = useState(false);
 
   const toast = useToast();
 
-  const selectAll = useCallback(() => {
-    setSelectedImgs(images);
-  }, [images]);
+  const areAllSelected = selectedImgs.length === images.length;
+  const disabledActionBtns = selectedImgs.length === 0;
+
+  const toggleSelectAllOrClear = useCallback(() => {
+    if (areAllSelected) {
+      setSelectedImgs([]); // Clear all
+    } else {
+      setSelectedImgs(images); // Select all
+    }
+  }, [areAllSelected, images]);
 
   const toggleImgSelection = useCallback((img: MediaImage) => {
     setSelectedImgs((prevSelected) => {
@@ -22,6 +30,12 @@ export const useImgSelection = () => {
       }
     });
   }, []);
+
+  const toggleShowSelectedOnly = useCallback(() => {
+    console.log('toggleShowSelectedOnly');
+    if (selectedImgs.length === 0) return;
+    setShowSelectedOnly((prev) => !prev);
+  }, [selectedImgs]);
 
   useEffect(() => {
     const fetchImages = async () => {
@@ -37,10 +51,18 @@ export const useImgSelection = () => {
     fetchImages();
   }, []);
 
+  const displayedImages = useMemo(() => {
+    return showSelectedOnly ? selectedImgs : images;
+  }, [showSelectedOnly, images, selectedImgs]);
+
   return {
-    images,
+    images: displayedImages,
     selectedImgs,
-    selectAll,
+    toggleSelectAllOrClear,
     toggleImgSelection,
+    toggleShowSelectedOnly,
+    showSelectedOnly,
+    areAllSelected,
+    disabledActionBtns,
   };
 };
