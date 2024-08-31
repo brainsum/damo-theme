@@ -2,9 +2,19 @@ import { Button, Flex, Heading } from '@chakra-ui/react';
 
 interface ActionsBarProps {
   selectAllFn: () => void;
+  showSelectedOnlyFn: () => void;
+  isShowSelectedOnly: boolean;
+  areAllSelected: boolean;
+  disabledActionBtns: boolean;
 }
 
-export const ActionsBar = ({ selectAllFn }: ActionsBarProps) => {
+export const ActionsBar = ({
+  selectAllFn,
+  showSelectedOnlyFn,
+  isShowSelectedOnly,
+  areAllSelected,
+  disabledActionBtns,
+}: ActionsBarProps) => {
   return (
     <Flex h={24} justifyContent="space-evenly" alignItems="center">
       <Heading as="h2" fontSize="2xl" fontWeight="bold" margin={0}>
@@ -20,6 +30,7 @@ export const ActionsBar = ({ selectAllFn }: ActionsBarProps) => {
           lineHeight="30px"
           borderRadius="full"
           padding="5px 34px"
+          isDisabled={disabledActionBtns}
           _hover={{ color: 'damo.graphiteGray', bg: 'gray.100' }}
         >
           Approve selected items
@@ -32,12 +43,18 @@ export const ActionsBar = ({ selectAllFn }: ActionsBarProps) => {
           fontWeight="medium"
           lineHeight="30px"
           borderRadius="full"
+          isDisabled={disabledActionBtns}
         >
           Decline
         </Button>
       </Flex>
 
-      <Flex gap={3}>
+      <Flex
+        gap={3}
+        minW="240px"
+        justifyContent="space-between"
+        alignItems="center"
+      >
         <Button
           textDecor="underline"
           color="damo.ebony"
@@ -46,7 +63,7 @@ export const ActionsBar = ({ selectAllFn }: ActionsBarProps) => {
           fontSize="sm"
           onClick={selectAllFn}
         >
-          Select all
+          {areAllSelected ? 'Clear all' : 'Select all'}
         </Button>
         <Button
           textDecor="underline"
@@ -54,8 +71,9 @@ export const ActionsBar = ({ selectAllFn }: ActionsBarProps) => {
           variant="link"
           fontWeight="normal"
           fontSize="sm"
+          onClick={showSelectedOnlyFn}
         >
-          Show the selected only
+          {isShowSelectedOnly ? 'Show all' : 'Show the selected only'}
         </Button>
       </Flex>
     </Flex>

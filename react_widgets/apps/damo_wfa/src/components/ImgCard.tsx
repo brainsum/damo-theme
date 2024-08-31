@@ -3,6 +3,7 @@ import { MediaImage } from '@shared/utils';
 import { useState } from 'react';
 import { FaCheck } from 'react-icons/fa';
 import { CardPopover } from './CardPopover';
+import fallbackImg from '../../public/thumbnail.png';
 
 interface ImgCardProps {
   img: MediaImage;
@@ -14,7 +15,7 @@ export const ImgCard = ({ img, isSelected, onToggleSelect }: ImgCardProps) => {
   //const [isSelected, setIsSelected] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const hoverBorderColor = useToken('colors', 'damo.coolCyan');
-
+  console.log(process.env, 'process.env');
   // const clickHandler = () => {
   //   setIsSelected((prev) => !prev);
   // };
@@ -40,7 +41,7 @@ export const ImgCard = ({ img, isSelected, onToggleSelect }: ImgCardProps) => {
     >
       <Image
         src={img.file.url || undefined}
-        fallbackSrc="/thumbnail.png"
+        fallbackSrc={fallbackImg}
         w="100%"
         h="100%"
         objectFit="cover"
