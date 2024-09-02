@@ -42,6 +42,7 @@ export const ImgCard = ({ img, isSelected, onToggleSelect }: ImgCardProps) => {
       <Image
         src={img.file.url || undefined}
         fallbackSrc={fallbackImg}
+        alt={img.file.alt || 'image'}
         w="100%"
         h="100%"
         objectFit="cover"

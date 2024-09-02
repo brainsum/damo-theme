@@ -12,6 +12,7 @@ import {
   Flex,
 } from '@chakra-ui/react';
 import { bytesToKilobytes, MediaImage } from '@shared/utils';
+import { Fragment } from 'react/jsx-runtime';
 
 interface CardPopoverProps {
   open: boolean;
@@ -75,7 +76,14 @@ export const CardPopover = ({ open, fileInfo }: CardPopoverProps) => {
             <Box>
               <Text as="span">
                 Categories:{' '}
-                {fileInfo.categories?.map((cat) => cat.name).join(', ')}
+                {fileInfo.categories?.map((cat, index) => (
+                  <Fragment key={cat.id || index}>
+                    <Text as="span" textDecor="underline">
+                      {cat.name}
+                    </Text>
+                    {index < fileInfo.categories?.length! - 1 && ', '}
+                  </Fragment>
+                ))}
               </Text>
             </Box>
           )}
@@ -99,6 +107,10 @@ export const CardPopover = ({ open, fileInfo }: CardPopoverProps) => {
             padding="8px 16px"
             fontSize="xs"
             fontWeight="normal"
+            onClick={(e) => {
+              e.stopPropagation();
+              window.location.assign(fileInfo.file.editUrl);
+            }}
           >
             Edit asset
           </Button>

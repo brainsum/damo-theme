@@ -25,10 +25,12 @@ export const mapFile = (data: TJsonaModel) => {
   const file: MediaFile = {
     id: data.id,
     type: data.type,
-    fileName: data.fileName,
-    fileMime: data.fileMime,
-    fileSize: data.fileSize,
+    fileName: data.filename,
+    fileMime: data.filemime,
+    fileSize: data.filesize,
     url: data.image_style_uri?.medium || null,
+    alt: data.resourceIdObjMeta?.alt || null,
+    editUrl: `/media/${data.resourceIdObjMeta?.drupal_internal__target_id}/edit?destination=/assets`,
   };
   return file;
 };
