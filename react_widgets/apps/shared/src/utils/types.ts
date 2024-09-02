@@ -45,6 +45,8 @@ export interface MediaFile {
   fileMime: string;
   fileSize: number;
   url: string | null;
+  alt: string | null;
+  editUrl: string;
 }
 
 export interface MediaImage {
