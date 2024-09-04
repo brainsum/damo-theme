@@ -233,6 +233,13 @@ front_page:
 damopen_upload:
   css:
     theme:
-      react_widgets/damo_upload/dist/assets/index.css: {}
+      react_widgets/apps/damo_upload/dist/assets/index.css: {}
   js:
-    react_widgets/damo_upload/dist/assets/index.js: {}
+    react_widgets/apps/damo_upload/dist/assets/index.js: {}
+damopen_wfa:
+  css:
+    theme:
+      react_widgets/apps/damo_wfa/dist/assets/index.css: {}
+  js:
+    react_widgets/apps/damo_wfa/dist/assets/index.js: {}
+
