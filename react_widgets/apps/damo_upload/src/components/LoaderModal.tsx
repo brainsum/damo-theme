@@ -1,18 +1,20 @@
 import {
+  CircularProgress,
+  CircularProgressLabel,
   Modal,
   ModalBody,
   ModalContent,
   ModalOverlay,
-  Spinner,
   Text,
   useDisclosure,
 } from '@chakra-ui/react';
 
 interface LoaderModalProps {
   willOpen: boolean;
+  progress: number;
 }
 
-export const LoaderModal = ({ willOpen }: LoaderModalProps) => {
+export const LoaderModal = ({ willOpen, progress }: LoaderModalProps) => {
   const { isOpen } = useDisclosure({
     isOpen: willOpen,
   });
@@ -35,15 +37,20 @@ export const LoaderModal = ({ willOpen }: LoaderModalProps) => {
           alignItems="center"
           gap={8}
         >
-          <Spinner
-            size="xl"
-            thickness="4px"
-            speed="0.6s"
-            emptyColor="damo.softPearl"
+          <CircularProgress
+            size={40}
+            thickness="6px"
             color="damo.coolCyan"
-          />
+            value={progress}
+          >
+            <CircularProgressLabel fontSize={22}>
+              {progress}%
+            </CircularProgressLabel>
+          </CircularProgress>
 
-          <Text as="span">Uploading files...</Text>
+          <Text as="span" fontSize={20}>
+            Uploading files...
+          </Text>
         </ModalBody>
       </ModalContent>
     </Modal>

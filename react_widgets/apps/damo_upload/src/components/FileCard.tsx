@@ -10,6 +10,7 @@ import {
   useToken,
 } from '@chakra-ui/react';
 import { FileWithPreview } from '@shared/utils';
+import fallbackImg from '../../public/thumbnail.png';
 
 interface FileCardProps {
   file: FileWithPreview;
@@ -30,16 +31,26 @@ export const FileCard = ({
   return (
     <Card
       border={
-        isSelected
-          ? `2px solid ${checkedBorderColor}`
-          : `1px solid ${defaultBorderColor}`
+        isSelected ? '1px solid transparent' : `1px solid ${defaultBorderColor}`
       }
+      outline={isSelected ? `5px solid ${checkedBorderColor}` : 'none'}
+      outlineOffset={0}
       borderRadius="lg"
       height={337}
       width={273}
       gap="12px"
-      onClick={(e) => e.stopPropagation()}
-      _hover={{ border: `2px solid ${checkedBorderColor}`, cursor: 'pointer' }}
+      onClick={(e) => {
+        e.stopPropagation();
+        onToggleSelect();
+      }}
+      transition="all 0.2s ease"
+      _hover={{
+        outline: isSelected
+          ? `5px solid ${checkedBorderColor}`
+          : `2px solid ${checkedBorderColor}`,
+        border: '1px solid transparent',
+        cursor: 'pointer',
+      }}
     >
       <CardBody
         backgroundColor="damo.snowWhite"
@@ -50,6 +61,7 @@ export const FileCard = ({
         justifyContent="center"
         height={265}
         overflow="hidden"
+        borderTopRadius="lg"
       >
         <Checkbox
           position="absolute"
@@ -62,7 +74,7 @@ export const FileCard = ({
         <Box width="100%" height="100%">
           <Image
             src={file.previewURL}
-            fallbackSrc="/thumbnail.png"
+            fallbackSrc={fallbackImg}
             width="100%"
             height="100%"
             objectFit="cover"

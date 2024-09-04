@@ -14,7 +14,7 @@ export const postKeyword = async (keyword: string) => {
   if (
     typeof csrfToken === 'object' &&
     csrfToken !== null &&
-    'error' in csrfToken
+    'errorMsg' in csrfToken
   ) {
     throw new Error('No CSRF token found');
   }

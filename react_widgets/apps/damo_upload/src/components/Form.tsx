@@ -9,7 +9,7 @@ import {
   Text,
   useToken,
 } from '@chakra-ui/react';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { FiPlus } from 'react-icons/fi';
 import { MdDone } from 'react-icons/md';
 import { TbTrashX } from 'react-icons/tb';
@@ -37,7 +37,6 @@ export const Form = ({
   removeFiles,
   totalFiles,
   categories,
-
   keywords,
   isKeywordLoading,
   createKeyword,
@@ -49,50 +48,82 @@ export const Form = ({
   const [selectedCategories, setSelectedCategories] = useState<Category[]>([]);
   const [selectedKeywords, setSelectedKeywords] = useState<Keyword['id'][]>([]);
 
-  const resetStates = () => {
+  //store initial states for conditionally render the modify button
+  const initialTitle = useRef('');
+  const initialCategories = useRef<Category[]>([]);
+  const initialKeywords = useRef<Keyword['id'][]>([]);
+
+  const resetStates = useCallback(() => {
     setSelectedKeywords([]);
     setSelectedCategories([]);
     setTitle('');
-  };
+  }, []);
 
-  const handleKeywordClick = (keywordId: Keyword['id']) => {
+  const handleKeywordClick = useCallback((keywordId: Keyword['id']) => {
     setSelectedKeywords((prev) =>
       prev.includes(keywordId)
         ? prev.filter((k) => k !== keywordId)
         : [...prev, keywordId]
     );
-  };
+  }, []);
 
-  const handleCategorySelect = (category: Category) => {
-    console.log('entraaa');
+  const handleCategorySelect = useCallback((category: Category) => {
     setSelectedCategories((prev) =>
       prev.includes(category)
         ? prev.filter((c) => c !== category)
         : [...prev, category]
     );
-  };
+  }, []);
 
   const disableModifyBtn = !selectedNumber;
 
-  const handleSubmit = () => {
+  const handleSubmit = useCallback(() => {
     modifyFiles(title, selectedCategories, selectedKeywords);
-    setTitle('');
-    setSelectedCategories([]);
-    setSelectedKeywords([]);
-  };
+    resetStates();
+  }, [modifyFiles, resetStates, title, selectedCategories, selectedKeywords]);
 
   // Update selected keywords based on selected files
   useEffect(() => {
-    console.log(selectedFiles, 'selected files');
     if (selectedFiles.length === 1) {
       // Only update if one file is selected
-      setSelectedKeywords(selectedFiles[0].keywords ?? []);
-      setSelectedCategories(selectedFiles[0].categories ?? []);
-      setTitle(selectedFiles[0].title);
+      const file = selectedFiles[0];
+      initialTitle.current = file.title;
+      initialCategories.current = file.categories ?? [];
+      initialKeywords.current = file.keywords ?? [];
+
+      setSelectedKeywords(file.keywords ?? []);
+      setSelectedCategories(file.categories ?? []);
+      setTitle(file.title);
     } else {
+      initialTitle.current = '';
+      initialCategories.current = [];
+      initialKeywords.current = [];
+
       resetStates();
     }
-  }, [selectedFiles]);
+  }, [selectedFiles, resetStates]);
+
+  const isFormModified = useMemo(() => {
+    if (selectedFiles.length !== 1) {
+      return (
+        title !== '' ||
+        selectedCategories.length > 0 ||
+        selectedKeywords.length > 0
+      );
+    }
+
+    return (
+      title !== initialTitle.current ||
+      selectedCategories.length !== initialCategories.current.length ||
+      selectedCategories.some(
+        (cat) => !initialCategories.current.includes(cat)
+      ) ||
+      selectedKeywords.length !== initialKeywords.current.length ||
+      selectedKeywords.some((key) => !initialKeywords.current.includes(key))
+    );
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [title, selectedCategories, selectedKeywords]);
 
   return (
     <FormControl
@@ -222,25 +253,28 @@ export const Form = ({
       <Divider borderColor="damo.softPearl" />
 
       <Stack>
-        <Button
-          variant="outline"
-          size="lg"
-          padding="10px 16px"
-          fontSize="sm"
-          fontWeight="medium"
-          width="fit-content"
-          color="damo.coolCyan"
-          borderColor="damo.coolCyan"
-          onClick={handleSubmit}
-          isDisabled={disableModifyBtn}
-        >
-          Modify {selectedNumber} selected items
-        </Button>
+        {isFormModified && (
+          <Button
+            size="lg"
+            padding="10px 16px"
+            fontSize="sm"
+            fontWeight="medium"
+            width="fit-content"
+            color="white"
+            bgColor="damo.coolCyan"
+            borderRadius="lg"
+            onClick={handleSubmit}
+            isDisabled={disableModifyBtn}
+            _hover={{ bgColor: 'damo.coolCyanHover' }}
+          >
+            Modify {selectedNumber} selected items
+          </Button>
+        )}
 
         <Button
           variant="ghost"
           color="damo.ironGray"
-          padding="10px 2px"
+          padding="10px 4px"
           fontSize="sm"
           fontWeight="medium"
           width="fit-content"

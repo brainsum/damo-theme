@@ -28,7 +28,6 @@ export const getCategories = async () => {
     const dataFormatter = new Jsona();
     const formattedData = dataFormatter.deserialize(json);
     const categories: Category[] = formattedData.map(mapCategory);
-    console.log('🚀 ~ getUnpublishedImgs ~ categories:', categories);
 
     return categories;
   } catch (err) {

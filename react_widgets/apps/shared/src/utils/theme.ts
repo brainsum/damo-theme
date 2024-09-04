@@ -34,6 +34,7 @@ export const theme = extendTheme({
   colors: {
     damo: {
       coolCyan: '#4cbac6',
+      coolCyanHover: '#249CA9',
       paleStone: '#d4d4d4',
       snowWhite: '#f6f6f6',
       softPearl: '#D9D9D9',
