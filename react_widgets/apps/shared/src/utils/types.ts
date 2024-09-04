@@ -59,3 +59,5 @@ export interface MediaImage {
   keywords: Keyword[] | null;
   file: MediaFile;
 }
+
+export type ModifyImgsAction = 'approve' | 'decline';

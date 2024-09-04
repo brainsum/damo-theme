@@ -30,7 +30,7 @@ export const mapFile = (data: TJsonaModel) => {
     fileSize: data.filesize,
     url: data.image_style_uri?.medium || null,
     alt: data.resourceIdObjMeta?.alt || null,
-    editUrl: `/media/${data.resourceIdObjMeta?.drupal_internal__target_id}/edit?destination=/assets`,
+    editUrl: `/media/${data.resourceIdObjMeta?.drupal_internal__target_id}/edit?destination=/admin/assets/all-unpublished`,
   };
   return file;
 };

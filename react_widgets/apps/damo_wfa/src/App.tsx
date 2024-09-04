@@ -3,6 +3,7 @@ import { ActionsBar } from './components/ActionsBar';
 import { useImgSelection } from './hooks/useImgSelection';
 import { ImgCard } from './components/ImgCard';
 import { AnimatePresence, motion } from 'framer-motion';
+import { AlertMsg, LoaderModal } from '@shared/components';
 
 function App() {
   const {
@@ -14,6 +15,9 @@ function App() {
     showSelectedOnly,
     areAllSelected,
     disabledActionBtns,
+    modifyImgs,
+    isUpdating,
+    updateError,
   } = useImgSelection();
 
   return (
@@ -24,9 +28,10 @@ function App() {
         isShowSelectedOnly={showSelectedOnly}
         areAllSelected={areAllSelected}
         disabledActionBtns={disabledActionBtns}
+        modifyImgsFn={modifyImgs}
       />
 
-      <Flex gap={2.5}>
+      <Flex gap={2.5} mb="16px">
         {!images.length ? (
           <Text as="span" alignSelf="center" margin="auto">
             No images pending approval
@@ -60,6 +65,10 @@ function App() {
           </AnimatePresence>
         )}
       </Flex>
+
+      <AlertMsg willShow={!!updateError} content={updateError} />
+
+      <LoaderModal willOpen={isUpdating} label="Updating images..." />
     </Box>
   );
 }

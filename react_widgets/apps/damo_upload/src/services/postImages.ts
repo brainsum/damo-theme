@@ -1,3 +1,4 @@
+import { getCsrfToken } from '@shared/services';
 import {
   BASE_URL,
   buildMediaEntity,
@@ -5,7 +6,6 @@ import {
   FileWithPreview,
   handleFetchError,
 } from '@shared/utils';
-import { getCsrfToken } from './getCsrfToken';
 
 interface UploadedFileResponse {
   data: {
@@ -65,13 +65,12 @@ export const postImages = async (
         xhr.onreadystatechange = () => {
           if (xhr.readyState === XMLHttpRequest.DONE) {
             // Simulate an error for a specific file for error testing (e.g., based on the file name)
-
-            if (file.fileName === 'person.jpg') {
-              rej(new Error(`Failed to upload file: ${file.fileName}`));
-            }
-            if (file.fileName === 'novozymes.jpg') {
-              rej(new Error(`Failed to upload file: ${file.fileName}`));
-            }
+            // if (file.fileName === 'person.jpg') {
+            //   rej(new Error(`Failed to upload file: ${file.fileName}`));
+            // }
+            // if (file.fileName === 'novozymes.jpg') {
+            //   rej(new Error(`Failed to upload file: ${file.fileName}`));
+            // }
 
             if (xhr.status >= 200 && xhr.status < 300) {
               res(JSON.parse(xhr.responseText) as UploadedFileResponse);

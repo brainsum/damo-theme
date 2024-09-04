@@ -12,12 +12,8 @@ interface ImgCardProps {
 }
 
 export const ImgCard = ({ img, isSelected, onToggleSelect }: ImgCardProps) => {
-  //const [isSelected, setIsSelected] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const hoverBorderColor = useToken('colors', 'damo.coolCyan');
-  // const clickHandler = () => {
-  //   setIsSelected((prev) => !prev);
-  // };
 
   const mouseEnterHandler = () => {
     setIsHovered(true);

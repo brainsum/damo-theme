@@ -2,10 +2,10 @@ import {
   ApiResponseArr,
   Attributes,
   BASE_URL,
-  Category,
   handleFetchError,
+  MediaImage,
+  mapMediaImage,
 } from '@shared/utils';
-import { mapCategory, mapMediaImage } from '@shared/utils/typeMappers';
 import { DrupalJsonApiParams } from 'drupal-jsonapi-params';
 import Jsona from 'jsona';
 
@@ -30,19 +30,17 @@ export const getUnpublishedImgs = async () => {
     );
 
     if (!response.ok) {
-      throw new Error('Failed to fetch categories');
+      throw new Error('Failed to fetch unpublished images');
     }
 
     const json: ApiResponseArr<Attributes> = await response.json();
     const dataFormatter = new Jsona();
     const formattedData = dataFormatter.deserialize(json);
-    console.log('🚀 ~ getUnpublishedImgs ~ formattedData:', formattedData);
-    const imgs = formattedData.map(mapMediaImage);
-    console.log('🚀 ~ getUnpublishedImgs ~ imgs:', imgs);
+    const imgs: MediaImage[] = formattedData.map(mapMediaImage);
 
     return imgs;
   } catch (err) {
-    console.error('Error getting categories', err);
+    console.error('Error fetching unpublished images', err);
     return handleFetchError(err);
   }
 };
