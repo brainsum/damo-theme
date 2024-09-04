@@ -49,7 +49,7 @@
   {{ title_suffix }}
   {% if header %}
     <div class="view-header">
-      {{ header }}
+      {# {{ header }} #}
     </div>
   {% endif %}
   {% if exposed %}
@@ -65,7 +65,9 @@
 
   {% if rows %}
     <div class="view-content">
-      {{ rows }}
+      {# {{ rows }} #}
+      {{ attach_library('damo_theme/damopen_wfa') }}
+      <div id="damo-wfa"></div>
     </div>
   {% elseif empty %}
     <div class="view-empty">
