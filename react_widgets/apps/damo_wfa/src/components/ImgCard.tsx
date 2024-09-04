@@ -15,7 +15,6 @@ export const ImgCard = ({ img, isSelected, onToggleSelect }: ImgCardProps) => {
   //const [isSelected, setIsSelected] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const hoverBorderColor = useToken('colors', 'damo.coolCyan');
-  console.log(process.env, 'process.env');
   // const clickHandler = () => {
   //   setIsSelected((prev) => !prev);
   // };

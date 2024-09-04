@@ -5,7 +5,7 @@ export interface FileWithPreview extends File {
   keywords: Keyword['id'][] | null;
   title: string;
   fileName: string;
-  id: number;
+  id: string;
 }
 
 export interface ApiResponseArr<T> {

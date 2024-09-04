@@ -73,13 +73,29 @@ export function stripFileExtension(filename: string) {
   return filename.replace(fileExtensions, '');
 }
 
+export function fileValidator(file: File) {
+  // custom validator for dropzone to exclude files whose extensions are not in the accepted list
+  const extensions = ACCEPTED_FILE_TYPES.map((ext) =>
+    ext.replace('.', '')
+  ).join('|');
+  const fileExtensions = new RegExp(`\\.(${extensions})$`, 'i');
+
+  if (!fileExtensions.test(file.name)) {
+    return {
+      code: 'file-invalid-type',
+      message: `Invalid file type. Only ${ACCEPTED_FILE_TYPES.join(', ')} files are allowed.`,
+    };
+  }
+  return null;
+}
+
 export function handleFetchError(error: unknown) {
   if (error instanceof TypeError) {
-    return { error: `NetWork Error: ${error.message}` };
+    return { errorMsg: `NetWork Error: ${error.message}` };
   } else if (error instanceof Error) {
-    return { error: `Fetch error: ${error.message}` };
+    return { errorMsg: `Fetch error: ${error.message}` };
   } else {
-    return { error: 'An unknown error occurred' };
+    return { errorMsg: 'An unknown error occurred' };
   }
 }
 

@@ -1,4 +1,4 @@
-import { Alert, AlertIcon, Box, Flex, Text } from '@chakra-ui/react';
+import { Box, Flex, Text } from '@chakra-ui/react';
 import { useDropzone } from 'react-dropzone';
 import { useFileSelection } from './hooks/useFileSelection';
 import { useMemo } from 'react';
@@ -6,7 +6,8 @@ import { FileCard } from './components/FileCard';
 import { Form } from './components/Form';
 import { Footer } from './components/Footer';
 import { LoaderModal } from './components/LoaderModal';
-import { ACCEPTED_FILE_TYPES } from '@shared/utils';
+import { fileValidator } from '@shared/utils';
+import { AlertMsg } from './components/AlertMsg';
 
 function App() {
   const {
@@ -26,33 +27,25 @@ function App() {
     userApprovalRequired,
     isUploading,
     uploadError,
+    overAllProgress,
   } = useFileSelection();
 
-  const { getRootProps, getInputProps, isDragAccept, isDragReject } =
-    useDropzone({
-      accept: {
-        'image/*': ACCEPTED_FILE_TYPES,
-      },
-      noDragEventsBubbling: true,
-      onDrop,
-      disabled: isUploading,
-    });
+  const { getRootProps, getInputProps } = useDropzone({
+    validator: fileValidator, //custom validator to check file extension, since the default validator only checks mime type
+    noDragEventsBubbling: true,
+    onDrop,
+    disabled: isUploading,
+  });
 
   const dropZoneStyles = useMemo(
     () => ({
       borderWidth: '2px',
       borderRadius: 'md',
-      borderColor: isDragAccept
-        ? 'green.400'
-        : isDragReject
-          ? 'red.400'
-          : !files.length
-            ? 'damo.paleStone'
-            : 'transparent',
+      borderColor: !files.length ? 'damo.paleStone' : 'transparent',
       borderStyle: 'dashed',
       margin: !files.length ? '50px' : '10px',
     }),
-    [files.length, isDragAccept, isDragReject]
+    [files.length]
   );
 
   return (
@@ -83,7 +76,7 @@ function App() {
               <FileCard
                 key={file.id}
                 file={file}
-                isSelected={selectedFiles.includes(file)}
+                isSelected={selectedFiles.some((f) => f.id === file.id)}
                 onToggleSelect={() => toggleFileSelection(file)}
               />
             ))
@@ -106,12 +99,7 @@ function App() {
         )}
       </Box>
 
-      {uploadError && (
-        <Alert status="error">
-          <AlertIcon />
-          {uploadError}
-        </Alert>
-      )}
+      <AlertMsg willShow={!!uploadError} content={uploadError} />
 
       <Footer
         uploadHandler={uploadImages}
@@ -119,7 +107,7 @@ function App() {
         userApprovalRequired={userApprovalRequired}
       />
 
-      <LoaderModal willOpen={isUploading} />
+      <LoaderModal willOpen={isUploading} progress={overAllProgress} />
     </Box>
   );
 }

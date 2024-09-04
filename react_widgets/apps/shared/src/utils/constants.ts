@@ -42,6 +42,7 @@ export const TOASTS: Readonly<Record<ToastType, UseToastOptions>> =
     },
     [ToastType.UPLOAD_ERROR]: {
       title: 'Upload error',
+      description: 'An error occurred while uploading files',
       status: 'error',
     },
     [ToastType.KEYWORD_ERROR]: {
@@ -57,7 +58,7 @@ export const TOASTS: Readonly<Record<ToastType, UseToastOptions>> =
       status: 'error',
     },
     [ToastType.FILE_REJECTED]: {
-      title: 'File rejected',
+      title: 'Files rejected',
       description: `File type must be: ${ACCEPTED_FILE_TYPES.join(', ')}`,
       status: 'error',
     },

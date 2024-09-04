@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 import { getCategories } from '../services/getCategories';
 import { getKeywords } from '../services/getKeywords';
 import { postImages } from '../services/postImages';
@@ -23,15 +24,16 @@ export const useFileSelection = () => {
   const [userApprovalRequired, setUserApprovalRequired] =
     useState<boolean>(false);
   const [isUploading, setIsUploading] = useState<boolean>(false);
-  const [uploadError, setUploadError] = useState<string | null>(null);
+  const [uploadError, setUploadError] = useState<string[] | null>(null);
+  const [overAllProgress, setOverAllProgress] = useState<number>(0);
 
   const toast = useToast();
 
   const onDrop = useCallback(
     (acceptedFiles: File[], rejectedFiles: FileRejection[]) => {
-      const newFiles: FileWithPreview[] = acceptedFiles.map((file, idx) => ({
+      const newFiles: FileWithPreview[] = acceptedFiles.map((file) => ({
         ...file,
-        id: idx,
+        id: uuidv4(), //creating uuid to avoid conflicts
         fileName: file.name,
         title: stripFileExtension(file.name),
         previewURL: URL.createObjectURL(file),
@@ -39,20 +41,31 @@ export const useFileSelection = () => {
         categories: null,
         keywords: null,
         type: file.type,
+        size: file.size,
       }));
+
+      //if only one image is added and there's no files already in the list, set it as selected
+      if (acceptedFiles.length === 1 && files.length === 0) {
+        setSelectedFiles(newFiles);
+      }
+
       setFiles((prevfiles) => [...prevfiles, ...newFiles]);
 
       if (rejectedFiles.length) {
+        const errorMessages = rejectedFiles.map(
+          (rf) => `File: ${rf.file.name} - ${rf.errors[0].message}`
+        ) || ['An unknown error occurred'];
         toast(TOASTS.FILE_REJECTED);
+        setUploadError(errorMessages);
       }
     },
-    [toast]
+    [toast, files]
   );
 
   const toggleFileSelection = useCallback((file: FileWithPreview) => {
     setSelectedFiles((prevSelected) => {
-      if (prevSelected.includes(file)) {
-        return prevSelected.filter((f) => f !== file);
+      if (prevSelected.some((f) => f.id === file.id)) {
+        return prevSelected.filter((f) => f.id !== file.id);
       } else {
         return [...prevSelected, file];
       }
@@ -63,7 +76,7 @@ export const useFileSelection = () => {
     if (!fileArr) setSelectedFiles([]);
     else {
       setSelectedFiles((prevSelected) =>
-        prevSelected.filter((file) => !fileArr.includes(file))
+        prevSelected.filter((file) => !fileArr.some((f) => f.id === file.id))
       );
     }
   }, []);
@@ -76,7 +89,7 @@ export const useFileSelection = () => {
     (fileArr: FileWithPreview[]) => {
       if (!fileArr.length) return;
       setFiles((prevFiles) =>
-        prevFiles.filter((file) => !fileArr.includes(file))
+        prevFiles.filter((file) => !fileArr.some((f) => f.id === file.id))
       );
       clearSelection(fileArr);
     },
@@ -87,7 +100,7 @@ export const useFileSelection = () => {
     (title: string, categories: Category[], keywords: string[]) => {
       setFiles((prevFiles) =>
         prevFiles.map((file) =>
-          selectedFiles.includes(file)
+          selectedFiles.some((f) => f.id === file.id)
             ? {
                 ...file,
                 title: title.length ? title : file.title,
@@ -102,8 +115,9 @@ export const useFileSelection = () => {
     [selectedFiles, clearSelection]
   );
 
-  const uploadImages = async () => {
+  const uploadImages = useCallback(async () => {
     setUploadError(null);
+    setOverAllProgress(0);
     const filesWithNoCategory = files.filter(
       (file) => !file.categories || !file.categories.length
     );
@@ -112,8 +126,16 @@ export const useFileSelection = () => {
       return;
     }
     setIsUploading(true);
-    const response = await postImages(files, userApprovalRequired);
-    setIsUploading(false);
+
+    const handleOverallProgress = (progress: number) => {
+      setOverAllProgress(progress);
+    };
+
+    const response = await postImages(
+      files,
+      userApprovalRequired,
+      handleOverallProgress
+    );
 
     if (response.success) {
       toast(
@@ -121,32 +143,41 @@ export const useFileSelection = () => {
           ? TOASTS.SENT_APPROVAL_SUCCESS
           : TOASTS.UPLOAD_SUCCESS
       );
-      setTimeout(() => {
-        window.location.assign('/');
-      }, 3000);
+      // setTimeout(() => {
+      //   window.location.assign('/');
+      // }, 3000);
     } else {
-      const errorMessages =
-        response.errors
-          ?.map((error) => `File: ${error.fileName} - ${error.error.message}`)
-          .join(', ') || 'An unknown error occurred';
-      toast({ ...TOASTS.UPLOAD_ERROR, description: errorMessages });
+      const errorMessages = response.errors?.map(
+        (e) => `File: ${e.fileName} - ${e.error?.errorMsg}`
+      ) || ['An unknown error occurred'];
+      toast(TOASTS.UPLOAD_ERROR);
       setUploadError(errorMessages);
+      setFiles((prevFiles) =>
+        prevFiles.filter((file) =>
+          response.errors?.some((err) => err.fileId === file.id)
+        )
+      );
       console.error('There was a problem uploading files');
     }
-  };
 
-  const createKeyword = async (keyword: string) => {
-    setIsKeywordLoading(true);
-    const newKeyword = await postKeyword(keyword);
-    if ('error' in newKeyword) {
+    await new Promise((resolve) => setTimeout(resolve, 200)); // short delay to show progress bar at 100%
+    setIsUploading(false);
+  }, [files, toast, userApprovalRequired]);
+
+  const createKeyword = useCallback(
+    async (keyword: string) => {
+      setIsKeywordLoading(true);
+      const newKeyword = await postKeyword(keyword);
+      if ('errorMsg' in newKeyword) {
+        toast(TOASTS.KEYWORD_ERROR);
+      } else {
+        setKeywords((prevKeywords) => [...prevKeywords, newKeyword]);
+        toast(TOASTS.KEYWORD_SUCCESS);
+      }
       setIsKeywordLoading(false);
-      toast(TOASTS.KEYWORD_ERROR);
-    } else {
-      setKeywords((prevKeywords) => [...prevKeywords, newKeyword]);
-      setIsKeywordLoading(false);
-      toast(TOASTS.KEYWORD_SUCCESS);
-    }
-  };
+    },
+    [toast]
+  );
 
   useEffect(() => {
     const fetchInitialResources = async () => {
@@ -155,7 +186,7 @@ export const useFileSelection = () => {
         getKeywords(),
       ]);
 
-      if ('error' in categories || 'error' in keywords) {
+      if ('errorMsg' in categories || 'errorMsg' in keywords) {
         toast(TOASTS.GET_ERROR);
       } else {
         setCategories(categories);
@@ -182,6 +213,7 @@ export const useFileSelection = () => {
     uploadImages,
     isUploading,
     uploadError,
+    overAllProgress,
     userApprovalRequired,
   };
 };
