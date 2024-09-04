@@ -68,8 +68,6 @@ export const CardPopover = ({ open, fileInfo }: CardPopoverProps) => {
             <Text as="span">
               Filesize: {bytesToKilobytes(fileInfo.file?.fileSize || 0)} KB
             </Text>
-            {/* Info about author is not coming from drupal */}
-            <Text as="span">Created by: admin</Text>
             <Text as="span">File name: {fileInfo.name}</Text>
           </Flex>
           {!!fileInfo.categories?.length && (

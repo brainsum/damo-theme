@@ -5,9 +5,9 @@ import {
   BASE_URL,
   handleFetchError,
   Keyword,
+  mapKeyword,
 } from '@shared/utils';
 import Jsona from 'jsona';
-import { mapKeyword } from '@shared/utils/typeMappers';
 
 export const getKeywords = async () => {
   const resourceType = 'taxonomy_term--keyword';

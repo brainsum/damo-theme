@@ -4,6 +4,6 @@
   "description": "Shared resources for react widgets",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "echo 'No build required for shared library'"
   }
 }

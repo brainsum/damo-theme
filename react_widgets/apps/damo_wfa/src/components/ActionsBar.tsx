@@ -1,4 +1,5 @@
 import { Button, Flex, Heading } from '@chakra-ui/react';
+import { ModifyImgsAction } from '@shared/utils';
 
 interface ActionsBarProps {
   selectAllFn: () => void;
@@ -6,6 +7,7 @@ interface ActionsBarProps {
   isShowSelectedOnly: boolean;
   areAllSelected: boolean;
   disabledActionBtns: boolean;
+  modifyImgsFn: (action: ModifyImgsAction) => void;
 }
 
 export const ActionsBar = ({
@@ -14,6 +16,7 @@ export const ActionsBar = ({
   isShowSelectedOnly,
   areAllSelected,
   disabledActionBtns,
+  modifyImgsFn,
 }: ActionsBarProps) => {
   return (
     <Flex h={24} justifyContent="space-evenly" alignItems="center">
@@ -31,6 +34,7 @@ export const ActionsBar = ({
           borderRadius="full"
           padding="5px 34px"
           isDisabled={disabledActionBtns}
+          onClick={() => modifyImgsFn('approve')}
           _hover={{ color: 'damo.graphiteGray', bg: 'gray.100' }}
         >
           Approve selected items
@@ -44,6 +48,7 @@ export const ActionsBar = ({
           lineHeight="30px"
           borderRadius="full"
           isDisabled={disabledActionBtns}
+          onClick={() => modifyImgsFn('decline')}
         >
           Decline
         </Button>

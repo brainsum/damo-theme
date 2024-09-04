@@ -5,9 +5,8 @@ import { useMemo } from 'react';
 import { FileCard } from './components/FileCard';
 import { Form } from './components/Form';
 import { Footer } from './components/Footer';
-import { LoaderModal } from './components/LoaderModal';
 import { fileValidator } from '@shared/utils';
-import { AlertMsg } from './components/AlertMsg';
+import { AlertMsg, LoaderModal } from '@shared/components';
 
 function App() {
   const {
@@ -107,7 +106,12 @@ function App() {
         userApprovalRequired={userApprovalRequired}
       />
 
-      <LoaderModal willOpen={isUploading} progress={overAllProgress} />
+      <LoaderModal
+        willOpen={isUploading}
+        showProgress
+        progressValue={overAllProgress}
+        label="Uploading files..."
+      />
     </Box>
   );
 }

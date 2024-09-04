@@ -4,8 +4,8 @@ import {
   BASE_URL,
   Category,
   handleFetchError,
+  mapCategory,
 } from '@shared/utils';
-import { mapCategory } from '@shared/utils/typeMappers';
 import { DrupalJsonApiParams } from 'drupal-jsonapi-params';
 import Jsona from 'jsona';
 

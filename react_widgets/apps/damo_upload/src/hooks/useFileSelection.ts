@@ -143,9 +143,9 @@ export const useFileSelection = () => {
           ? TOASTS.SENT_APPROVAL_SUCCESS
           : TOASTS.UPLOAD_SUCCESS
       );
-      // setTimeout(() => {
-      //   window.location.assign('/');
-      // }, 3000);
+      setTimeout(() => {
+        window.location.assign('/');
+      }, 3000);
     } else {
       const errorMessages = response.errors?.map(
         (e) => `File: ${e.fileName} - ${e.error?.errorMsg}`

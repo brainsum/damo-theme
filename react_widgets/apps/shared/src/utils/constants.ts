@@ -21,6 +21,10 @@ export enum ToastType {
   KEYWORD_SUCCESS = 'KEYWORD_SUCCESS',
   GET_ERROR = 'GET_ERROR',
   FILE_REJECTED = 'FILE_REJECTED',
+  PUBLISH_SUCCESS = 'PUBLISH_SUCCESS',
+  PUBLISH_ERROR = 'PUBLISH_ERROR',
+  DECLINE_SUCCESS = 'DECLINE_SUCCESS',
+  DECLINE_ERROR = 'DECLINE_ERROR',
 }
 
 export const TOASTS: Readonly<Record<ToastType, UseToastOptions>> =
@@ -60,6 +64,26 @@ export const TOASTS: Readonly<Record<ToastType, UseToastOptions>> =
     [ToastType.FILE_REJECTED]: {
       title: 'Files rejected',
       description: `File type must be: ${ACCEPTED_FILE_TYPES.join(', ')}`,
+      status: 'error',
+    },
+    [ToastType.PUBLISH_SUCCESS]: {
+      title: 'Approval success',
+      description: 'All selected files have been approved successfully',
+      status: 'success',
+    },
+    [ToastType.PUBLISH_ERROR]: {
+      title: 'Approval error',
+      description: 'An error occurred while approving files',
+      status: 'error',
+    },
+    [ToastType.DECLINE_SUCCESS]: {
+      title: 'Decline success',
+      description: 'All selected files have been declined successfully',
+      status: 'success',
+    },
+    [ToastType.DECLINE_ERROR]: {
+      title: 'Decline error',
+      description: 'An error occurred while declining files',
       status: 'error',
     },
   });

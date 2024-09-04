@@ -3,10 +3,10 @@ import {
   Attributes,
   BASE_URL,
   handleFetchError,
+  mapKeyword,
 } from '@shared/utils';
-import { getCsrfToken } from './getCsrfToken';
 import Jsona from 'jsona';
-import { mapKeyword } from '@shared/utils/typeMappers';
+import { getCsrfToken } from '@shared/services';
 
 export const postKeyword = async (keyword: string) => {
   const csrfToken = await getCsrfToken();
