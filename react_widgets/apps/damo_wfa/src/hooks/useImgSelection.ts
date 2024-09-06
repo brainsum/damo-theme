@@ -72,6 +72,7 @@ export const useImgSelection = () => {
         })
       );
       setSelectedImgs([]);
+      setShowSelectedOnly(false);
 
       setIsUpdating(false);
     },
@@ -90,7 +91,7 @@ export const useImgSelection = () => {
     };
 
     fetchImages();
-  }, []);
+  }, [toast]);
 
   const displayedImages = useMemo(() => {
     return showSelectedOnly ? selectedImgs : images;

@@ -12,7 +12,7 @@ export const deleteImgs = async (files: MediaImage[]) => {
     throw new Error('No CSRF token found');
   }
 
-  let deleteResults = [];
+  const deleteResults = [];
 
   for (const file of files) {
     try {

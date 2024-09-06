@@ -12,7 +12,7 @@ export const updateImgs = async (files: MediaImage[]) => {
     throw new Error('No CSRF token found');
   }
 
-  let updateResults = [];
+  const updateResults = [];
 
   for (const file of files) {
     const updatedMediaEntity = {

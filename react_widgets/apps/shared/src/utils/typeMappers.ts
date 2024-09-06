@@ -30,7 +30,6 @@ export const mapFile = (data: TJsonaModel) => {
     fileSize: data.filesize,
     url: data.image_style_uri?.medium || null,
     alt: data.resourceIdObjMeta?.alt || null,
-    editUrl: `/media/${data.resourceIdObjMeta?.drupal_internal__target_id}/edit?destination=/admin/assets/all-unpublished`,
   };
   return file;
 };
@@ -48,6 +47,7 @@ export const mapMediaImage = (data: TJsonaModel) => {
       ? data.field_keywords.map(mapKeyword)
       : null,
     file: mapFile(data.field_image),
+    editUrl: `/media/${data.drupal_internal__mid}/edit`,
   };
   return mediaImg;
 };
