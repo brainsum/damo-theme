@@ -46,7 +46,6 @@ export interface MediaFile {
   fileSize: number;
   url: string | null;
   alt: string | null;
-  editUrl: string;
 }
 
 export interface MediaImage {
@@ -54,10 +53,10 @@ export interface MediaImage {
   type: string;
   status: boolean;
   name: string;
-  //auhtor: not returne from drupal yet
   categories: Category[] | null;
   keywords: Keyword[] | null;
   file: MediaFile;
+  editUrl: string;
 }
 
 export type ModifyImgsAction = 'approve' | 'decline';

@@ -6,7 +6,10 @@
   "scripts": {
     "build-all": "npm run build --workspaces",
     "build:watch:damo_upload": "npm run build-watch --workspace=apps/damo_upload",
-    "build:watch:damo_wfa": "npm run build-watch --workspace=apps/damo_wfa"
+    "build:watch:damo_wfa": "npm run build-watch --workspace=apps/damo_wfa",
+    "lint-all": "eslint 'apps/**/*.{ts,tsx}' --report-unused-disable-directives --max-warnings 0",
+    "format:check-all": "prettier --check 'apps/**/*.{js,ts,tsx,md,json}'",
+    "format:fix-all": "prettier --write 'apps/**/*.{js,ts,tsx,md,json}'"
   },
   "workspaces": [
     "apps/*"

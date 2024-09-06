@@ -79,7 +79,7 @@ export const CardPopover = ({ open, fileInfo }: CardPopoverProps) => {
                     <Text as="span" textDecor="underline">
                       {cat.name}
                     </Text>
-                    {index < fileInfo.categories?.length! - 1 && ', '}
+                    {index < fileInfo.categories!.length - 1 && ', '}
                   </Fragment>
                 ))}
               </Text>
@@ -107,7 +107,7 @@ export const CardPopover = ({ open, fileInfo }: CardPopoverProps) => {
             fontWeight="normal"
             onClick={(e) => {
               e.stopPropagation();
-              window.location.assign(fileInfo.file.editUrl);
+              window.location.assign(fileInfo.editUrl);
             }}
           >
             Edit asset

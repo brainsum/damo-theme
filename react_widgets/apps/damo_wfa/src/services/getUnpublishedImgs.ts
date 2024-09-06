@@ -17,6 +17,7 @@ export const getUnpublishedImgs = async () => {
     .addFields(resourceType, [
       'name',
       'status',
+      'drupal_internal__mid',
       'field_category',
       'field_keywords',
       'field_image',
