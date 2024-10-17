@@ -7,6 +7,8 @@ import { Form } from './components/Form';
 import { Footer } from './components/Footer';
 import { fileValidator } from '@shared/utils';
 import { AlertMsg, LoaderModal } from '@shared/components';
+import FileAndDirectoryUploader from './components/FileAndDirectoryPicker';
+import CustomFileUploader from './components/CustomFilePicker';
 
 function App() {
   const {
@@ -112,6 +114,11 @@ function App() {
         progressValue={overAllProgress}
         label="Uploading files..."
       />
+
+
+
+      {/* <FileAndDirectoryUploader /> */}
+      <CustomFileUploader />
     </Box>
   );
 }
