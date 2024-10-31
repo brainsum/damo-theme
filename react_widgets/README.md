@@ -1,6 +1,6 @@
 # React Widgets Monorepo
 
-This is a monorepo containing multiple React widgets and a shared library. The project is managed using [npm workspaces](https://docs.npmjs.com/cli/v7/using-npm/workspaces) for easier dependency management and build processes across multiple packages.
+This is a monorepo containing multiple React widgets and a shared library. The project is managed using [yarn workspaces](https://classic.yarnpkg.com/lang/en/docs/workspaces/) for easier dependency management and build processes across multiple packages.
 
 ## Workspace Structure
 
@@ -13,7 +13,7 @@ This is a monorepo containing multiple React widgets and a shared library. The p
 To set up the workspace and install dependencies, run the following command from the root location:
 
 ```bash
-npm install
+yarn install
 ```
 
 ## Development
@@ -24,7 +24,7 @@ a change is made. For this, a watcher is configured to build files accordingly. 
 Ex:
 
 ```bash
-npm run build:watch:damo_upload
+yarn build:watch:damo_upload
 ```
 
 ## Building the projects
@@ -32,7 +32,7 @@ npm run build:watch:damo_upload
 To build all the workspaces at once, please run:
 
 ```bash
-npm run build-all
+yarn build-all
 ```
 
 ## Linting
@@ -40,7 +40,7 @@ npm run build-all
 To run ESLint on all workspaces, please run:
 
 ```bash
-npm run lint-all
+yarn lint-all
 ```
 
 ## Formatting
@@ -48,13 +48,13 @@ npm run lint-all
 To check if the code is properly formatted according to `prettier` across all workspaces:
 
 ```bash
-npm run format:check-all
+yarn format:check-all
 ```
 
 To automatically fix formatting issues for all workspaces:
 
 ```bash
-npm run format:fix-all
+yarn format:fix-all
 ```
 
 ## Vite configuration
@@ -67,21 +67,25 @@ The project uses Chakra UI as a component library. Chakra UI is installed global
 
 ## Adding new widgets
 
-1. Create a new folder under `apps/` with the widget's name.
-2. Create the React application using [Vite](https://vitejs.dev/) and modify the `vite.config.ts` as necessary.
-Please bear in mind to use Typescript to help maintain the structure of the project.
-3. Create the new `build-watch` command in the root `package.json` file:
+To create a new widget using the automated script, run: 
+
+```bash
+yarn create-widget {your-new-react-widget-name}
+```
+
+This will setup a new widget with the correct configurations and dependencies. Make sure to adjust the following:
+
+1. Add the `build-watch` command for the new widget to the root `package.json` file:
 
 ```json
 "scripts": {
-    "build:watch:{your-new-widget-name}": "npm run build-watch --workspace=apps/{your-new-widget-name}",
+    "build:watch:{your-new-widget-name}": "yarn workspace apps/{your-new-widget-name} run build-watch",
 },
 ```
+2. Install widget-specific dependencies: If the widget needs additional dependencies, install them in the root `package.json` if they are
+shared. Otherwise, install them within the widget's `package.json`.
 
-4. Install dependencies for the new widget if necessary. If they are widget specific you can do it within the new react widget itself. 
-Otherwise you should install it on the root so it's available to share across all widgets.
-
-5. Make sure to modify the `damo_theme.libraries.yml` file to add the paths to the built files for the new widget. 
+3. Make sure to modify the `damo_theme.libraries.yml` file to add the paths to the built files for the new widget. 
 
 Ex:
 
@@ -100,7 +104,7 @@ and attach the library on the corresponding `twig` template
 {{ attach_library('damo_theme/{your-new-widget-name}') }}
 ```
 
-6. Remember to create an entry point for the react application to be embedded within the Drupal site.
+4. Remember to create an entry point for the react application to be embedded within the Drupal site.
 
 Ex:
 

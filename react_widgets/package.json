@@ -2,22 +2,38 @@
   "name": "react_widgets",
   "version": "1.0.0",
   "description": "Worskpace for react based widgets",
+  "private": true,
   "main": "index.js",
   "scripts": {
-    "build-all": "npm run build --workspaces",
-    "build:watch:damo_upload": "npm run build-watch --workspace=apps/damo_upload",
-    "build:watch:damo_wfa": "npm run build-watch --workspace=apps/damo_wfa",
+    "build-all": "yarn workspaces run build",
+    "build:watch:damo_upload": "yarn workspace damo_upload run build-watch",
+    "build:watch:damo_wfa": "yarn workspace damo_wfa run build-watch",
+    "build:watch:damo_img_vid_importer": "yarn workspace damo_img_vid_importer run build-watch",
     "lint-all": "eslint 'apps/**/*.{ts,tsx}' --report-unused-disable-directives --max-warnings 0",
     "format:check-all": "prettier --check 'apps/**/*.{js,ts,tsx,md,json}'",
-    "format:fix-all": "prettier --write 'apps/**/*.{js,ts,tsx,md,json}'"
+    "format:fix-all": "prettier --write 'apps/**/*.{js,ts,tsx,md,json}'",
+    "create-widget": "bash scripts/create-widget.sh"
   },
   "workspaces": [
     "apps/*"
   ],
+  "resolutions": {
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "@vitejs/plugin-react": "4.3.1",
+    "vite": "5.3.4",
+    "@chakra-ui/react": "2.8.2",
+    "@emotion/react": "11.13.3",
+    "@emotion/styled": "11.13.0",
+    "framer-motion": "11.3.31",
+    "react-icons": "5.3.0"
+  },
   "dependencies": {
     "@chakra-ui/react": "^2.8.2",
     "@emotion/react": "^11.13.3",
     "@emotion/styled": "^11.13.0",
+    "@fontsource-variable/montserrat": "^5.0.19",
+    "drupal-jsonapi-params": "^2.3.1",
     "framer-motion": "^11.3.31",
     "jsona": "^1.12.1",
     "react": "^18.3.1",
@@ -26,6 +42,7 @@
     "uuid": "^10.0.0"
   },
   "devDependencies": {
+    "@eslint/js": "^9.9.0",
     "@types/node": "^22.5.1",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
@@ -36,9 +53,11 @@
     "eslint": "^8.57.0",
     "eslint-plugin-react-hooks": "^4.6.2",
     "eslint-plugin-react-refresh": "^0.4.7",
+    "globals": "^15.9.0",
     "prettier": "^3.3.3",
     "sass": "^1.77.8",
     "typescript": "^5.2.2",
+    "typescript-eslint": "^8.0.1",
     "vite": "^5.3.4"
   }
 }

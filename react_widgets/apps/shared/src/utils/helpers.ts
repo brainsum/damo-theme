@@ -1,4 +1,4 @@
-import { ACCEPTED_FILE_TYPES } from './constants';
+import { ACCEPTED_IMG_TYPES } from './constants';
 import { FileWithPreview } from './types';
 
 export const getFileTypeLabel = (mimeType: string): string => {
@@ -64,9 +64,9 @@ export async function fetchBlob(url: string): Promise<Blob> {
 
 export function stripFileExtension(filename: string) {
   // Create a regular expression from the ACCEPTED_FILE_TYPES array
-  const extensions = ACCEPTED_FILE_TYPES.map((ext) =>
-    ext.replace('.', '')
-  ).join('|');
+  const extensions = ACCEPTED_IMG_TYPES.map((ext) => ext.replace('.', '')).join(
+    '|'
+  );
   const fileExtensions = new RegExp(`\\.(${extensions})$`, 'i');
 
   // Replace the matched extension with an empty string
@@ -75,15 +75,15 @@ export function stripFileExtension(filename: string) {
 
 export function fileValidator(file: File) {
   // custom validator for dropzone to exclude files whose extensions are not in the accepted list
-  const extensions = ACCEPTED_FILE_TYPES.map((ext) =>
-    ext.replace('.', '')
-  ).join('|');
+  const extensions = ACCEPTED_IMG_TYPES.map((ext) => ext.replace('.', '')).join(
+    '|'
+  );
   const fileExtensions = new RegExp(`\\.(${extensions})$`, 'i');
 
   if (!fileExtensions.test(file.name)) {
     return {
       code: 'file-invalid-type',
-      message: `Invalid file type. Only ${ACCEPTED_FILE_TYPES.join(', ')} files are allowed.`,
+      message: `Invalid file type. Only ${ACCEPTED_IMG_TYPES.join(', ')} files are allowed.`,
     };
   }
   return null;

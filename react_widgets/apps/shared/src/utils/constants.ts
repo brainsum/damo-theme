@@ -2,7 +2,8 @@ import { UseToastOptions } from '@chakra-ui/react';
 
 export const BASE_URL = window.location.origin;
 
-export const ACCEPTED_FILE_TYPES = ['.jpg', '.jpeg', '.png', '.gif', '.webp'];
+export const ACCEPTED_IMG_TYPES = ['.jpg', '.jpeg', '.png', '.gif', '.webp'];
+export const ACCEPTED_VIDEO_TYPES = ['.mp4', '.webm', '.ogg'];
 
 export const DEFAULT_TOAST_CONFIG = {
   defaultOptions: {
@@ -63,7 +64,7 @@ export const TOASTS: Readonly<Record<ToastType, UseToastOptions>> =
     },
     [ToastType.FILE_REJECTED]: {
       title: 'Files rejected',
-      description: `File type must be: ${ACCEPTED_FILE_TYPES.join(', ')}`,
+      description: `File type must be: ${ACCEPTED_IMG_TYPES.join(', ')}`,
       status: 'error',
     },
     [ToastType.PUBLISH_SUCCESS]: {

@@ -30,6 +30,7 @@ export const theme = extendTheme({
   fonts: {
     heading: `Montserrat, ${defaultTheme.fonts.heading}`,
     body: `Montserrat, ${defaultTheme.fonts.body}`,
+    FileTree: `Roboto, sans-serif`,
   },
   colors: {
     damo: {
