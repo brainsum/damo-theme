@@ -1,32 +1,26 @@
 import { ChangeEvent, useState, DragEvent } from 'react';
 import { isValidFileType, processEntry, processFile } from '../helpers';
 import { ACCEPTED_IMG_TYPES, ACCEPTED_VIDEO_TYPES } from '@shared/utils';
-
-export type FileEntry = {
-  path: string;
-  name: string;
-  type: 'file';
-  mimeType: string;
-  previewURL: string;
-};
-
-export type DirectoryEntry = {
-  path: string;
-  name: string;
-  type: 'directory';
-  children: FileTreeEntry[];
-};
-
-export type FileTreeEntry = FileEntry | DirectoryEntry;
+import { v4 as uuidv4 } from 'uuid';
+import { DirectoryEntry, FileEntry, FileTreeEntry } from 'src/types';
 
 export const useFileSelection = () => {
   const [fileTree, setFileTree] = useState<FileTreeEntry[]>([]);
   const [selectedItem, setSelectedItem] = useState<FileTreeEntry | null>(null);
-  const [thumbnailsToShow, setThumbnailsToShow] = useState<FileEntry[]>([]);
+  const [filesToUpload, setFilesToUpload] = useState<FileEntry[]>([]);
+  const [uploadOption, setUploadOption] = useState<string>('');
 
   const ACCEPTED_FILES = [...ACCEPTED_IMG_TYPES, ...ACCEPTED_VIDEO_TYPES];
-  console.log('🚀 ~ useFileSelection ~ thumbnailsToShow:', thumbnailsToShow);
   console.log('🚀 ~ useFileSelection ~ fileTree:', fileTree);
+  console.log('🚀 ~ useFileSelection ~ filesToUpload:', filesToUpload);
+  console.log('🚀 ~ useFileSelection ~ uploadOption:', uploadOption);
+
+  const handleSelectChange = (event: ChangeEvent<HTMLSelectElement>) => {
+    console.log('🚀 ~ handleSelectChange ~ event:', event);
+    setUploadOption(event.target.value);
+  };
+
+  const isUploadBtnDisabled = filesToUpload.length === 0 || uploadOption === '';
 
   const handleDrop = async (event: DragEvent<HTMLDivElement>) => {
     event.preventDefault();
@@ -100,11 +94,13 @@ export const useFileSelection = () => {
         // If we're at the last part, it's a file
         if (j === relativePath.length - 1) {
           currentLevel.push({
+            id: uuidv4(),
             path: file.webkitRelativePath,
             name: file.name,
             type: 'file',
             mimeType: file.type,
             previewURL: URL.createObjectURL(file),
+            toUpload: true,
           });
         } else {
           // Otherwise it's a directory
@@ -117,6 +113,7 @@ export const useFileSelection = () => {
               name: part,
               type: 'directory',
               children: [],
+              toUpload: true,
             };
             currentLevel.push(existingFolder);
           }
@@ -131,6 +128,19 @@ export const useFileSelection = () => {
   // Integrate new entries directly into the existing file tree
   const integrateEntries = (newEntries: FileTreeEntry[]) => {
     const updatedTree: FileTreeEntry[] = [...fileTree];
+    const newFilesToUpload: FileEntry[] = [...filesToUpload];
+
+    const collectFiles = (entries: FileTreeEntry[]) => {
+      entries.forEach((entry) => {
+        if (entry.type === 'file') {
+          if (!newFilesToUpload.some((file) => file.path === entry.path)) {
+            newFilesToUpload.push(entry as FileEntry);
+          }
+        } else if (entry.type === 'directory') {
+          collectFiles(entry.children);
+        }
+      });
+    };
 
     newEntries.forEach((newEntry) => {
       const index = updatedTree.findIndex(
@@ -143,16 +153,135 @@ export const useFileSelection = () => {
         // Add new entry
         updatedTree.push(newEntry);
       }
+
+      // Collect files to add to filesToUpload
+      collectFiles([newEntry]);
     });
 
-    setFileTree(updatedTree);
+    setFileTree(sortFileTree(updatedTree));
+    setFilesToUpload(newFilesToUpload);
   };
 
-  const getThumbnails = (tree: FileTreeEntry[]) => {
-    console.log('🚀 ~ getThumbnails ~ tree:', tree);
-    setThumbnailsToShow((prevFiles) => {
-      return tree.filter((node) => node.type === 'file');
+  // Function to recursively sort the file tree alphabetically
+  const sortFileTree = (tree: FileTreeEntry[]): FileTreeEntry[] => {
+    return tree
+      .sort((a, b) => a.name.localeCompare(b.name))
+      .map((entry) => {
+        if (entry.type === 'directory') {
+          entry.children = sortFileTree(entry.children);
+        }
+        return entry;
+      });
+  };
+
+  const getThumbnails = () => {
+    if (!selectedItem || selectedItem.type !== 'directory') return [];
+
+    return selectedItem.children.filter((child) => child.type === 'file'); // Only show files
+    // .map((file) => ({
+    //   ...file,
+    //   toUpload: filesToUpload.some(
+    //     (uploadFile) => uploadFile.path === file.path
+    //   ),
+    // }));
+  };
+
+  const toggleFileUpload = (file: FileEntry) => {
+    setFileTree((prevTree) => {
+      const updateTree = (tree: FileTreeEntry[]): FileTreeEntry[] => {
+        return tree.map((entry) => {
+          if (entry.type === 'file' && entry.path === file.path) {
+            entry.toUpload = !entry.toUpload;
+          } else if (entry.type === 'directory') {
+            entry.children = updateTree(entry.children);
+          }
+          return entry;
+        });
+      };
+      return updateTree(prevTree);
     });
+
+    setFilesToUpload((prevFiles) => {
+      const fileIndex = prevFiles.findIndex((f) => f.path === file.path);
+      if (fileIndex !== -1) {
+        // Remove file if it's already in the upload list
+        return prevFiles.filter((f) => f.path !== file.path);
+      } else {
+        // Add file if it's not in the upload list
+        return [...prevFiles, { ...file, toUpload: true }];
+      }
+    });
+  };
+
+  const toggleDirectoryUpload = (directory: DirectoryEntry) => {
+    setFileTree((prevTree) => {
+      const updateTree = (tree: FileTreeEntry[]): FileTreeEntry[] => {
+        return tree.map((entry) => {
+          if (entry.type === 'directory' && entry.path === directory.path) {
+            const newToUpload = !entry.toUpload;
+            entry.toUpload = newToUpload;
+            console.log('🚀 ~ returntree.map ~ newToUpload:', newToUpload);
+
+            const toggleChildren = (
+              children: FileTreeEntry[],
+              toUpload: boolean
+            ): FileTreeEntry[] => {
+              return children.map((child) => {
+                if (child.type === 'file') {
+                  child.toUpload = toUpload;
+                } else if (child.type === 'directory') {
+                  child.toUpload = toUpload;
+                  child.children = toggleChildren(child.children, toUpload);
+                }
+                return child;
+              });
+            };
+
+            entry.children = toggleChildren(entry.children, newToUpload);
+          } else if (entry.type === 'directory') {
+            entry.children = updateTree(entry.children);
+          }
+          return entry;
+        });
+      };
+      return updateTree(prevTree);
+    });
+
+    const files = collectFilesFromDirectory(directory);
+
+    setFilesToUpload((prevFiles) => {
+      const isDirectorySelected = files.every((file) =>
+        prevFiles.some((f) => f.path === file.path)
+      );
+
+      if (isDirectorySelected) {
+        // Remove all files from the directory from the upload list
+        return prevFiles.filter(
+          (f) => !files.some((file) => file.path === f.path)
+        );
+      } else {
+        // Add all files from the directory to the upload list
+        return [
+          ...prevFiles,
+          ...files
+            .filter((file) => !prevFiles.some((f) => f.path === file.path))
+            .map((file) => ({ ...file, toUpload: true })),
+        ];
+      }
+    });
+  };
+
+  const collectFilesFromDirectory = (
+    directory: DirectoryEntry
+  ): FileEntry[] => {
+    return directory.children.reduce((acc, entry) => {
+      if (entry.type === 'file') {
+        acc.push(entry);
+      } else if (entry.type === 'directory') {
+        acc.push(...collectFilesFromDirectory(entry));
+      }
+      return acc;
+    }, [] as FileEntry[]);
   };
 
   return {
@@ -160,7 +289,13 @@ export const useFileSelection = () => {
     handleFileInputChange,
     handleDirectoryInputChange,
     getThumbnails,
+    toggleFileUpload,
+    toggleDirectoryUpload,
+    setSelectedItem,
+    handleSelectChange,
+    uploadOption,
+    selectedItem,
     fileTree,
-    thumbnailsToShow,
+    isUploadBtnDisabled,
   };
 };

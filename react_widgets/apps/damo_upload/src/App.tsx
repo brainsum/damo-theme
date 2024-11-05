@@ -113,11 +113,6 @@ function App() {
         progressValue={overAllProgress}
         label="Uploading files..."
       />
-
-
-
-      {/* <FileAndDirectoryUploader /> */}
-      {/* <CustomDropzone /> */}
     </Box>
   );
 }

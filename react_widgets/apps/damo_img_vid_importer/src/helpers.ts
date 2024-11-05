@@ -1,14 +1,17 @@
-import { FileEntry, FileTreeEntry } from './hooks/useFileSelection';
+import { v4 as uuidv4 } from 'uuid';
+import { FileEntry, FileTreeEntry } from './types';
 
 // Process file from input or drag-and-drop
 export const processFile = (file: File, path: string): Promise<FileEntry> => {
   return new Promise((resolve) => {
     resolve({
+      id: uuidv4(),
       path: path + file.name,
       name: file.name,
       type: 'file',
       mimeType: file.type,
       previewURL: URL.createObjectURL(file),
+      toUpload: true,
     });
   });
 };
@@ -46,6 +49,7 @@ export const processEntry = (
             name: entry.name,
             type: 'directory',
             children: validNestedFiles,
+            toUpload: true,
           });
         });
       });
@@ -69,14 +73,8 @@ export const readAllEntries = (
 };
 
 export const isValidFileType = (
-  //file: File,
   fileType: string,
   acceptedTypes: string[]
 ): boolean => {
-  console.log('🚀 ~ fileType:', fileType);
-  console.log(
-    acceptedTypes.some((type) => fileType.includes(type)),
-    'sssssssssss'
-  );
   return acceptedTypes.some((type) => fileType.includes(type));
 };

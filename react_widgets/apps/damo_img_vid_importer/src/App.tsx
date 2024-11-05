@@ -1,113 +1,19 @@
 import {
-  Box,
   Button,
   Divider,
   Flex,
   Heading,
   HStack,
-  Icon,
-  Image,
   Select,
   SimpleGrid,
   Text,
-  useTheme,
   useToken,
 } from '@chakra-ui/react';
-import { Dispatch, SetStateAction, useRef, useState } from 'react';
-import { FileTreeEntry, useFileSelection } from './hooks/useFileSelection';
-import { FaFolder } from 'react-icons/fa';
-import { IoClose } from 'react-icons/io5';
-
-const FileTree = ({
-  treeData,
-  getThumbnails,
-}: {
-  treeData: FileTreeEntry[];
-  getThumbnails: (tree: FileTreeEntry[]) => void;
-}) => {
-  const [selectedItem, setSelectedItem] = useState<FileTreeEntry | null>(null);
-  const theme = useTheme();
-
-  const clickHandlerFn = (node: FileTreeEntry) => {
-    console.log('🚀 ~ clickHandlerFn ~ node:', node);
-    setSelectedItem(node);
-    if (node.type === 'directory') {
-      getThumbnails(node.children);
-    }
-  };
-
-  return (
-    <Box w="80%" fontFamily={theme.fonts.FileTree}>
-      <ul style={{ listStyleType: 'none', margin: 0, padding: 0 }}>
-        {treeData
-          .sort((a, b) => {
-            if (a.type === b.type) {
-              return a.name.localeCompare(b.name);
-            }
-            return a.type === 'directory' ? -1 : 1;
-          })
-          .map((node) => (
-            <FileTreeNode
-              key={node.path}
-              node={node}
-              selectedNode={selectedItem}
-              clickHandler={clickHandlerFn}
-            />
-          ))}
-      </ul>
-    </Box>
-  );
-};
-
-const FileTreeNode = ({
-  node,
-  selectedNode,
-  clickHandler,
-}: {
-  node: FileTreeEntry;
-  selectedNode: FileTreeEntry | null;
-  clickHandler: (node: FileTreeEntry) => void;
-}) => {
-  const borderColor = useToken('colors', 'damo.paleStone');
-
-  if (node.type !== 'directory') return null;
-
-  const isSelected = selectedNode?.path === node.path;
-
-  return (
-    <li>
-      <Box
-        display="flex"
-        alignItems="center"
-        p="2px 8px"
-        cursor="pointer"
-        borderRadius="md"
-        backgroundColor={isSelected ? 'damo.snowWhite' : 'transparent'}
-        border="1px solid"
-        borderColor={isSelected ? borderColor : 'transparent'}
-        _hover={{ bg: 'damo.snowWhite' }}
-        width="100%"
-        onClick={() => clickHandler(node)}
-        boxShadow={isSelected ? '0px 4px 10px 0px rgba(0, 0, 0, 0.13)' : 'none'}
-      >
-        <Icon as={FaFolder} mr={2} color="damo.coolCyan" boxSize={4} />
-        <Text fontWeight={isSelected ? 'bold' : 'normal'}>{node.name}</Text>
-      </Box>
-      {node.children && (
-        <ul style={{ listStyleType: 'none', paddingLeft: '0.5rem' }}>
-          {node.children.map((child) => (
-            <FileTreeNode
-              key={child.path}
-              node={child}
-              selectedNode={selectedNode}
-              clickHandler={clickHandler}
-            />
-          ))}
-        </ul>
-      )}
-    </li>
-  );
-};
+import { useRef } from 'react';
+import { useFileSelection } from './hooks/useFileSelection';
+import { FileTree } from './components/FileTree';
+import { Thumbnail } from './components/Thumbnail';
+import { LoaderModal } from '@shared/components';
 
 function App() {
   const {
@@ -115,8 +21,14 @@ function App() {
     handleFileInputChange,
     handleDirectoryInputChange,
     getThumbnails,
-    thumbnailsToShow,
+    toggleFileUpload,
+    toggleDirectoryUpload,
+    setSelectedItem,
+    handleSelectChange,
+    uploadOption,
+    selectedItem,
     fileTree,
+    isUploadBtnDisabled,
   } = useFileSelection();
   const [dropzoneBorderColor, borderColor] = useToken('colors', [
     'damo.paleStone',
@@ -142,6 +54,8 @@ function App() {
           justifyContent="center"
           alignItems="center"
           w="full"
+          pr={3}
+          borderRight={`1px solid ${borderColor}`}
         >
           <Heading as="h2" size="md" margin="16px 0 0 0">
             Images and videos to be imported
@@ -216,7 +130,12 @@ function App() {
                   Drag 'n' drop some files or directories here
                 </Text>
               ) : (
-                <FileTree treeData={fileTree} getThumbnails={getThumbnails} />
+                <FileTree
+                  treeData={fileTree}
+                  selectItemHandler={setSelectedItem}
+                  toggleUploadHandler={toggleDirectoryUpload}
+                  selectedItem={selectedItem}
+                />
               )}
             </Flex>
           </Flex>
@@ -234,10 +153,15 @@ function App() {
               Apply folder names as
             </Text>
 
-            <Select placeholder="Select an option" w="fit-content">
-              <option>categories / subcategories</option>
-              <option>categories (no subcategories)</option>
-              <option>keywords</option>
+            <Select
+              placeholder="Select an option"
+              w="fit-content"
+              onChange={handleSelectChange}
+              value={uploadOption}
+            >
+              <option value={1}>categories / subcategories</option>
+              <option value={2}>categories (no subcategories)</option>
+              <option value={3}>keywords</option>
             </Select>
 
             <HStack gap={2}>
@@ -251,6 +175,7 @@ function App() {
                 bgColor="damo.coolCyan"
                 borderRadius="lg"
                 _hover={{ bgColor: 'damo.coolCyanHover' }}
+                isDisabled={isUploadBtnDisabled}
               >
                 Start the import
               </Button>
@@ -277,49 +202,30 @@ function App() {
             spacing="10px"
             w="full"
             justifyContent="start"
+            maxH={600}
+            overflowY="auto"
           >
-            {thumbnailsToShow.map((thumb) => (
-              <Box h={200} maxW={300} position="relative">
-                <Image
-                  src={thumb.previewURL}
-                  w="full"
-                  h="full"
-                  objectFit="cover"
-                />
-
-                {/* Overlay */}
-                <Box
-                  position="absolute"
-                  top={0}
-                  left={0}
-                  w="full"
-                  h="full"
-                  bg="transparent"
-                  opacity={0}
-                  transition="all 0.4s ease"
-                  _hover={{ opacity: 1 }}
-                >
-                  <Box
-                    borderRadius="lg"
-                    h="36px"
-                    w="36px"
-                    display="flex"
-                    alignItems="center"
-                    justifyContent="center"
-                    position="absolute"
-                    top={0}
-                    right={0}
-                    margin="4px"
-                    bgColor="damo.softPearl"
-                    cursor="pointer"
-                  >
-                    <IoClose size={16} color="damo.graphiteGray" />
-                  </Box>
-                </Box>
-              </Box>
-            ))}
+            {getThumbnails().map(
+              (thumb) => (
+                console.log(thumb, 'sssssssssssssssss'),
+                (
+                  <Thumbnail
+                    key={thumb.id}
+                    thumbnail={thumb}
+                    clickHandler={toggleFileUpload}
+                  />
+                )
+              )
+            )}
           </SimpleGrid>
         </Flex>
+
+        {/* <LoaderModal
+          willOpen={isUploading}
+          showProgress
+          progressValue={overAllProgress}
+          label="Uploading files..."
+        /> */}
       </Flex>
     </>
   );
