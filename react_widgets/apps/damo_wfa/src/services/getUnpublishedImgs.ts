@@ -6,28 +6,48 @@ import {
   MediaImage,
   mapMediaImage,
 } from '@shared/utils';
-import { DrupalJsonApiParams } from 'drupal-jsonapi-params';
 import Jsona from 'jsona';
 
-export const getUnpublishedImgs = async () => {
-  const resourceType = 'media--image';
+/**
+ * Check if current user has permission to view all unpublished media
+ * This is determined by checking if they have admin-level permissions
+ */
+const canViewAllUnpublishedMedia = async (): Promise<boolean> => {
+  try {
+    // Try to access the admin view endpoint - if successful, user has admin permissions
+    const testResponse = await fetch(
+        `${BASE_URL}/jsonapi/media/image?filter[status]=0&page[limit]=1`,
+        { method: 'HEAD' }
+    );
+    return testResponse.ok;
+  } catch {
+    return false;
+  }
+};
 
-  const params = new DrupalJsonApiParams();
-  params
-    .addFields(resourceType, [
-      'name',
-      'status',
-      'drupal_internal__mid',
-      'field_category',
-      'field_keywords',
-      'field_image',
-    ])
-    .addInclude(['field_category', 'field_keywords', 'field_image'])
-    .addFilter('status', '0');
+export const getUnpublishedImgs = async () => {
+  const canViewAll = await canViewAllUnpublishedMedia();
+
+  let queryString = 'filter[status]=0&include=field_category,field_keywords,field_image&fields[media--image]=name,status,drupal_internal__mid,field_category,field_keywords,field_image';
+
+  // If user doesn't have admin permissions, filter by current user
+  if (!canViewAll) {
+    try {
+      const userResponse = await fetch(`${BASE_URL}/user/login_status?_format=json`);
+      if (userResponse.ok) {
+        const userData = await userResponse.json();
+        if (userData.uid) {
+          queryString += `&filter[uid]=${userData.uid}`;
+        }
+      }
+    } catch (err) {
+      console.warn('Could not get current user ID, showing all unpublished media');
+    }
+  }
 
   try {
     const response = await fetch(
-      `${BASE_URL}/jsonapi/media/image?${params.getQueryString()}`
+        `${BASE_URL}/jsonapi/media/image?${queryString}`
     );
 
     if (!response.ok) {
