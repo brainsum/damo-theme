@@ -40,43 +40,43 @@ export const useImgSelection = () => {
   }, [selectedImgs]);
 
   const modifyImgs = useCallback(
-    async (action: ModifyImgsAction) => {
-      setUpdateError(null);
-      setIsUpdating(true);
+      async (action: ModifyImgsAction) => {
+        setUpdateError(null);
+        setIsUpdating(true);
 
-      const response =
-        action === 'approve'
-          ? await updateImgs(selectedImgs)
-          : await deleteImgs(selectedImgs);
+        const response =
+            action === 'approve'
+                ? await updateImgs(selectedImgs)
+                : await deleteImgs(selectedImgs);
 
-      if (response.success) {
-        toast(
-          action === 'approve' ? TOASTS.PUBLISH_SUCCESS : TOASTS.DECLINE_SUCCESS
-        );
-      } else {
-        const errorMessages = response.errors?.map(
-          (e) => `File: ${e.fileName} - ${e.error?.errorMsg}`
-        ) || ['An error occurred while updating images'];
-        toast(
-          action === 'approve' ? TOASTS.PUBLISH_ERROR : TOASTS.DECLINE_ERROR
-        );
-        setUpdateError(errorMessages);
-      }
-      setImages((prevImgs) =>
-        prevImgs.filter((img) => {
-          const wasSelected = selectedImgs.some((i) => i.id === img.id);
-          const failedUpdate = response.errors?.some(
-            (e) => e.fileId === img.id
+        if (response.success) {
+          toast(
+              action === 'approve' ? TOASTS.PUBLISH_SUCCESS : TOASTS.DECLINE_SUCCESS
           );
-          return !wasSelected || failedUpdate;
-        })
-      );
-      setSelectedImgs([]);
-      setShowSelectedOnly(false);
+        } else {
+          const errorMessages = response.errors?.map(
+              (e) => `File: ${e.fileName} - ${e.error?.errorMsg}`
+          ) || ['An error occurred while updating images'];
+          toast(
+              action === 'approve' ? TOASTS.PUBLISH_ERROR : TOASTS.DECLINE_ERROR
+          );
+          setUpdateError(errorMessages);
+        }
+        setImages((prevImgs) =>
+            prevImgs.filter((img) => {
+              const wasSelected = selectedImgs.some((i) => i.id === img.id);
+              const failedUpdate = response.errors?.some(
+                  (e) => e.fileId === img.id
+              );
+              return !wasSelected || failedUpdate;
+            })
+        );
+        setSelectedImgs([]);
+        setShowSelectedOnly(false);
 
-      setIsUpdating(false);
-    },
-    [selectedImgs, toast]
+        setIsUpdating(false);
+      },
+      [selectedImgs, toast]
   );
 
   useEffect(() => {
