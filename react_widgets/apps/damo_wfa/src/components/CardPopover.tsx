@@ -86,6 +86,15 @@ export const CardPopover = ({ open, fileInfo }: CardPopoverProps) => {
             </Box>
           )}
 
+          {fileInfo.rejected && (
+            <Flex flexDir="column" color="red.600">
+              <Text as="b">Rejection reason:</Text>
+              <Text whiteSpace="pre-wrap">
+                {fileInfo.rejectionReason || 'No reason given.'}
+              </Text>
+            </Flex>
+          )}
+
           {!!fileInfo.keywords?.length && (
             <Flex flexDir="column">
               <Text as="span">Keywords:</Text>

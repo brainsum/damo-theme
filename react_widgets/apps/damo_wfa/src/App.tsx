@@ -8,6 +8,11 @@ import { AlertMsg, LoaderModal } from '@shared/components';
 function App() {
   const {
     images,
+    canReview,
+    tab,
+    changeTab,
+    pendingCount,
+    rejectedCount,
     selectedImgs,
     toggleSelectAllOrClear,
     toggleImgSelection,
@@ -23,6 +28,12 @@ function App() {
   return (
     <Box display="flex" flexDir="column">
       <ActionsBar
+        canReview={canReview}
+        tab={tab}
+        changeTabFn={changeTab}
+        pendingCount={pendingCount}
+        rejectedCount={rejectedCount}
+        selectedCount={selectedImgs.length}
         selectAllFn={toggleSelectAllOrClear}
         showSelectedOnlyFn={toggleShowSelectedOnly}
         isShowSelectedOnly={showSelectedOnly}
@@ -34,7 +45,9 @@ function App() {
       <Flex gap={2.5} mb="16px">
         {!images.length ? (
           <Text as="span" alignSelf="center" margin="auto">
-            No images pending approval
+            {tab === 'rejected'
+              ? 'No rejected images'
+              : 'No images pending approval'}
           </Text>
         ) : (
           <AnimatePresence>
@@ -58,6 +71,7 @@ function App() {
                 <ImgCard
                   img={img}
                   isSelected={selectedImgs.some((i) => i.id === img.id)}
+                  isSelectable={canReview}
                   onToggleSelect={() => toggleImgSelection(img)}
                 />
               </Box>

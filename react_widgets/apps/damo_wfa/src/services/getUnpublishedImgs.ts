@@ -21,6 +21,8 @@ export const getUnpublishedImgs = async () => {
       'field_category',
       'field_keywords',
       'field_image',
+      'rejected',
+      'rejection_reason',
     ])
     .addInclude(['field_category', 'field_keywords', 'field_image'])
     .addFilter('status', '0');

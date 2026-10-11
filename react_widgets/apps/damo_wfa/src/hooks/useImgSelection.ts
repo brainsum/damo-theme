@@ -3,26 +3,45 @@ import { MediaImage, ModifyImgsAction, TOASTS } from '@shared/utils';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { getUnpublishedImgs } from '../services/getUnpublishedImgs';
 import { updateImgs } from '../services/updateImgs';
-import { deleteImgs } from '../services/deleteImgs';
+
+export type ImgTab = 'pending' | 'rejected';
 
 export const useImgSelection = () => {
-  const [images, setImages] = useState<MediaImage[]>([]);
+  const [allImages, setAllImages] = useState<MediaImage[]>([]);
+  const [tab, setTab] = useState<ImgTab>('pending');
   const [selectedImgs, setSelectedImgs] = useState<MediaImage[]>([]);
   const [showSelectedOnly, setShowSelectedOnly] = useState(false);
   const [isUpdating, setIsUpdating] = useState(false);
   const [updateError, setUpdateError] = useState<string[] | null>(null);
   const toast = useToast();
 
+  // Uploaders get a read-only view of their own assets.
+  const canReview = window.drupalSettings?.damopenWfa?.canReview ?? true;
+
+  const tabImages = useMemo(
+    () => allImages.filter((img) => img.rejected === (tab === 'rejected')),
+    [allImages, tab]
+  );
+  const rejectedCount = allImages.filter((img) => img.rejected).length;
+  const pendingCount = allImages.length - rejectedCount;
+
   const disabledActionBtns = selectedImgs.length === 0;
-  const areAllSelected = selectedImgs.length === images.length;
+  const areAllSelected =
+    tabImages.length > 0 && selectedImgs.length === tabImages.length;
+
+  const changeTab = useCallback((newTab: ImgTab) => {
+    setTab(newTab);
+    setSelectedImgs([]);
+    setShowSelectedOnly(false);
+  }, []);
 
   const toggleSelectAllOrClear = useCallback(() => {
     if (areAllSelected) {
       setSelectedImgs([]); // Clear all
     } else {
-      setSelectedImgs(images); // Select all
+      setSelectedImgs(tabImages); // Select all
     }
-  }, [areAllSelected, images]);
+  }, [areAllSelected, tabImages]);
 
   const toggleImgSelection = useCallback((img: MediaImage) => {
     setSelectedImgs((prevSelected) => {
@@ -40,14 +59,18 @@ export const useImgSelection = () => {
   }, [selectedImgs]);
 
   const modifyImgs = useCallback(
-    async (action: ModifyImgsAction) => {
+    async (action: ModifyImgsAction, reason = '') => {
       setUpdateError(null);
       setIsUpdating(true);
 
+      const rejectionReason = reason.trim() || null;
       const response =
         action === 'approve'
-          ? await updateImgs(selectedImgs)
-          : await deleteImgs(selectedImgs);
+          ? await updateImgs(selectedImgs, { status: true })
+          : await updateImgs(selectedImgs, {
+              rejected: true,
+              rejection_reason: rejectionReason,
+            });
 
       if (response.success) {
         toast(
@@ -62,14 +85,18 @@ export const useImgSelection = () => {
         );
         setUpdateError(errorMessages);
       }
-      setImages((prevImgs) =>
-        prevImgs.filter((img) => {
-          const wasSelected = selectedImgs.some((i) => i.id === img.id);
-          const failedUpdate = response.errors?.some(
-            (e) => e.fileId === img.id
-          );
-          return !wasSelected || failedUpdate;
-        })
+
+      const isUpdated = (img: MediaImage) =>
+        selectedImgs.some((i) => i.id === img.id) &&
+        !response.errors?.some((e) => e.fileId === img.id);
+
+      // Approved images leave the queue; declined ones move to "Rejected".
+      setAllImages((prevImgs) =>
+        action === 'approve'
+          ? prevImgs.filter((img) => !isUpdated(img))
+          : prevImgs.map((img) =>
+              isUpdated(img) ? { ...img, rejected: true, rejectionReason } : img
+            )
       );
       setSelectedImgs([]);
       setShowSelectedOnly(false);
@@ -86,7 +113,7 @@ export const useImgSelection = () => {
       if ('errorMsg' in images) {
         toast(TOASTS.GET_ERROR);
       } else {
-        setImages(images);
+        setAllImages(images);
       }
     };
 
@@ -94,11 +121,16 @@ export const useImgSelection = () => {
   }, [toast]);
 
   const displayedImages = useMemo(() => {
-    return showSelectedOnly ? selectedImgs : images;
-  }, [showSelectedOnly, images, selectedImgs]);
+    return showSelectedOnly ? selectedImgs : tabImages;
+  }, [showSelectedOnly, tabImages, selectedImgs]);
 
   return {
     images: displayedImages,
+    canReview,
+    tab,
+    changeTab,
+    pendingCount,
+    rejectedCount,
     selectedImgs,
     toggleSelectAllOrClear,
     toggleImgSelection,

@@ -242,4 +242,6 @@ damopen_wfa:
       react_widgets/apps/damo_wfa/dist/assets/index.css: {}
   js:
     react_widgets/apps/damo_wfa/dist/assets/index.js: {}
+  dependencies:
+    - core/drupalSettings
 

@@ -1,7 +1,10 @@
 import { getCsrfToken } from '@shared/services';
 import { BASE_URL, handleFetchError, MediaImage } from '@shared/utils';
 
-export const updateImgs = async (files: MediaImage[]) => {
+export const updateImgs = async (
+  files: MediaImage[],
+  attributes: Record<string, unknown>
+) => {
   const csrfToken = await getCsrfToken();
 
   if (
@@ -19,9 +22,7 @@ export const updateImgs = async (files: MediaImage[]) => {
       data: {
         type: 'media--image',
         id: file.id,
-        attributes: {
-          status: true,
-        },
+        attributes,
       },
     };
 

@@ -1,4 +1,4 @@
-import { Box, Image, useToken } from '@chakra-ui/react';
+import { Badge, Box, Image, useToken } from '@chakra-ui/react';
 import { MediaImage } from '@shared/utils';
 import { useState } from 'react';
 import { FaCheck } from 'react-icons/fa';
@@ -8,10 +8,16 @@ import fallbackImg from '../../public/thumbnail.png';
 interface ImgCardProps {
   img: MediaImage;
   isSelected: boolean;
+  isSelectable: boolean;
   onToggleSelect: () => void;
 }
 
-export const ImgCard = ({ img, isSelected, onToggleSelect }: ImgCardProps) => {
+export const ImgCard = ({
+  img,
+  isSelected,
+  isSelectable,
+  onToggleSelect,
+}: ImgCardProps) => {
   const [isHovered, setIsHovered] = useState(false);
   const hoverBorderColor = useToken('colors', 'damo.coolCyan');
 
@@ -28,9 +34,9 @@ export const ImgCard = ({ img, isSelected, onToggleSelect }: ImgCardProps) => {
       w={300}
       h={200}
       position="relative"
-      cursor="pointer"
+      cursor={isSelectable ? 'pointer' : 'default'}
       userSelect="none"
-      onClick={onToggleSelect}
+      onClick={isSelectable ? onToggleSelect : undefined}
       onMouseEnter={mouseEnterHandler}
       onMouseLeave={mouseLeaveHandler}
     >
@@ -42,6 +48,24 @@ export const ImgCard = ({ img, isSelected, onToggleSelect }: ImgCardProps) => {
         h="100%"
         objectFit="cover"
       />
+
+      {img.rejected && (
+        <Badge
+          position="absolute"
+          top={2}
+          left={2}
+          zIndex={1}
+          colorScheme="red"
+          variant="solid"
+          borderRadius="full"
+          px={2.5}
+          py={0.5}
+          fontSize="2xs"
+          title={img.rejectionReason || 'No reason given'}
+        >
+          Rejected
+        </Badge>
+      )}
 
       {/* Overlay */}
       <Box
@@ -66,6 +90,7 @@ export const ImgCard = ({ img, isSelected, onToggleSelect }: ImgCardProps) => {
       >
         {/* Icon */}
         <Box
+          visibility={isSelectable ? 'visible' : 'hidden'}
           bg={isSelected ? 'damo.coolCyan' : 'damo.coolCyanTransparent2'}
           borderRadius="50%"
           h="52px"

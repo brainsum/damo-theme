@@ -48,6 +48,8 @@ export const mapMediaImage = (data: TJsonaModel) => {
       : null,
     file: mapFile(data.field_image),
     editUrl: `/media/${data.drupal_internal__mid}/edit`,
+    rejected: !!data.rejected,
+    rejectionReason: data.rejection_reason?.trim() || null,
   };
   return mediaImg;
 };
