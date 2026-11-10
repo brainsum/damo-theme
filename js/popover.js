@@ -13,15 +13,20 @@
   var settings = drupalSettings.bootstrap || {};
 
   /**
+   * Bootstrap 4 alpha has no "auto" placement; keep the preferred side.
+   */
+  function placement(value) {
+    return typeof value === 'string' ? value.replace(/^auto\s*/, '') || 'right' : value;
+  }
+
+  /**
    * Returns popover options from the theme settings.
    */
   function defaults() {
-    // Bootstrap 4 alpha has no "auto" placement; keep the preferred side.
-    var placement = String(settings.popover_placement || 'right').replace(/^auto\s*/, '') || 'right';
     return {
       animation: !!settings.popover_animation,
       html: !!settings.popover_html,
-      placement: placement,
+      placement: placement(settings.popover_placement || 'right'),
       trigger: settings.popover_trigger || 'click',
       title: settings.popover_title || '',
       content: settings.popover_content || '',
@@ -76,6 +81,7 @@
           html: base.html,
           template: $.fn.popover.Constructor.Default.template
         });
+        options.placement = placement(options.placement);
 
         // Content can come from a target element, as in the base theme.
         var target = options.target || ($element.is('a[href^="#"]') && $element.attr('href'));
