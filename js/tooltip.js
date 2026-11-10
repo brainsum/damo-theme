@@ -32,8 +32,8 @@ var Drupal = Drupal || {};
    */
   Drupal.behaviors.bootstrapTooltips = {
     attach: function (context) {
-      // Bootstrap 4's JavaScript refuses to run with jQuery 4 (Drupal 11), so
-      // the tooltip plugin can be missing. Keep the native title then.
+      // Keep the native title if Bootstrap's tooltip plugin is unavailable,
+      // as it was before Bootstrap was patched for jQuery 4 (Drupal 11).
       if (!$.fn.tooltip) {
         return;
       }
