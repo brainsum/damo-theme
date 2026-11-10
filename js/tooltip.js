@@ -32,6 +32,11 @@ var Drupal = Drupal || {};
    */
   Drupal.behaviors.bootstrapTooltips = {
     attach: function (context) {
+      // Bootstrap 4's JavaScript refuses to run with jQuery 4 (Drupal 11), so
+      // the tooltip plugin can be missing. Keep the native title then.
+      if (!$.fn.tooltip) {
+        return;
+      }
       var elements = $(context).find('[data-toggle="tooltip"]').toArray();
       for (var i = 0; i < elements.length; i++) {
         var $element = $(elements[i]);
@@ -40,6 +45,9 @@ var Drupal = Drupal || {};
       }
     },
     detach: function (context) {
+      if (!$.fn.tooltip) {
+        return;
+      }
       // Destroy all tooltips.
       $(context).find('[data-toggle="tooltip"]').tooltip('dispose');
     }
