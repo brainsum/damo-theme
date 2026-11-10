@@ -47,6 +47,10 @@ libraries-override:
     js:
       js/tooltip.js: js/tooltip.js
 
+  bootstrap/popover:
+    js:
+      js/popover.js: js/popover.js
+
   bootstrap/drupal.ajax:
     js:
       js/misc/ajax.js: js/misc/ajax.js
