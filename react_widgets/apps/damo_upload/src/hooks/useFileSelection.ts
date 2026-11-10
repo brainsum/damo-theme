@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { getCategories } from '../services/getCategories';
 import { getKeywords } from '../services/getKeywords';
@@ -16,9 +16,20 @@ import {
 } from '@shared/utils';
 
 export const useFileSelection = () => {
+  const categoryUpload = window.drupalSettings?.damopenCategoryUpload;
   const [files, setFiles] = useState<FileWithPreview[]>([]);
   const [selectedFiles, setSelectedFiles] = useState<FileWithPreview[]>([]);
-  const [categories, setCategories] = useState<Category[]>([]);
+  const [categories, setCategories] = useState<Category[]>(
+    categoryUpload?.categories ?? []
+  );
+  // The upload link's category, looked up by ID rather than list position.
+  const preset = useMemo(
+    () =>
+      categories.find(
+        (category) => category.id === categoryUpload?.presetCategory
+      ) ?? null,
+    [categories, categoryUpload?.presetCategory]
+  );
   const [keywords, setKeywords] = useState<Keyword[]>([]);
   const [isKeywordLoading, setIsKeywordLoading] = useState<boolean>(false);
   const [userApprovalRequired, setUserApprovalRequired] =
@@ -38,7 +49,9 @@ export const useFileSelection = () => {
         title: stripFileExtension(file.name),
         previewURL: URL.createObjectURL(file),
         fileType: getFileTypeLabel(file.type),
-        categories: null,
+        categories: categories.filter(
+          (category) => category.id === categoryUpload?.defaultCategory
+        ),
         keywords: null,
         type: file.type,
         size: file.size,
@@ -59,7 +72,7 @@ export const useFileSelection = () => {
         setUploadError(errorMessages);
       }
     },
-    [toast, files]
+    [toast, files, categories, categoryUpload?.defaultCategory]
   );
 
   const toggleFileSelection = useCallback((file: FileWithPreview) => {
@@ -104,7 +117,13 @@ export const useFileSelection = () => {
             ? {
                 ...file,
                 title: title.length ? title : file.title,
-                categories: categories,
+                // A link preset always wins. When editing several files, an
+                // empty category selection means "leave unchanged", like title.
+                categories: preset
+                  ? [preset]
+                  : selectedFiles.length > 1 && !categories.length
+                    ? file.categories
+                    : categories,
                 keywords: keywords,
               }
             : file
@@ -112,7 +131,7 @@ export const useFileSelection = () => {
       );
       clearSelection();
     },
-    [selectedFiles, clearSelection]
+    [selectedFiles, clearSelection, preset]
   );
 
   const uploadImages = useCallback(async () => {
@@ -134,7 +153,8 @@ export const useFileSelection = () => {
     const response = await postImages(
       files,
       userApprovalRequired,
-      handleOverallProgress
+      handleOverallProgress,
+      categoryUpload?.presetId ?? null
     );
 
     if (response.success) {
@@ -162,7 +182,7 @@ export const useFileSelection = () => {
 
     await new Promise((resolve) => setTimeout(resolve, 200)); // short delay to show progress bar at 100%
     setIsUploading(false);
-  }, [files, toast, userApprovalRequired]);
+  }, [files, toast, userApprovalRequired, categoryUpload?.presetId]);
 
   const createKeyword = useCallback(
     async (keyword: string) => {
@@ -206,6 +226,7 @@ export const useFileSelection = () => {
     removeFiles,
     onDrop,
     categories,
+    preset,
     keywords,
     isKeywordLoading,
     createKeyword,

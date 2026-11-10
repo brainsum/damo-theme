@@ -18,6 +18,7 @@ function App() {
     removeFiles,
     onDrop,
     categories,
+    preset,
     keywords,
     isKeywordLoading,
     createKeyword,
@@ -55,6 +56,14 @@ function App() {
       flexDir="column"
       justifyContent="space-between"
     >
+      {preset && (
+        <Box padding="20px" background="damo.cloudWhite">
+          <Text fontWeight="semibold">Upload to {preset.name}</Text>
+          <Text fontSize="sm">
+            This category is applied to every image in this batch.
+          </Text>
+        </Box>
+      )}
       <Box display="flex" justifyContent="space-between" flex={2}>
         <Flex
           wrap="wrap"
@@ -90,6 +99,7 @@ function App() {
             removeFiles={() => removeFiles(selectedFiles)}
             totalFiles={files.length}
             categories={categories}
+            preset={preset}
             keywords={keywords}
             isKeywordLoading={isKeywordLoading}
             modifyFiles={modifyFiles}

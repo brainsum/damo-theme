@@ -10,6 +10,10 @@ import { DrupalJsonApiParams } from 'drupal-jsonapi-params';
 import Jsona from 'jsona';
 
 export const getCategories = async () => {
+  // Server-provided options include full paths and the user's upload scope.
+  if (window.drupalSettings?.damopenCategoryUpload) {
+    return window.drupalSettings.damopenCategoryUpload.categories;
+  }
   const resourceType = 'taxonomy_term--category';
 
   const params = new DrupalJsonApiParams();

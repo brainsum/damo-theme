@@ -1,10 +1,10 @@
 import { getCsrfToken } from '@shared/services';
+import { uploadErrorMessage } from './uploadError';
 import {
   BASE_URL,
   buildMediaEntity,
   fetchBlob,
   FileWithPreview,
-  handleFetchError,
 } from '@shared/utils';
 
 interface UploadedFileResponse {
@@ -16,16 +16,31 @@ interface UploadedFileResponse {
 export const postImages = async (
   files: FileWithPreview[],
   userApprovalRequired: boolean,
-  onProgressUpload: (progress: number) => void
+  onProgressUpload: (progress: number) => void,
+  presetId: number | null = null
 ) => {
   const csrfToken = await getCsrfToken();
+  const categoryQuery = presetId
+    ? `?uploadCategory=${encodeURIComponent(presetId)}`
+    : '';
 
   if (
     typeof csrfToken === 'object' &&
     csrfToken !== null &&
     'errorMsg' in csrfToken
   ) {
-    throw new Error('No CSRF token found');
+    return {
+      success: false,
+      errors: files.map((file) => ({
+        fileName: file.fileName,
+        fileId: file.id,
+        status: 'error',
+        error: {
+          errorMsg:
+            'Unable to verify your session. Sign in again and retry the upload.',
+        },
+      })),
+    };
   }
 
   const totalSize = files.reduce((acc, file) => acc + file.size, 0);
@@ -62,27 +77,45 @@ export const postImages = async (
       };
 
       const responsePromise = new Promise<UploadedFileResponse>((res, rej) => {
-        xhr.onreadystatechange = () => {
-          if (xhr.readyState === XMLHttpRequest.DONE) {
-            // Simulate an error for a specific file for error testing (e.g., based on the file name)
-            // if (file.fileName === 'person.jpg') {
-            //   rej(new Error(`Failed to upload file: ${file.fileName}`));
-            // }
-            // if (file.fileName === 'novozymes.jpg') {
-            //   rej(new Error(`Failed to upload file: ${file.fileName}`));
-            // }
-
-            if (xhr.status >= 200 && xhr.status < 300) {
-              res(JSON.parse(xhr.responseText) as UploadedFileResponse);
-            } else {
-              console.log(
-                JSON.parse(xhr.responseText),
-                'upload file response error'
-              );
-              rej(new Error(`Failed to upload file: ${file.fileName}`));
+        xhr.onload = () => {
+          if (xhr.status < 200 || xhr.status >= 300) {
+            rej(
+              new Error(
+                uploadErrorMessage(
+                  xhr.status,
+                  xhr.responseText,
+                  'The file could not be uploaded'
+                )
+              )
+            );
+            return;
+          }
+          try {
+            const response = JSON.parse(
+              xhr.responseText
+            ) as UploadedFileResponse;
+            if (typeof response?.data?.id !== 'string' || !response.data.id) {
+              throw new Error('Missing file ID');
             }
+            res(response);
+          } catch {
+            rej(
+              new Error(
+                'The server returned an invalid upload response. Refresh the page and try again.'
+              )
+            );
           }
         };
+        xhr.onerror = () => rej(new Error(uploadErrorMessage(0, '', '')));
+        xhr.onabort = () =>
+          rej(new Error('The upload was cancelled. Please try again.'));
+        xhr.ontimeout = () =>
+          rej(
+            new Error(
+              'The upload timed out. Check your connection and try again.'
+            )
+          );
+        xhr.timeout = 300000;
 
         xhr.open('POST', `${BASE_URL}/jsonapi/media/image/field_image`);
         xhr.setRequestHeader('Content-Type', 'application/octet-stream');
@@ -105,23 +138,26 @@ export const postImages = async (
         userApprovalRequired
       );
 
-      const mediaResponse = await fetch(`${BASE_URL}/jsonapi/media/image`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/vnd.api+json',
-          Accept: 'application/vnd.api+json',
-          'X-CSRF-Token': csrfToken,
-        },
-        body: JSON.stringify(mediaEntity),
-      });
+      const mediaResponse = await fetch(
+        `${BASE_URL}/jsonapi/media/image${categoryQuery}`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/vnd.api+json',
+            Accept: 'application/vnd.api+json',
+            'X-CSRF-Token': csrfToken,
+          },
+          body: JSON.stringify(mediaEntity),
+        }
+      );
 
       if (!mediaResponse.ok) {
-        console.log(
-          await mediaResponse.json(),
-          'media entity upload response error'
-        );
         throw new Error(
-          `Failed to create media entity for file: ${file.fileName}`
+          uploadErrorMessage(
+            mediaResponse.status,
+            await mediaResponse.text(),
+            'The file was uploaded, but the asset could not be saved'
+          )
         );
       }
 
@@ -140,7 +176,14 @@ export const postImages = async (
         fileName: file.fileName,
         fileId: file.id,
         status: 'error',
-        error: handleFetchError(error),
+        error: {
+          errorMsg:
+            error instanceof TypeError
+              ? uploadErrorMessage(0, '', '')
+              : error instanceof Error
+                ? error.message
+                : 'The upload could not be completed. Please try again.',
+        },
       });
     }
   }

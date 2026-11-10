@@ -24,6 +24,7 @@ interface FormProps {
   removeFiles: () => void;
   totalFiles: number;
   categories: Category[];
+  preset: Category | null;
   keywords: Keyword[];
   isKeywordLoading: boolean;
   createKeyword: (name: string) => void;
@@ -37,6 +38,7 @@ export const Form = ({
   removeFiles,
   totalFiles,
   categories,
+  preset,
   keywords,
   isKeywordLoading,
   createKeyword,
@@ -195,12 +197,20 @@ export const Form = ({
         >
           Category
         </Text>
-        <MultiSelect
-          options={categories}
-          placeholder="Select category"
-          onChangeHandler={handleCategorySelect}
-          selectedItems={selectedCategories}
-        />
+        {preset ? (
+          <Text fontSize="sm" mt={2}>
+            {preset.name}
+            <br />
+            Applied to every image in this batch.
+          </Text>
+        ) : (
+          <MultiSelect
+            options={categories}
+            placeholder="Select category"
+            onChangeHandler={handleCategorySelect}
+            selectedItems={selectedCategories}
+          />
+        )}
       </Box>
 
       <Box>
