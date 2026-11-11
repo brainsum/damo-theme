@@ -245,3 +245,8 @@ damopen_wfa:
   dependencies:
     - core/drupalSettings
 
+
+workspace:
+  css:
+    theme:
+      css/workspace.css: { weight: 100 }

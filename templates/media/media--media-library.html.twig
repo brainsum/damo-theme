@@ -1,48 +1,15 @@
-{#
-/**
- * @file
- * Default theme implementation to present a media entity.
- *
- * Available variables:
- * - name: Name of the media.
- * - content: Media content.
- *
- * @see template_preprocess_media()
- *
- * @ingroup themeable
- */
-#}
+{# Shared asset card: keep titles visible and actions separate from the preview. #}
 {% if content %}
-{% set classes = [
-  'card',
-  'card-inverse',
-  'card--media',
-] %}
-<div{{ attributes.addClass(classes) }}>
-  {{ content.thumbnail }}
-  {% block actions %}
-    <div class="card-actions">
-    </div>
-  {% endblock %}
-</div>
-{% block card_content %}
-  <div class="card-content">
-  <a href="{{ view_url }}" class="card-img-overlay"></a>
-    {{ delete_link }}
-    {{ edit_link }}
-    <div class="card--inner-text">
-      <h4 class="card-title">{{ content.name }}</h4>
-      <div class="media-category card-text">
-        {{ content.field_category }}
-        {{ content.field_template_category }}
-        {{ content.field_field_category }}
-      </div>
-      <div class="media-industry card-text">
-        {{ content.field_keywords }}
-        {{ content.field_template_keywords }}
-        {{ content.field_field_keywords }}
-      </div>
-    </div>
+<article{{ attributes.addClass('dam-media-card') }}>
+  <a class="dam-media-card__preview" href="{{ view_url }}" aria-label="{{ 'View asset'|t }}: {{ media.label }}">
+    {{ content.thumbnail }}
+  </a>
+  <div class="dam-media-card__body">
+    <h3 class="dam-media-card__title"><a href="{{ view_url }}">{{ content.name }}</a></h3>
+    <div class="dam-media-card__meta">{{ content.field_category }}{{ content.field_template_category }}{{ content.field_field_category }}</div>
+    {% if edit_link or delete_link %}
+      <div class="dam-media-card__actions">{{ edit_link }}{{ delete_link }}</div>
+    {% endif %}
   </div>
-{% endblock %}
+</article>
 {% endif %}
