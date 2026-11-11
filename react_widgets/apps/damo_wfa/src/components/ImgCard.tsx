@@ -67,6 +67,24 @@ export const ImgCard = ({
         </Badge>
       )}
 
+      {img.consent && (
+        <Badge
+          position="absolute"
+          top={img.rejected ? 9 : 2}
+          left={2}
+          zIndex={1}
+          colorScheme="orange"
+          variant="solid"
+          borderRadius="full"
+          px={2.5}
+          py={0.5}
+          fontSize="2xs"
+          title={img.consent.problem}
+        >
+          Consent needed
+        </Badge>
+      )}
+
       {/* Overlay */}
       <Box
         position="absolute"

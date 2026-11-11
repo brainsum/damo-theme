@@ -59,6 +59,8 @@ export interface MediaImage {
   editUrl: string;
   rejected: boolean;
   rejectionReason: string | null;
+  // Why the asset cannot be approved yet, and where to resolve it.
+  consent?: { problem: string; url?: string } | null;
 }
 
 export type ModifyImgsAction = 'approve' | 'decline';

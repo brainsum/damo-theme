@@ -95,6 +95,13 @@ export const CardPopover = ({ open, fileInfo }: CardPopoverProps) => {
             </Flex>
           )}
 
+          {fileInfo.consent && (
+            <Flex flexDir="column" color="orange.700">
+              <Text as="b">Cannot be approved yet:</Text>
+              <Text>{fileInfo.consent.problem}</Text>
+            </Flex>
+          )}
+
           {!!fileInfo.keywords?.length && (
             <Flex flexDir="column">
               <Text as="span">Keywords:</Text>
@@ -104,7 +111,25 @@ export const CardPopover = ({ open, fileInfo }: CardPopoverProps) => {
             </Flex>
           )}
         </PopoverBody>
-        <PopoverFooter py={3}>
+        <PopoverFooter py={3} display="flex" gap={2} flexWrap="wrap">
+          {fileInfo.consent?.url && (
+            <Button
+              bg="damo.coolCyan"
+              color="white"
+              borderRadius="full"
+              lineHeight="30px"
+              padding="8px 16px"
+              fontSize="xs"
+              fontWeight="normal"
+              _hover={{ opacity: 0.85 }}
+              onClick={(e) => {
+                e.stopPropagation();
+                window.location.assign(fileInfo.consent!.url!);
+              }}
+            >
+              Assess consent
+            </Button>
+          )}
           <Button
             variant="outline"
             borderColor="damo.paleStone"

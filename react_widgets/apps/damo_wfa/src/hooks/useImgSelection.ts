@@ -78,7 +78,12 @@ export const useImgSelection = () => {
         );
       } else {
         const errorMessages = response.errors?.map(
-          (e) => `File: ${e.fileName} - ${e.error?.errorMsg}`
+          (e) =>
+            `${e.fileName}: ${e.error?.errorMsg}` +
+            // Point to the way out when the consent module provides one.
+            (selectedImgs.find((i) => i.id === e.fileId)?.consent?.url
+              ? ' Open its Details and choose “Assess consent”.'
+              : '')
         ) || ['An error occurred while updating images'];
         toast(
           action === 'approve' ? TOASTS.PUBLISH_ERROR : TOASTS.DECLINE_ERROR

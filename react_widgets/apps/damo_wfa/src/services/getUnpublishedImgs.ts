@@ -39,7 +39,11 @@ export const getUnpublishedImgs = async () => {
     const json: ApiResponseArr<Attributes> = await response.json();
     const dataFormatter = new Jsona();
     const formattedData = dataFormatter.deserialize(json);
-    const imgs: MediaImage[] = formattedData.map(mapMediaImage);
+    // Absent unless the optional consent module is enabled.
+    const consent = window.drupalSettings?.damopenWfa?.consent ?? {};
+    const imgs: MediaImage[] = formattedData
+      .map(mapMediaImage)
+      .map((img: MediaImage) => ({ ...img, consent: consent[img.id] ?? null }));
 
     return imgs;
   } catch (err) {

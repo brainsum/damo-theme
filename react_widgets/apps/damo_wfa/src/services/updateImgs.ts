@@ -46,13 +46,21 @@ export const updateImgs = async (
       );
 
       if (!response.ok) {
-        console.log(
-          await response.json(),
-          'media entity update response error'
-        );
-        throw new Error(
-          `Failed to update media entity for file: ${file.file.fileName}`
-        );
+        // Report the server's reason (e.g. a failed validation) to the user.
+        const body = await response.json().catch(() => null);
+        const detail: string | undefined = body?.errors?.[0]?.detail;
+        updateResults.push({
+          fileName: file.name,
+          fileId: file.id,
+          status: 'error',
+          error: {
+            // JSON:API prefixes a violation with its field name.
+            errorMsg: detail
+              ? detail.replace(/^[\w.]+: /, '')
+              : `The server refused the change (${response.status}).`,
+          },
+        });
+        continue;
       }
 
       const updatedMedia = await response.json();
