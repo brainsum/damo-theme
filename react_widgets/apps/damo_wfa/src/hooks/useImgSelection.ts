@@ -3,6 +3,7 @@ import { MediaImage, ModifyImgsAction, TOASTS } from '@shared/utils';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { getUnpublishedImgs } from '../services/getUnpublishedImgs';
 import { updateImgs } from '../services/updateImgs';
+import { toggleConsent as toggleConsentRequest } from '../services/toggleConsent';
 
 export type ImgTab = 'pending' | 'rejected';
 
@@ -52,6 +53,23 @@ export const useImgSelection = () => {
       }
     });
   }, []);
+
+  // One click on the badge: "no people in the picture", or back again.
+  const toggleConsent = useCallback(
+    async (img: MediaImage) => {
+      const state = await toggleConsentRequest(img);
+      if ('errorMsg' in state) {
+        setUpdateError([`${img.name}: ${state.errorMsg}`]);
+        return;
+      }
+      setUpdateError(null);
+      const update = (i: MediaImage) =>
+        i.id === img.id ? { ...i, consent: { ...i.consent, ...state } } : i;
+      setAllImages((prev) => prev.map(update));
+      setSelectedImgs((prev) => prev.map(update));
+    },
+    []
+  );
 
   const toggleShowSelectedOnly = useCallback(() => {
     if (selectedImgs.length === 0) return;
@@ -139,6 +157,7 @@ export const useImgSelection = () => {
     selectedImgs,
     toggleSelectAllOrClear,
     toggleImgSelection,
+    toggleConsent,
     toggleShowSelectedOnly,
     showSelectedOnly,
     areAllSelected,

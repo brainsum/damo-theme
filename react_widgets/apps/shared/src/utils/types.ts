@@ -48,6 +48,13 @@ export interface MediaFile {
   alt: string | null;
 }
 
+export interface ConsentState {
+  problem: string | null;
+  notNeeded?: boolean;
+  url?: string;
+  toggleUrl?: string;
+}
+
 export interface MediaImage {
   id: string;
   type: string;
@@ -59,8 +66,9 @@ export interface MediaImage {
   editUrl: string;
   rejected: boolean;
   rejectionReason: string | null;
-  // Why the asset cannot be approved yet, and where to resolve it.
-  consent?: { problem: string; url?: string } | null;
+  // Consent state from the optional consent module: why the asset cannot be
+  // approved yet (if so), where to resolve it, and the one-click switch.
+  consent?: ConsentState | null;
 }
 
 export type ModifyImgsAction = 'approve' | 'decline';

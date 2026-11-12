@@ -95,7 +95,7 @@ export const CardPopover = ({ open, fileInfo }: CardPopoverProps) => {
             </Flex>
           )}
 
-          {fileInfo.consent && (
+          {fileInfo.consent?.problem && (
             <Flex flexDir="column" color="orange.700">
               <Text as="b">Cannot be approved yet:</Text>
               <Text>{fileInfo.consent.problem}</Text>

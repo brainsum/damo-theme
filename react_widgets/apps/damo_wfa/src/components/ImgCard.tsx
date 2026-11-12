@@ -10,6 +10,8 @@ interface ImgCardProps {
   isSelected: boolean;
   isSelectable: boolean;
   onToggleSelect: () => void;
+  // Only for reviewers of the optional consent module.
+  onToggleConsent?: () => Promise<void>;
 }
 
 export const ImgCard = ({
@@ -17,8 +19,10 @@ export const ImgCard = ({
   isSelected,
   isSelectable,
   onToggleSelect,
+  onToggleConsent,
 }: ImgCardProps) => {
   const [isHovered, setIsHovered] = useState(false);
+  const [isToggling, setIsToggling] = useState(false);
   const hoverBorderColor = useToken('colors', 'damo.coolCyan');
 
   const mouseEnterHandler = () => {
@@ -69,19 +73,42 @@ export const ImgCard = ({
 
       {img.consent && (
         <Badge
+          as={onToggleConsent ? 'button' : 'span'}
           position="absolute"
           top={img.rejected ? 9 : 2}
           left={2}
-          zIndex={1}
-          colorScheme="orange"
-          variant="solid"
+          // Above the hover overlay, so that it can be clicked.
+          zIndex={2}
+          colorScheme={img.consent.problem ? 'orange' : 'gray'}
+          variant={img.consent.problem ? 'solid' : 'subtle'}
           borderRadius="full"
           px={2.5}
           py={0.5}
           fontSize="2xs"
-          title={img.consent.problem}
+          opacity={isToggling ? 0.5 : 1}
+          cursor={onToggleConsent ? 'pointer' : 'default'}
+          title={
+            (img.consent.problem ??
+              'Assessed: no identifiable private people.') +
+            (onToggleConsent
+              ? img.consent.notNeeded
+                ? ' Click if consent is needed after all.'
+                : ' Click if the picture shows no private people.'
+              : '')
+          }
+          onClick={
+            onToggleConsent
+              ? async (e: React.MouseEvent) => {
+                  e.stopPropagation();
+                  if (isToggling) return;
+                  setIsToggling(true);
+                  await onToggleConsent();
+                  setIsToggling(false);
+                }
+              : undefined
+          }
         >
-          Consent needed
+          {img.consent.problem ? 'Consent needed' : 'Consent not needed'}
         </Badge>
       )}
 

@@ -16,6 +16,7 @@ function App() {
     selectedImgs,
     toggleSelectAllOrClear,
     toggleImgSelection,
+    toggleConsent,
     toggleShowSelectedOnly,
     showSelectedOnly,
     areAllSelected,
@@ -73,6 +74,9 @@ function App() {
                   isSelected={selectedImgs.some((i) => i.id === img.id)}
                   isSelectable={canReview}
                   onToggleSelect={() => toggleImgSelection(img)}
+                  onToggleConsent={
+                    img.consent?.toggleUrl ? () => toggleConsent(img) : undefined
+                  }
                 />
               </Box>
             ))}
